@@ -5,13 +5,23 @@ package com.iceico.internship.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.iceico.internship.audit.Auditable;
 
 /**
  * @author Rajat
@@ -19,34 +29,38 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="tab_session")
-public class Session implements Serializable {
+@Table(name = "tab_session")
+@EntityListeners(AuditingEntityListener.class)
+public class Session extends Auditable<String> implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -4806901618923328225L;
+	private static final long serialVersionUID = 8622474076966454726L;
 
 	/**
 	 * 
 	 */
 	public Session() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="session_id")
+	@Column(name = "session_id")
 	private Long sessionId;
 
-	@Column(name="description")
+	@Column(name = "description")
 	private String description;
 
-	@Column(name="start_date")
+	@Column(name = "start_date")
 	private Date startDate;
 
-	@Column(name="end_date")
+	@Column(name = "end_date")
 	private Date endDate;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "session", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<StudentEntry> studentEntry;
 
 	/**
 	 * @return the sessionId
@@ -103,4 +117,26 @@ public class Session implements Serializable {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
+
+	/**
+	 * @return the studentEntry
+	 */
+	public List<StudentEntry> getStudentEntry() {
+		return studentEntry;
+	}
+
+	/**
+	 * @param studentEntry the studentEntry to set
+	 */
+	public void setStudentEntry(List<StudentEntry> studentEntry) {
+		this.studentEntry = studentEntry;
+	}
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 }
