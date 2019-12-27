@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>All list application</h1>
-
+	<h1>Hello</h1>
 </body>
 </html>
