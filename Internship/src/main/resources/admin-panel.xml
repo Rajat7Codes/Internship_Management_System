@@ -38,6 +38,12 @@
 			value="/WEB-INF/internship/view/admin-module/dashboard.jsp" />
 	</definition>
 
-
+	<!-- IntershipDuration Page -->
+	<definition name="intershipDuration"
+		extends="adminbase.definition">
+		<put-attribute name="title" value="Internship Duration" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/internshipPages/internshipDuration.jsp" />
+	</definition>
 
 </tiles-definitions>
