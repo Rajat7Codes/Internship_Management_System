@@ -42,9 +42,9 @@
 <!-- InternshipType PAGE -->
 	<definition name="internshipType"
 		extends="adminbase.definition">
-		<put-attribute name="title" value="Dashboard" />
+		<put-attribute name="title" value="Internship Type" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/dashboard.jsp" />
+			value="/WEB-INF/internship/view/admin-module/internshipPages/internshipType.jsp" />
 	</definition>
 
 

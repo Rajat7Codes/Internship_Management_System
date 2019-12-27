@@ -4,46 +4,55 @@
 package com.iceico.internship.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.iceico.internship.audit.Auditable;
 
 /**
  * @author Rajat
  *
  */
 
-
 @Entity
-@Table(name="tab_internship_duration")
-public class InternshipDuration implements Serializable {
+@Table(name = "tab_internship_duration")
+public class InternshipDuration extends Auditable<String> implements Serializable {
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 465667533553059247L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 
 	 */
 	public InternshipDuration() {
-		// TODO Auto-generated constructor stub
 	}
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="internship_duration_id")
+	@Column(name = "internship_duration_id")
 	private Long internDurId;
-	
-	@Column(name="duration")
+
+	@Column(name = "duration")
 	private Integer duration;
-	
-	@Column(name="description")
+
+	@Column(name = "description")
 	private String description;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "internshipDuration", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<StudentEntry> studentEntry;
 
 	/**
 	 * @return the internDurId
@@ -86,6 +95,26 @@ public class InternshipDuration implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
+	/**
+	 * @return the studentEntry
+	 */
+	public List<StudentEntry> getStudentEntry() {
+		return studentEntry;
+	}
+
+	/**
+	 * @param studentEntry the studentEntry to set
+	 */
+	public void setStudentEntry(List<StudentEntry> studentEntry) {
+		this.studentEntry = studentEntry;
+	}
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 }
