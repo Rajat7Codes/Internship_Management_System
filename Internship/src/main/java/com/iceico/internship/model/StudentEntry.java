@@ -65,5 +65,8 @@ public class StudentEntry {
 
 	@Column(name = "date")
 	private Date date;
+	
+	
+	
 
 }
