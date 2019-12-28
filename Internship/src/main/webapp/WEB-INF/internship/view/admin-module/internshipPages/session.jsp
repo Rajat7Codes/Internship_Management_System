@@ -90,12 +90,8 @@
 												<li>
 													<a title="Edit" href="<c:url value='/admin/internship/session/edit/${sessions.getSessionId()}' />"><i
 														class="fa fa-edit"></i>Edit</a></li>
-												<%-- <li><a title="View"
-													href="<c:url value='/admin/application/view/${app.saId }' />"><i
-														class="fa fa-eye"></i>View</a></li> --%>
-												<li><a title="Print"
-													href="<c:url value='/admin/internship/session/delete/${sessions.getSessionId()}' />"><i
-														class="fa fa-print"></i>Delete</a></li>
+												<li><a title="Print" href="<c:url value='/admin/internship/session/delete/${sessions.getSessionId()}' />"><i
+													class="fa fa-print"></i>Delete</a></li>
 											</ul>
 										</div>
 									</td>

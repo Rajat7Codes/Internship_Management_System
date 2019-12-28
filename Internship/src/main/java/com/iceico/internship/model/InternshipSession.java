@@ -34,7 +34,7 @@ import com.iceico.internship.audit.Auditable;
 @Entity
 @Table(name = "tab_session")
 @EntityListeners(AuditingEntityListener.class)
-public class Session extends Auditable<String> implements Serializable {
+public class InternshipSession extends Auditable<String> implements Serializable {
 
 	/**
 	 * 
@@ -44,7 +44,7 @@ public class Session extends Auditable<String> implements Serializable {
 	/**
 	 * 
 	 */
-	public Session() {
+	public InternshipSession() {
 	}
 
 	@Id
