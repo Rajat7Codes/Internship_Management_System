@@ -49,7 +49,7 @@ public class InternshipDuration extends Auditable<String> implements Serializabl
 	private Long internDurId;
 
 	@Column(name = "duration")
-	private Integer duration;
+	private String duration;
 
 	@Column(name = "description")
 	private String description;
@@ -57,6 +57,20 @@ public class InternshipDuration extends Auditable<String> implements Serializabl
 	@JsonIgnore
 	@OneToMany(mappedBy = "internshipDuration", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<StudentEntry> studentEntry;
+
+	/**
+	 * @param internDurId
+	 * @param duration
+	 * @param description
+	 * @param studentEntry
+	 */
+	public InternshipDuration(Long internDurId, String duration, String description, List<StudentEntry> studentEntry) {
+		super();
+		this.internDurId = internDurId;
+		this.duration = duration;
+		this.description = description;
+		this.studentEntry = studentEntry;
+	}
 
 	/**
 	 * @return the internDurId
@@ -75,14 +89,14 @@ public class InternshipDuration extends Auditable<String> implements Serializabl
 	/**
 	 * @return the duration
 	 */
-	public Integer getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 
 	/**
 	 * @param duration the duration to set
 	 */
-	public void setDuration(Integer duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 
