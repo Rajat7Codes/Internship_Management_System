@@ -89,7 +89,7 @@ public class StudentEntry {
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "sessionId", insertable = true, nullable = true, updatable = true)
 	@JsonIgnore
-	private Session session;
+	private InternshipSession session;
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "internTypeId", insertable = true, nullable = true, updatable = true)
@@ -120,7 +120,7 @@ public class StudentEntry {
 	 * @param internshipType
 	 */
 	public StudentEntry(Long studentEntryId, String firstName, String middleName, String lastName, Float fees,
-			Float discount, String extension, Date date, InternshipDuration internshipDuration, Session session,
+			Float discount, String extension, Date date, InternshipDuration internshipDuration, InternshipSession session,
 			InternshipType internshipType) {
 		super();
 		this.studentEntryId = studentEntryId;
@@ -265,14 +265,14 @@ public class StudentEntry {
 	/**
 	 * @return the session
 	 */
-	public Session getSession() {
+	public InternshipSession getSession() {
 		return session;
 	}
 
 	/**
 	 * @param session the session to set
 	 */
-	public void setSession(Session session) {
+	public void setSession(InternshipSession session) {
 		this.session = session;
 	}
 

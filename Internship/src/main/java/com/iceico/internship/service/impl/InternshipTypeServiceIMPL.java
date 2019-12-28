@@ -40,7 +40,7 @@ public class InternshipTypeServiceIMPL implements InternshipTypeService {
 	public InternshipType getInternshipTypeById(Long internTypeId) throws ResourceNotFoundException {
 
 		return this.internshipTypeRepository.findById(internTypeId)
-				.orElseThrow(() -> new ResourceNotFoundException("Internship Type Not Found" + internTypeId));
+				.orElseThrow(() -> new ResourceNotFoundException("No Data Found At Id" + internTypeId));
 	}
 
 	@Override

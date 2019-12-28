@@ -156,14 +156,13 @@
 
 									<li><a href="${pageContext.request.contextPath }/admin/as">
 											<span class="photo"><i class="fa fa-calendar"></i></span> <!-- <span class="subject"> </span> -->
-											<span class="subject"> <span class="from">ACADEMIC
-													SESSION</span>
+											<span class="subject"> <span class="from">COLLEGE</span>
 										</span>
 									</a></li>
 
 									<li><a href="${pageContext.request.contextPath }/admin/ay">
 											<span class="photo"><i class="fa fa-calendar"></i></span> <!-- <span class="subject"> </span> -->
-											<span class="subject"> <span class="from">ACADEMIC
+											<span class="subject"> <span class="from">FINANCIAL
 													YEAR</span>
 										</span>
 									</a></li>
@@ -171,41 +170,24 @@
 									<li><a
 										href="${pageContext.request.contextPath }/admin/course"> <span
 											class="photo"><i class="fa fa-graduation-cap"></i></span> <!-- <span class="subject"> </span> -->
-											<span class="subject"> <span class="from">COURSE</span>
+											<span class="subject"> <span class="from">INTERNSHIP
+													SESSION</span>
 										</span>
 									</a></li>
 
 									<li><a
-										href="${pageContext.request.contextPath }/admin/gender"> <span
-											class="photo"><i class="fa fa-venus"></i></span> <!-- <span class="subject"> </span> -->
-											<span class="subject"> <span class="from">GENDER</span>
+										href="${pageContext.request.contextPath }/admin/internship/duration">
+											<span class="photo"><i class="fa fa-venus"></i></span> <!-- <span class="subject"> </span> -->
+											<span class="subject"> <span class="from">INTERNSHIP
+													DURATION</span>
 										</span>
 									</a></li>
 
 									<li><a
 										href="${pageContext.request.contextPath }/admin/category">
 											<span class="photo"><i class="fa fa-list-alt"></i></span> <!-- <span class="subject"> </span> -->
-											<span class="subject"> <span class="from">CATEGORY</span>
-										</span>
-									</a></li>
-
-									<li><a
-										href="${pageContext.request.contextPath }/admin/caste"> <span
-											class="photo"><i class="fa fa-list-alt"></i></span> <!-- <span class="subject"> </span> -->
-											<span class="subject"> <span class="from">CASTE</span>
-										</span>
-									</a></li>
-
-									<li><a
-										href="${pageContext.request.contextPath }/admin/subcaste">
-											<span class="photo"><i class="fa fa-list-alt"></i></span> <!-- <span class="subject"> </span> -->
-											<span class="subject"> <span class="from">SUB-CASTE</span>
-										</span>
-									</a></li>
-									<li><a
-										href="${pageContext.request.contextPath }/admin/subject">
-											<span class="photo"><i class="fa fa-list-alt"></i></span> <!-- <span class="subject"> </span> -->
-											<span class="subject"> <span class="from">SUBJECT</span>
+											<span class="subject"> <span class="from">INTERNSHIP
+													TYPE</span>
 										</span>
 									</a></li>
 

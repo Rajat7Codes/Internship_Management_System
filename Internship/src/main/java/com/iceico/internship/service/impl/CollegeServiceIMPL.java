@@ -53,7 +53,8 @@ public class CollegeServiceIMPL implements CollegeService {
 	@Override
 	public College getCollegeById(Long id) throws ResourceNotFoundException {
 
-		return collegeRepository.findById(id).get();
+		return collegeRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Not Data Found At Id " + id));
 	}
 
 }

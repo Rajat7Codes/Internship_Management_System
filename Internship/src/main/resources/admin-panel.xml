@@ -44,10 +44,10 @@
 		<put-attribute name="title" value="CollegeInfo" />
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/College-module/CollegeInfo.jsp" />
-	</definition>	
+	</definition>
 
 
-	<!--FinancialYear  Page -->
+	<!--FinancialYear Page -->
 	<definition name="FinancialYear"
 		extends="adminbase.definition">
 		<put-attribute name="title" value="FinancialYear" />
@@ -79,22 +79,29 @@
 		extends="adminbase.definition">
 		<put-attribute name="title" value="Student Entry" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/internshipPages/studentEntry.jsp" />
+			value="/WEB-INF/internship/view/admin-module/student-entry/studentEntry.jsp" />
 	</definition>
 
 	<definition name="newStudentEntry"
 		extends="adminbase.definition">
 		<put-attribute name="title" value="Student Entry" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/internshipPages/newStudentEntry.jsp" />
+			value="/WEB-INF/internship/view/admin-module/student-entry/newStudentEntry.jsp" />
 	</definition>
 
 	<!-- Session Page -->
-	<definition name="session"
-		extends="adminbase.definition">
+	<definition name="session" extends="adminbase.definition">
 		<put-attribute name="title" value="Session" />
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/internshipPages/session.jsp" />
+	</definition>
+
+	<!-- Financial Year -->
+	<definition name="financialYear"
+		extends="adminbase.definition">
+		<put-attribute name="title" value="Session" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/College-module/financialYear.jsp" />
 	</definition>
 
 </tiles-definitions>
