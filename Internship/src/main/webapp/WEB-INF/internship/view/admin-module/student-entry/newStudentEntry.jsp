@@ -57,32 +57,13 @@ label {
 							</div>
 
 
-							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+							<%-- <div class="col-md-4 col-sm-4 col-lg-4 col-12">
 								<form:label path="college">College</form:label>
 								<form:select class="form-control" name="college" path="college"
 									id="college" itemLabel="collegeName" items="${internTypeList }"
 									itemValue="collegeId">
 								</form:select>
 								<form:errors path="college" class="errors" />
-							</div>
-
-							<%-- <div class="col-md-4 col-sm-4 col-lg-4 col-12">
-								<form:label path="session">Type</form:label>
-								<form:select class="form-control" name="session" path="session"
-									id="session" itemLabel="sessionName" items="${internTypeList }"
-									itemValue="sessionId">
-								</form:select>
-								<form:errors path="session" class="errors" />
-							</div> --%>
-
-
-							<%-- <div class="col-md-4 col-sm-4 col-lg-4 col-12">
-								<form:label path="duration">Type</form:label>
-								<form:select class="form-control" name="duration"
-									path="duration" id="duration" itemLabel="durationName"
-									items="${internTypeList }" itemValue="durationId">
-								</form:select>
-								<form:errors path="duration" class="errors" />
 							</div> --%>
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
@@ -93,6 +74,29 @@ label {
 								</form:select>
 								<form:errors path="internshipType" class="errors" />
 							</div>
+
+							<%-- <div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<form:label path="internshipSession">Session</form:label>
+								<form:select class="form-control" name="internshipSession"
+									path="internshipSession" id="internshipSession"
+									itemLabel="sessionName" items="${sessionList }"
+									itemValue="sessionId">
+								</form:select>
+								<form:errors path="internshipSession" class="errors" />
+							</div> --%>
+
+
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<form:label path="internshipDuration">Type</form:label>
+								<form:select class="form-control" name="internshipDuration"
+									path="internshipDuration" id="internshipDuration"
+									itemLabel="duration" items="${internTypeList }"
+									itemValue="internDurId">
+								</form:select>
+								<form:errors path="internshipDuration" class="errors" />
+							</div>
+
+
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
 								<form:label path="fees">Fees</form:label>

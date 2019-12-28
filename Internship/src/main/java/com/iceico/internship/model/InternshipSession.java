@@ -30,7 +30,7 @@ import com.iceico.internship.audit.Auditable;
  * @author Rajat
  * @version 0.1
  * 
- * Created Date : 27/12/2019
+ *          Created Date : 27/12/2019
  * 
  */
 
@@ -55,8 +55,8 @@ public class InternshipSession extends Auditable<String> implements Serializable
 	@Column(name = "session_id")
 	private Long sessionId;
 
-	@Column(name = "description")
-	private String description;
+	@Column(name = "session_name")
+	private String sessionName;
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -68,9 +68,31 @@ public class InternshipSession extends Auditable<String> implements Serializable
 	@Column(name = "end_date")
 	private Date endDate;
 
+	@Column(name = "description")
+	private String description;
+
 	@JsonIgnore
-	@OneToMany(mappedBy = "session", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "internshipSession", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<StudentEntry> studentEntry;
+
+	/**
+	 * @param sessionId
+	 * @param sessionName
+	 * @param startDate
+	 * @param endDate
+	 * @param description
+	 * @param studentEntry
+	 */
+	public InternshipSession(Long sessionId, String sessionName, Date startDate, Date endDate, String description,
+			List<StudentEntry> studentEntry) {
+		super();
+		this.sessionId = sessionId;
+		this.sessionName = sessionName;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.description = description;
+		this.studentEntry = studentEntry;
+	}
 
 	/**
 	 * @return the sessionId
@@ -87,17 +109,17 @@ public class InternshipSession extends Auditable<String> implements Serializable
 	}
 
 	/**
-	 * @return the description
+	 * @return the sessionName
 	 */
-	public String getDescription() {
-		return description;
+	public String getSessionName() {
+		return sessionName;
 	}
 
 	/**
-	 * @param description the description to set
+	 * @param sessionName the sessionName to set
 	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public void setSessionName(String sessionName) {
+		this.sessionName = sessionName;
 	}
 
 	/**
@@ -129,6 +151,20 @@ public class InternshipSession extends Auditable<String> implements Serializable
 	}
 
 	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
 	 * @return the studentEntry
 	 */
 	public List<StudentEntry> getStudentEntry() {
@@ -140,13 +176,6 @@ public class InternshipSession extends Auditable<String> implements Serializable
 	 */
 	public void setStudentEntry(List<StudentEntry> studentEntry) {
 		this.studentEntry = studentEntry;
-	}
-
-	/**
-	 * @return the serialversionuid
-	 */
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 }

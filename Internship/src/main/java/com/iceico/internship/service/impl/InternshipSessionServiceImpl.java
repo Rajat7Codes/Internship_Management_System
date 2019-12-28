@@ -24,7 +24,7 @@ public class InternshipSessionServiceImpl implements InternshipSessionService {
 
 	@Autowired
 	InternshipSessionRepository internshipSessionRepository;
-	
+
 	/**
 	 * 
 	 */
@@ -34,22 +34,22 @@ public class InternshipSessionServiceImpl implements InternshipSessionService {
 
 	@Override
 	public void saveSession(InternshipSession session) {
-		internshipSessionRepository.save(session);
+		this.internshipSessionRepository.save(session);
 	}
 
 	@Override
 	public void deleteSession(Long sessionId) {
-		internshipSessionRepository.deleteById(sessionId);
+		this.internshipSessionRepository.deleteById(sessionId);
 	}
 
 	@Override
 	public List<InternshipSession> getSessionList() {
-		return internshipSessionRepository.findAll();
+		return this.internshipSessionRepository.findAll();
 	}
 
 	@Override
 	public InternshipSession getSessionById(Long sessionId) {
-		return internshipSessionRepository.findById(sessionId).get();
+		return this.internshipSessionRepository.findById(sessionId).get();
 	}
 
 }

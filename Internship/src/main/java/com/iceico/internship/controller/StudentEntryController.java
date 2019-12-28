@@ -23,6 +23,7 @@ import com.iceico.internship.model.StudentEntry;
 import com.iceico.internship.service.CollegeService;
 import com.iceico.internship.service.FinancialYearService;
 import com.iceico.internship.service.InternshipDurationService;
+import com.iceico.internship.service.InternshipSessionService;
 import com.iceico.internship.service.InternshipTypeService;
 import com.iceico.internship.service.StudentEntryService;
 import com.iceico.internship.service.impl.CollegeServiceIMPL;
@@ -50,9 +51,6 @@ public class StudentEntryController {
 	private InternshipTypeService internshipTypeService;
 
 	@Autowired
-	private InternshipDurationService InternshipDurationService;
-
-	@Autowired
 	private CollegeService collegeService;
 
 	@Autowired
@@ -61,6 +59,9 @@ public class StudentEntryController {
 	@Autowired
 	private InternshipDurationService internshipDurationService;
 
+	@Autowired
+	private InternshipSessionService internshipSessionService;
+
 	@GetMapping("/admin/student/entry")
 	public String getStudentEntry(ModelMap modelMap, Locale locale) {
 
@@ -68,6 +69,9 @@ public class StudentEntryController {
 		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
 		modelMap.addAttribute("internTypeList", this.internshipTypeService.getInternshipTypeList());
 		modelMap.addAttribute("activeFy", this.financialYearService.getActiveFinancialYear());
+		modelMap.addAttribute("durationList", this.internshipDurationService.getInternshipDurationList());
+		modelMap.addAttribute("sessionList", this.internshipSessionService.getSessionList());
+		modelMap.addAttribute("collegeList", this.collegeService.getCollegeList());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "studentEntry";
 	}
