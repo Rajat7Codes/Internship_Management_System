@@ -22,8 +22,7 @@ import com.iceico.internship.service.CollegeService;
 
 /**
  * @author Puja
- * @version 0.1
- * Creation Date: 27/12/2019
+ * @version 0.1 Creation Date: 27/12/2019
  *
  */
 
@@ -31,7 +30,7 @@ import com.iceico.internship.service.CollegeService;
 public class CollegeController {
 
 	@Autowired
-	CollegeService collegeService;
+	private CollegeService collegeService;
 
 	@GetMapping(value = "/admin/college/new")
 	public String newCollege(ModelMap modelMap, Locale locale) {
@@ -44,23 +43,22 @@ public class CollegeController {
 	public String saveCollege(@ModelAttribute("college") @Valid College college, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			return "newCollege";
+		} else {
+			collegeService.saveCollege(college);
+			return "redirect:/admin/college";
 		}
-		collegeService.saveCollege(college);
-		return "redirect:/admin/college/all";
 	}
 
 	@PostMapping("/admin/college/delete/{id}")
 	public String deleteCollege(@PathVariable("id") @Valid Long id, ModelMap modelMap)
 			throws ResourceNotFoundException {
-		collegeService.getCollegeById(id);
 		collegeService.deleteCollege(id);
-		return "redirect:/admin/college/all";
+		return "redirect:/admin/college";
 	}
 
-	@GetMapping(value = "/admin/college/all")
-
+	@GetMapping(value = "/admin/college")
 	public String getCollegeList(ModelMap modelMap, Locale locale) {
-		modelMap.addAttribute("userList", collegeService.getCollegeList());
+		modelMap.addAttribute("collegeList", collegeService.getCollegeList());
 
 		return "college";
 	}
