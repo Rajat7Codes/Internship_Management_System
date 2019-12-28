@@ -18,3 +18,4 @@ public interface SessionService {
 	public List<Session> getSessionList();
 	public Session getSessionById(Long id) throws ResourceNotFoundException;
 }
+
