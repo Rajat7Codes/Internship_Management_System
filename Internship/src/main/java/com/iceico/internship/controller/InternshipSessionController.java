@@ -34,7 +34,7 @@ import com.iceico.internship.service.InternshipSessionService;
 public class InternshipSessionController {
 
 	@Autowired
-	InternshipSessionService sessionService;
+	InternshipSessionService internshipSessionService;
 	
 	/**
 	 * 
@@ -46,7 +46,7 @@ public class InternshipSessionController {
 	@GetMapping("/admin/internship/session")
 	public String internshipSession(ModelMap modelMap, Locale locale) {
 		modelMap.addAttribute("session", new InternshipSession());
-		modelMap.addAttribute("sessionList", sessionService.getSessionList());
+		modelMap.addAttribute("sessionList", internshipSessionService.getSessionList());
 		return "internshipSession";
 	}
 	
@@ -57,10 +57,10 @@ public class InternshipSessionController {
 		} else {
 			if (session.getSessionId() == null) {
 
-				this.sessionService.saveSession(session);
+				this.internshipSessionService.saveSession(session);
 				modelMap.addAttribute("user", this.getPrincipal());
 			} else {
-				this.sessionService.saveSession(session);
+				this.internshipSessionService.saveSession(session);
 			}
 			return "redirect:/admin/internship/session";
 		}
@@ -70,15 +70,15 @@ public class InternshipSessionController {
 	
 	@GetMapping("/admin/internship/session/edit/{sessionId}")
 	public String editInternshipSession(@PathVariable("sessionId") @Valid Long sessionId, ModelMap modelMap, Locale locale) throws ParseException, ResourceNotFoundException {
-		modelMap.addAttribute("session", sessionService.getSessionById(sessionId));
-		modelMap.addAttribute("sessionList", sessionService.getSessionList());
+		modelMap.addAttribute("session", internshipSessionService.getSessionById(sessionId));
+		modelMap.addAttribute("sessionList", internshipSessionService.getSessionList());
 		return "internshipSession";
 	}
 	
 	@GetMapping("/admin/internship/session/delete/{sessionId}")
 	public String deleteInternshipSession(@PathVariable("sessionId") @Valid Long sessionId, ModelMap modelMap, Locale locale) throws ParseException, ResourceNotFoundException {
-		sessionService.deleteSession(sessionId);
-		modelMap.addAttribute("sessionList", sessionService.getSessionList());
+		internshipSessionService.deleteSession(sessionId);
+		modelMap.addAttribute("sessionList", internshipSessionService.getSessionList());
 		return "redirect:/admin/internship/session";
 	}
 	

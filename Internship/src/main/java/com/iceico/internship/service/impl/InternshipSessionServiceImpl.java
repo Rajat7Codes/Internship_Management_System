@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.iceico.internship.model.InternshipSession;
-import com.iceico.internship.repository.SessionRepository;
+import com.iceico.internship.repository.InternshipSessionRepository;
 import com.iceico.internship.service.InternshipSessionService;
 
 /**
@@ -23,7 +23,7 @@ import com.iceico.internship.service.InternshipSessionService;
 public class InternshipSessionServiceImpl implements InternshipSessionService {
 
 	@Autowired
-	SessionRepository sessionRepository;
+	InternshipSessionRepository internshipSessionRepository;
 	
 	/**
 	 * 
@@ -34,22 +34,22 @@ public class InternshipSessionServiceImpl implements InternshipSessionService {
 
 	@Override
 	public void saveSession(InternshipSession session) {
-		sessionRepository.save(session);
+		internshipSessionRepository.save(session);
 	}
 
 	@Override
 	public void deleteSession(Long sessionId) {
-		sessionRepository.deleteById(sessionId);
+		internshipSessionRepository.deleteById(sessionId);
 	}
 
 	@Override
 	public List<InternshipSession> getSessionList() {
-		return sessionRepository.findAll();
+		return internshipSessionRepository.findAll();
 	}
 
 	@Override
 	public InternshipSession getSessionById(Long sessionId) {
-		return sessionRepository.findById(sessionId).get();
+		return internshipSessionRepository.findById(sessionId).get();
 	}
 
 }
