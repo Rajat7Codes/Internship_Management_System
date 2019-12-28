@@ -16,10 +16,10 @@ public interface FinancialYearService {
 
 	public void saveFinancialYear(FinancialYear financialYear);
 
-	public FinancialYear getFinancialYearById(Long id) throws ResourceNotFoundException;
+	public FinancialYear getFinancialYearById(Long financialYearId) throws ResourceNotFoundException;
 
 	public List<FinancialYear> getFinancialYearList();
 
-	public void deleteFinancialYear(Long id);
+	public void deleteFinancialYear(Long financialYearId);
 
 }

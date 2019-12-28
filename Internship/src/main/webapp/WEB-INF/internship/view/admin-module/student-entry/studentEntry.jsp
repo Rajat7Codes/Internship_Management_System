@@ -22,14 +22,13 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card card-topline-darkgreen">
+
 				<div class="card-header  card-head pl-4" id="grad">
-					<strong class="card-title text-white">STUDENT ENTRY LIST</strong>
-					<div class="tools">
-						<a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
-						<a class="t-collapse btn-color fa fa-chevron-down"
-							href="javascript:;"></a> <a class="t-close btn-color fa fa-times"
-							href="javascript:;"></a>
-					</div>
+					<strong class="card-title text-white">STUDENT ENTRY LIST</strong> <a
+						title="Edit" class="btn btn-success"
+						style="float: right; margin-right: 10px; margin-top: 2px;"
+						href="<c:url value='/admin/student/entry/new' />"><i></i>NEW
+						STUDENT ENTRY</a>
 				</div>
 				&nbsp;
 				<div class="card-body">
@@ -95,6 +94,7 @@
 			</div>
 		</div>
 	</div>
+
 </body>
 
 <script

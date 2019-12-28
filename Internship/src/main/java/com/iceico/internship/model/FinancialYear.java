@@ -50,6 +50,9 @@ public class FinancialYear extends Auditable<String> implements Serializable {
 	@Column(name = "financial_year")
 	private String year;
 
+	@Column(name = "active")
+	private boolean active;
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "financialYear", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<StudentEntry> studentEntry;
@@ -57,12 +60,14 @@ public class FinancialYear extends Auditable<String> implements Serializable {
 	/**
 	 * @param financialYearId
 	 * @param year
+	 * @param active
 	 * @param studentEntry
 	 */
-	public FinancialYear(Long financialYearId, String year, List<StudentEntry> studentEntry) {
+	public FinancialYear(Long financialYearId, String year, boolean active, List<StudentEntry> studentEntry) {
 		super();
 		this.financialYearId = financialYearId;
 		this.year = year;
+		this.active = active;
 		this.studentEntry = studentEntry;
 	}
 
@@ -92,6 +97,20 @@ public class FinancialYear extends Auditable<String> implements Serializable {
 	 */
 	public void setYear(String year) {
 		this.year = year;
+	}
+
+	/**
+	 * @return the active
+	 */
+	public boolean isActive() {
+		return active;
+	}
+
+	/**
+	 * @param active the active to set
+	 */
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	/**
