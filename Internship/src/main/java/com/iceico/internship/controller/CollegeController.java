@@ -16,65 +16,66 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.College;
 import com.iceico.internship.service.CollegeService;
 
 /**
  * @author Puja
+ * @version 0.1
+ * Creation Date: 27/12/2019
  *
  */
-
 
 @Controller
 public class CollegeController {
 
-
 	@Autowired
 	CollegeService collegeService;
-	
+
+	@GetMapping(value = "/admin/college/new")
+	public String newCollege(ModelMap modelMap, Locale locale) {
+		modelMap.addAttribute("college", new College());
+
+		return "newCollege";
+	}
+
 	@PostMapping("/admin/college/save")
-	public String saveCollege(@ModelAttribute("college") @Valid College college,BindingResult result, ModelMap model) {
-		if(result.hasErrors()) {
-			return  "CollegeInfo";
+	public String saveCollege(@ModelAttribute("college") @Valid College college, BindingResult result, ModelMap model) {
+		if (result.hasErrors()) {
+			return "newCollege";
 		}
 		collegeService.saveCollege(college);
 		return "redirect:/admin/college/all";
 	}
-	
-	
-	
-	@PostMapping("/admin/college/delete/{id}")
-	public String deleteCollege(@PathVariable("id") @Valid Long id, ModelMap modelMap) throws ResourceNotFoundException {
-	     collegeService.getCollegeById(id);
-	       collegeService.deleteCollege(id);
-	   	return "redirect:/admin/college/all";
-		}
-		
-	
-	@GetMapping(value="/admin/college/all")
-	 
-	public String getCollegeList(ModelMap modelMap, Locale locale) {
-		modelMap.addAttribute("userList",collegeService.getCollegeList());
-		return "CollegeInfo";
-	}
-	
-	@GetMapping(value = "/admin/college/update/{id}")
-	public String editCollege(@PathVariable("id") @Valid Long id,ModelMap modelMap, Locale locale) throws ResourceNotFoundException {
-       College college=collegeService.getCollegeById(id);
-   	   modelMap.addAttribute("college",college);
-   	   modelMap.addAttribute("edit","EDIT");
-   	   //edit=true
-   	return "CollegeInfo";
-	}
-	
-	
-	
-	public CollegeController() {
-	
-	}
-	
 
-	
+	@PostMapping("/admin/college/delete/{id}")
+	public String deleteCollege(@PathVariable("id") @Valid Long id, ModelMap modelMap)
+			throws ResourceNotFoundException {
+		collegeService.getCollegeById(id);
+		collegeService.deleteCollege(id);
+		return "redirect:/admin/college/all";
+	}
+
+	@GetMapping(value = "/admin/college/all")
+
+	public String getCollegeList(ModelMap modelMap, Locale locale) {
+		modelMap.addAttribute("userList", collegeService.getCollegeList());
+
+		return "college";
+	}
+
+	@GetMapping(value = "/admin/college/update/{id}")
+	public String editCollege(@PathVariable("id") @Valid Long id, ModelMap modelMap, Locale locale)
+			throws ResourceNotFoundException {
+		College college = collegeService.getCollegeById(id);
+		modelMap.addAttribute("college", college);
+
+		return "newCollege";
+	}
+
+	public CollegeController() {
+
+	}
+
 }
