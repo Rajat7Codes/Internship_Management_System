@@ -6,6 +6,8 @@ package com.iceico.internship.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.InternshipType;
@@ -16,6 +18,8 @@ import com.iceico.internship.service.InternshipTypeService;
  * @author sameer
  *
  */
+@Service
+@Transactional
 public class InternshipTypeServiceIMPL implements InternshipTypeService {
 
 	/**

@@ -30,7 +30,7 @@ import com.iceico.internship.audit.Auditable;
  *
  */
 @Entity
-@Table(name = "tab_intership_type")
+@Table(name = "tab_internship_type")
 @EntityListeners(AuditingEntityListener.class)
 public class InternshipType extends Auditable<String> implements Serializable {
 

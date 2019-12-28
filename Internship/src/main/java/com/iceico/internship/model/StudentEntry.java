@@ -16,8 +16,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -54,14 +57,15 @@ public class StudentEntry {
 	@Column(name = "last_name")
 	private String lastName;
 
-	@Column(name = "session")
-	private String session1;
-
-	@Column(name = "duration")
-	private String duration;
-
-	@Column(name = "type")
-	private String type;
+	/*
+	 * @Column(name = "college") private String college;
+	 * 
+	 * @Column(name = "session") private String session1;
+	 * 
+	 * @Column(name = "duration") private String duration;
+	 * 
+	 * @Column(name = "type") private String type;
+	 */
 
 	@Column(name = "fees")
 	private Float fees;
@@ -70,8 +74,10 @@ public class StudentEntry {
 	private Float discount;
 
 	@Column(name = "extension")
-	private Integer extension;
+	private String extension;
 
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "date")
 	private Date date;
 
@@ -89,6 +95,36 @@ public class StudentEntry {
 	@JoinColumn(name = "internTypeId", insertable = true, nullable = true, updatable = true)
 	@JsonIgnore
 	private InternshipType internshipType;
+
+	/**
+	 * @param studentEntryId
+	 * @param firstName
+	 * @param middleName
+	 * @param lastName
+	 * @param fees
+	 * @param discount
+	 * @param extension
+	 * @param date
+	 * @param internshipDuration
+	 * @param session
+	 * @param internshipType
+	 */
+	public StudentEntry(Long studentEntryId, String firstName, String middleName, String lastName, Float fees,
+			Float discount, String extension, Date date, InternshipDuration internshipDuration, Session session,
+			InternshipType internshipType) {
+		super();
+		this.studentEntryId = studentEntryId;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.fees = fees;
+		this.discount = discount;
+		this.extension = extension;
+		this.date = date;
+		this.internshipDuration = internshipDuration;
+		this.session = session;
+		this.internshipType = internshipType;
+	}
 
 	/**
 	 * @return the studentEntryId
@@ -147,48 +183,6 @@ public class StudentEntry {
 	}
 
 	/**
-	 * @return the session1
-	 */
-	public String getSession1() {
-		return session1;
-	}
-
-	/**
-	 * @param session1 the session1 to set
-	 */
-	public void setSession1(String session1) {
-		this.session1 = session1;
-	}
-
-	/**
-	 * @return the duration
-	 */
-	public String getDuration() {
-		return duration;
-	}
-
-	/**
-	 * @param duration the duration to set
-	 */
-	public void setDuration(String duration) {
-		this.duration = duration;
-	}
-
-	/**
-	 * @return the type
-	 */
-	public String getType() {
-		return type;
-	}
-
-	/**
-	 * @param type the type to set
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	/**
 	 * @return the fees
 	 */
 	public Float getFees() {
@@ -219,14 +213,14 @@ public class StudentEntry {
 	/**
 	 * @return the extension
 	 */
-	public Integer getExtension() {
+	public String getExtension() {
 		return extension;
 	}
 
 	/**
 	 * @param extension the extension to set
 	 */
-	public void setExtension(Integer extension) {
+	public void setExtension(String extension) {
 		this.extension = extension;
 	}
 
