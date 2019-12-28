@@ -17,8 +17,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.iceico.internship.audit.Auditable;
@@ -31,7 +34,7 @@ import com.iceico.internship.audit.Auditable;
 @Entity
 @Table(name = "tab_session")
 @EntityListeners(AuditingEntityListener.class)
-public class Session extends Auditable<String> implements Serializable {
+public class InternshipSession extends Auditable<String> implements Serializable {
 
 	/**
 	 * 
@@ -41,7 +44,7 @@ public class Session extends Auditable<String> implements Serializable {
 	/**
 	 * 
 	 */
-	public Session() {
+	public InternshipSession() {
 	}
 
 	@Id
@@ -52,9 +55,13 @@ public class Session extends Auditable<String> implements Serializable {
 	@Column(name = "description")
 	private String description;
 
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "start_date")
 	private Date startDate;
 
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "end_date")
 	private Date endDate;
 

@@ -73,7 +73,6 @@ public class InternshipTypeController {
 		modelMap.addAttribute("internshipType", this.internshipTypeService.getInternshipTypeById(internTypeId));
 		modelMap.addAttribute("internshipTypeList", this.internshipTypeService.getInternshipTypeList());
 		modelMap.addAttribute("user", this.getPrincipal());
-
 		return "internshipType";
 	}
 

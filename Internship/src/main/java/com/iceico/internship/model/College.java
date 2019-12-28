@@ -37,6 +37,7 @@ public class College extends Auditable<String> implements Serializable {
 	private static final long serialVersionUID = 5790614789589169780L;
 
 	public College() {
+
 	}
 
 	@Id
@@ -219,5 +220,4 @@ public class College extends Auditable<String> implements Serializable {
 	public void setStudentEntry(List<StudentEntry> studentEntry) {
 		this.studentEntry = studentEntry;
 	}
-
 }

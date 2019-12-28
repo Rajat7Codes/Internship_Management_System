@@ -10,9 +10,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.iceico.internship.model.Session;
+import com.iceico.internship.exceptions.ResourceNotFoundException;
+import com.iceico.internship.model.InternshipSession;
 import com.iceico.internship.repository.SessionRepository;
-import com.iceico.internship.service.SessionService;
+import com.iceico.internship.service.InternshipSessionService;
 
 /**
  * @author Rajat
@@ -20,7 +21,7 @@ import com.iceico.internship.service.SessionService;
  */
 @Service
 @Transactional
-public class SessionServiceImpl implements SessionService {
+public class InternshipSessionServiceImpl implements InternshipSessionService {
 
 	@Autowired
 	SessionRepository sessionRepository;
@@ -28,12 +29,12 @@ public class SessionServiceImpl implements SessionService {
 	/**
 	 * 
 	 */
-	public SessionServiceImpl() {
+	public InternshipSessionServiceImpl() {
 
 	}
 
 	@Override
-	public void saveSession(Session session) {
+	public void saveSession(InternshipSession session) {
 		sessionRepository.save(session);
 	}
 
@@ -43,13 +44,13 @@ public class SessionServiceImpl implements SessionService {
 	}
 
 	@Override
-	public List<Session> getSessionList() {
+	public List<InternshipSession> getSessionList() {
 		return sessionRepository.findAll();
 	}
 
 	@Override
-	public Session getSessionById(Long id) {
-		return sessionRepository.findById(id).get();
+	public InternshipSession getSessionById(Long id) throws ResourceNotFoundException {
+		return sessionRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Not Data Found At Id " + id));
 	}
 
 }
