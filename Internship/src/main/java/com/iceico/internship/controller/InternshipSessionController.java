@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.InternshipSession;
 import com.iceico.internship.service.impl.InternshipSessionServiceImpl;
 
@@ -57,7 +58,7 @@ public class InternshipSessionController {
 
 	
 	@GetMapping("/admin/internship/session/edit/{sessionId}")
-	public String editInternshipSession(@PathVariable("sessionId") @Valid Long sessionId, ModelMap modelMap, Locale locale) throws ParseException {
+	public String editInternshipSession(@PathVariable("sessionId") @Valid Long sessionId, ModelMap modelMap, Locale locale) throws ParseException, ResourceNotFoundException {
 		modelMap.addAttribute("edit", "UPDATE");
 		modelMap.addAttribute("session", sessionServiceImpl.getSessionById(sessionId));
 		modelMap.addAttribute("sessionList", sessionServiceImpl.getSessionList());

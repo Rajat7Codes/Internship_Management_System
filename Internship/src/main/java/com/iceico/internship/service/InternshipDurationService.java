@@ -14,7 +14,10 @@ import com.iceico.internship.model.InternshipDuration;
  */
 public interface InternshipDurationService {
 	public void saveInternshipDuration(InternshipDuration internshipDuration);
+
 	public void deleteInternshipDuration(Long id);
+
 	public List<InternshipDuration> getInternshipDurationList();
-	public InternshipDuration getInternshipDurationById(Long id) throws ResourceNotFoundException ;
+
+	public InternshipDuration getInternshipDurationById(Long id) throws ResourceNotFoundException;
 }

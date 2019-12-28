@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.InternshipDuration;
 import com.iceico.internship.repository.InternshipDurationRepository;
 import com.iceico.internship.service.InternshipDurationService;
@@ -48,7 +49,7 @@ public class InternshipDurationServiceImpl implements InternshipDurationService 
 	}
 
 	@Override
-	public InternshipDuration getInternshipDurationById(Long id) {
-		return internshipRepository.findById(id).get();
+	public InternshipDuration getInternshipDurationById(Long id) throws ResourceNotFoundException {
+		return internshipRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Not Data Found At Id " + id));
 	}
 }

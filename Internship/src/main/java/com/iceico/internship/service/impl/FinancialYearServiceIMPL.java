@@ -32,25 +32,25 @@ public class FinancialYearServiceIMPL implements FinancialYearService {
 	@Override
 	public void saveFinancialYear(FinancialYear financialYear) {
 		financialYearRepository.save(financialYear);
-		
 
 	}
 
 	@Override
 	public FinancialYear getFinancialYearById(Long id) throws ResourceNotFoundException {
-	
-		return financialYearRepository.findById(id).get();
+
+		return financialYearRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Not Data Found At Id " + id));
 	}
 
 	@Override
 	public List<FinancialYear> getFinancialYearList() {
-		
+
 		return financialYearRepository.findAll();
 	}
 
 	@Override
 	public void deleteFinancialYear(Long id) {
-		
+
 		financialYearRepository.deleteById(id);
 
 	}
