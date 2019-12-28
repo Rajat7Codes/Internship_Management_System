@@ -17,7 +17,10 @@
 						<div class="col-sm-12">
 							<form:label path="description">Description</form:label>
 							<form:input path="description" class="form-control"
-								placeholder="Enter description :" />
+								placeholder="Enter description :" 
+								<c:if test="${edit==\"UPDATE\"}">
+								 value="${session.getSessionId()}"
+								</c:if> />
 							<form:errors path="description"></form:errors>
 						</div>
 
@@ -25,6 +28,9 @@
 							<form:label path="startDate">Start Date</form:label>
 							<form:input type="date" path="startDate" class="form-control"
 								placeholder="Enter Start Date :" />
+								<!--<c:if test="${edit==\"UPDATE\"}">
+								 value="${session.getStartDate()}"
+								</c:if> -->
 							<form:errors path="startDate"></form:errors>
 						</div>
 
@@ -32,6 +38,9 @@
 							<form:label path="endDate">End Date</form:label>
 							<form:input type="date" path="endDate" class="form-control"
 								placeholder="Enter End Date :" />
+								<!--<c:if test="${edit==\"UPDATE\"}">
+								 value="${session.getEndDate()}"
+								</c:if> -->
 							<form:errors path="endDate"></form:errors>
 						</div>
 						
@@ -62,15 +71,34 @@
 									<th>Description</th>
 									<th>Start Date</th>
 									<th>End Date</th>
+									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody id="tBody">
 								<c:forEach var="sessions" items="${ sessionList }">
 								<tr class="text-center">
-									<td> <input class="text-center" disabled value="${sessions.getSessionId()}" /> </td>	
-									<td> <input class="text-center" value="${sessions.getDescription()}" /> </td>	
-									<td> <input class="text-center" value="${sessions.getStartDate()}" /> </td>	
-									<td> <input class="text-center" value="${sessions.getEndDate()}" /> </td>	
+									<td> ${sessions.getSessionId()} </td>	
+									<td> ${sessions.getDescription()} </td>	
+									<td> ${sessions.getStartDate()} </td>	
+									<td> ${sessions.getEndDate()} </td>	
+									<td class="valigntop">
+										<div class="btn-group">
+											<button class="btn btn-xs btn-success dropdown-toggle no-margin" type="button" data-toggle="dropdown" aria-expanded="false">
+												Actions <i class="fa fa-angle-down"></i>
+											</button>
+											<ul class="dropdown-menu pull-left" role="menu">
+												<li>
+													<a title="Edit" href="<c:url value='/admin/internship/session/edit/${sessions.getSessionId()}' />"><i
+														class="fa fa-edit"></i>Edit</a></li>
+												<%-- <li><a title="View"
+													href="<c:url value='/admin/application/view/${app.saId }' />"><i
+														class="fa fa-eye"></i>View</a></li> --%>
+												<li><a title="Print"
+													href="<c:url value='/admin/internship/session/delete/${sessions.getSessionId()}' />"><i
+														class="fa fa-print"></i>Delete</a></li>
+											</ul>
+										</div>
+									</td>
 								</tr>
 								</c:forEach>
 							</tbody>
