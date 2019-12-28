@@ -5,7 +5,10 @@ package com.iceico.internship.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.iceico.internship.model.Session;
 import com.iceico.internship.repository.SessionRepository;
@@ -15,6 +18,8 @@ import com.iceico.internship.service.SessionService;
  * @author Rajat
  *
  */
+@Service
+@Transactional
 public class SessionServiceImpl implements SessionService {
 
 	@Autowired
