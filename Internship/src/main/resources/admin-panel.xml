@@ -38,6 +38,24 @@
 			value="/WEB-INF/internship/view/admin-module/dashboard.jsp" />
 	</definition>
 
+	<!-- CollegeInfo page -->
+	<definition name="collegeInfo"
+		extends="adminbase.definition">
+		<put-attribute name="title" value="CollegeInfo" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/College-module/CollegeInfo.jsp" />
+	</definition>	
+
+
+	<!--FinancialYear  Page -->
+	<definition name="FinancialYear"
+		extends="adminbase.definition">
+		<put-attribute name="title" value="FinancialYear" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/College-module/FinancialYear.jsp" />
+	</definition>
+
+
 
 	<!-- Internship Type Page -->
 	<definition name="internshipType"
