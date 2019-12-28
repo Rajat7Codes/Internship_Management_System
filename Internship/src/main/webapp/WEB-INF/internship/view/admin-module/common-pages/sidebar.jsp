@@ -70,12 +70,12 @@
 						</ul></li> --%>
 
 					<li class="nav-item"><a
-						href="${pageContext.request.contextPath }/admin/application/list"
+						href="${pageContext.request.contextPath }/admin/student/entry"
 						class="nav-link nav-toggle"> <i class="material-icons">verified_user</i>
-							<span class="title">Application</span>
+							<span class="title">Student Entry</span>
 					</a></li>
 
-					<li class="nav-item"><a
+					<%-- <li class="nav-item"><a
 						href="${pageContext.request.contextPath }/admin/enrollment/application/list"
 						class="nav-link nav-toggle"> <i class="material-icons">verified_user</i>
 							<span class="title">Enrolled Students</span>
@@ -99,14 +99,14 @@
 								class="nav-link "> <span class="title">Announcement</span>
 							</a></li>
 						</ul></li>
-						
+
 					<li class="nav-item"><a
 						href="${pageContext.request.contextPath }/admin/enquiry/list"
 						class="nav-link nav-toggle"> <i class="material-icons">verified_user</i>
 							<span class="title">Student Enquires</span>
 					</a></li>
-					
-					
+ --%>
+
 					<%-- <li class="nav-item"><a href="#" class="nav-link nav-toggle">
 							<i class="material-icons">mic</i> <span class="title">Applications</span>
 							<span class="selected"></span> <span class="arrow open"></span>
