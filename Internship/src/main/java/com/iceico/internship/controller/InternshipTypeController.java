@@ -41,9 +41,6 @@ public class InternshipTypeController {
 
 	@GetMapping("/admin/internship/type")
 	public String getInternshipType(ModelMap modelMap, Locale locale) {
-<<<<<<< HEAD
-		
-=======
 		modelMap.addAttribute("internshipType", new InternshipType());
 		modelMap.addAttribute("internshipTypeList", this.internshipTypeService.getInternshipTypeList());
 		modelMap.addAttribute("user", this.getPrincipal());
@@ -77,7 +74,6 @@ public class InternshipTypeController {
 		modelMap.addAttribute("internshipTypeList", this.internshipTypeService.getInternshipTypeList());
 		modelMap.addAttribute("user", this.getPrincipal());
 
->>>>>>> f40f513bbfdb0216ba28e0be5e5c73e706f6b6a9
 		return "internshipType";
 	}
 
