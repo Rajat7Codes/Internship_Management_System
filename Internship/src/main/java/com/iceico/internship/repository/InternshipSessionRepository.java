@@ -11,6 +11,6 @@ import com.iceico.internship.model.InternshipSession;
  * @author Rajat
  *
  */
-public interface SessionRepository extends JpaRepository<InternshipSession, Long> {
+public interface InternshipSessionRepository extends JpaRepository<InternshipSession, Long> {
 	
 }

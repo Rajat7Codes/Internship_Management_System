@@ -84,7 +84,7 @@
 	</definition>
 
 	<!-- Session Page -->
-	<definition name="session" extends="adminbase.definition">
+	<definition name="internshipSession" extends="adminbase.definition">
 		<put-attribute name="title" value="Session" />
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/internshipPages/session.jsp" />
