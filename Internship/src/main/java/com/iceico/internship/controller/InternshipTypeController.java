@@ -25,7 +25,7 @@ public class InternshipTypeController {
 
 	@GetMapping("/admin/internshipType")
 	public String getInternshipType(ModelMap modelMap, Locale locale) {
-
+		
 		return "internshipType";
 	}
 
