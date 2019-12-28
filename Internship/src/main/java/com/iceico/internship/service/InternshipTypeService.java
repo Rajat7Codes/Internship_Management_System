@@ -18,8 +18,8 @@ public interface InternshipTypeService {
 	public void saveIntershipType(InternshipType internshipType);
 
 	public InternshipType getInternshipTypeById(Long internTypeId) throws ResourceNotFoundException;
-	
+
 	public List<InternshipType> getInternshipTypeList();
-	
+
 	public void deleteInternshipType(Long internTypeId);
 }

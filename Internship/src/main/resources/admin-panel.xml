@@ -39,7 +39,7 @@
 	</definition>
 
 
-<!-- InternshipType PAGE -->
+	<!-- Internship Type Page -->
 	<definition name="internshipType"
 		extends="adminbase.definition">
 		<put-attribute name="title" value="Internship Type" />
@@ -56,5 +56,19 @@
 			value="/WEB-INF/internship/view/admin-module/internshipPages/internshipDuration.jsp" />
 	</definition>
 
+	<!-- Student Entry Page -->
+	<definition name="studentEntry"
+		extends="adminbase.definition">
+		<put-attribute name="title" value="Student Entry" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/internshipPages/studentEntry.jsp" />
+	</definition>
+
+	<definition name="newStudentEntry"
+		extends="adminbase.definition">
+		<put-attribute name="title" value="Student Entry" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/internshipPages/newStudentEntry.jsp" />
+	</definition>
 
 </tiles-definitions>
