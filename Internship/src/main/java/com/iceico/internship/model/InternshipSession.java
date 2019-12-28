@@ -28,7 +28,10 @@ import com.iceico.internship.audit.Auditable;
 
 /**
  * @author Rajat
- *
+ * @version 0.1
+ * 
+ * Created Date : 27/12/2019
+ * 
  */
 
 @Entity

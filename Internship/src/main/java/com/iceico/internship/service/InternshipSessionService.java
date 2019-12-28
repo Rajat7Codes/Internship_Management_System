@@ -14,7 +14,7 @@ import com.iceico.internship.model.InternshipSession;
  */
 public interface InternshipSessionService {
 	public void saveSession(InternshipSession session);
-	public void deleteSession(Long id);
+	public void deleteSession(Long sessionId);
 	public List<InternshipSession> getSessionList();
-	public InternshipSession getSessionById(Long id) throws ResourceNotFoundException;
+	public InternshipSession getSessionById(Long sessionId) throws ResourceNotFoundException;
 }
