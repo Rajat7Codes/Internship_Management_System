@@ -71,7 +71,7 @@
 		extends="adminbase.definition">
 		<put-attribute name="title" value="Internship Duration" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/internshipPages/internshipDuration.jsp" />
+			value="/WEB-INF/internship/view/admin-module/other-pages/financialYear.jsp" />
 	</definition>
 
 	<!-- Student Entry Page -->
@@ -90,7 +90,8 @@
 	</definition>
 
 	<!-- Session Page -->
-	<definition name="internshipSession" extends="adminbase.definition">
+	<definition name="internshipSession"
+		extends="adminbase.definition">
 		<put-attribute name="title" value="Session" />
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/internshipPages/session.jsp" />

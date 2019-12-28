@@ -155,12 +155,14 @@
 									data-handle-color="#637283">
 
 									<li><a href="${pageContext.request.contextPath }/admin/as">
-											<span class="photo"><i class="fa fa-calendar"></i></span> <!-- <span class="subject"> </span> -->
-											<span class="subject"> <span class="from">COLLEGE</span>
+											<span class="photo"><i class="fa fa-graduation-cap"></i></span>
+											<!-- <span class="subject"> </span> --> <span class="subject">
+												<span class="from">COLLEGE</span>
 										</span>
 									</a></li>
 
-									<li><a href="${pageContext.request.contextPath }/admin/ay">
+									<li><a
+										href="${pageContext.request.contextPath }/admin/financial/year">
 											<span class="photo"><i class="fa fa-calendar"></i></span> <!-- <span class="subject"> </span> -->
 											<span class="subject"> <span class="from">FINANCIAL
 													YEAR</span>
@@ -168,16 +170,16 @@
 									</a></li>
 
 									<li><a
-										href="${pageContext.request.contextPath }/admin/internship/session"> <span
-											class="photo"><i class="fa fa-graduation-cap"></i></span> <!-- <span class="subject"> </span> -->
-											<span class="subject"> <span class="from">INTERNSHIP
-													SESSION</span>
+										href="${pageContext.request.contextPath }/admin/internship/session">
+											<span class="photo"><i class="fa fa-graduation-cap"></i></span>
+											<!-- <span class="subject"> </span> --> <span class="subject">
+												<span class="from">INTERNSHIP SESSION</span>
 										</span>
 									</a></li>
 
 									<li><a
 										href="${pageContext.request.contextPath }/admin/internship/duration">
-											<span class="photo"><i class="fa fa-venus"></i></span> <!-- <span class="subject"> </span> -->
+											<span class="photo"><i class="fa fa-calendar"></i></span> <!-- <span class="subject"> </span> -->
 											<span class="subject"> <span class="from">INTERNSHIP
 													DURATION</span>
 										</span>
