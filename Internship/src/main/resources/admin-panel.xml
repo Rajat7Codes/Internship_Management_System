@@ -39,23 +39,17 @@
 	</definition>
 
 	<!-- CollegeInfo page -->
-	<definition name="collegeInfo"
-		extends="adminbase.definition">
-		<put-attribute name="title" value="CollegeInfo" />
+	<definition name="newCollege" extends="adminbase.definition">
+		<put-attribute name="title" value="newCollege" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/College-module/CollegeInfo.jsp" />
+			value="/WEB-INF/internship/view/admin-module/college-pages/newCollege.jsp" />
 	</definition>
 
-
-	<!--FinancialYear Page -->
-	<definition name="FinancialYear"
-		extends="adminbase.definition">
-		<put-attribute name="title" value="FinancialYear" />
+	<definition name="college" extends="adminbase.definition">
+		<put-attribute name="title" value="college" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/College-module/FinancialYear.jsp" />
+			value="/WEB-INF/internship/view/admin-module/college-pages/college.jsp" />
 	</definition>
-
-
 
 	<!-- Internship Type Page -->
 	<definition name="internshipType"
