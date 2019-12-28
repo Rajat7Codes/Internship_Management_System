@@ -22,4 +22,6 @@ public interface FinancialYearService {
 
 	public void deleteFinancialYear(Long financialYearId);
 
+	public FinancialYear getActiveFinancialYear();
+
 }

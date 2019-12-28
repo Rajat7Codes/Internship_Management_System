@@ -57,14 +57,14 @@ label {
 							</div>
 
 
-							<%-- <div class="col-md-4 col-sm-4 col-lg-4 col-12">
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
 								<form:label path="college">College</form:label>
-								<form:select class="form-control" name="college"
-									path="college" id="college" itemLabel="collegeName"
-									items="${internTypeList }" itemValue="collegeId">
+								<form:select class="form-control" name="college" path="college"
+									id="college" itemLabel="collegeName" items="${internTypeList }"
+									itemValue="collegeId">
 								</form:select>
 								<form:errors path="college" class="errors" />
-							</div> --%>
+							</div>
 
 							<%-- <div class="col-md-4 col-sm-4 col-lg-4 col-12">
 								<form:label path="session">Type</form:label>
@@ -93,7 +93,7 @@ label {
 								</form:select>
 								<form:errors path="internshipType" class="errors" />
 							</div>
-							
+
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
 								<form:label path="fees">Fees</form:label>
 								<form:input path="fees" name="fees" id="fees"

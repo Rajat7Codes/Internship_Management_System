@@ -20,12 +20,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.StudentEntry;
+import com.iceico.internship.service.CollegeService;
+import com.iceico.internship.service.FinancialYearService;
 import com.iceico.internship.service.InternshipDurationService;
 import com.iceico.internship.service.InternshipTypeService;
 import com.iceico.internship.service.StudentEntryService;
+import com.iceico.internship.service.impl.CollegeServiceIMPL;
 
 /**
- * @author sameer
+ * @author SAMEER KADGAYE
+ * @version 0.1
+ * 
+ *          Created Date : 27/12/2019
  *
  */
 @Controller
@@ -46,12 +52,22 @@ public class StudentEntryController {
 	@Autowired
 	private InternshipDurationService InternshipDurationService;
 
+	@Autowired
+	private CollegeService collegeService;
+
+	@Autowired
+	private FinancialYearService financialYearService;
+
+	@Autowired
+	private InternshipDurationService internshipDurationService;
+
 	@GetMapping("/admin/student/entry")
 	public String getStudentEntry(ModelMap modelMap, Locale locale) {
 
 		modelMap.addAttribute("studentEntry", new StudentEntry());
 		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
 		modelMap.addAttribute("internTypeList", this.internshipTypeService.getInternshipTypeList());
+		modelMap.addAttribute("activeFy", this.financialYearService.getActiveFinancialYear());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "studentEntry";
 	}
@@ -61,6 +77,7 @@ public class StudentEntryController {
 		modelMap.addAttribute("studentEntry", new StudentEntry());
 		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
 		modelMap.addAttribute("internTypeList", this.internshipTypeService.getInternshipTypeList());
+		modelMap.addAttribute("activeFy", this.financialYearService.getActiveFinancialYear());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "newStudentEntry";
 	}

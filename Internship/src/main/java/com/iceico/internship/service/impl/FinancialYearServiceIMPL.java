@@ -5,6 +5,9 @@ package com.iceico.internship.service.impl;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +18,11 @@ import com.iceico.internship.repository.FinancialYearRepository;
 import com.iceico.internship.service.FinancialYearService;
 
 /**
- * @author Puja \
+ * @author SAMEER KADGAYE
+ * @version 0.1
+ * 
+ *          Created Date : 27/12/2019
+ *
  */
 
 @Service
@@ -24,6 +31,13 @@ public class FinancialYearServiceIMPL implements FinancialYearService {
 
 	@Autowired
 	private FinancialYearRepository financialYearRepository;
+
+	@Autowired
+	private EntityManager entityManager;
+
+	private Session getSession() {
+		return this.entityManager.unwrap(Session.class);
+	}
 
 	public FinancialYearServiceIMPL() {
 
@@ -56,6 +70,13 @@ public class FinancialYearServiceIMPL implements FinancialYearService {
 
 		financialYearRepository.deleteById(financialYearId);
 
+	}
+
+	@Override
+	public FinancialYear getActiveFinancialYear() {
+
+		return (FinancialYear) this.getSession().createQuery("from FinancialYear where active=:active")
+				.setParameter("active", true).uniqueResult();
 	}
 
 }
