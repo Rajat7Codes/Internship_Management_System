@@ -98,8 +98,6 @@ public class StudentEntryController {
 	public String deleteStudentEntry(@PathVariable("studentEntryId") @Valid Long studentEntryId, ModelMap modelMap,
 			Locale locale) throws ResourceNotFoundException {
 		this.studentEntryService.deleteStudentEntry(studentEntryId);
-		modelMap.addAttribute("user", this.getPrincipal());
-
 		return "redirect:/admin/student/entry";
 	}
 
