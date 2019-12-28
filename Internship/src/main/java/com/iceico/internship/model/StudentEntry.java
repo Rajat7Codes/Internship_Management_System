@@ -96,6 +96,16 @@ public class StudentEntry {
 	@JsonIgnore
 	private InternshipType internshipType;
 
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "financialYearId", insertable = true, nullable = true, updatable = true)
+	@JsonIgnore
+	private FinancialYear financialYear;
+
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "collegeId", insertable = true, nullable = true, updatable = true)
+	@JsonIgnore
+	private College college;
+
 	/**
 	 * @param studentEntryId
 	 * @param firstName

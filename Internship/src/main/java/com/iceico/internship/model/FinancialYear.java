@@ -4,13 +4,23 @@
 package com.iceico.internship.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.iceico.internship.audit.Auditable;
 
 /**
  * @author Puja
@@ -20,39 +30,82 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tab_financial_year")
-public class FinancialYear implements Serializable {
+@EntityListeners(AuditingEntityListener.class)
+public class FinancialYear extends Auditable<String> implements Serializable {
 
-	
-	private static final long serialVersionUID = 1992918027982344447L;
+	private static final long serialVersionUID = 2060398484412419884L;
 
+	/**
+	 * 
+	 */
 	public FinancialYear() {
 
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="financial_year_id")
-	private Long financial_year_id;
-	
+	@Column(name = "financial_year_id")
+	private Long financialYearId;
+
 	@Column(name = "financial_year")
-	private String financial_year;
+	private String year;
 
-	public Long getFinancial_year_id() {
-		return financial_year_id;
+	@JsonIgnore
+	@OneToMany(mappedBy = "financialYear", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<StudentEntry> studentEntry;
+
+	/**
+	 * @param financialYearId
+	 * @param year
+	 * @param studentEntry
+	 */
+	public FinancialYear(Long financialYearId, String year, List<StudentEntry> studentEntry) {
+		super();
+		this.financialYearId = financialYearId;
+		this.year = year;
+		this.studentEntry = studentEntry;
 	}
 
-	public void setFinancial_year_id(Long financial_year_id) {
-		this.financial_year_id = financial_year_id;
+	/**
+	 * @return the financialYearId
+	 */
+	public Long getFinancialYearId() {
+		return financialYearId;
 	}
 
-	public String getFinancial_year() {
-		return financial_year;
+	/**
+	 * @param financialYearId the financialYearId to set
+	 */
+	public void setFinancialYearId(Long financialYearId) {
+		this.financialYearId = financialYearId;
 	}
 
-	public void setFinancial_year(String financial_year) {
-		this.financial_year = financial_year;
+	/**
+	 * @return the year
+	 */
+	public String getYear() {
+		return year;
 	}
-	
-	
-	
+
+	/**
+	 * @param year the year to set
+	 */
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	/**
+	 * @return the studentEntry
+	 */
+	public List<StudentEntry> getStudentEntry() {
+		return studentEntry;
+	}
+
+	/**
+	 * @param studentEntry the studentEntry to set
+	 */
+	public void setStudentEntry(List<StudentEntry> studentEntry) {
+		this.studentEntry = studentEntry;
+	}
+
 }
