@@ -80,69 +80,62 @@
 
 		<div class="col-md-8">
 			<div class="card card-topline-darkgreen">
-
-				<div class="card-header card-head pl-4 text-center" id="grad">
-					<strong class="card-title text-white"> ALL SESSION DETAILS
-					</strong>
-					<div class="card-header  card-head pl-4" id="grad">
-						<strong class="card-title text-white">INTERNSHIP DURATION
-							LIST</strong>
-						<div class="tools">
-							<a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
-							<a class="t-collapse btn-color fa fa-chevron-down"
-								href="javascript:;"></a> <a
-								class="t-close btn-color fa fa-times" href="javascript:;"></a>
-						</div>
-
+				<div class="card-header  card-head pl-4" id="grad">
+					<strong class="card-title text-white">SESSION LIST </strong>
+					<div class="tools">
+						<a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+						<a class="t-collapse btn-color fa fa-chevron-down"
+							href="javascript:;"></a> <a class="t-close btn-color fa fa-times"
+							href="javascript:;"></a>
 					</div>
-					<div class="card-body">
-						<div class="card">
-							<div class="card-body">
-								<table id="academictable" class="table table-striped">
-									<thead>
+				</div>
+				<div class="card-body">
+					<div class="card">
+						<div class="card-body">
+							<table id="academictable" class="table table-striped">
+								<thead>
+									<tr class="text-center">
+										<th>Id</th>
+										<th>Session Name</th>
+										<th>Start Date</th>
+										<th>End Date</th>
+										<th>Description</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody id="tBody">
+									<c:forEach var="sessions" items="${ sessionList }">
 										<tr class="text-center">
-											<th>Id</th>
-											<th>Session Name</th>
-											<th>Start Date</th>
-											<th>End Date</th>
-											<th>Description</th>
-											<th>Action</th>
+											<td>${sessions.sessionId}</td>
+											<td>${sessions.sessionName}</td>
+											<td>${sessions.description}</td>
+											<td>${sessions.startDate}</td>
+											<td>${sessions.endDate}</td>
+											<td class="valigntop">
+												<div class="btn-group">
+													<button
+														class="btn btn-xs btn-success dropdown-toggle no-margin"
+														type="button" data-toggle="dropdown" aria-expanded="false">
+														Actions <i class="fa fa-angle-down"></i>
+													</button>
+													<ul class="dropdown-menu pull-left" role="menu">
+														<li><a title="sessionId"
+															href="<c:url value='/admin/internship/session/edit/${sessions.sessionId}' />"><i
+																class="fa fa-edit"></i>Edit</a></li>
+														<li><a title="sessionId"
+															href="<c:url value='/admin/internship/session/delete/${sessions.sessionId}' />"><i
+																class="fa fa-print"></i>Delete</a></li>
+													</ul>
+												</div>
+											</td>
 										</tr>
-									</thead>
-									<tbody id="tBody">
-										<c:forEach var="sessions" items="${ sessionList }">
-											<tr class="text-center">
-												<td>${sessions.sessionId}</td>
-												<td>${sessions.sessionName}</td>
-												<td>${sessions.description}</td>
-												<td>${sessions.startDate}</td>
-												<td>${sessions.endDate}</td>
-												<td class="valigntop">
-													<div class="btn-group">
-														<button
-															class="btn btn-xs btn-success dropdown-toggle no-margin"
-															type="button" data-toggle="dropdown"
-															aria-expanded="false">
-															Actions <i class="fa fa-angle-down"></i>
-														</button>
-														<ul class="dropdown-menu pull-left" role="menu">
-															<li><a title="sessionId"
-																href="<c:url value='/admin/internship/session/edit/${sessions.sessionId}' />"><i
-																	class="fa fa-edit"></i>Edit</a></li>
-															<li><a title="sessionId"
-																href="<c:url value='/admin/internship/session/delete/${sessions.sessionId}' />"><i
-																	class="fa fa-print"></i>Delete</a></li>
-														</ul>
-													</div>
-												</td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</div>
+									</c:forEach>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>

@@ -75,7 +75,7 @@ label {
 								<form:errors path="internshipType" class="errors" />
 							</div>
 
-							<%-- <div class="col-md-4 col-sm-4 col-lg-4 col-12">
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
 								<form:label path="internshipSession">Session</form:label>
 								<form:select class="form-control" name="internshipSession"
 									path="internshipSession" id="internshipSession"
@@ -83,14 +83,14 @@ label {
 									itemValue="sessionId">
 								</form:select>
 								<form:errors path="internshipSession" class="errors" />
-							</div> --%>
+							</div>
 
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-								<form:label path="internshipDuration">Type</form:label>
+								<form:label path="internshipDuration">Duration</form:label>
 								<form:select class="form-control" name="internshipDuration"
 									path="internshipDuration" id="internshipDuration"
-									itemLabel="duration" items="${internTypeList }"
+									itemLabel="duration" items="${durationList }"
 									itemValue="internDurId">
 								</form:select>
 								<form:errors path="internshipDuration" class="errors" />
