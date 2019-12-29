@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -55,7 +56,7 @@
 									<td>${ind.index+1 }</td>
 									<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
 									<td>${stud.getCollege().collegeName }</td>
-									<td>${stud.getSession().sessionName }</td>
+									<td>${stud.getInternshipSession().sessionName }</td>
 									<td>${stud.getInternshipDuration().duration }</td>
 									<td>${stud.getInternshipType().type }</td>
 									<td>${stud.fees }</td>

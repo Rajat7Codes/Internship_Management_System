@@ -76,6 +76,7 @@ public class CollegeController {
 	public String viewCollege(@PathVariable("id") Long id, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException {
 		modelMap.addAttribute("college", this.collegeService.getCollegeById(id));
+		modelMap.addAttribute("collegeList", this.collegeService.getCollegeList());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "viewCollege";
 	}

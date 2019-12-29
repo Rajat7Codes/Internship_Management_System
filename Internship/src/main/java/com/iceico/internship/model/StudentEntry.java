@@ -24,6 +24,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.iceico.internship.audit.Auditable;
 
 /**
  * @author SAMEER KADGAYE
@@ -36,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "tab_student_entry")
 @EntityListeners(AuditingEntityListener.class)
-public class StudentEntry implements Serializable {
+public class StudentEntry extends Auditable<String> implements Serializable {
 
 	/**
 	 * 
@@ -85,7 +86,7 @@ public class StudentEntry implements Serializable {
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "sessionId", insertable = true, nullable = true, updatable = true)
 	@JsonIgnore
-	private InternshipSession session;
+	private InternshipSession internshipSession;
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "internTypeId", insertable = true, nullable = true, updatable = true)
@@ -112,14 +113,15 @@ public class StudentEntry implements Serializable {
 	 * @param extension
 	 * @param date
 	 * @param internshipDuration
-	 * @param session
+	 * @param internshipSession
 	 * @param internshipType
 	 * @param financialYear
 	 * @param college
 	 */
 	public StudentEntry(Long studentEntryId, String firstName, String middleName, String lastName, Float fees,
 			Float discount, String extension, Date date, InternshipDuration internshipDuration,
-			InternshipSession session, InternshipType internshipType, FinancialYear financialYear, College college) {
+			InternshipSession internshipSession, InternshipType internshipType, FinancialYear financialYear,
+			College college) {
 		super();
 		this.studentEntryId = studentEntryId;
 		this.firstName = firstName;
@@ -130,7 +132,7 @@ public class StudentEntry implements Serializable {
 		this.extension = extension;
 		this.date = date;
 		this.internshipDuration = internshipDuration;
-		this.session = session;
+		this.internshipSession = internshipSession;
 		this.internshipType = internshipType;
 		this.financialYear = financialYear;
 		this.college = college;
@@ -263,17 +265,17 @@ public class StudentEntry implements Serializable {
 	}
 
 	/**
-	 * @return the session
+	 * @return the internshipSession
 	 */
-	public InternshipSession getSession() {
-		return session;
+	public InternshipSession getInternshipSession() {
+		return internshipSession;
 	}
 
 	/**
-	 * @param session the session to set
+	 * @param internshipSession the internshipSession to set
 	 */
-	public void setSession(InternshipSession session) {
-		this.session = session;
+	public void setInternshipSession(InternshipSession internshipSession) {
+		this.internshipSession = internshipSession;
 	}
 
 	/**

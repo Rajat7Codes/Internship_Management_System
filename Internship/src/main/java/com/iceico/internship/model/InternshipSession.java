@@ -72,7 +72,7 @@ public class InternshipSession extends Auditable<String> implements Serializable
 	private Date endDate;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "session", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "internshipSession", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<StudentEntry> studentEntry;
 
 	/**
@@ -177,4 +177,5 @@ public class InternshipSession extends Auditable<String> implements Serializable
 	public void setStudentEntry(List<StudentEntry> studentEntry) {
 		this.studentEntry = studentEntry;
 	}
+
 }

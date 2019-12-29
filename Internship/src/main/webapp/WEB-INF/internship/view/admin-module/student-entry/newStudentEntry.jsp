@@ -76,12 +76,12 @@ label {
 							</div>
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-								<form:label path="session">Session</form:label>
-								<form:select class="form-control" name="session" path="session"
-									id="session" itemLabel="sessionName"
+								<form:label path="internshipSession">Session</form:label>
+								<form:select class="form-control" name="internshipSession" path="internshipSession"
+									id="internshipSession" itemLabel="sessionName"
 									items="${internSessionList }" itemValue="sessionId">
 								</form:select>
-								<form:errors path="session" class="errors" />
+								<form:errors path="internshipSession" class="errors" />
 							</div>
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">

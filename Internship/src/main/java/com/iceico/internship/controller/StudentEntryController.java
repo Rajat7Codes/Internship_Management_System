@@ -28,7 +28,10 @@ import com.iceico.internship.service.InternshipTypeService;
 import com.iceico.internship.service.StudentEntryService;
 
 /**
- * @author sameer
+ * @author SAMEER KADGAYE
+ * @version 0.1
+ * 
+ *          Created Date : 27/12/2019
  *
  */
 @Controller
@@ -47,10 +50,10 @@ public class StudentEntryController {
 	private InternshipTypeService internshipTypeService;
 
 	@Autowired
-	private InternshipSessionService internshipSessionService;
+	private InternshipDurationService internshipDurationService;
 
 	@Autowired
-	private InternshipDurationService internshipDurationService;
+	private InternshipSessionService internshipSessionService;
 
 	@Autowired
 	private FinancialYearService financialYearService;

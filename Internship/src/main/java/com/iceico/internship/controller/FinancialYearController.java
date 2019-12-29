@@ -23,7 +23,10 @@ import com.iceico.internship.model.FinancialYear;
 import com.iceico.internship.service.FinancialYearService;
 
 /**
- * @author Sameer Kadagye
+ * @author SAMEER KADGAYE
+ * @version 0.1
+ * 
+ *          Created Date : 27/12/2019
  *
  */
 @Controller

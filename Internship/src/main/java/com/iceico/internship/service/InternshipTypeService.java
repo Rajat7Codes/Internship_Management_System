@@ -10,7 +10,10 @@ import java.util.List;
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 
 /**
- * @author sameer
+ * @author SAMEER KADGAYE
+ * @version 0.1
+ * 
+ *          Created Date : 27/12/2019
  *
  */
 public interface InternshipTypeService {
