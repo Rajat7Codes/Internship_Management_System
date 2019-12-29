@@ -43,7 +43,7 @@ public class CollegeServiceImpl implements CollegeService {
 	}
 
 	@Override
-	public List<College> getInternshipDurationList() {
+	public List<College> getCollegeList() {
 		return this.collegeRepository.findAll();
 	}
 

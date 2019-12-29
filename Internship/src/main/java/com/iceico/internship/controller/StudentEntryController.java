@@ -26,7 +26,6 @@ import com.iceico.internship.service.InternshipDurationService;
 import com.iceico.internship.service.InternshipSessionService;
 import com.iceico.internship.service.InternshipTypeService;
 import com.iceico.internship.service.StudentEntryService;
-import com.iceico.internship.service.impl.CollegeServiceIMPL;
 
 /**
  * @author SAMEER KADGAYE
