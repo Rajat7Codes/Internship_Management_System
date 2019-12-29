@@ -48,18 +48,13 @@ public class FinancialYearController {
 	public String saveFinancialYear(@ModelAttribute("financialYear") @Valid FinancialYear financialYear,
 			BindingResult bindingResult, ModelMap modelMap, Locale locale) {
 		if (bindingResult.hasErrors()) {
+			modelMap.addAttribute("financialYear", new FinancialYear());
 			modelMap.addAttribute("fyList", this.financialYearService.getFinancialYearList());
 			modelMap.addAttribute("user", this.getPrincipal());
-			return "internshipType";
+			return "financialYear";
 		} else {
-
-			if (financialYear.getFinancialYearId() == null) {
-
-				this.financialYearService.saveFinancialYear(financialYear);
-				modelMap.addAttribute("user", this.getPrincipal());
-			} else {
-				this.financialYearService.saveFinancialYear(financialYear);
-			}
+			this.financialYearService.saveFinancialYear(financialYear);
+			modelMap.addAttribute("user", this.getPrincipal());
 			return "redirect:/admin/financial/year";
 		}
 	}
@@ -78,7 +73,6 @@ public class FinancialYearController {
 	public String deleteInternshipType(@PathVariable("financialYearId") @Valid Long financialYearId, ModelMap modelMap,
 			Locale locale) throws ResourceNotFoundException {
 		this.financialYearService.deleteFinancialYear(financialYearId);
-
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "redirect:/admin/financial/year";
 	}

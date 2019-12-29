@@ -21,7 +21,7 @@ public interface CollegeService {
 
 	public void deleteCollege(Long id);
 
-	public List<College> getInternshipDurationList();
+	public List<College> getCollegeList();
 
 	public College getCollegeById(Long id) throws ResourceNotFoundException;
 }

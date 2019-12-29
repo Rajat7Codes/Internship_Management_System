@@ -22,7 +22,6 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card card-topline-darkgreen">
-
 				<div class="card-header  card-head pl-4" id="grad">
 					<strong class="card-title text-white">STUDENT ENTRY LIST</strong> <a
 						title="Edit" class="btn btn-success"
@@ -55,12 +54,8 @@
 								<tr>
 									<td>${ind.index+1 }</td>
 									<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
-									<%-- <td>${stud.college }</td>
-									<td>${stud.session1 }</td>
-									<td>${stud.duration }</td>
-									<td>${stud.type }</td> --%>
-									<td>college</td>
-									<td>${stud.getSession().session }</td>
+									<td>${stud.getCollege().collegeName }</td>
+									<td>${stud.getSession().sessionName }</td>
 									<td>${stud.getInternshipDuration().duration }</td>
 									<td>${stud.getInternshipType().type }</td>
 									<td>${stud.fees }</td>

@@ -38,11 +38,11 @@
 								<form:errors path="year"></form:errors>
 							</div>
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
-								<form:label path="active">Active</form:label>
+								<form:label path="active">Status</form:label>
 								<form:select path="active" name="active" id="active"
 									class="form-control">
-									<form:option value="true">True</form:option>
-									<form:option value="false">False</form:option>
+									<form:option value="true">Active</form:option>
+									<form:option value="false">Inactive</form:option>
 								</form:select>
 								<form:errors path="active"></form:errors>
 							</div>
@@ -77,7 +77,7 @@
 							<tr>
 								<th>Sr.No.</th>
 								<th>Financial Year</th>
-								<th>Active</th>
+								<th>Status</th>
 								<th>Action</th>
 							</tr>
 						</thead>

@@ -3,6 +3,7 @@
  */
 package com.iceico.internship.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -35,7 +36,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "tab_student_entry")
 @EntityListeners(AuditingEntityListener.class)
-public class StudentEntry {
+public class StudentEntry implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1841127238736191159L;
 
 	/**
 	 * 
@@ -57,16 +63,6 @@ public class StudentEntry {
 	@Column(name = "last_name")
 	private String lastName;
 
-	/*
-	 * @Column(name = "college") private String college;
-	 * 
-	 * @Column(name = "session") private String session1;
-	 * 
-	 * @Column(name = "duration") private String duration;
-	 * 
-	 * @Column(name = "type") private String type;
-	 */
-
 	@Column(name = "fees")
 	private Float fees;
 
@@ -81,27 +77,27 @@ public class StudentEntry {
 	@Column(name = "date")
 	private Date date;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "internDurId", insertable = true, nullable = true, updatable = true)
 	@JsonIgnore
 	private InternshipDuration internshipDuration;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "sessionId", insertable = true, nullable = true, updatable = true)
 	@JsonIgnore
 	private InternshipSession session;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "internTypeId", insertable = true, nullable = true, updatable = true)
 	@JsonIgnore
 	private InternshipType internshipType;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "financialYearId", insertable = true, nullable = true, updatable = true)
 	@JsonIgnore
 	private FinancialYear financialYear;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "collegeId", insertable = true, nullable = true, updatable = true)
 	@JsonIgnore
 	private College college;
@@ -118,10 +114,12 @@ public class StudentEntry {
 	 * @param internshipDuration
 	 * @param session
 	 * @param internshipType
+	 * @param financialYear
+	 * @param college
 	 */
 	public StudentEntry(Long studentEntryId, String firstName, String middleName, String lastName, Float fees,
-			Float discount, String extension, Date date, InternshipDuration internshipDuration, InternshipSession session,
-			InternshipType internshipType) {
+			Float discount, String extension, Date date, InternshipDuration internshipDuration,
+			InternshipSession session, InternshipType internshipType, FinancialYear financialYear, College college) {
 		super();
 		this.studentEntryId = studentEntryId;
 		this.firstName = firstName;
@@ -134,6 +132,8 @@ public class StudentEntry {
 		this.internshipDuration = internshipDuration;
 		this.session = session;
 		this.internshipType = internshipType;
+		this.financialYear = financialYear;
+		this.college = college;
 	}
 
 	/**
@@ -288,6 +288,34 @@ public class StudentEntry {
 	 */
 	public void setInternshipType(InternshipType internshipType) {
 		this.internshipType = internshipType;
+	}
+
+	/**
+	 * @return the financialYear
+	 */
+	public FinancialYear getFinancialYear() {
+		return financialYear;
+	}
+
+	/**
+	 * @param financialYear the financialYear to set
+	 */
+	public void setFinancialYear(FinancialYear financialYear) {
+		this.financialYear = financialYear;
+	}
+
+	/**
+	 * @return the college
+	 */
+	public College getCollege() {
+		return college;
+	}
+
+	/**
+	 * @param college the college to set
+	 */
+	public void setCollege(College college) {
+		this.college = college;
 	}
 
 }

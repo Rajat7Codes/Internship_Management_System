@@ -45,7 +45,7 @@ public class CollegeController {
 
 	@GetMapping(value = "/admin/college")
 	public String getCollege(ModelMap modelMap, Locale locale) {
-		modelMap.addAttribute("collegeList", this.collegeService.getInternshipDurationList());
+		modelMap.addAttribute("collegeList", this.collegeService.getCollegeList());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "college";
 	}
@@ -54,7 +54,7 @@ public class CollegeController {
 	public String saveCollege(@ModelAttribute("college") @Valid College college, BindingResult bindingResult,
 			ModelMap modelMap, Locale locale) {
 		if (bindingResult.hasErrors()) {
-			modelMap.addAttribute("collegeList", this.collegeService.getInternshipDurationList());
+			modelMap.addAttribute("collegeList", this.collegeService.getCollegeList());
 			modelMap.addAttribute("user", this.getPrincipal());
 			return "newCollege";
 		} else {

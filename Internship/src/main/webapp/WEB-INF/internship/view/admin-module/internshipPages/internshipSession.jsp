@@ -20,28 +20,35 @@
 							href="javascript:;"></a>
 					</div>
 				</div>
+
 				<form:hidden path="sessionId" />
+
 				<div class="card-body">
 					<div class="row form-group">
 						<div class="col-sm-12">
-							<form:label path="description">Description</form:label>
-							<form:input path="description" class="form-control"
-								placeholder="Enter description :" />
-							<form:errors path="description"></form:errors>
+							<form:label path="sessionName">Session</form:label>
+							<form:input path="sessionName" class="form-control"
+								placeholder="Enter Session " />
+							<form:errors path="sessionName"></form:errors>
 						</div>
 
 						<div class="col-sm-12">
 							<form:label path="startDate">Start Date</form:label>
-							<form:input type="date" path="startDate" class="form-control"
-								placeholder="Enter Start Date :" />
+							<form:input type="date" path="startDate" class="form-control" />
 							<form:errors path="startDate"></form:errors>
 						</div>
 
 						<div class="col-sm-12">
 							<form:label path="endDate">End Date</form:label>
-							<form:input type="date" path="endDate" class="form-control"
-								placeholder="Enter End Date :" />
+							<form:input type="date" path="endDate" class="form-control" />
 							<form:errors path="endDate"></form:errors>
+						</div>
+
+						<div class="col-sm-12">
+							<form:label path="description">Description</form:label>
+							<form:textarea path="description" class="form-control"
+								placeholder="Enter description here" />
+							<form:errors path="description"></form:errors>
 						</div>
 
 						<div class="col-md-12 text-right mt-4">
@@ -73,9 +80,10 @@
 							<thead>
 								<tr class="text-center">
 									<th>Id</th>
-									<th>Description</th>
+									<th>Session</th>
 									<th>Start Date</th>
 									<th>End Date</th>
+									<th>Description</th>
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -83,9 +91,10 @@
 								<c:forEach var="sessions" items="${ sessionList }">
 									<tr class="text-center">
 										<td>${sessions.sessionId}</td>
-										<td>${sessions.description}</td>
+										<td>${sessions.sessionName}</td>
 										<td>${sessions.startDate}</td>
 										<td>${sessions.endDate}</td>
+										<td>${sessions.description}</td>
 										<td class="valigntop">
 											<div class="btn-group">
 												<button
@@ -97,9 +106,9 @@
 													<li><a title="sessionId"
 														href="<c:url value='/admin/internship/session/edit/${sessions.sessionId}' />"><i
 															class="fa fa-edit"></i>Edit</a></li>
-													<li><a title="sessionId"
+													<%-- <li><a title="sessionId"
 														href="<c:url value='/admin/internship/session/delete/${sessions.sessionId}' />"><i
-															class="fa fa-print"></i>Delete</a></li>
+															class="fa fa-print"></i>Delete</a></li> --%>
 												</ul>
 											</div>
 										</td>

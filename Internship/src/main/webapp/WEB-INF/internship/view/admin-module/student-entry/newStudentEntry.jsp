@@ -20,12 +20,13 @@ label {
 			action="${pageContext.request.contextPath }/admin/student/entry/save"
 			modelAttribute="studentEntry" name="studentEntryForm"
 			id="studentEntryForm" method="post">
+
 			<form:hidden path="studentEntryId" />
 
 			<div class="col-md-12">
 				<div class="card card-topline-darkgreen">
 					<div class="card-header card-head pl-4" id="grad">
-						<strong class="card-title text-white"> STUDENT ENTRY </strong>
+						<strong class="card-title text-white"> ADD STUDENT </strong>
 						<div class="tools">
 							<a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
 							<a class="t-collapse btn-color fa fa-chevron-down"
@@ -56,34 +57,14 @@ label {
 								<form:errors path="lastName"></form:errors>
 							</div>
 
-
-							<%-- <div class="col-md-4 col-sm-4 col-lg-4 col-12">
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
 								<form:label path="college">College</form:label>
-								<form:select class="form-control" name="college"
-									path="college" id="college" itemLabel="collegeName"
-									items="${internTypeList }" itemValue="collegeId">
+								<form:select class="form-control" name="college" path="college"
+									id="college" itemLabel="collegeName" items="${collegeList }"
+									itemValue="collegeId">
 								</form:select>
 								<form:errors path="college" class="errors" />
-							</div> --%>
-
-							<%-- <div class="col-md-4 col-sm-4 col-lg-4 col-12">
-								<form:label path="session">Type</form:label>
-								<form:select class="form-control" name="session" path="session"
-									id="session" itemLabel="sessionName" items="${internTypeList }"
-									itemValue="sessionId">
-								</form:select>
-								<form:errors path="session" class="errors" />
-							</div> --%>
-
-
-							<%-- <div class="col-md-4 col-sm-4 col-lg-4 col-12">
-								<form:label path="duration">Type</form:label>
-								<form:select class="form-control" name="duration"
-									path="duration" id="duration" itemLabel="durationName"
-									items="${internTypeList }" itemValue="durationId">
-								</form:select>
-								<form:errors path="duration" class="errors" />
-							</div> --%>
+							</div>
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
 								<form:label path="internshipType">Type</form:label>
@@ -92,6 +73,34 @@ label {
 									items="${internTypeList }" itemValue="internTypeId">
 								</form:select>
 								<form:errors path="internshipType" class="errors" />
+							</div>
+
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<form:label path="session">Session</form:label>
+								<form:select class="form-control" name="session" path="session"
+									id="session" itemLabel="sessionName"
+									items="${internSessionList }" itemValue="sessionId">
+								</form:select>
+								<form:errors path="session" class="errors" />
+							</div>
+
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<form:label path="internshipDuration">Duration</form:label>
+								<form:select class="form-control" name="internshipDuration"
+									path="internshipDuration" id="internshipDuration"
+									itemLabel="duration" items="${internDurList }"
+									itemValue="internDurId">
+								</form:select>
+								<form:errors path="internshipDuration" class="errors" />
+							</div>
+
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<form:label path="financialYear">Financial Year</form:label>
+								<form:select class="form-control" name="financialYear"
+									path="financialYear" id="financialYear" itemLabel="year"
+									items="${fyList }" itemValue="financialYearId">
+								</form:select>
+								<form:errors path="financialYear" class="errors" />
 							</div>
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
@@ -125,10 +134,12 @@ label {
 					</div>
 				</div>
 			</div>
-			<div class="row form-group">
-				<div class="col-md-12 col-sm-12 col-lg-12 col-12 text-right pl-3 ">
-					<button class="btn btn-danger btn-lg " type="reset">RESET</button>
-					<button class="btn btn-success btn-lg" id="grad" type="submit">SAVE</button>
+			<div class="col-12">
+				<div class="row form-group">
+					<div class="col-md-12 col-sm-12 col-lg-12 col-12 text-right pl-3 ">
+						<button class="btn btn-danger btn-lg" type="reset">RESET</button>
+						<button class="btn btn-success btn-lg" id="grad" type="submit">SAVE</button>
+					</div>
 				</div>
 			</div>
 		</form:form>
