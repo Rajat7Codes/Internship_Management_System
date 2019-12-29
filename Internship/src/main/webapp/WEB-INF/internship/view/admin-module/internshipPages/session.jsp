@@ -48,7 +48,6 @@
 							<button type="reset" class="btn btn-danger">RESET</button>
 							<button type="submit" class="btn btn-success">SAVE</button>
 						</div>
-						<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  -->
 					</div>
 				</div>
 			</div>
