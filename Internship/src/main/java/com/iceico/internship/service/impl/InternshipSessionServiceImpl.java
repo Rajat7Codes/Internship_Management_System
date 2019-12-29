@@ -23,7 +23,7 @@ import com.iceico.internship.service.InternshipSessionService;
 public class InternshipSessionServiceImpl implements InternshipSessionService {
 
 	@Autowired
-	InternshipSessionRepository internshipSessionRepository;
+	private InternshipSessionRepository internshipSessionRepository;
 
 	/**
 	 * 

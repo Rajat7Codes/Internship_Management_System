@@ -9,7 +9,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,25 +16,27 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.iceico.internship.audit.Auditable;
 
 /**
- * @author Puja
+ * @author Puja Pokale
+ * @version 0.1
+ * 
+ *          Created Date : 28/12/2019
  *
  */
 @Entity
 @Table(name = "tab_college")
-@EntityListeners(AuditingEntityListener.class)
-public class College extends Auditable<String> implements Serializable {
+public class College implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 5790614789589169780L;
+	private static final long serialVersionUID = 995641224766648844L;
 
+	/**
+	 * 
+	 */
 	public College() {
 
 	}
@@ -67,7 +68,7 @@ public class College extends Auditable<String> implements Serializable {
 	private String contactPerson;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "college", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "college", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<StudentEntry> studentEntry;
 
 	/**
@@ -220,4 +221,5 @@ public class College extends Auditable<String> implements Serializable {
 	public void setStudentEntry(List<StudentEntry> studentEntry) {
 		this.studentEntry = studentEntry;
 	}
+
 }

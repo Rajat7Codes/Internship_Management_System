@@ -13,16 +13,13 @@
 	<div class="row">
 		<div class="col-12">
 
-			<form:form
-				action="${pageContext.request.contextPath}/admin/college/save"
-				modelAttribute="college" name="collegeForm" id="collegeForm">
-
-				<form:hidden path="collegeId" />
+			<form:form modelAttribute="college" name="collegeForm"
+				id="collegeForm">
 
 				<div>
 					<div class="card card-topline-darkgreen">
 						<div class="card-header card-head pl-4" id="grad">
-							<strong class="card-title text-white"> ADD COLLEGE </strong>
+							<strong class="card-title text-white"> VIEW COLLEGE </strong>
 							<div class="tools">
 								<a class="fa fa-repeat btn-color box-refresh"
 									href="javascript:;"></a> <a
@@ -42,8 +39,7 @@
 										</div>
 										<div class="col-md-8 col-sm-8 col-lg-8 col-12">
 											<form:input path="collegeName" name="collegeName"
-												id="collegeName" class="form-control"
-												placeholder="Enter College Name" />
+												id="collegeName" class="form-control" readonly="true" />
 											<form:errors path="collegeName" class="errors" />
 										</div>
 									</div>
@@ -77,7 +73,7 @@
 										</div>
 										<div class="col-md-8 col-sm-8 col-lg-8 col-12">
 											<form:input path="contactNo" name="contactNo" id="contactNo"
-												class="form-control" placeholder="Enter Contact #" />
+												class="form-control" readonly="true" />
 											<form:errors path="contactNo" class="errors" />
 										</div>
 									</div>
@@ -92,7 +88,7 @@
 										<div class="col-md-8 col-sm-8 col-lg-8 col-12">
 											<form:input path="alternateContactNo"
 												name="alternateContactNo" id="alternateContactNo"
-												class="form-control" placeholder="Enter Alt. Contact #" />
+												class="form-control" readonly="true" />
 											<form:errors path="alternateContactNo" class="errors" />
 										</div>
 									</div>
@@ -109,7 +105,7 @@
 										</div>
 										<div class="col-md-8 col-sm-8 col-lg-8 col-12">
 											<form:input path="tnpHead" name="tnpHead" id="tnpHead"
-												class="form-control" placeholder="Enter T&P Head" />
+												class="form-control" readonly="true" />
 											<form:errors path="tnpHead" class="errors" />
 										</div>
 									</div>
@@ -123,8 +119,7 @@
 										</div>
 										<div class="col-md-8 col-sm-8 col-lg-8 col-12">
 											<form:input path="contactPerson" name="contactPerson"
-												id="contactPerson" class="form-control"
-												placeholder="Enter Contact Person" />
+												id="contactPerson" class="form-control" readonly="true" />
 											<form:errors path="contactPerson" class="errors" />
 										</div>
 									</div>
@@ -139,10 +134,8 @@
 											</form:label>
 										</div>
 										<div class="col-md-8 col-sm-8 col-lg-8 col-12">
-											<form:radiobutton path="mouStatus" value="true" />
-											Signed
-											<form:radiobutton path="mouStatus" value="false" />
-											Unsigned
+											<form:input path="mouStatus" name="mouStatus" id="mouStatus"
+												class="form-control" readonly="true" />
 											<form:errors path="mouStatus" class="errors" />
 										</div>
 									</div>
@@ -156,7 +149,7 @@
 										</div>
 										<div class="col-md-8 col-sm-8 col-lg-8 col-12">
 											<form:textarea path="address" name="address" id="address"
-												class="form-control" placeholder="Enter Address here" />
+												class="form-control" readonly="true" />
 											<form:errors path="address" class="errors" />
 										</div>
 									</div>
@@ -165,14 +158,24 @@
 						</div>
 					</div>
 				</div>
-				<div class="row form-group">
-					<div class="col-md-12 col-sm-12 col-lg-12 col-12 text-right pl-3 ">
-						<button class="btn btn-danger btn-lg " type="reset">RESET</button>
-						<button class="btn btn-success btn-lg" id="grad" type="submit">SAVE</button>
-					</div>
-				</div>
 			</form:form>
 		</div>
 	</div>
 </body>
+
+<script
+	src="${pageContext.request.contextPath }/static/plugins/jquery/jquery.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var status = $("#mouStatus").val();
+
+		if (status == "false") {
+			document.getElementById("mouStatus").value = "Unsigned";
+		} else {
+			document.getElementById("mouStatus").value = "Signed";
+		}
+	});
+</script>
+
 </html>

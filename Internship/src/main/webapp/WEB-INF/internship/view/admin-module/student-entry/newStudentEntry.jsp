@@ -96,8 +96,6 @@ label {
 								<form:errors path="internshipDuration" class="errors" />
 							</div>
 
-
-
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
 								<form:label path="fees">Fees</form:label>
 								<form:input path="fees" name="fees" id="fees"
@@ -129,19 +127,13 @@ label {
 					</div>
 				</div>
 			</div>
-
-			<div class="col-md-12">
-				<div class="row form-group">
-					<div class="col-md-12 col-sm-12 col-lg-12 col-12 text-right pl-3 ">
-						<button class="btn btn-danger btn-lg " type="reset">RESET</button>
-						<button class="btn btn-success btn-lg" id="grad" type="submit">SAVE</button>
-					</div>
+			<div class="row form-group">
+				<div class="col-md-12 col-sm-12 col-lg-12 col-12 text-right pl-3 ">
+					<button class="btn btn-danger btn-lg " type="reset">RESET</button>
+					<button class="btn btn-success btn-lg" id="grad" type="submit">SAVE</button>
 				</div>
 			</div>
 		</form:form>
 	</div>
 </body>
-
-<script
-	src="${pageContext.request.contextPath }/static/plugins/jquery/jquery.min.js"></script>
 </html>

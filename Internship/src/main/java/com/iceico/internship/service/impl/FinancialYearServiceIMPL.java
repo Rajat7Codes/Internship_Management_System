@@ -18,11 +18,11 @@ import com.iceico.internship.repository.FinancialYearRepository;
 import com.iceico.internship.service.FinancialYearService;
 
 /**
- * @author SAMEER KADGAYE
+ * @author Puja Pokale
  * @version 0.1
  * 
- *          Created Date : 27/12/2019
- *
+ *          Created Date : 28/12/2019
+ * 
  */
 
 @Service
@@ -45,31 +45,23 @@ public class FinancialYearServiceIMPL implements FinancialYearService {
 
 	@Override
 	public void saveFinancialYear(FinancialYear financialYear) {
-		financialYearRepository.save(financialYear);
-
+		this.financialYearRepository.save(financialYear);
 	}
 
 	@Override
-
 	public FinancialYear getFinancialYearById(Long financialYearId) throws ResourceNotFoundException {
-
-		return financialYearRepository.findById(financialYearId)
+		return this.financialYearRepository.findById(financialYearId)
 				.orElseThrow(() -> new ResourceNotFoundException("Financial Year Not Found" + financialYearId));
-
 	}
 
 	@Override
 	public List<FinancialYear> getFinancialYearList() {
-
-		return financialYearRepository.findAll();
+		return this.financialYearRepository.findAll();
 	}
 
 	@Override
-
 	public void deleteFinancialYear(Long financialYearId) {
-
-		financialYearRepository.deleteById(financialYearId);
-
+		this.financialYearRepository.deleteById(financialYearId);
 	}
 
 	@Override
@@ -78,5 +70,4 @@ public class FinancialYearServiceIMPL implements FinancialYearService {
 		return (FinancialYear) this.getSession().createQuery("from FinancialYear where active=:active")
 				.setParameter("active", true).uniqueResult();
 	}
-
 }
