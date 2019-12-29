@@ -22,10 +22,9 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card card-topline-darkgreen">
-
 				<div class="card-header  card-head pl-4" id="grad">
-					<strong class="card-title text-white" COLLEGE INFORMATION LIST</strong>
-					<a title="Edit" class="btn btn-success"
+					<strong class="card-title text-white"> COLLEGE LIST</strong> <a
+						title="Edit" class="btn btn-success"
 						style="float: right; margin-right: 10px; margin-top: 2px;"
 						href="<c:url value='/admin/college/new' />"><i></i>ADD COLLEGE</a>
 				</div>
@@ -37,10 +36,10 @@
 							<tr>
 								<th>Sr.No.</th>
 								<th>College Name</th>
-								<th>Contact No</th>
-								<th>Alternative Contact No</th>
+								<th>Contact #</th>
+								<th>Alt. Contact #</th>
 								<th>MOU Status</th>
-								<th>>TNP Head</th>
+								<th>TNP Head</th>
 								<th>Contact Person</th>
 								<th>Action</th>
 							</tr>
@@ -55,16 +54,21 @@
 									<td>${college.mouStatus }</td>
 									<td>${college.tnpHead }</td>
 									<td>${college.contactPerson }</td>
-									<td><a
-										href="${pageContext.request.contextPath}/admin/college/delete/${college.id}">
-											<i class="material-icons">&#xE872;</i>
-									</a> <a
-										href="${pageContext.request.contextPath}/admin/college/update/${college.id}">
-											<i class="material-icons">&#xE254;</i>
-									</a></td>
-
-
-
+									<td class="valigntop"><div class="btn-group">
+											<button
+												class="btn btn-xs btn-success dropdown-toggle no-margin"
+												type="button" data-toggle="dropdown" aria-expanded="false">
+												Actions <i class="fa fa-angle-down"></i>
+											</button>
+											<ul class="dropdown-menu pull-left" role="menu">
+												<li><a title="Edit"
+													href="<c:url value='/admin/college/edit/${college.collegeId }' />"><i
+														class="fa fa-edit"></i>Edit</a></li>
+												<li><a title="View"
+													href="<c:url value='/admin/college/view/${college.collegeId }' />"><i
+														class="fa fa-eye"></i>View</a></li>
+											</ul>
+										</div></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -75,7 +79,4 @@
 	</div>
 
 </body>
-
-<script
-	src="${pageContext.request.contextPath }/static/plugins/jquery/jquery.min.js"></script>
 </html>

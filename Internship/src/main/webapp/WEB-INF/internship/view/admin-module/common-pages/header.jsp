@@ -154,7 +154,8 @@
 								<ul class="dropdown-menu-list small-slimscroll-style"
 									data-handle-color="#637283">
 
-									<li><a href="${pageContext.request.contextPath }/admin/as">
+									<li><a
+										href="${pageContext.request.contextPath }/admin/college">
 											<span class="photo"><i class="fa fa-graduation-cap"></i></span>
 											<!-- <span class="subject"> </span> --> <span class="subject">
 												<span class="from">COLLEGE</span>
@@ -171,7 +172,7 @@
 
 									<li><a
 										href="${pageContext.request.contextPath }/admin/internship/session">
-											<span class="photo"><i class="fa fa-graduation-cap"></i></span>
+											<span class="photo"><i class="fa fa-calendar"></i></span>
 											<!-- <span class="subject"> </span> --> <span class="subject">
 												<span class="from">INTERNSHIP SESSION</span>
 										</span>
@@ -186,7 +187,7 @@
 									</a></li>
 
 									<li><a
-										href="${pageContext.request.contextPath }/admin/category">
+										href="${pageContext.request.contextPath }/admin/internship/type">
 											<span class="photo"><i class="fa fa-list-alt"></i></span> <!-- <span class="subject"> </span> -->
 											<span class="subject"> <span class="from">INTERNSHIP
 													TYPE</span>

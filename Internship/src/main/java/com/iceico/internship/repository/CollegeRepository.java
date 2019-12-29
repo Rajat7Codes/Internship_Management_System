@@ -9,9 +9,10 @@ import org.springframework.stereotype.Repository;
 import com.iceico.internship.model.College;
 
 /**
- * @author Puja
+ * @author Puja Pokale
  * @version 0.1
- * Creation Date: 27/12/2019
+ * 
+ *          Created Date : 28/12/2019
  *
  */
 @Repository

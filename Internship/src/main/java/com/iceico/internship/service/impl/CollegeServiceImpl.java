@@ -15,45 +15,41 @@ import com.iceico.internship.repository.CollegeRepository;
 import com.iceico.internship.service.CollegeService;
 
 /**
- * @author Puja
- * @version 0.1
- * Creation Date: 27/12/2019
+ * @author iceico
  *
  */
-
 @Service
 @Transactional
-public class CollegeServiceIMPL implements CollegeService {
+public class CollegeServiceImpl implements CollegeService {
+
+	/**
+	 * 
+	 */
+	public CollegeServiceImpl() {
+
+	}
 
 	@Autowired
 	private CollegeRepository collegeRepository;
 
-	public CollegeServiceIMPL() {
-
-	}
-
 	@Override
 	public void saveCollege(College college) {
-		collegeRepository.save(college);
-	}
-
-	@Override
-	public List<College> getCollegeList() {
-
-		return collegeRepository.findAll();
+		this.collegeRepository.save(college);
 	}
 
 	@Override
 	public void deleteCollege(Long id) {
+		this.collegeRepository.deleteById(id);
+	}
 
-		collegeRepository.deleteById(id);
-
+	@Override
+	public List<College> getInternshipDurationList() {
+		return this.collegeRepository.findAll();
 	}
 
 	@Override
 	public College getCollegeById(Long id) throws ResourceNotFoundException {
-
-		return collegeRepository.findById(id)
+		return this.collegeRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Not Data Found At Id " + id));
 	}
 
