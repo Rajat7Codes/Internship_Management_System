@@ -10,7 +10,6 @@
 </head>
 <body>
 	<div class="row">
-
 		<div class="col-md-4">
 			<div class="card card-topline-darkgreen">
 				<div class="card-header  card-head pl-4" id="grad">
