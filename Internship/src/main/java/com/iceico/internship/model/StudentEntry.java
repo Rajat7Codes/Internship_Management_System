@@ -5,6 +5,7 @@ package com.iceico.internship.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -65,7 +67,7 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	private String lastName;
 
 	@Column(name = "fees")
-	private Float fees;
+	private Float feesAmount;
 
 	@Column(name = "discount")
 	private Float discount;
@@ -103,12 +105,16 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	@JsonIgnore
 	private College college;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "studentEntry", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Fees> fees;
+
 	/**
 	 * @param studentEntryId
 	 * @param firstName
 	 * @param middleName
 	 * @param lastName
-	 * @param fees
+	 * @param feesAmount
 	 * @param discount
 	 * @param extension
 	 * @param date
@@ -117,17 +123,18 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	 * @param internshipType
 	 * @param financialYear
 	 * @param college
+	 * @param fees
 	 */
-	public StudentEntry(Long studentEntryId, String firstName, String middleName, String lastName, Float fees,
+	public StudentEntry(Long studentEntryId, String firstName, String middleName, String lastName, Float feesAmount,
 			Float discount, String extension, Date date, InternshipDuration internshipDuration,
 			InternshipSession internshipSession, InternshipType internshipType, FinancialYear financialYear,
-			College college) {
+			College college, List<Fees> fees) {
 		super();
 		this.studentEntryId = studentEntryId;
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
-		this.fees = fees;
+		this.feesAmount = feesAmount;
 		this.discount = discount;
 		this.extension = extension;
 		this.date = date;
@@ -136,6 +143,7 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 		this.internshipType = internshipType;
 		this.financialYear = financialYear;
 		this.college = college;
+		this.fees = fees;
 	}
 
 	/**
@@ -195,17 +203,17 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	}
 
 	/**
-	 * @return the fees
+	 * @return the feesAmount
 	 */
-	public Float getFees() {
-		return fees;
+	public Float getFeesAmount() {
+		return feesAmount;
 	}
 
 	/**
-	 * @param fees the fees to set
+	 * @param feesAmount the feesAmount to set
 	 */
-	public void setFees(Float fees) {
-		this.fees = fees;
+	public void setFeesAmount(Float feesAmount) {
+		this.feesAmount = feesAmount;
 	}
 
 	/**
@@ -318,6 +326,20 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	 */
 	public void setCollege(College college) {
 		this.college = college;
+	}
+
+	/**
+	 * @return the fees
+	 */
+	public List<Fees> getFees() {
+		return fees;
+	}
+
+	/**
+	 * @param fees the fees to set
+	 */
+	public void setFees(List<Fees> fees) {
+		this.fees = fees;
 	}
 
 }

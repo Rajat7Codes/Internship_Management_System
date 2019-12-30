@@ -44,6 +44,12 @@
 							<span class="title">Student Entry</span>
 					</a></li>
 
+					<li class="nav-item"><a
+						href="${pageContext.request.contextPath }/admin/fees"
+						class="nav-link nav-toggle"> <i class="material-icons">verified_user</i>
+							<span class="title">Fees</span>
+					</a></li>
+
 
 
 					<!-- <li class="nav-item start active"><a href="#"
