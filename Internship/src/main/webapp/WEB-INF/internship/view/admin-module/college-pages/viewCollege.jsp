@@ -53,11 +53,11 @@
 											</form:label>
 										</div>
 										<div class="col-md-8 col-sm-8 col-lg-8 col-12">
-											<%-- <form:select path="internshipSession"
+											<form:select path="internshipSession"
 												name="internshipSession" itemLabel="sessionName"
 												itemValue="sessionId" id="internshipSession"
-												items="${internshipSessionList}" class="form-control" /> 
-											<form:errors path="internshipSession" class="errors" />--%>
+												items="${internSessionList}" class="form-control" />
+											<form:errors path="internshipSession" class="errors" />
 										</div>
 									</div>
 								</div>
