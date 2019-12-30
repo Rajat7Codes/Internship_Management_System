@@ -34,7 +34,7 @@ public class CollegeServiceIMPL implements CollegeService {
 
 	@Override
 	public void saveCollege(College college) {
-		collegeRepository.save(college);
+		this.collegeRepository.save(college);
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class CollegeServiceIMPL implements CollegeService {
 	@Override
 	public void deleteCollege(Long id) {
 
-		collegeRepository.deleteById(id);
+		this.collegeRepository.deleteById(id);
 
 	}
 

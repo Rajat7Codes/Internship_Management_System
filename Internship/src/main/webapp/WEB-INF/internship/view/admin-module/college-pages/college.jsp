@@ -24,7 +24,7 @@
 			<div class="card card-topline-darkgreen">
 
 				<div class="card-header  card-head pl-4" id="grad">
-					<strong class="card-title text-white" COLLEGE INFORMATION LIST</strong>
+					<strong class="card-title text-white"> COLLEGE INFORMATION LIST</strong>
 					<a title="Edit" class="btn btn-success"
 						style="float: right; margin-right: 10px; margin-top: 2px;"
 						href="<c:url value='/admin/college/new' />"><i></i>ADD COLLEGE</a>

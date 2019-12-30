@@ -24,3 +24,4 @@ public interface CollegeService {
 	public void deleteCollege(Long id);
 
 }
+

@@ -53,7 +53,8 @@ public class CollegeController {
 	public String deleteCollege(@PathVariable("id") @Valid Long id, ModelMap modelMap)
 			throws ResourceNotFoundException {
 		collegeService.deleteCollege(id);
-		return "redirect:/admin/college";
+		return "redirect:"
+				+ "/admin/college";
 	}
 
 	@GetMapping(value = "/admin/college")

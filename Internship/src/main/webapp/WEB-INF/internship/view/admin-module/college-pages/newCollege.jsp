@@ -12,13 +12,6 @@
 </head>
 
 
-<!--
-  @author Puja
-  @version 0.1
-  Creation Date: 27/12/2019
- -->
-
-
 <body>
 	<div class="row">
 		<div class="col-12">
@@ -31,7 +24,7 @@
 					<div class="card card-topli
 				ne-darkgreen">
 						<div class="card-header card-head pl-12" id="grad">
-							<strong class="card-title text-white">${edit} College</strong>
+							<strong class="card-title text-white"></strong>
 							<div class="tools">
 								<a class="fa fa-repeat btn-color box-refresh"
 									href="javascript:;"></a> <a
