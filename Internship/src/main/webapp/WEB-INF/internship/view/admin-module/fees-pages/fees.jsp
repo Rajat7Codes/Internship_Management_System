@@ -36,15 +36,10 @@
 						<thead>
 							<tr>
 								<th>Sr.No.</th>
+								<th>Student Id</th>
 								<th>Name</th>
 								<th>College</th>
-								<th>Session</th>
-								<th>Duration</th>
-								<th>Type</th>
-								<th>Fees</th>
-								<th>Discount</th>
-								<th>Extension</th>
-								<th>Joining Date</th>
+								<th>Department</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -53,15 +48,11 @@
 								varStatus="ind">
 								<tr>
 									<td>${ind.index+1 }</td>
+									<td>${stud.getCollege().collegeId }</td>
 									<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
+
 									<td>${stud.getCollege().collegeName }</td>
-									<td>${stud.getInternshipSession().sessionName }</td>
-									<td>${stud.getInternshipDuration().duration }</td>
-									<td>${stud.getInternshipType().type }</td>
-									<td>${stud.feesAmount }</td>
-									<td>${stud.discount }</td>
-									<td>${stud.extension }</td>
-									<td>${stud.date }</td>
+								<%-- 	<td>${stud.getCollege().collegeName }</td> --%>
 
 									<td class="valigntop"><div class="btn-group">
 											<button
