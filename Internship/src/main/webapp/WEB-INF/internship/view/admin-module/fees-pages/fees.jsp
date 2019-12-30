@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -24,7 +23,7 @@
 		<div class="col-md-12">
 			<div class="card card-topline-darkgreen">
 				<div class="card-header  card-head pl-4" id="grad">
-					<strong class="card-title text-white">STUDENT ENTRY LIST</strong> <a
+					<strong class="card-title text-white">STUDENT LIST</strong> <a
 						title="Edit" class="btn btn-success"
 						style="float: right; margin-right: 10px; margin-top: 2px;"
 						href="<c:url value='/admin/student/entry/new' />"><i></i>NEW
@@ -72,11 +71,11 @@
 											</button>
 											<ul class="dropdown-menu pull-left" role="menu">
 												<li><a title="Edit"
-													href="<c:url value='/admin/student/entry/edit/${stud.studentEntryId }' />"><i
-														class="fa fa-edit"></i>Edit</a></li>
-												<%-- <li><a title="View"
-													href="<c:url value='/admin/application/view/${app.saId }' />"><i
-														class="fa fa-eye"></i>View</a></li> --%>
+													href="<c:url value='/admin/fees/receipt/${stud.studentEntryId }' />"><i
+														class="fa fa-edit"></i>Receipt</a></li>
+												<li><a title="View"
+													href="<c:url value='/admin/fees/pay/${stud.studentEntryId }' />"><i
+														class="fa fa-eye"></i>Pay</a></li>
 												<%-- <li><a title="Print"
 													href="<c:url value='/admin/student/entry/delete/${stud.studentEntryId }' />"><i
 														class="fa fa-print"></i>Delete</a></li> --%>
