@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.College;
 import com.iceico.internship.service.CollegeService;
+import com.iceico.internship.service.InternshipSessionService;
 
 /**
  * @author Puja Pokale
@@ -36,9 +37,13 @@ public class CollegeController {
 	@Autowired
 	private CollegeService collegeService;
 
+	@Autowired
+	private InternshipSessionService internshipSessionService;
+
 	@GetMapping(value = "/admin/college/new")
 	public String newCollege(ModelMap modelMap, Locale locale) {
 		modelMap.addAttribute("college", new College());
+		modelMap.addAttribute("internSessionList", this.internshipSessionService.getSessionList());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "newCollege";
 	}
@@ -68,6 +73,7 @@ public class CollegeController {
 	public String editCollege(@PathVariable("id") Long id, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException {
 		modelMap.addAttribute("college", this.collegeService.getCollegeById(id));
+		modelMap.addAttribute("internSessionList", this.internshipSessionService.getSessionList());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "newCollege";
 	}

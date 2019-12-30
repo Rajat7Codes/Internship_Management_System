@@ -52,16 +52,17 @@
 								<div class="col-md-6 col-sm-6 col-lg-6 col-12">
 									<div class="row">
 										<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-											<form:label path="">
+											<form:label path="internshipSession">
 												<strong>Session</strong>
 											</form:label>
 										</div>
 										<div class="col-md-8 col-sm-8 col-lg-8 col-12">
-											<%-- <form:select path="internshipSession"
-												name="internshipSession" itemLabel="sessionName"
-												itemValue="sessionId" id="internshipSession"
-												items="${internshipSessionList}" class="form-control" /> 
-											<form:errors path="internshipSession" class="errors" />--%>
+											<form:select class="form-control" name="internshipSession"
+												path="internshipSession" id="internshipSession"
+												itemLabel="sessionName" items="${internSessionList }"
+												itemValue="sessionId">
+											</form:select>
+											<form:errors path="internshipSession" class="errors" />
 										</div>
 									</div>
 								</div>

@@ -87,9 +87,22 @@ public class StudentEntryController {
 	public String saveExpenses(@ModelAttribute("studentEntry") @Valid StudentEntry studentEntry,
 			BindingResult bindingResult, ModelMap modelMap, Locale locale) {
 
-		this.studentEntryService.saveStudentEntry(studentEntry);
-		modelMap.addAttribute("user", this.getPrincipal());
-		return "redirect:/admin/student/entry";
+		if (bindingResult.hasErrors()) {
+			modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
+			modelMap.addAttribute("user", this.getPrincipal());
+			return "studentEntry";
+		} else {
+
+			if (studentEntry.getStudentEntryId() == null) {
+				this.studentEntryService.saveStudentEntry(studentEntry);
+				modelMap.addAttribute("user", this.getPrincipal());
+			} else {
+				this.studentEntryService.saveStudentEntry(studentEntry);
+				modelMap.addAttribute("user", this.getPrincipal());
+			}
+
+			return "redirect:/admin/student/entry";
+		}
 	}
 
 	@GetMapping("/admin/student/entry/edit/{studentEntryId}")

@@ -75,6 +75,10 @@ public class InternshipSession extends Auditable<String> implements Serializable
 	@OneToMany(mappedBy = "internshipSession", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<StudentEntry> studentEntry;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "internshipSession", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<College> colleges;
+
 	/**
 	 * @param sessionId
 	 * @param sessionName
@@ -82,9 +86,10 @@ public class InternshipSession extends Auditable<String> implements Serializable
 	 * @param startDate
 	 * @param endDate
 	 * @param studentEntry
+	 * @param colleges
 	 */
 	public InternshipSession(Long sessionId, String sessionName, String description, Date startDate, Date endDate,
-			List<StudentEntry> studentEntry) {
+			List<StudentEntry> studentEntry, List<College> colleges) {
 		super();
 		this.sessionId = sessionId;
 		this.sessionName = sessionName;
@@ -92,6 +97,7 @@ public class InternshipSession extends Auditable<String> implements Serializable
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.studentEntry = studentEntry;
+		this.colleges = colleges;
 	}
 
 	/**
@@ -176,6 +182,20 @@ public class InternshipSession extends Auditable<String> implements Serializable
 	 */
 	public void setStudentEntry(List<StudentEntry> studentEntry) {
 		this.studentEntry = studentEntry;
+	}
+
+	/**
+	 * @return the colleges
+	 */
+	public List<College> getColleges() {
+		return colleges;
+	}
+
+	/**
+	 * @param colleges the colleges to set
+	 */
+	public void setColleges(List<College> colleges) {
+		this.colleges = colleges;
 	}
 
 }

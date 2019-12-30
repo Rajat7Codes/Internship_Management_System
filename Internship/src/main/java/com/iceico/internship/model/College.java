@@ -13,6 +13,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -67,6 +69,14 @@ public class College implements Serializable {
 	@Column(name = "contact_person")
 	private String contactPerson;
 
+	@Column(name = "intern_session")
+	private String internSession;
+
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@JoinColumn(name = "sessionId", insertable = true, nullable = true, updatable = true)
+	@JsonIgnore
+	private InternshipSession internshipSession;
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "college", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<StudentEntry> studentEntry;
@@ -80,10 +90,13 @@ public class College implements Serializable {
 	 * @param mouStatus
 	 * @param tnpHead
 	 * @param contactPerson
+	 * @param internSession
+	 * @param internshipSession
 	 * @param studentEntry
 	 */
 	public College(Long collegeId, String collegeName, String address, String contactNo, String alternateContactNo,
-			Boolean mouStatus, String tnpHead, String contactPerson, List<StudentEntry> studentEntry) {
+			Boolean mouStatus, String tnpHead, String contactPerson, String internSession,
+			InternshipSession internshipSession, List<StudentEntry> studentEntry) {
 		super();
 		this.collegeId = collegeId;
 		this.collegeName = collegeName;
@@ -93,6 +106,8 @@ public class College implements Serializable {
 		this.mouStatus = mouStatus;
 		this.tnpHead = tnpHead;
 		this.contactPerson = contactPerson;
+		this.internSession = internSession;
+		this.internshipSession = internshipSession;
 		this.studentEntry = studentEntry;
 	}
 
@@ -206,6 +221,34 @@ public class College implements Serializable {
 	 */
 	public void setContactPerson(String contactPerson) {
 		this.contactPerson = contactPerson;
+	}
+
+	/**
+	 * @return the internSession
+	 */
+	public String getInternSession() {
+		return internSession;
+	}
+
+	/**
+	 * @param internSession the internSession to set
+	 */
+	public void setInternSession(String internSession) {
+		this.internSession = internSession;
+	}
+
+	/**
+	 * @return the internshipSession
+	 */
+	public InternshipSession getInternshipSession() {
+		return internshipSession;
+	}
+
+	/**
+	 * @param internshipSession the internshipSession to set
+	 */
+	public void setInternshipSession(InternshipSession internshipSession) {
+		this.internshipSession = internshipSession;
 	}
 
 	/**
