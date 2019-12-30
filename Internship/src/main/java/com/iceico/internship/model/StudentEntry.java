@@ -78,27 +78,27 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	@Column(name = "date")
 	private Date date;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "internDurId", insertable = true, nullable = true, updatable = true)
 	@JsonIgnore
 	private InternshipDuration internshipDuration;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "sessionId", insertable = true, nullable = true, updatable = true)
 	@JsonIgnore
 	private InternshipSession internshipSession;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "internTypeId", insertable = true, nullable = true, updatable = true)
 	@JsonIgnore
 	private InternshipType internshipType;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "financialYearId", insertable = true, nullable = true, updatable = true)
 	@JsonIgnore
 	private FinancialYear financialYear;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "collegeId", insertable = true, nullable = true, updatable = true)
 	@JsonIgnore
 	private College college;

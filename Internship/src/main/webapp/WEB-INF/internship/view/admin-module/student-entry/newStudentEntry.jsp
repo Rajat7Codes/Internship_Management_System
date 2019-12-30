@@ -77,9 +77,10 @@ label {
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
 								<form:label path="internshipSession">Session</form:label>
-								<form:select class="form-control" name="internshipSession" path="internshipSession"
-									id="internshipSession" itemLabel="sessionName"
-									items="${internSessionList }" itemValue="sessionId">
+								<form:select class="form-control" name="internshipSession"
+									path="internshipSession" id="internshipSession"
+									itemLabel="sessionName" items="${internSessionList }"
+									itemValue="sessionId">
 								</form:select>
 								<form:errors path="internshipSession" class="errors" />
 							</div>
@@ -96,6 +97,7 @@ label {
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
 								<form:label path="financialYear">Financial Year</form:label>
+
 								<form:select class="form-control" name="financialYear"
 									path="financialYear" id="financialYear" itemLabel="year"
 									items="${fyList }" itemValue="financialYearId">

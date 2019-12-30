@@ -40,6 +40,7 @@
 							<tr>
 								<th>Sr.No.</th>
 								<th>College Name</th>
+								<th>Session</th>
 								<th>Contact #</th>
 								<th>Alt. Contact #</th>
 								<th>MOU Status</th>
@@ -53,6 +54,7 @@
 								<tr>
 									<td>${ind.index+1 }</td>
 									<td>${college.collegeName }</td>
+									<td>${college.getInternshipSession().sessionName }</td>
 									<td>${college.contactNo }</td>
 									<td>${college.alternateContactNo }</td>
 									<td>${college.mouStatus }</td>
