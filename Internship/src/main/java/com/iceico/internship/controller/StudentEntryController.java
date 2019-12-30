@@ -20,12 +20,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.StudentEntry;
+import com.iceico.internship.service.CollegeService;
+import com.iceico.internship.service.FinancialYearService;
 import com.iceico.internship.service.InternshipDurationService;
+import com.iceico.internship.service.InternshipSessionService;
 import com.iceico.internship.service.InternshipTypeService;
 import com.iceico.internship.service.StudentEntryService;
 
 /**
- * @author sameer
+ * @author SAMEER KADGAYE
+ * @version 0.1
+ * 
+ *          Created Date : 27/12/2019
  *
  */
 @Controller
@@ -44,51 +50,57 @@ public class StudentEntryController {
 	private InternshipTypeService internshipTypeService;
 
 	@Autowired
-	private InternshipDurationService InternshipDurationService;
+	private InternshipDurationService internshipDurationService;
 
-	@GetMapping("/admin/student/entry")
-	public String getStudentEntry(ModelMap modelMap, Locale locale) {
+	@Autowired
+	private InternshipSessionService internshipSessionService;
 
-		modelMap.addAttribute("studentEntry", new StudentEntry());
-		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
-		modelMap.addAttribute("internTypeList", this.internshipTypeService.getInternshipTypeList());
-		modelMap.addAttribute("user", this.getPrincipal());
-		return "studentEntry";
-	}
+	@Autowired
+	private FinancialYearService financialYearService;
+
+	@Autowired
+	private CollegeService collegeService;
 
 	@GetMapping("/admin/student/entry/new")
-	public String newStudentEntry(ModelMap modelMap, Locale locale) {
-		modelMap.addAttribute("studentEntry", new StudentEntry());
-		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
+	public String getStudentEntry(ModelMap modelMap, Locale locale) {
+		StudentEntry studentEntry = new StudentEntry();
+		studentEntry.setFinancialYear(this.financialYearService.getActiveFinancialYear());
+
+		modelMap.addAttribute("studentEntry", studentEntry);
+		modelMap.addAttribute("collegeList", this.collegeService.getCollegeList());
 		modelMap.addAttribute("internTypeList", this.internshipTypeService.getInternshipTypeList());
+		modelMap.addAttribute("internSessionList", this.internshipSessionService.getSessionList());
+		modelMap.addAttribute("internDurList", this.internshipDurationService.getInternshipDurationList());
+		modelMap.addAttribute("fyList", this.financialYearService.getFinancialYearList());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "newStudentEntry";
+	}
+
+	@GetMapping("/admin/student/entry")
+	public String newStudentEntry(ModelMap modelMap, Locale locale) {
+		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
+		modelMap.addAttribute("user", this.getPrincipal());
+		return "studentEntry";
 	}
 
 	@PostMapping("/admin/student/entry/save")
 	public String saveExpenses(@ModelAttribute("studentEntry") @Valid StudentEntry studentEntry,
 			BindingResult bindingResult, ModelMap modelMap, Locale locale) {
-		if (bindingResult.hasErrors()) {
-			modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
-			modelMap.addAttribute("user", this.getPrincipal());
-			return "studentEntry";
-		} else {
-			if (studentEntry.getStudentEntryId() == null) {
-				this.studentEntryService.saveStudentEntry(studentEntry);
-				modelMap.addAttribute("user", this.getPrincipal());
-			} else {
-				this.studentEntryService.saveStudentEntry(studentEntry);
-			}
-			return "redirect:/admin/student/entry";
-		}
+
+		this.studentEntryService.saveStudentEntry(studentEntry);
+		modelMap.addAttribute("user", this.getPrincipal());
+		return "redirect:/admin/student/entry";
 	}
 
 	@GetMapping("/admin/student/entry/edit/{studentEntryId}")
 	public String editStudentEntry(@PathVariable("studentEntryId") @Valid Long studentEntryId, ModelMap modelMap,
 			Locale locale) throws ResourceNotFoundException {
 		modelMap.addAttribute("studentEntry", this.studentEntryService.getStudentEntryById(studentEntryId));
+		modelMap.addAttribute("collegeList", this.collegeService.getCollegeList());
 		modelMap.addAttribute("internTypeList", this.internshipTypeService.getInternshipTypeList());
-		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
+		modelMap.addAttribute("internSessionList", this.internshipSessionService.getSessionList());
+		modelMap.addAttribute("internDurList", this.internshipDurationService.getInternshipDurationList());
+		modelMap.addAttribute("fyList", this.financialYearService.getFinancialYearList());
 		modelMap.addAttribute("user", this.getPrincipal());
 
 		return "newStudentEntry";

@@ -24,8 +24,8 @@ import com.iceico.internship.service.InternshipDurationService;
 public class InternshipDurationServiceImpl implements InternshipDurationService {
 
 	@Autowired
-	InternshipDurationRepository internshipRepository;
-	
+	private InternshipDurationRepository internshipRepository;
+
 	/**
 	 * 
 	 */
@@ -35,21 +35,22 @@ public class InternshipDurationServiceImpl implements InternshipDurationService 
 
 	@Override
 	public void saveInternshipDuration(InternshipDuration internshipDuration) {
-		internshipRepository.save(internshipDuration);
+		this.internshipRepository.save(internshipDuration);
 	}
 
 	@Override
 	public void deleteInternshipDuration(Long id) {
-		internshipRepository.deleteById(id);
+		this.internshipRepository.deleteById(id);
 	}
 
 	@Override
 	public List<InternshipDuration> getInternshipDurationList() {
-		return internshipRepository.findAll();
+		return this.internshipRepository.findAll();
 	}
 
 	@Override
 	public InternshipDuration getInternshipDurationById(Long id) throws ResourceNotFoundException {
-		return internshipRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Not Data Found At Id " + id));
+		return this.internshipRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Not Data Found At Id " + id));
 	}
 }

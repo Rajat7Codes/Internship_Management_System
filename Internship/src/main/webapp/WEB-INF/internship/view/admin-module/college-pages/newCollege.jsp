@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 
@@ -19,76 +17,170 @@
 			<form:form
 				action="${pageContext.request.contextPath}/admin/college/save"
 				modelAttribute="college" name="collegeForm" id="collegeForm">
-				<form:hidden path="id" />
+
+				<form:hidden path="collegeId" />
+
 				<div>
+
 					<div class="card card-topli
 				ne-darkgreen">
 						<div class="card-header card-head pl-12" id="grad">
 							<strong class="card-title text-white"></strong>
-							<div class="tools">
-								<a class="fa fa-repeat btn-color box-refresh"
-									href="javascript:;"></a> <a
-									class="t-collapse btn-color fa fa-chevron-down"
-									href="javascript:;"></a> <a
-									class="t-close btn-color fa fa-times" href="javascript:;"></a>
+
+							<div class="card card-topline-darkgreen">
+								<div class="card-header card-head pl-4" id="grad">
+									<strong class="card-title text-white"> ADD COLLEGE </strong>
+									>>>>>>> b51f648e69aad624707ba2dd99edcb921b0e98c3
+									<div class="tools">
+										<a class="fa fa-repeat btn-color box-refresh"
+											href="javascript:;"></a> <a
+											class="t-collapse btn-color fa fa-chevron-down"
+											href="javascript:;"></a> <a
+											class="t-close btn-color fa fa-times" href="javascript:;"></a>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="row form-group">
+										<div class="col-md-6 col-sm-6 col-lg-6 col-12">
+											<div class="row">
+												<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+													<form:label path="collegeName">
+														<strong>College Name</strong>
+													</form:label>
+												</div>
+												<div class="col-md-8 col-sm-8 col-lg-8 col-12">
+													<form:input path="collegeName" name="collegeName"
+														id="collegeName" class="form-control"
+														placeholder="Enter College Name" />
+													<form:errors path="collegeName" class="errors" />
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-6 col-sm-6 col-lg-6 col-12">
+											<div class="row">
+												<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+													<form:label path="">
+														<strong>Session</strong>
+													</form:label>
+												</div>
+												<div class="col-md-8 col-sm-8 col-lg-8 col-12">
+													<%-- <form:select path="internshipSession"
+												name="internshipSession" itemLabel="sessionName"
+												itemValue="sessionId" id="internshipSession"
+												items="${internshipSessionList}" class="form-control" /> 
+											<form:errors path="internshipSession" class="errors" />--%>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row form-group">
+										<div class="col-md-6 col-sm-6 col-lg-6 col-12">
+											<div class="row">
+												<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+													<form:label path="contactNo">
+														<strong>Contact #</strong>
+													</form:label>
+												</div>
+												<div class="col-md-8 col-sm-8 col-lg-8 col-12">
+													<form:input path="contactNo" name="contactNo"
+														id="contactNo" class="form-control"
+														placeholder="Enter Contact #" />
+													<form:errors path="contactNo" class="errors" />
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6 col-lg-6 col-12">
+											<div class="row">
+												<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+													<form:label path="alternateContactNo">
+														<strong>Alt. Contact #</strong>
+													</form:label>
+												</div>
+												<div class="col-md-8 col-sm-8 col-lg-8 col-12">
+													<form:input path="alternateContactNo"
+														name="alternateContactNo" id="alternateContactNo"
+														class="form-control" placeholder="Enter Alt. Contact #" />
+													<form:errors path="alternateContactNo" class="errors" />
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row form-group">
+										<div class="col-md-6 col-sm-6 col-lg-6 col-12">
+											<div class="row">
+												<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+													<form:label path="tnpHead">
+														<strong>T&amp;P Head</strong>
+													</form:label>
+												</div>
+												<div class="col-md-8 col-sm-8 col-lg-8 col-12">
+													<form:input path="tnpHead" name="tnpHead" id="tnpHead"
+														class="form-control" placeholder="Enter T&P Head" />
+													<form:errors path="tnpHead" class="errors" />
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6 col-lg-6 col-12">
+											<div class="row">
+												<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+													<form:label path="mouStatus">
+														<strong> Contact Person</strong>
+													</form:label>
+												</div>
+												<div class="col-md-8 col-sm-8 col-lg-8 col-12">
+													<form:input path="contactPerson" name="contactPerson"
+														id="contactPerson" class="form-control"
+														placeholder="Enter Contact Person" />
+													<form:errors path="contactPerson" class="errors" />
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col-md-6 col-sm-6 col-lg-6 col-12">
+											<div class="row">
+												<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+													<form:label path="mouStatus">
+														<strong> MOU Status</strong>
+													</form:label>
+												</div>
+												<div class="col-md-8 col-sm-8 col-lg-8 col-12">
+													<form:radiobutton path="mouStatus" value="true" />
+													Signed
+													<form:radiobutton path="mouStatus" value="false" />
+													Unsigned
+													<form:errors path="mouStatus" class="errors" />
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6 col-lg-6 col-12">
+											<div class="row">
+												<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+													<form:label path="address">
+														<strong> Address</strong>
+													</form:label>
+												</div>
+												<div class="col-md-8 col-sm-8 col-lg-8 col-12">
+													<form:textarea path="address" name="address" id="address"
+														class="form-control" placeholder="Enter Address here" />
+													<form:errors path="address" class="errors" />
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
-						<div class="card-body">
-							<div class="row form-group">
-
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-									<form:label path="collegeName">College Name</form:label>
-									<form:input path="collegeName" class="form-control" />
-									<form:errors path="collegeName"></form:errors>
-								</div>
-
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-									<form:label path="contactNo">Contact No </form:label>
-									<form:input path="contactNo" class="form-control" />
-									<form:errors path="contactNo"></form:errors>
-								</div>
-
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-									<form:label path="alternateContactNo">Alternative Contact No</form:label>
-									<form:input path="alternateContactNo" class="form-control" />
-									<form:errors path="alternateContactNo"></form:errors>
-								</div>
-
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-									<form:label path="mouStatus">MOU Status</form:label>
-
-									<form:input path="mouStatus" class="form-control" type="radio"
-										name="mouStatus" value="true" />
-									<form:input path="mouStatus" class="form-control" type="radio"
-										name="mouStatus" value="false" />
-									<form:errors path="mouStatus"></form:errors>
-								</div>
-
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-									<form:label path="tnpHead">TNP Head</form:label>
-									<form:input path="tnpHead" class="form-control" />
-									<form:errors path="tnpHead"></form:errors>
-								</div>
-
-
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-									<form:label path="contactPerson">Contact Person</form:label>
-									<form:input path="contactPerson" class="form-control" />
-									<form:errors path="contactPerson"></form:errors>
-								</div>
-
+						<div class="row form-group">
+							<div
+								class="col-md-12 col-sm-12 col-lg-12 col-12 text-right pl-3 ">
+								<button class="btn btn-danger btn-lg " type="reset">RESET</button>
+								<button class="btn btn-success btn-lg" id="grad" type="submit">SAVE</button>
 							</div>
 						</div>
-					</div>
-				</div>
-				<div>
-					<div class="row form-group">
-						<div
-							class="col-md-12 col-sm-12 col-lg-12 col-12 text-right pl-12  text-center">
-							<button class="btn btn-success btn-lg " id="grad" type="submit">SAVE</button>
-						</div>
-					</div>
-				</div>
 			</form:form>
 		</div>
 	</div>

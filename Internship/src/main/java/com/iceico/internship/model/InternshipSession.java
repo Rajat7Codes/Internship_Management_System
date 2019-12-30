@@ -30,7 +30,7 @@ import com.iceico.internship.audit.Auditable;
  * @author Rajat
  * @version 0.1
  * 
- * Created Date : 27/12/2019
+ *          Created Date : 27/12/2019
  * 
  */
 
@@ -55,6 +55,9 @@ public class InternshipSession extends Auditable<String> implements Serializable
 	@Column(name = "session_id")
 	private Long sessionId;
 
+	@Column(name = "session_name")
+	private String sessionName;
+
 	@Column(name = "description")
 	private String description;
 
@@ -69,8 +72,27 @@ public class InternshipSession extends Auditable<String> implements Serializable
 	private Date endDate;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "session", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "internshipSession", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<StudentEntry> studentEntry;
+
+	/**
+	 * @param sessionId
+	 * @param sessionName
+	 * @param description
+	 * @param startDate
+	 * @param endDate
+	 * @param studentEntry
+	 */
+	public InternshipSession(Long sessionId, String sessionName, String description, Date startDate, Date endDate,
+			List<StudentEntry> studentEntry) {
+		super();
+		this.sessionId = sessionId;
+		this.sessionName = sessionName;
+		this.description = description;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.studentEntry = studentEntry;
+	}
 
 	/**
 	 * @return the sessionId
@@ -84,6 +106,20 @@ public class InternshipSession extends Auditable<String> implements Serializable
 	 */
 	public void setSessionId(Long sessionId) {
 		this.sessionId = sessionId;
+	}
+
+	/**
+	 * @return the sessionName
+	 */
+	public String getSessionName() {
+		return sessionName;
+	}
+
+	/**
+	 * @param sessionName the sessionName to set
+	 */
+	public void setSessionName(String sessionName) {
+		this.sessionName = sessionName;
 	}
 
 	/**
@@ -140,13 +176,6 @@ public class InternshipSession extends Auditable<String> implements Serializable
 	 */
 	public void setStudentEntry(List<StudentEntry> studentEntry) {
 		this.studentEntry = studentEntry;
-	}
-
-	/**
-	 * @return the serialversionuid
-	 */
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 }

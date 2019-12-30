@@ -57,7 +57,7 @@ public class InternshipType extends Auditable<String> implements Serializable {
 	private String description;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "internshipType", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "internshipType", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<StudentEntry> studentEntry;
 
 	/**

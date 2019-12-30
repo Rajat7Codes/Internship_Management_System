@@ -15,7 +15,10 @@ import com.iceico.internship.repository.InternshipTypeRepository;
 import com.iceico.internship.service.InternshipTypeService;
 
 /**
- * @author sameer
+ * @author SAMEER KADGAYE
+ * @version 0.1
+ * 
+ *          Created Date : 27/12/2019
  *
  */
 @Service

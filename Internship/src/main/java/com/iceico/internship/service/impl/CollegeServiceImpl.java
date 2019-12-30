@@ -15,22 +15,22 @@ import com.iceico.internship.repository.CollegeRepository;
 import com.iceico.internship.service.CollegeService;
 
 /**
- * @author Puja
- * @version 0.1
- * Creation Date: 27/12/2019
+ * @author iceico
  *
  */
-
 @Service
 @Transactional
-public class CollegeServiceIMPL implements CollegeService {
+public class CollegeServiceImpl implements CollegeService {
+
+	/**
+	 * 
+	 */
+	public CollegeServiceImpl() {
+
+	}
 
 	@Autowired
 	private CollegeRepository collegeRepository;
-
-	public CollegeServiceIMPL() {
-
-	}
 
 	@Override
 	public void saveCollege(College college) {
@@ -38,22 +38,20 @@ public class CollegeServiceIMPL implements CollegeService {
 	}
 
 	@Override
-	public List<College> getCollegeList() {
-
-		return collegeRepository.findAll();
+	public void deleteCollege(Long id) {
+		this.collegeRepository.deleteById(id);
 	}
 
-	@Override
-	public void deleteCollege(Long id) {
 
-		this.collegeRepository.deleteById(id);
+	@Override
+	public List<College> getCollegeList() {
+		return this.collegeRepository.findAll();
 
 	}
 
 	@Override
 	public College getCollegeById(Long id) throws ResourceNotFoundException {
-
-		return collegeRepository.findById(id)
+		return this.collegeRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Not Data Found At Id " + id));
 	}
 

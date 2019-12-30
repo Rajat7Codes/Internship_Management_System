@@ -27,7 +27,7 @@ import com.iceico.internship.service.InternshipSessionService;
  * @author Rajat
  * @version 0.1
  * 
- * Created Date : 27/12/2019
+ *          Created Date : 27/12/2019
  *
  */
 @Controller
@@ -35,7 +35,7 @@ public class InternshipSessionController {
 
 	@Autowired
 	InternshipSessionService internshipSessionService;
-	
+
 	/**
 	 * 
 	 */
@@ -49,11 +49,13 @@ public class InternshipSessionController {
 		modelMap.addAttribute("sessionList", internshipSessionService.getSessionList());
 		return "internshipSession";
 	}
-	
+
 	@PostMapping("/admin/internship/session/save")
-	public String saveInternshipSession(@ModelAttribute("session") @Valid InternshipSession session, BindingResult bindingResult, ModelMap modelMap, Locale locale) throws ParseException {
-		if(bindingResult.hasErrors()) {
+	public String saveInternshipSession(@ModelAttribute("session") @Valid InternshipSession session,
+			BindingResult bindingResult, ModelMap modelMap, Locale locale) throws ParseException {
+		if (bindingResult.hasErrors()) {
 			System.out.print(bindingResult.getAllErrors());
+			return "internshipSession";
 		} else {
 			if (session.getSessionId() == null) {
 
@@ -64,25 +66,24 @@ public class InternshipSessionController {
 			}
 			return "redirect:/admin/internship/session";
 		}
-		return "redirect:/admin/internship/session";
 	}
 
-	
 	@GetMapping("/admin/internship/session/edit/{sessionId}")
-	public String editInternshipSession(@PathVariable("sessionId") @Valid Long sessionId, ModelMap modelMap, Locale locale) throws ParseException, ResourceNotFoundException {
+	public String editInternshipSession(@PathVariable("sessionId") @Valid Long sessionId, ModelMap modelMap,
+			Locale locale) throws ParseException, ResourceNotFoundException {
 		modelMap.addAttribute("session", internshipSessionService.getSessionById(sessionId));
 		modelMap.addAttribute("sessionList", internshipSessionService.getSessionList());
 		return "internshipSession";
 	}
-	
+
 	@GetMapping("/admin/internship/session/delete/{sessionId}")
-	public String deleteInternshipSession(@PathVariable("sessionId") @Valid Long sessionId, ModelMap modelMap, Locale locale) throws ParseException, ResourceNotFoundException {
+	public String deleteInternshipSession(@PathVariable("sessionId") @Valid Long sessionId, ModelMap modelMap,
+			Locale locale) throws ParseException, ResourceNotFoundException {
 		internshipSessionService.deleteSession(sessionId);
 		modelMap.addAttribute("sessionList", internshipSessionService.getSessionList());
 		return "redirect:/admin/internship/session";
 	}
-	
-	
+
 	/**
 	 * This method returns the principal[user-name] of logged-in user.
 	 */

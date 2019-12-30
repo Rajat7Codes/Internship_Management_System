@@ -38,17 +38,24 @@
 			value="/WEB-INF/internship/view/admin-module/dashboard.jsp" />
 	</definition>
 
-	<!-- CollegeInfo page -->
+	<!-- College pages -->
 	<definition name="newCollege" extends="adminbase.definition">
-		<put-attribute name="title" value="newCollege" />
+		<put-attribute name="title" value="New College" />
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/college-pages/newCollege.jsp" />
 	</definition>
 
 	<definition name="college" extends="adminbase.definition">
-		<put-attribute name="title" value="college" />
+		<put-attribute name="title" value="College" />
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/college-pages/college.jsp" />
+	</definition>
+
+	<definition name="viewCollege"
+		extends="adminbase.definition">
+		<put-attribute name="title" value="College" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/college-pages/viewCollege.jsp" />
 	</definition>
 
 	<!-- Internship Type Page -->
@@ -83,11 +90,12 @@
 			value="/WEB-INF/internship/view/admin-module/student-entry/newStudentEntry.jsp" />
 	</definition>
 
-	<!-- Session Page -->
-	<definition name="internshipSession" extends="adminbase.definition">
+	<!-- Internship Session Page -->
+	<definition name="internshipSession"
+		extends="adminbase.definition">
 		<put-attribute name="title" value="Session" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/internshipPages/session.jsp" />
+			value="/WEB-INF/internship/view/admin-module/internshipPages/internshipSession.jsp" />
 	</definition>
 
 	<!-- Financial Year -->
@@ -95,7 +103,7 @@
 		extends="adminbase.definition">
 		<put-attribute name="title" value="Session" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/College-module/financialYear.jsp" />
+			value="/WEB-INF/internship/view/admin-module/other-pages/financialYear.jsp" />
 	</definition>
 
 </tiles-definitions>
