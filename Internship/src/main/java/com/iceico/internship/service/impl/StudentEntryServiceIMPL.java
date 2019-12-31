@@ -3,6 +3,7 @@
  */
 package com.iceico.internship.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
-import com.iceico.internship.model.FinancialYear;
 import com.iceico.internship.model.StudentEntry;
 import com.iceico.internship.repository.StudentEntryRepository;
 import com.iceico.internship.service.StudentEntryService;
@@ -70,7 +70,27 @@ public class StudentEntryServiceIMPL implements StudentEntryService {
 
 	@Override
 	public Double getTotalIncome() {
-		return (Double) this.getSession().createQuery("select sum(feesAmount) from StudentEntry").uniqueResult();
+
+		return (Double) this.getSession().createQuery("select sum(feesAmount-discount) from StudentEntry")
+				.uniqueResult();
+	}
+
+	@Override
+	public Double getTotalBalance() {
+		return (Double) this.getSession().createQuery("select sum(balanceFees) from StudentEntry").uniqueResult();
+	}
+
+	@Override
+	public Double getTotalPaidAmount() {
+		return (Double) this.getSession().createQuery("select sum(paidFees) from StudentEntry").uniqueResult();
+	}
+
+	@Override
+	public Double getDailyFeesCollection(Date date) {
+
+		return (Double) this.getSession().createQuery("select sum(feesAmount), date from StudentEntry where date=:curdate()")
+				.uniqueResult();
+
 	}
 
 }

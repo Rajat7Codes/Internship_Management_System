@@ -4,6 +4,8 @@
 package com.iceico.internship.controller;
 
 import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -43,11 +45,15 @@ public class TilesController {
 	public String adminDashboard(ModelMap modelMap, Locale locale) throws ResourceNotFoundException, ParseException {
 		modelMap.addAttribute("user", this.getPrincipal());
 
-		System.out.println("===============" + this.studentEntryService.getTotalIncome());
+		Date date = new Date();
 
 		FinancialYear financialYear = this.financialYearService.getActiveFinancialYear();
 		List<StudentEntry> studentEntries = financialYear.getStudentEntry();
 		modelMap.addAttribute("studentEntryList", studentEntries);
+		modelMap.addAttribute("incomeCount", studentEntryService.getTotalIncome() + "");
+		modelMap.addAttribute("balanceCount", studentEntryService.getTotalBalance() + "");
+		modelMap.addAttribute("paidAmountCount", studentEntryService.getTotalPaidAmount() + "");
+		modelMap.addAttribute("dailyFeesCollection", studentEntryService.getDailyFeesCollection(date) + "");
 		modelMap.addAttribute("user", this.getPrincipal());
 
 		return "adminDashboard";

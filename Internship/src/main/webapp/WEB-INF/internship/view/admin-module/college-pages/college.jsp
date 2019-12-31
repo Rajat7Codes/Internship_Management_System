@@ -57,7 +57,8 @@
 									<td>${college.getInternshipSession().sessionName }</td>
 									<td>${college.contactNo }</td>
 									<td>${college.alternateContactNo }</td>
-									<td>${college.mouStatus }</td>
+									<td><c:if test="${college.mouStatus=='true' }">Signed</c:if>
+										<c:if test="${college.mouStatus =='false'}">Unsigned</c:if></td>
 									<td>${college.tnpHead }</td>
 									<td>${college.contactPerson }</td>
 									<td class="valigntop"><div class="btn-group">
