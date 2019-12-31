@@ -28,7 +28,6 @@
 						href="<c:url value='/admin/student/entry/new' />">
 						<i> </i>NEW STUDENT ENTRY</a>  --> 
 
-					<strong class="card-title text-white">RECIEPT LIST</strong>
 				</div>
 				&nbsp;
 				<div class="card-body">
