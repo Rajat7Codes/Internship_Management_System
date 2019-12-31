@@ -50,9 +50,9 @@
 									<td>${ind.index+1 }</td>
 									<td>${stud.getCollege().collegeId }</td>
 									<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
-
 									<td>${stud.getCollege().collegeName }</td>
-								<%-- 	<td>${stud.getCollege().collegeName }</td> --%>
+									<td>${stud.getDepartment().departmentName }</td>
+
 
 									<td class="valigntop"><div class="btn-group">
 											<button

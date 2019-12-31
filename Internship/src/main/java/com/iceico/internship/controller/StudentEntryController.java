@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.StudentEntry;
 import com.iceico.internship.service.CollegeService;
+import com.iceico.internship.service.DepartmentService;
 import com.iceico.internship.service.FinancialYearService;
 import com.iceico.internship.service.InternshipDurationService;
 import com.iceico.internship.service.InternshipSessionService;
@@ -59,6 +60,9 @@ public class StudentEntryController {
 	private FinancialYearService financialYearService;
 
 	@Autowired
+	private DepartmentService departmentService;
+
+	@Autowired
 	private CollegeService collegeService;
 
 	@GetMapping("/admin/student/entry/new")
@@ -72,6 +76,7 @@ public class StudentEntryController {
 		modelMap.addAttribute("internSessionList", this.internshipSessionService.getSessionList());
 		modelMap.addAttribute("internDurList", this.internshipDurationService.getInternshipDurationList());
 		modelMap.addAttribute("fyList", this.financialYearService.getFinancialYearList());
+		modelMap.addAttribute("departmentList", this.departmentService.getDepartmentList());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "newStudentEntry";
 	}
@@ -114,6 +119,7 @@ public class StudentEntryController {
 		modelMap.addAttribute("internSessionList", this.internshipSessionService.getSessionList());
 		modelMap.addAttribute("internDurList", this.internshipDurationService.getInternshipDurationList());
 		modelMap.addAttribute("fyList", this.financialYearService.getFinancialYearList());
+		modelMap.addAttribute("departmentList", this.departmentService.getDepartmentList());
 		modelMap.addAttribute("user", this.getPrincipal());
 
 		return "newStudentEntry";

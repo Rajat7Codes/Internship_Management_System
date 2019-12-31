@@ -4,24 +4,29 @@
 package com.iceico.internship.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.iceico.internship.audit.Auditable;
 
 /**
  * @author Rajat
  * @version 0.1
  * 
- * Created Date : 30/12/2019
+ *          Created Date : 30/12/2019
  */
 @Entity
 @Table(name = "tab_department")
@@ -37,31 +42,35 @@ public class Department extends Auditable<String> implements Serializable {
 	 * 
 	 */
 	public Department() {
-		// TODO Auto-generated constructor stub
 	}
-	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "department_id")
 	private Long departmentId;
-	
+
 	@Column(name = "department_name")
 	private String departmentName;
-	
+
 	@Column(name = "description")
 	private String description;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<StudentEntry> studentEntry;
 
 	/**
 	 * @param departmentId
 	 * @param departmentName
 	 * @param description
+	 * @param studentEntry
 	 */
-	public Department(Long departmentId, String departmentName, String description) {
+	public Department(Long departmentId, String departmentName, String description, List<StudentEntry> studentEntry) {
 		super();
 		this.departmentId = departmentId;
 		this.departmentName = departmentName;
 		this.description = description;
+		this.studentEntry = studentEntry;
 	}
 
 	/**
@@ -105,5 +114,19 @@ public class Department extends Auditable<String> implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
+	/**
+	 * @return the studentEntry
+	 */
+	public List<StudentEntry> getStudentEntry() {
+		return studentEntry;
+	}
+
+	/**
+	 * @param studentEntry the studentEntry to set
+	 */
+	public void setStudentEntry(List<StudentEntry> studentEntry) {
+		this.studentEntry = studentEntry;
+	}
+
 }

@@ -105,6 +105,11 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	@JsonIgnore
 	private College college;
 
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@JoinColumn(name = "departmentId", insertable = true, nullable = true, updatable = true)
+	@JsonIgnore
+	private Department department;
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "studentEntry", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Fees> fees;
@@ -123,12 +128,13 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	 * @param internshipType
 	 * @param financialYear
 	 * @param college
+	 * @param department
 	 * @param fees
 	 */
 	public StudentEntry(Long studentEntryId, String firstName, String middleName, String lastName, Float feesAmount,
 			Float discount, String extension, Date date, InternshipDuration internshipDuration,
 			InternshipSession internshipSession, InternshipType internshipType, FinancialYear financialYear,
-			College college, List<Fees> fees) {
+			College college, Department department, List<Fees> fees) {
 		super();
 		this.studentEntryId = studentEntryId;
 		this.firstName = firstName;
@@ -143,6 +149,7 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 		this.internshipType = internshipType;
 		this.financialYear = financialYear;
 		this.college = college;
+		this.department = department;
 		this.fees = fees;
 	}
 
@@ -326,6 +333,20 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	 */
 	public void setCollege(College college) {
 		this.college = college;
+	}
+
+	/**
+	 * @return the department
+	 */
+	public Department getDepartment() {
+		return department;
+	}
+
+	/**
+	 * @param department the department to set
+	 */
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
 	/**
