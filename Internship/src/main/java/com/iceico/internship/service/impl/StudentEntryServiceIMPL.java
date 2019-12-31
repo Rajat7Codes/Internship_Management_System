@@ -88,8 +88,7 @@ public class StudentEntryServiceIMPL implements StudentEntryService {
 	@Override
 	public Double getDailyFeesCollection(Date date) {
 
-		return (Double) this.getSession().createQuery("select sum(feesAmount), date from StudentEntry where date=:curdate()")
-				.uniqueResult();
+		return null;
 
 	}
 

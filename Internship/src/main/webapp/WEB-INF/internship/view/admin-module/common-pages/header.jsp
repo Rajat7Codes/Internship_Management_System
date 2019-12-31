@@ -21,7 +21,6 @@
 			<ul class="nav navbar-nav navbar-left in">
 				<li><a href="#" class="menu-toggler sidebar-toggler"><i
 						class="icon-menu"></i> </a></li>
-
 			</ul>
 			<%-- <img
 				src="${pageContext.request.contextPath }/static/img/vidybhavan/VBCMR LOGO.png"

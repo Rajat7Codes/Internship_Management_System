@@ -42,8 +42,8 @@
 						<div class="progress">
 							<div class="progress-bar" style="width: 45%"></div>
 						</div>
-						<span class="progress-description"> 45% Increase in 28 Days
-						</span>
+						<!-- <span class="progress-description"> 45% Increase in 28 Days
+						</span> -->
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -60,8 +60,8 @@
 						<div class="progress">
 							<div class="progress-bar" style="width: 40%"></div>
 						</div>
-						<span class="progress-description"> 40% Increase in 28 Days
-						</span>
+						<!-- <span class="progress-description"> 40% Increase in 28 Days
+						</span> -->
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -78,8 +78,8 @@
 						<div class="progress">
 							<div class="progress-bar" style="width: 85%"></div>
 						</div>
-						<span class="progress-description"> 85% Increase in 28 Days
-						</span>
+						<!-- <span class="progress-description"> 85% Increase in 28 Days
+						</span> -->
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -96,8 +96,8 @@
 						<div class="progress">
 							<div class="progress-bar" style="width: 50%"></div>
 						</div>
-						<span class="progress-description"> 50% Increase in 28 Days
-						</span>
+						<!-- <span class="progress-description"> 50% Increase in 28 Days
+						</span> -->
 					</div>
 					<!-- /.info-box-content -->
 				</div>
