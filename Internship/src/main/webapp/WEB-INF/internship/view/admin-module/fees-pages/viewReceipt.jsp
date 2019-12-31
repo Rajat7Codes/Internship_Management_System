@@ -54,7 +54,6 @@
 									<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
 									<td>${stud.getCollege().collegeName }</td>
 									<td>${stud.date }</td>
-							<c:forEach var="stud" items="${studentEntryList }"
 							<c:forEach var="fees" items="${studentEntry.getFees() }"
 								varStatus="ind">
 								<tr>
