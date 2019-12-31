@@ -106,10 +106,20 @@ label {
 							</div>
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-								<form:label path="fees">Fees</form:label>
-								<form:input path="fees" name="fees" id="fees"
-									class="form-control" placeholder="Fees" />
-								<form:errors path="fees"></form:errors>
+								<form:label path="department">Department</form:label>
+
+								<form:select class="form-control" name="financialYear"
+									path="department" id="department" itemLabel="departmentName"
+									items="${departmentList }" itemValue="departmentId">
+								</form:select>
+								<form:errors path="department" class="errors" />
+							</div>
+
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<form:label path="feesAmount">Fees</form:label>
+								<form:input path="feesAmount" name="feesAmount" id="feesAmount"
+									class="form-control" placeholder="Fees Amount" />
+								<form:errors path="feesAmount"></form:errors>
 							</div>
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">

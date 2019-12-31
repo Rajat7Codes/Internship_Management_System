@@ -32,10 +32,7 @@ public class ListHelper {
 		List<String> list = new ArrayList<String>();
 		list.add("Cash");
 		list.add("Cheque");
-		list.add("NEFT");
-		list.add("Paytm");
-		list.add("G-Pay");
-		list.add("PhonePe");
+		list.add("DD");
 		
 		return list;
 	}

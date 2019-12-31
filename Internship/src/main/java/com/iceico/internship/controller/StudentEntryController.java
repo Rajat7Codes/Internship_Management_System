@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.StudentEntry;
 import com.iceico.internship.service.CollegeService;
+import com.iceico.internship.service.DepartmentService;
 import com.iceico.internship.service.FinancialYearService;
 import com.iceico.internship.service.InternshipDurationService;
 import com.iceico.internship.service.InternshipSessionService;
@@ -59,6 +60,9 @@ public class StudentEntryController {
 	private FinancialYearService financialYearService;
 
 	@Autowired
+	private DepartmentService departmentService;
+
+	@Autowired
 	private CollegeService collegeService;
 
 	@GetMapping("/admin/student/entry/new")
@@ -72,6 +76,7 @@ public class StudentEntryController {
 		modelMap.addAttribute("internSessionList", this.internshipSessionService.getSessionList());
 		modelMap.addAttribute("internDurList", this.internshipDurationService.getInternshipDurationList());
 		modelMap.addAttribute("fyList", this.financialYearService.getFinancialYearList());
+		modelMap.addAttribute("departmentList", this.departmentService.getDepartmentList());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "newStudentEntry";
 	}
@@ -92,15 +97,16 @@ public class StudentEntryController {
 			modelMap.addAttribute("user", this.getPrincipal());
 			return "studentEntry";
 		} else {
+			Double fees = studentEntry.getFeesAmount();
+			Double discount = studentEntry.getDiscount();
+			fees = fees - discount;
+			Double paid = 0d;
+			Double balFees = (fees - paid);
+			studentEntry.setBalanceFees(balFees);
+			studentEntry.setPaidFees(paid);
 
-			if (studentEntry.getStudentEntryId() == null) {
-				this.studentEntryService.saveStudentEntry(studentEntry);
-				modelMap.addAttribute("user", this.getPrincipal());
-			} else {
-				this.studentEntryService.saveStudentEntry(studentEntry);
-				modelMap.addAttribute("user", this.getPrincipal());
-			}
-
+			this.studentEntryService.saveStudentEntry(studentEntry);
+			modelMap.addAttribute("user", this.getPrincipal());
 			return "redirect:/admin/student/entry";
 		}
 	}
@@ -114,9 +120,25 @@ public class StudentEntryController {
 		modelMap.addAttribute("internSessionList", this.internshipSessionService.getSessionList());
 		modelMap.addAttribute("internDurList", this.internshipDurationService.getInternshipDurationList());
 		modelMap.addAttribute("fyList", this.financialYearService.getFinancialYearList());
+		modelMap.addAttribute("departmentList", this.departmentService.getDepartmentList());
 		modelMap.addAttribute("user", this.getPrincipal());
 
 		return "newStudentEntry";
+	}
+
+	@GetMapping("/admin/student/entry/view/{studentEntryId}")
+	public String viewStudentEntry(@PathVariable("studentEntryId") @Valid Long studentEntryId, ModelMap modelMap,
+			Locale locale) throws ResourceNotFoundException {
+
+		modelMap.addAttribute("studentEntry", this.studentEntryService.getStudentEntryById(studentEntryId));
+		modelMap.addAttribute("collegeList", this.collegeService.getCollegeList());
+		modelMap.addAttribute("internTypeList", this.internshipTypeService.getInternshipTypeList());
+		modelMap.addAttribute("internSessionList", this.internshipSessionService.getSessionList());
+		modelMap.addAttribute("internDurList", this.internshipDurationService.getInternshipDurationList());
+		modelMap.addAttribute("fyList", this.financialYearService.getFinancialYearList());
+		modelMap.addAttribute("user", this.getPrincipal());
+
+		return "viewStudentEntry";
 	}
 
 	@GetMapping("/admin/student/entry/delete/{studentEntryId}")

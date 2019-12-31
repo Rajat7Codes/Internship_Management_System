@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-.materialicon{
-margin-top:22px;
+.materialicon {
+	margin-top: 22px;
 }
-.notificationicon{
-margin-top:10px;
+
+.notificationicon {
+	margin-top: 10px;
 }
 </style>
 </head>
@@ -107,7 +109,7 @@ margin-top:10px;
 	<!-- end widget -->
 	<!-- chart start -->
 	<div class="row">
-		<div class="col-sm-8">
+		<div class="col-sm-12">
 			<div class="card card-box">
 				<div class="card-head">
 					<header>Chart Survey</header>
@@ -120,12 +122,53 @@ margin-top:10px;
 				</div>
 				<div class="card-body no-padding height-9">
 					<div class="row">
-						<canvas id="canvas1"></canvas>
+						<!-- <canvas id="canvas1"></canvas> -->
+						<div class="card-body ">
+							<div class="table-wrap">
+								<div
+									class="table-responsive tblHeightSet small-slimscroll-style">
+									<table class="table display product-overview mb-30"
+										id="support_table">
+										<thead>
+											<tr>
+												<th>Sr.No.</th>
+												<th>Name</th>
+												<th>College</th>
+												<th>Session</th>
+												<th>Duration</th>
+												<th>Type</th>
+												<th>Fees</th>
+												<th>Discount</th>
+												<th>Extension</th>
+												<th>Joining Date</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach var="stud" items="${studentEntryList }"
+												varStatus="ind">
+												<tr>
+													<td>${ind.index+1 }</td>
+													<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
+													<td>${stud.getCollege().collegeName }</td>
+													<td>${stud.getInternshipSession().sessionName }</td>
+													<td>${stud.getInternshipDuration().duration }</td>
+													<td>${stud.getInternshipType().type }</td>
+													<td>${stud.feesAmount }</td>
+													<td>${stud.discount }</td>
+													<td>${stud.extension }</td>
+													<td>${stud.date }</td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-4">
+		<!-- <div class="col-sm-4">
 			<div class="card card-box">
 				<div class="card-head">
 					<header>Chart Survey</header>
@@ -142,10 +185,10 @@ margin-top:10px;
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 	<!-- Chart end -->
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-md-8 col-sm-12 col-12">
 			<div class="card card-box">
 				<div class="card-head">
@@ -298,47 +341,56 @@ margin-top:10px;
 							<div
 								class="notification-list mail-list not-list small-slimscroll-style">
 								<a href="javascript:;" class="single-mail"> <span
-									class="icon bg-primary"> <i class="fa fa-user-o notificationicon"></i>
+									class="icon bg-primary"> <i
+										class="fa fa-user-o notificationicon"></i>
 								</span> <span class="text-purple">Abhay Jani</span> Added you as friend
 									<span class="notificationtime"> <small>Just Now</small>
 								</span>
 								</a> <a href="javascript:;" class="single-mail"> <span
-									class="icon blue-bgcolor"> <i class="fa fa-envelope-o notificationicon"></i>
+									class="icon blue-bgcolor"> <i
+										class="fa fa-envelope-o notificationicon"></i>
 								</span> <span class="text-purple">John Doe</span> send you a mail <span
 									class="notificationtime"> <small>Just Now</small>
 								</span>
 								</a> <a href="javascript:;" class="single-mail"> <span
-									class="icon bg-success"> <i class="fa fa-check-square-o notificationicon"></i>
+									class="icon bg-success"> <i
+										class="fa fa-check-square-o notificationicon"></i>
 								</span> Success Message <span class="notificationtime"> <small>
 											2 Days Ago</small>
 								</span>
 								</a> <a href="javascript:;" class="single-mail"> <span
-									class="icon bg-warning"> <i class="fa fa-warning notificationicon"></i>
+									class="icon bg-warning"> <i
+										class="fa fa-warning notificationicon"></i>
 								</span> <strong>Database Overloaded Warning!</strong> <span
 									class="notificationtime"> <small>1 Week Ago</small>
 								</span>
 								</a> <a href="javascript:;" class="single-mail"> <span
-									class="icon bg-primary"> <i class="fa fa-user-o notificationicon"></i>
+									class="icon bg-primary"> <i
+										class="fa fa-user-o notificationicon"></i>
 								</span> <span class="text-purple">Abhay Jani</span> Added you as friend
 									<span class="notificationtime"> <small>Just Now</small>
 								</span>
 								</a> <a href="javascript:;" class="single-mail"> <span
-									class="icon blue-bgcolor"> <i class="fa fa-envelope-o notificationicon"></i>
+									class="icon blue-bgcolor"> <i
+										class="fa fa-envelope-o notificationicon"></i>
 								</span> <span class="text-purple">John Doe</span> send you a mail <span
 									class="notificationtime"> <small>Just Now</small>
 								</span>
 								</a> <a href="javascript:;" class="single-mail"> <span
-									class="icon bg-success"> <i class="fa fa-check-square-o notificationicon"></i>
+									class="icon bg-success"> <i
+										class="fa fa-check-square-o notificationicon"></i>
 								</span> Success Message <span class="notificationtime"> <small>
 											2 Days Ago</small>
 								</span>
 								</a> <a href="javascript:;" class="single-mail"> <span
-									class="icon bg-warning"> <i class="fa fa-warning notificationicon"></i>
+									class="icon bg-warning"> <i
+										class="fa fa-warning notificationicon"></i>
 								</span> <strong>Database Overloaded Warning!</strong> <span
 									class="notificationtime"> <small>1 Week Ago</small>
 								</span>
 								</a> <a href="javascript:;" class="single-mail"> <span
-									class="icon bg-danger"> <i class="fa fa-times notificationicon"></i>
+									class="icon bg-danger"> <i
+										class="fa fa-times notificationicon"></i>
 								</span> <strong>Server Error!</strong> <span class="notificationtime">
 										<small>10 Days Ago</small>
 								</span>
@@ -354,10 +406,10 @@ margin-top:10px;
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<div class="row">
 		<!-- Quick Mail start -->
-		<div class="col-lg-6 col-md-12 col-sm-12 col-12">
+		<!-- <div class="col-lg-6 col-md-12 col-sm-12 col-12">
 			<div class="card-box">
 				<div class="card-head">
 					<header>Quick Mail</header>
@@ -407,9 +459,9 @@ margin-top:10px;
 									<div id="summernote"></div>
 									<input type="file" class="default" multiple>
 								</div>
-								<!--   <div class="btn-group margin-top-20 ">
+								  <div class="btn-group margin-top-20 ">
 	                                                <button class="btn btn-primary btn-sm margin-right-10"><i class="fa fa-check"></i> Send</button>
-                                           		</div> -->
+                                           		</div>
 								<div class="box-footer clearfix">
 									<button type="button"
 										class="mdl-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-primary pull-right">
@@ -421,10 +473,10 @@ margin-top:10px;
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- Quick Mail end -->
 		<!-- Activity feed start -->
-		<div class="col-lg-6 col-md-12 col-sm-12 col-12">
+		<%-- <div class="col-lg-6 col-md-12 col-sm-12 col-12">
 			<div class="card-box">
 				<div class="card-head">
 					<header>Activity Feed</header>
@@ -461,8 +513,9 @@ margin-top:10px;
 						</li>
 						<li class="diactive-feed">
 							<div class="feed-user-img">
-								<img src="${pageContext.request.contextPath }/static/img/user/user2.jpg" class="img-radius "
-									alt="User-Profile-Image">
+								<img
+									src="${pageContext.request.contextPath }/static/img/user/user2.jpg"
+									class="img-radius " alt="User-Profile-Image">
 							</div>
 							<h6>
 								<span class="feedLblStyle lblTaskStyle">Task </span> Jalpa Joshi<small
@@ -473,8 +526,9 @@ margin-top:10px;
 						</li>
 						<li class="diactive-feed">
 							<div class="feed-user-img">
-								<img src="${pageContext.request.contextPath }/static/img/user/user3.jpg" class="img-radius "
-									alt="User-Profile-Image">
+								<img
+									src="${pageContext.request.contextPath }/static/img/user/user3.jpg"
+									class="img-radius " alt="User-Profile-Image">
 							</div>
 							<h6>
 								<span class="feedLblStyle lblCommentStyle">comment</span> Lina
@@ -484,8 +538,9 @@ margin-top:10px;
 						</li>
 						<li class="active-feed">
 							<div class="feed-user-img">
-								<img src="${pageContext.request.contextPath }/static/img/user/user4.jpg" class="img-radius "
-									alt="User-Profile-Image">
+								<img
+									src="${pageContext.request.contextPath }/static/img/user/user4.jpg"
+									class="img-radius " alt="User-Profile-Image">
 							</div>
 							<h6>
 								<span class="feedLblStyle lblReplyStyle">Reply</span> Jacob Ryan
@@ -495,8 +550,9 @@ margin-top:10px;
 						</li>
 						<li class="active-feed">
 							<div class="feed-user-img">
-								<img src="${pageContext.request.contextPath }/static/img/user/user5.jpg" class="img-radius "
-									alt="User-Profile-Image">
+								<img
+									src="${pageContext.request.contextPath }/static/img/user/user5.jpg"
+									class="img-radius " alt="User-Profile-Image">
 							</div>
 							<h6>
 								<span class="feedLblStyle lblFileStyle">File</span> Sarah Smith
@@ -508,8 +564,9 @@ margin-top:10px;
 						</li>
 						<li class="diactive-feed">
 							<div class="feed-user-img">
-								<img src="${pageContext.request.contextPath }/static/img/user/user6.jpg" class="img-radius "
-									alt="User-Profile-Image">
+								<img
+									src="${pageContext.request.contextPath }/static/img/user/user6.jpg"
+									class="img-radius " alt="User-Profile-Image">
 							</div>
 							<h6>
 								<span class="feedLblStyle lblTaskStyle">Task </span> Jalpa Joshi<small
@@ -521,10 +578,10 @@ margin-top:10px;
 					</ul>
 				</div>
 			</div>
-		</div>
+		</div> --%>
 		<!-- Activity feed end -->
 	</div>
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-lg-6 col-md-12 col-sm-12 col-12">
 			<div class="card-box">
 				<div class="card-head">
@@ -687,9 +744,9 @@ margin-top:10px;
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- start Payment Details -->
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-md-12 col-sm-12">
 			<div class="card  card-box">
 				<div class="card-head">
@@ -837,6 +894,6 @@ margin-top:10px;
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </body>
 </html>

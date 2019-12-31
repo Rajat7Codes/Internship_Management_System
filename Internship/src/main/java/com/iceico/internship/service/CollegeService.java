@@ -25,3 +25,4 @@ public interface CollegeService {
 
 	public College getCollegeById(Long id) throws ResourceNotFoundException;
 }
+

@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -24,11 +23,7 @@
 		<div class="col-md-12">
 			<div class="card card-topline-darkgreen">
 				<div class="card-header  card-head pl-4" id="grad">
-					<strong class="card-title text-white">STUDENT ENTRY LIST</strong> <a
-						title="Edit" class="btn btn-success"
-						style="float: right; margin-right: 10px; margin-top: 2px;"
-						href="<c:url value='/admin/student/entry/new' />"><i></i>NEW
-						STUDENT ENTRY</a>
+					<strong class="card-title text-white">RECIEPT LIST</strong>
 				</div>
 				&nbsp;
 				<div class="card-body">
@@ -37,15 +32,10 @@
 						<thead>
 							<tr>
 								<th>Sr.No.</th>
-								<th>Name</th>
-								<th>College</th>
-								<th>Session</th>
-								<th>Duration</th>
-								<th>Type</th>
-								<th>Fees</th>
-								<th>Discount</th>
-								<th>Extension</th>
-								<th>Joining Date</th>
+								<th>Reciept_Id</th>
+								<th>Fees_Amount</th>
+								<th>Date</th>
+								<th>Pay_Mode</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -54,15 +44,14 @@
 								varStatus="ind">
 								<tr>
 									<td>${ind.index+1 }</td>
-									<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
+									<td>${stud.getFees().feesAmount }</td>
+									<%-- <td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
 									<td>${stud.getCollege().collegeName }</td>
-									<td>${stud.getInternshipSession().sessionName }</td>
-									<td>${stud.getInternshipDuration().duration }</td>
-									<td>${stud.getInternshipType().type }</td>
+									<td>${stud.getDepartment().departmentName }</td>
 									<td>${stud.feesAmount }</td>
-									<td>${stud.discount }</td>
-									<td>${stud.extension }</td>
-									<td>${stud.date }</td>
+									<td>${stud.paidFees }</td>
+									<td>${stud.balanceFees }</td> --%>
+
 
 									<td class="valigntop"><div class="btn-group">
 											<button
@@ -72,11 +61,11 @@
 											</button>
 											<ul class="dropdown-menu pull-left" role="menu">
 												<li><a title="Edit"
-													href="<c:url value='/admin/student/entry/edit/${stud.studentEntryId }' />"><i
-														class="fa fa-edit"></i>Edit</a></li>
+													href="<c:url value='/admin/fees/receipt/${stud.studentEntryId }' />"><i
+														class="fa fa-edit"></i>Receipt</a></li>
 												<li><a title="View"
-													href="<c:url value='/admin/student/entry/view/${stud.studentEntryId }'  />"><i
-														class="fa fa-eye"></i>View</a></li>
+													href="<c:url value='/admin/fees/pay/${stud.studentEntryId }' />"><i
+														class="fa fa-eye"></i>Pay</a></li>
 												<li><a title="Print"
 													href="<c:url value='/admin/student/entry/delete/${stud.studentEntryId }' />"><i
 														class="fa fa-print"></i>Delete</a></li>

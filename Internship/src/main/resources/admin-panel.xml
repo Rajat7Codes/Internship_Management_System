@@ -90,6 +90,16 @@
 			value="/WEB-INF/internship/view/admin-module/student-entry/newStudentEntry.jsp" />
 	</definition>
 
+	<definition name="viewStudentEntry"
+		extends="adminbase.definition">
+		<put-attribute name="title" value="Student Entry" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/student-entry/viewStudentEntry.jsp" />
+	</definition>
+
+
+
+
 	<!-- Internship Session Page -->
 	<definition name="internshipSession"
 		extends="adminbase.definition">
@@ -98,12 +108,43 @@
 			value="/WEB-INF/internship/view/admin-module/internshipPages/internshipSession.jsp" />
 	</definition>
 
+
+	<!-- Department Page -->
+	<definition name="department" extends="adminbase.definition">
+		<put-attribute name="title" value="Department" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/internshipPages/department.jsp" />
+	</definition>
+
 	<!-- Financial Year -->
 	<definition name="financialYear"
 		extends="adminbase.definition">
-		<put-attribute name="title" value="Session" />
+		<put-attribute name="title" value="Financial Year" />
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/other-pages/financialYear.jsp" />
 	</definition>
+
+
+	<!-- Fees Module -->
+	<definition name="feesList" extends="adminbase.definition">
+		<put-attribute name="title" value="fees" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/fees-pages/fees.jsp" />
+	</definition>
+
+	<definition name="payFees" extends="adminbase.definition">
+		<put-attribute name="title" value="fees" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/fees-pages/payFees.jsp" />
+	</definition>
+
+	<definition name="viewReceipt"
+		extends="adminbase.definition">
+		<put-attribute name="title" value="fees" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/fees-pages/viewReceipt.jsp" />
+	</definition>
+
+
 
 </tiles-definitions>
