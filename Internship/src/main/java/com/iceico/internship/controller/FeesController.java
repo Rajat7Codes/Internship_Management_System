@@ -61,18 +61,14 @@ public class FeesController {
 		modelMap.addAttribute("studentEntry", this.studentEntryService.getStudentEntryById(studentEntryId));
 		modelMap.addAttribute("fees", new Fees());
 		modelMap.addAttribute("payModeList", this.listHelper.getPaymentModeList());
-
 		modelMap.addAttribute("user", this.getPrincipal());
-
-		return "viewFees";
+		return "payFees";
 	}
 
 	@GetMapping("/admin/fees/receipt/{studentEntryId}")
 	public String getReceipt(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException {
 		modelMap.addAttribute("studentEntry", this.studentEntryService.getStudentEntryById(studentEntryId));
-		// modelMap.addAttribute("fees", this.feesService.getFeesById(feesId));
-		/* modelMap.addAttribute("fees", new Fees()); */
 		modelMap.addAttribute("user", this.getPrincipal());
 
 		return "viewReceipt";
@@ -84,16 +80,31 @@ public class FeesController {
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("feesList", this.feesService.getFeesList());
 			modelMap.addAttribute("user", this.getPrincipal());
-			return "fees";
+			return "feesList";
 		} else {
-			if (fees.getFeesId() == null) {
-				this.feesService.saveFees(fees);
-				modelMap.addAttribute("user", this.getPrincipal());
-			} else {
-				this.feesService.saveFees(fees);
-				modelMap.addAttribute("user", this.getPrincipal());
-			}
-			return "redirect:/admin/student/entry";
+//			System.out.println("paid amt ====>>>" + fees.getStudentEntry().getPaidFees());
+//			Float prevPaidAmt = fees.getStudentEntry().getPaidFees();
+
+//			Float paidAmt = fees.getFeesAmount();
+//			System.out.println("paidAmt====" + paidAmt);
+//
+//			StudentEntry entry = fees.getStudentEntry();
+//			System.out.println("fees amt===========" + entry.getFeesAmount());
+//
+//			Float totalAmt = fees.getStudentEntry().getFeesAmount();
+//			System.out.println("totalAmt====" + totalAmt);
+//			Float disAmt = fees.getStudentEntry().getDiscount();
+//			System.out.println("disAmt===" + disAmt);
+//
+//			Float finalAmt = totalAmt - disAmt;
+//			System.out.println("finalAmt====" + finalAmt);
+
+//			fees.getStudentEntry().setBalanceFees(finalAmt - paidAmt);
+//			fees.getStudentEntry().setPaidFees(prevPaidAmt + paidAmt);
+
+			this.feesService.saveFees(fees);
+			modelMap.addAttribute("user", this.getPrincipal());
+			return "redirect:/admin/fees";
 		}
 	}
 

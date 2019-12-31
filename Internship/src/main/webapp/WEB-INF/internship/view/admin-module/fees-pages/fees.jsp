@@ -23,11 +23,7 @@
 		<div class="col-md-12">
 			<div class="card card-topline-darkgreen">
 				<div class="card-header  card-head pl-4" id="grad">
-					<strong class="card-title text-white">STUDENT LIST</strong> <a
-						title="Edit" class="btn btn-success"
-						style="float: right; margin-right: 10px; margin-top: 2px;"
-						href="<c:url value='/admin/student/entry/new' />"><i></i>NEW
-						STUDENT ENTRY</a>
+					<strong class="card-title text-white">STUDENT LIST</strong>
 				</div>
 				&nbsp;
 				<div class="card-body">
@@ -36,10 +32,13 @@
 						<thead>
 							<tr>
 								<th>Sr.No.</th>
-								<th>Student Id</th>
+								<th>Student_Id</th>
 								<th>Name</th>
 								<th>College</th>
 								<th>Department</th>
+								<th>Fees</th>
+								<th>Paid_Fees</th>
+								<th>Balance_Fees</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -52,6 +51,9 @@
 									<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
 									<td>${stud.getCollege().collegeName }</td>
 									<td>${stud.getDepartment().departmentName }</td>
+									<td>${stud.feesAmount }</td>
+									<td>${stud.paidFees }</td>
+									<td>${stud.balanceFees }</td>
 
 
 									<td class="valigntop"><div class="btn-group">

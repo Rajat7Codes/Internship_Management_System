@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -98,15 +97,16 @@ public class StudentEntryController {
 			modelMap.addAttribute("user", this.getPrincipal());
 			return "studentEntry";
 		} else {
+			Float fees = studentEntry.getFeesAmount();
+			Float discount = studentEntry.getDiscount();
+			fees = fees - discount;
+			Float paid = 0f;
+			Float balFees = (fees - paid);
+			studentEntry.setBalanceFees(balFees);
+			studentEntry.setPaidFees(paid);
 
-			if (studentEntry.getStudentEntryId() == null) {
-				this.studentEntryService.saveStudentEntry(studentEntry);
-				modelMap.addAttribute("user", this.getPrincipal());
-			} else {
-				this.studentEntryService.saveStudentEntry(studentEntry);
-				modelMap.addAttribute("user", this.getPrincipal());
-			}
-
+			this.studentEntryService.saveStudentEntry(studentEntry);
+			modelMap.addAttribute("user", this.getPrincipal());
 			return "redirect:/admin/student/entry";
 		}
 	}
@@ -126,12 +126,10 @@ public class StudentEntryController {
 		return "newStudentEntry";
 	}
 
-	
-	
 	@GetMapping("/admin/student/entry/view/{studentEntryId}")
 	public String viewStudentEntry(@PathVariable("studentEntryId") @Valid Long studentEntryId, ModelMap modelMap,
 			Locale locale) throws ResourceNotFoundException {
-		
+
 		modelMap.addAttribute("studentEntry", this.studentEntryService.getStudentEntryById(studentEntryId));
 		modelMap.addAttribute("collegeList", this.collegeService.getCollegeList());
 		modelMap.addAttribute("internTypeList", this.internshipTypeService.getInternshipTypeList());
@@ -142,10 +140,6 @@ public class StudentEntryController {
 
 		return "viewStudentEntry";
 	}
-	
-	
-
-
 
 	@GetMapping("/admin/student/entry/delete/{studentEntryId}")
 	public String deleteStudentEntry(@PathVariable("studentEntryId") @Valid Long studentEntryId, ModelMap modelMap,

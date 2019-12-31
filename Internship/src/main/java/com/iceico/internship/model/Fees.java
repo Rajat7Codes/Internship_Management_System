@@ -31,7 +31,7 @@ import com.iceico.internship.audit.Auditable;
  *
  */
 @Entity
-@Table(name = "fees")
+@Table(name = "tab_fees")
 @EntityListeners(AuditingEntityListener.class)
 public class Fees extends Auditable<String> implements Serializable {
 
@@ -54,19 +54,10 @@ public class Fees extends Auditable<String> implements Serializable {
 	@Column(name = "fees_amount")
 	private Double feesAmount;
 
-	@Column(name = "paid_fees")
-	private Double paidFees;
-
-	@Column(name = "balance_fees")
-	private Double balanceFees;
-
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "date")
 	private Date date;
-
-	@Column(name = "amount")
-	private Double amount;
 
 	@Column(name = "pay_mode")
 	private String payMode;
@@ -78,7 +69,7 @@ public class Fees extends Auditable<String> implements Serializable {
 	private Integer accountNumber;
 
 	@Column(name = "account_name")
-	private Integer accountName;
+	private String accountName;
 
 	@Column(name = "ifsc_code")
 	private String ifscCode;
@@ -87,13 +78,18 @@ public class Fees extends Auditable<String> implements Serializable {
 	private String branch;
 
 	@Column(name = "cheque")
-	private String cheque;
+	private Integer cheque;
 
 	@Column(name = "dd_number")
 	private String ddNumber;
 
 	@Column(name = "dd_bank")
 	private String ddBank;
+
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "dd_date")
+	private Date ddDate;
 
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "studentEntryId", insertable = true, nullable = true, updatable = true)
@@ -103,10 +99,7 @@ public class Fees extends Auditable<String> implements Serializable {
 	/**
 	 * @param feesId
 	 * @param feesAmount
-	 * @param paidFees
-	 * @param balanceFees
 	 * @param date
-	 * @param amount
 	 * @param payMode
 	 * @param bankName
 	 * @param accountNumber
@@ -116,18 +109,16 @@ public class Fees extends Auditable<String> implements Serializable {
 	 * @param cheque
 	 * @param ddNumber
 	 * @param ddBank
+	 * @param ddDate
 	 * @param studentEntry
 	 */
-	public Fees(Long feesId, Double feesAmount, Double paidFees, Double balanceFees, Date date, Double amount,
-			String payMode, String bankName, Integer accountNumber, Integer accountName, String ifscCode, String branch,
-			String cheque, String ddNumber, String ddBank, StudentEntry studentEntry) {
+	public Fees(Long feesId, Double feesAmount, Date date, String payMode, String bankName, Integer accountNumber,
+			String accountName, String ifscCode, String branch, Integer cheque, String ddNumber, String ddBank,
+			Date ddDate, StudentEntry studentEntry) {
 		super();
 		this.feesId = feesId;
 		this.feesAmount = feesAmount;
-		this.paidFees = paidFees;
-		this.balanceFees = balanceFees;
 		this.date = date;
-		this.amount = amount;
 		this.payMode = payMode;
 		this.bankName = bankName;
 		this.accountNumber = accountNumber;
@@ -137,6 +128,7 @@ public class Fees extends Auditable<String> implements Serializable {
 		this.cheque = cheque;
 		this.ddNumber = ddNumber;
 		this.ddBank = ddBank;
+		this.ddDate = ddDate;
 		this.studentEntry = studentEntry;
 	}
 
@@ -169,34 +161,6 @@ public class Fees extends Auditable<String> implements Serializable {
 	}
 
 	/**
-	 * @return the paidFees
-	 */
-	public Double getPaidFees() {
-		return paidFees;
-	}
-
-	/**
-	 * @param paidFees the paidFees to set
-	 */
-	public void setPaidFees(Double paidFees) {
-		this.paidFees = paidFees;
-	}
-
-	/**
-	 * @return the balanceFees
-	 */
-	public Double getBalanceFees() {
-		return balanceFees;
-	}
-
-	/**
-	 * @param balanceFees the balanceFees to set
-	 */
-	public void setBalanceFees(Double balanceFees) {
-		this.balanceFees = balanceFees;
-	}
-
-	/**
 	 * @return the date
 	 */
 	public Date getDate() {
@@ -208,20 +172,6 @@ public class Fees extends Auditable<String> implements Serializable {
 	 */
 	public void setDate(Date date) {
 		this.date = date;
-	}
-
-	/**
-	 * @return the amount
-	 */
-	public Double getAmount() {
-		return amount;
-	}
-
-	/**
-	 * @param amount the amount to set
-	 */
-	public void setAmount(Double amount) {
-		this.amount = amount;
 	}
 
 	/**
@@ -269,14 +219,14 @@ public class Fees extends Auditable<String> implements Serializable {
 	/**
 	 * @return the accountName
 	 */
-	public Integer getAccountName() {
+	public String getAccountName() {
 		return accountName;
 	}
 
 	/**
 	 * @param accountName the accountName to set
 	 */
-	public void setAccountName(Integer accountName) {
+	public void setAccountName(String accountName) {
 		this.accountName = accountName;
 	}
 
@@ -311,14 +261,14 @@ public class Fees extends Auditable<String> implements Serializable {
 	/**
 	 * @return the cheque
 	 */
-	public String getCheque() {
+	public Integer getCheque() {
 		return cheque;
 	}
 
 	/**
 	 * @param cheque the cheque to set
 	 */
-	public void setCheque(String cheque) {
+	public void setCheque(Integer cheque) {
 		this.cheque = cheque;
 	}
 
@@ -348,6 +298,20 @@ public class Fees extends Auditable<String> implements Serializable {
 	 */
 	public void setDdBank(String ddBank) {
 		this.ddBank = ddBank;
+	}
+
+	/**
+	 * @return the ddDate
+	 */
+	public Date getDdDate() {
+		return ddDate;
+	}
+
+	/**
+	 * @param ddDate the ddDate to set
+	 */
+	public void setDdDate(Date ddDate) {
+		this.ddDate = ddDate;
 	}
 
 	/**

@@ -89,7 +89,7 @@
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/student-entry/newStudentEntry.jsp" />
 	</definition>
-	
+
 	<definition name="viewStudentEntry"
 		extends="adminbase.definition">
 		<put-attribute name="title" value="Student Entry" />
@@ -110,8 +110,7 @@
 
 
 	<!-- Department Page -->
-	<definition name="department"
-		extends="adminbase.definition">
+	<definition name="department" extends="adminbase.definition">
 		<put-attribute name="title" value="Department" />
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/internshipPages/department.jsp" />
@@ -133,10 +132,10 @@
 			value="/WEB-INF/internship/view/admin-module/fees-pages/fees.jsp" />
 	</definition>
 
-	<definition name="viewFees" extends="adminbase.definition">
+	<definition name="payFees" extends="adminbase.definition">
 		<put-attribute name="title" value="fees" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/fees-pages/viewFees.jsp" />
+			value="/WEB-INF/internship/view/admin-module/fees-pages/payFees.jsp" />
 	</definition>
 
 	<definition name="viewReceipt"

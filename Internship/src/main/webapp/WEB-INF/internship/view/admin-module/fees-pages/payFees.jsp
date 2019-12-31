@@ -37,34 +37,46 @@ label {
 
 					<div class="card-body">
 						<div class="row form-group">
+							<form:input path="studentEntry" class="form-control"
+								value="${studentEntry.studentEntryId }" type="hidden" />
+
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-								<form:label path="feesAmount">First Name</form:label>
+								<label>First Name</label> <input
+									value="${studentEntry.firstName }" name="firstName"
+									id="firstName" class="form-control" readonly="readonly" />
+							</div>
+
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<label>Middle Name</label> <input
+									value="${studentEntry.middleName }" name="middleName"
+									id="middleName" class="form-control" readonly="readonly" />
+							</div>
+
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<label>Last Name</label> <input
+									value="${studentEntry.lastName }" name="lastName" id="lastName"
+									class="form-control" readonly="readonly" />
+							</div>
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<label>College</label> <input name="collegeName"
+									value="${studentEntry.getCollege().collegeName }"
+									id="collegeName" class="form-control" readonly="readonly" />
+							</div>
+
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<form:label path="studentEntry">Department</form:label>
+								<input name="type"
+									value="${studentEntry.getDepartment().departmentName }"
+									id="type" class="form-control mb-3" readonly="readonly" />
+							</div>
+
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<form:label path="feesAmount">Paid amount</form:label>
 								<form:input path="feesAmount" name="feesAmount" id="feesAmount"
 									class="form-control" placeholder="fees Amount" />
 								<form:errors path="feesAmount"></form:errors>
 							</div>
 
-							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-								<form:label path="paidFees">Paid Fees</form:label>
-								<form:input path="paidFees" name="paidFees" id="paidFees"
-									class="form-control" placeholder="Paid Fees" />
-								<form:errors path="paidFees"></form:errors>
-							</div>
-
-							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-								<form:label path="balanceFees">Balance Fees</form:label>
-								<form:input path="balanceFees" name="balanceFees"
-									id="balanceFees" class="form-control"
-									placeholder="Balance Fees" />
-								<form:errors path="balanceFees"></form:errors>
-							</div>
-
-							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-								<form:label path="amount">Amount</form:label>
-								<form:input path="amount" name="amount" id="amount"
-									class="form-control" placeholder="amount" />
-								<form:errors path="amount"></form:errors>
-							</div>
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
 								<form:label path="date">Date</form:label>
@@ -102,17 +114,15 @@ label {
 
 						<div class="card-body">
 							<div class="row form-group">
-
-
 								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-									<form:label path="bankName">Bank Details</form:label>
+									<form:label path="bankName">Bank Name</form:label>
 									<form:input path="bankName" name="bankName" id="bankName"
-										class="form-control" placeholder="Bank Details" />
+										class="form-control" placeholder="Bank Name" />
 									<form:errors path="bankName"></form:errors>
 								</div>
 
 								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-									<form:label path="accountNumber">Account Number</form:label>
+									<form:label path="accountNumber">Account#</form:label>
 									<form:input path="accountNumber" name="accountNumber"
 										id="accountNumber" class="form-control"
 										placeholder="Account Number" />
@@ -142,7 +152,7 @@ label {
 								</div>
 
 								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-									<form:label path="cheque">Cheque</form:label>
+									<form:label path="cheque">Cheque#</form:label>
 									<form:input path="cheque" name="cheque" id="cheque"
 										class="form-control" placeholder="Cheque Number" />
 									<form:errors path="cheque"></form:errors>
@@ -171,10 +181,24 @@ label {
 						<div class="card-body">
 							<div class="row form-group">
 								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-									<form:label path="ddNumber">DD</form:label>
+									<form:label path="ddNumber">DD#</form:label>
 									<form:input path="ddNumber" name="ddNumber" id="ddNumber"
 										class="form-control" placeholder="DD Number" />
 									<form:errors path="ddNumber"></form:errors>
+								</div>
+
+								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+									<form:label path="ddBank">DD Bank</form:label>
+									<form:input path="ddBank" name="ddBank" id="ddBank"
+										class="form-control" placeholder="DD Bank" />
+									<form:errors path="ddBank"></form:errors>
+								</div>
+
+								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+									<form:label path="ddDate">Date</form:label>
+									<form:input type="date" path="ddDate" name="ddDate" id="ddDate"
+										class="form-control" placeholder="DD Date" />
+									<form:errors path="ddDate"></form:errors>
 								</div>
 							</div>
 						</div>
@@ -197,7 +221,7 @@ label {
 		function bankSelectCheck(bankSelect) {
 
 			payMode = document.getElementById("payMode").value;
-			alert("payMode ===>" + payMode);
+			//alert("payMode ===>" + payMode);
 
 			if (payMode == "Cheque") {
 				document.getElementById("bankDetails").style.display = "block";
