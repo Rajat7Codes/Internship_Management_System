@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.Fees;
+import com.iceico.internship.model.StudentEntry;
 import com.iceico.internship.service.FeesService;
 import com.iceico.internship.service.StudentEntryService;
 import com.iceico.internship.util.ListHelper;
@@ -62,16 +63,36 @@ public class FeesController {
 		modelMap.addAttribute("fees", new Fees());
 		modelMap.addAttribute("payModeList", this.listHelper.getPaymentModeList());
 		modelMap.addAttribute("user", this.getPrincipal());
-		return "payFees";
+		return "payFeesNew";
 	}
 
-	@GetMapping("/admin/fees/receipt/{studentEntryId}")
+	@GetMapping("/admin/fees/receipt/view/{studentEntryId}")
 	public String getReceipt(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException {
 		modelMap.addAttribute("studentEntry", this.studentEntryService.getStudentEntryById(studentEntryId));
+		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
+		modelMap.addAttribute("feesList", this.feesService.getFeesList());
 		modelMap.addAttribute("user", this.getPrincipal());
-
 		return "viewReceipt";
+	}
+
+	@GetMapping("/admin/fees/receipt/print/{feesId}")
+	public String printReciept(@PathVariable("feesId") Long feesId, ModelMap modelMap, Locale locale)
+			throws ResourceNotFoundException {
+		modelMap.addAttribute("fees", this.feesService.getFeesById(feesId));
+		modelMap.addAttribute("user", this.getPrincipal());
+		return "printReciept";
+	}
+
+	@GetMapping("/admin/fees/receipt/edit/{feesId}")
+	public String editReciept(@PathVariable("feesId") Long feesId, ModelMap modelMap, Locale locale)
+			throws ResourceNotFoundException {
+		Fees fees = this.feesService.getFeesById(feesId);
+		modelMap.addAttribute("studentEntry", fees.getStudentEntry());
+		modelMap.addAttribute("payModeList", this.listHelper.getPaymentModeList());
+		modelMap.addAttribute("fees", fees);
+		modelMap.addAttribute("user", this.getPrincipal());
+		return "payFeesNew";
 	}
 
 	@PostMapping("/admin/fees/save")
@@ -82,25 +103,17 @@ public class FeesController {
 			modelMap.addAttribute("user", this.getPrincipal());
 			return "feesList";
 		} else {
-//			System.out.println("paid amt ====>>>" + fees.getStudentEntry().getPaidFees());
-//			Float prevPaidAmt = fees.getStudentEntry().getPaidFees();
+			Double prevPaidAmt = fees.getStudentEntry().getPaidFees();
+			System.out.println("student module paid fees" + prevPaidAmt);
 
-//			Float paidAmt = fees.getFeesAmount();
-//			System.out.println("paidAmt====" + paidAmt);
-//
-//			StudentEntry entry = fees.getStudentEntry();
-//			System.out.println("fees amt===========" + entry.getFeesAmount());
-//
-//			Float totalAmt = fees.getStudentEntry().getFeesAmount();
-//			System.out.println("totalAmt====" + totalAmt);
-//			Float disAmt = fees.getStudentEntry().getDiscount();
-//			System.out.println("disAmt===" + disAmt);
-//
-//			Float finalAmt = totalAmt - disAmt;
-//			System.out.println("finalAmt====" + finalAmt);
+			Double totalBalAmt = fees.getStudentEntry().getBalanceFees();
+			System.out.println("Student Entry balance fees amt=====>" + totalBalAmt);
 
-//			fees.getStudentEntry().setBalanceFees(finalAmt - paidAmt);
-//			fees.getStudentEntry().setPaidFees(prevPaidAmt + paidAmt);
+			Double paidAmt = fees.getFeesAmount();
+			System.out.println("fees modulee paid amt=====>" + paidAmt);
+
+			fees.getStudentEntry().setPaidFees(prevPaidAmt + paidAmt);
+			fees.getStudentEntry().setBalanceFees(totalBalAmt - paidAmt);
 
 			this.feesService.saveFees(fees);
 			modelMap.addAttribute("user", this.getPrincipal());
