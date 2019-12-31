@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.Fees;
+import com.iceico.internship.model.StudentEntry;
 import com.iceico.internship.service.FeesService;
 import com.iceico.internship.service.StudentEntryService;
 import com.iceico.internship.util.ListHelper;
@@ -62,10 +63,10 @@ public class FeesController {
 		modelMap.addAttribute("fees", new Fees());
 		modelMap.addAttribute("payModeList", this.listHelper.getPaymentModeList());
 		modelMap.addAttribute("user", this.getPrincipal());
-		return "payFees";
+		return "payFeesNew";
 	}
 
-	@GetMapping("/admin/fees/receipt/{studentEntryId}")
+	@GetMapping("/admin/fees/receipt/view/{studentEntryId}")
 	public String getReceipt(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException {
 		modelMap.addAttribute("studentEntry", this.studentEntryService.getStudentEntryById(studentEntryId));
@@ -88,9 +89,12 @@ public class FeesController {
 	@GetMapping("/admin/fees/receipt/edit/{feesId}")
 	public String editReciept(@PathVariable("feesId") Long feesId, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException {
-
+		Fees fees = this.feesService.getFeesById(feesId);
+		modelMap.addAttribute("studentEntry", fees.getStudentEntry());
+		modelMap.addAttribute("payModeList", this.listHelper.getPaymentModeList());
+		modelMap.addAttribute("fees", fees);
 		modelMap.addAttribute("user", this.getPrincipal());
-		return "payFees";
+		return "payFeesNew";
 	}
 
 	@PostMapping("/admin/fees/save")
