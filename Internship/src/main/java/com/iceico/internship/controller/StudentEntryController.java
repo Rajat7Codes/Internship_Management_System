@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -124,6 +125,27 @@ public class StudentEntryController {
 
 		return "newStudentEntry";
 	}
+
+	
+	
+	@GetMapping("/admin/student/entry/view/{studentEntryId}")
+	public String viewStudentEntry(@PathVariable("studentEntryId") @Valid Long studentEntryId, ModelMap modelMap,
+			Locale locale) throws ResourceNotFoundException {
+		
+		modelMap.addAttribute("studentEntry", this.studentEntryService.getStudentEntryById(studentEntryId));
+		modelMap.addAttribute("collegeList", this.collegeService.getCollegeList());
+		modelMap.addAttribute("internTypeList", this.internshipTypeService.getInternshipTypeList());
+		modelMap.addAttribute("internSessionList", this.internshipSessionService.getSessionList());
+		modelMap.addAttribute("internDurList", this.internshipDurationService.getInternshipDurationList());
+		modelMap.addAttribute("fyList", this.financialYearService.getFinancialYearList());
+		modelMap.addAttribute("user", this.getPrincipal());
+
+		return "viewStudentEntry";
+	}
+	
+	
+
+
 
 	@GetMapping("/admin/student/entry/delete/{studentEntryId}")
 	public String deleteStudentEntry(@PathVariable("studentEntryId") @Valid Long studentEntryId, ModelMap modelMap,

@@ -42,9 +42,11 @@ public class CollegeServiceImpl implements CollegeService {
 		this.collegeRepository.deleteById(id);
 	}
 
+
 	@Override
 	public List<College> getCollegeList() {
 		return this.collegeRepository.findAll();
+
 	}
 
 	@Override
