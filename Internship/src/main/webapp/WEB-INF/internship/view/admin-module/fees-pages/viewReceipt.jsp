@@ -55,9 +55,7 @@
 									<td>${stud.getCollege().collegeName }</td>
 									<td>${stud.date }</td>
 							<c:forEach var="stud" items="${studentEntryList }"
-=======
 							<c:forEach var="fees" items="${studentEntry.getFees() }"
->>>>>>> f92016b01d5044e05e1382e04ff669c3501b4ebd
 								varStatus="ind">
 								<tr>
 									<td>${ind.index+1 }</td>
