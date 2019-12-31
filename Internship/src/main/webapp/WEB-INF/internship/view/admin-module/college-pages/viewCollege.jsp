@@ -53,10 +53,13 @@
 											</form:label>
 										</div>
 										<div class="col-md-8 col-sm-8 col-lg-8 col-12">
-											<form:select path="internshipSession"
+											<input name="collegeName"
+												value="${college.getInternshipSession().sessionName }"
+												id="collegeName" class="form-control" readonly="readonly" />
+											<%-- <form:select path="internshipSession"
 												name="internshipSession" itemLabel="sessionName"
 												itemValue="sessionId" id="internshipSession"
-												items="${internSessionList}" class="form-control" />
+												items="${internSessionList}" class="form-control" /> --%>
 											<form:errors path="internshipSession" class="errors" />
 										</div>
 									</div>

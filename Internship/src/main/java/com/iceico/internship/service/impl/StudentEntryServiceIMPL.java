@@ -5,11 +5,15 @@ package com.iceico.internship.service.impl;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
+import com.iceico.internship.model.FinancialYear;
 import com.iceico.internship.model.StudentEntry;
 import com.iceico.internship.repository.StudentEntryRepository;
 import com.iceico.internship.service.StudentEntryService;
@@ -34,6 +38,13 @@ public class StudentEntryServiceIMPL implements StudentEntryService {
 	@Autowired
 	private StudentEntryRepository studentEntryRepository;
 
+	@Autowired
+	private EntityManager entityManager;
+
+	private Session getSession() {
+		return entityManager.unwrap(Session.class);
+	}
+
 	@Override
 	public void saveStudentEntry(StudentEntry studentEntry) {
 		this.studentEntryRepository.save(studentEntry);
@@ -55,6 +66,11 @@ public class StudentEntryServiceIMPL implements StudentEntryService {
 	@Override
 	public void deleteStudentEntry(Long studentEntryId) {
 		this.studentEntryRepository.deleteById(studentEntryId);
+	}
+
+	@Override
+	public Double getTotalIncome() {
+		return (Double) this.getSession().createQuery("select sum(feesAmount) from StudentEntry").uniqueResult();
 	}
 
 }
