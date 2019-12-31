@@ -15,7 +15,7 @@
 	<table style="width: 100%;">
 		<tr>
 			<td>
-				<img width="230px" src="./Iceico_logo.png" alt="">
+				<img width="230px" src="${pageContext.request.contextPath }/static/img/Iceico_logo.png">
 			</td>
 			<td style="text-align: right;">
 				Mo. 8007004287, 8485869588 <br>
@@ -25,19 +25,19 @@
 			</td>
 		</tr>
 	</table>
-	<hr style="margin-bottom: 0.1em;"/> 
-	<hr style="margin-top: 0.1em;"/>
+	<hr style="background:black; margin-bottom: 0.1em;"/> 
+	<hr style="background:black; margin-top: 0.1em;"/>
 	<table style="width: 100%;">
 		<tr>
-			<td>Sr. No.</td>
-			<td style="text-align: right;" >Date</td>
-			<td style="border-bottom: 1px solid black;"> &nbsp; &nbsp;</td>
+			<td>Sr. No. ${ fees.feesId }</td>
+			<td style="display: block; float: left; width: 55%; text-align: right;" >Date</td>
+			<td style="display: block; float: right; width: 40%; border-bottom: 1px solid black;">${ fees.date }</td>
 		</tr>
 	</table>
 	<table style="width: 100%;">
 		<tr>
-			<td style="display: block; float: left; width: 31%;">Received with thanks from</td>
-			<td style="display: block; float: right; width: 68%; border-bottom: 1px solid black;"> &nbsp; </td>
+			<td style="display: block; float: left; width: 31%;">Received with thanks from </td>
+			<td style="display: block; float: right; width: 68%; border-bottom: 1px solid black;"> &nbsp; ${ studentEntry.firstName }</td>
 		</tr>
 		<br>
 		<tr>
@@ -55,17 +55,17 @@
 	<table style="width: 100%;">
 		<tr>
 			<td style="display: block; float: left; width: 30%;">By Cash / D.D. / Cheque No.</td>
-			<td style="display: block; float: left; width: 18%; border-bottom: 1px solid black;"> &nbsp; </td>
+			<td style="display: block; float: left; width: 18%; border-bottom: 1px solid black;"> &nbsp; ${ fees.payMode } </td>
 			<td style="display: block; float: left; width: 9%;">of dates</td>
-			<td style="display: block; float: left; width: 15%; border-bottom: 1px solid black;"> &nbsp; </td>
+			<td style="display: block; float: left; width: 15%; border-bottom: 1px solid black;"> &nbsp; ${ fees.date } </td>
 			<td style="display: block; float: left; width: 6%;">Bank</td>
-			<td style="display: block; float: left; width: 20%; border-bottom: 1px solid black;"> &nbsp; </td>
+			<td style="display: block; float: left; width: 20%; border-bottom: 1px solid black;"> &nbsp; ${ fees.bankName } </td>
 		</tr>
 	</table>
 	<table style="width: 100%;">
 		<tr>
 			<td style="display: block; float: left; width: 30%;">as Part / Full payment of</td>
-			<td style="display: block; float: left; width: 69%; border-bottom: 1px solid black;"> &nbsp; </td>
+			<td style="display: block; float: left; width: 69%; border-bottom: 1px solid black;"> &nbsp; ${ fees.feesAmount }  </td>
 		</tr>
 		<br>
 		<tr>
@@ -76,12 +76,8 @@
 	<table style="width: 100%;">
 		<tr>
 			<td style="float: left;"> Rs. </td>
-			<td style="float: left; border-bottom: 1px solid black;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
+			<td style="float: left; border-bottom: 1px solid black;"> ${ fees.feesAmount } </td>
 			<td style=" float: right;"> For. ICEICO TECHNOLOGIES PVT. LTD. </td>
-		</tr>
-		
-		<tr>
-			<td> <sub> (Subject to realisation of cheque / D.D.) </sub> </td>
 		</tr>
 	</table>
 </body>

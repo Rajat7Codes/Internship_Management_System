@@ -82,8 +82,9 @@ public class FeesController {
 	public String printReciept(@PathVariable("feesId") Long feesId, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException {
 		modelMap.addAttribute("fees", this.feesService.getFeesById(feesId));
+		modelMap.addAttribute("studentEntry", this.feesService.getFeesById(feesId).getStudentEntry());
 		modelMap.addAttribute("user", this.getPrincipal());
-		return "printReciept";
+		return "printReceipt";
 	}
 
 	@GetMapping("/admin/fees/receipt/edit/{feesId}")
