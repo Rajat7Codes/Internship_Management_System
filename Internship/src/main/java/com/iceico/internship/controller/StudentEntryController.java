@@ -97,11 +97,11 @@ public class StudentEntryController {
 			modelMap.addAttribute("user", this.getPrincipal());
 			return "studentEntry";
 		} else {
-			Float fees = studentEntry.getFeesAmount();
-			Float discount = studentEntry.getDiscount();
+			Double fees = studentEntry.getFeesAmount();
+			Double discount = studentEntry.getDiscount();
 			fees = fees - discount;
-			Float paid = 0f;
-			Float balFees = (fees - paid);
+			Double paid = 0d;
+			Double balFees = (fees - paid);
 			studentEntry.setBalanceFees(balFees);
 			studentEntry.setPaidFees(paid);
 

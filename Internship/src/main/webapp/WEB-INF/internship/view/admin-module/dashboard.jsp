@@ -118,81 +118,74 @@
 				<!-- /.info-box -->
 			</div>
 			<!-- /.col -->
+
+
 			<!-- STUDENT LIST -->
+
 			<div class="row">
-				<div class="col-12">
-					<div class="card card-topline-darkgreen">
-						<div class="card-header  card-head pl-4" id="grad">
-							<strong class="card-title text-white">ACTIVE YEAR
-								STUDENTS LIST</strong>
-							<%-- <a title="Edit" class="btn btn-success"
-								style="float: right; margin-right: 10px; margin-top: 2px;"
-								href="<c:url value='/admin/student/entry/new' />"><i></i>NEW
-								STUDENT ENTRY</a> --%>
+				<div class="col-md-12 col-sm-12">
+					<div class="card  card-box">
+						<div class="card-head">
+							<header>ACTIVE YEAR STUDENTS LIST</header>
+							<div class="tools">
+								<a class="fa fa-repeat btn-color box-refresh"
+									href="javascript:;"></a> <a
+									class="t-collapse btn-color fa fa-chevron-down"
+									href="javascript:;"></a> <a
+									class="t-close btn-color fa fa-times" href="javascript:;"></a>
+							</div>
 						</div>
-						&nbsp;
-						<div class="card-body">
-							<table id="bootstrap-data-table-export"
-								class="table table-striped table-responsive">
-								<thead>
-									<tr style="color: black;">
-										<th>Sr.No.</th>
-										<th>Name</th>
-										<th>College</th>
-										<th>Session</th>
-										<th>Duration</th>
-										<th>Type</th>
-										<th>Fees</th>
-										<th>Discount</th>
-										<th>Extension</th>
-										<th>Joining Date</th>
-
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach var="stud" items="${studentEntryList }"
-										varStatus="ind">
-										<tr>
-											<td>${ind.index+1 }</td>
-											<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
-											<td>${stud.getCollege().collegeName }</td>
-											<td>${stud.getInternshipSession().sessionName }</td>
-											<td>${stud.getInternshipDuration().duration }</td>
-											<td>${stud.getInternshipType().type }</td>
-											<td>${stud.feesAmount }</td>
-											<td>${stud.discount }</td>
-											<td>${stud.extension }</td>
-											<td>${stud.date }</td>
-
-											<%-- <td class="valigntop"><div class="btn-group">
-											<button
-												class="btn btn-xs btn-success dropdown-toggle no-margin"
-												type="button" data-toggle="dropdown" aria-expanded="false">
-												Actions <i class="fa fa-angle-down"></i>
-											</button>
-											<ul class="dropdown-menu pull-left" role="menu">
-												<li><a title="Edit"
-													href="<c:url value='/admin/student/entry/edit/${stud.studentEntryId }' />"><i
-														class="fa fa-edit"></i>Edit</a></li>
-												<li><a title="View"
-													href="<c:url value='/admin/student/entry/view/${stud.studentEntryId }'  />"><i
-														class="fa fa-eye"></i>View</a></li>
-												<li><a title="Print"
-													href="<c:url value='/admin/student/entry/delete/${stud.studentEntryId }' />"><i
-														class="fa fa-print"></i>Delete</a></li>
-											</ul>
-										</div></td> --%>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
+						<div class="card-body ">
+							<div class="table-wrap">
+								<div
+									class="table-responsive tblHeightSet small-slimscroll-style">
+									<table class="table display product-overview mb-30"
+										id="support_table">
+										<thead>
+											<tr>
+												<th>Sr.No.</th>
+												<th>Name</th>
+												<th>College</th>
+												<th>Session</th>
+												<th>Duration</th>
+												<th>Type</th>
+												<th>Fees</th>
+												<th>Discount</th>
+												<th>Extension</th>
+												<th>Joining Date</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach var="stud" items="${studentEntryList }"
+												varStatus="ind">
+												<tr>
+													<td>${ind.index+1 }</td>
+													<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
+													<td>${stud.getCollege().collegeName }</td>
+													<td>${stud.getInternshipSession().sessionName }</td>
+													<td>${stud.getInternshipDuration().duration }</td>
+													<td>${stud.getInternshipType().type }</td>
+													<td>${stud.feesAmount }</td>
+													<td>${stud.discount }</td>
+													<td>${stud.extension }</td>
+													<td>${stud.date }</td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
+
+
 		</div>
 	</div>
+
+
 	<!-- end widget -->
 	<!-- chart start -->
 	<div class="row">

@@ -69,8 +69,8 @@ public class StudentEntryServiceIMPL implements StudentEntryService {
 	}
 
 	@Override
-	public Float getTotalFeesAmmount() {
-		return (Float) this.getSession().createQuery("select sum(feesAmount) from StudentEntry").uniqueResult();
+	public Double getTotalIncome() {
+		return (Double) this.getSession().createQuery("select sum(feesAmount) from StudentEntry").uniqueResult();
 	}
 
 }

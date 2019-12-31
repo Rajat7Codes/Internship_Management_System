@@ -23,7 +23,7 @@ public interface StudentEntryService {
 
 	public void deleteStudentEntry(Long studentEntryId);
 	
-	public Float getTotalIncome();
+	public Double getTotalIncome();
 	
 	
 }
