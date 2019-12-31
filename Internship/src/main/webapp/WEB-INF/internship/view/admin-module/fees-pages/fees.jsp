@@ -65,13 +65,13 @@
 											<ul class="dropdown-menu pull-left" role="menu">
 												<li><a title="Edit"
 													href="<c:url value='/admin/fees/receipt/view/${stud.studentEntryId }' />"><i
-														class="fa fa-edit"></i>View Receipt</a></li>
-												<li><a title="Edit"
+														class="fa fa-eye"></i>View Receipt</a></li>
+												<%-- <li><a title="Edit"
 													href="<c:url value='/admin/fees/receipt/print/${stud.studentEntryId }' />"><i
-														class="fa fa-edit"></i>Print Receipt</a></li>
+														class="fa fa-edit"></i>Print Receipt</a></li> --%>
 												<li><a title="View"
 													href="<c:url value='/admin/fees/pay/${stud.studentEntryId }' />"><i
-														class="fa fa-eye"></i>Pay</a></li>
+														class="fa fa-rupee"></i>Pay</a></li>
 												<%-- <li><a title="Print"
 													href="<c:url value='/admin/student/entry/delete/${stud.studentEntryId }' />"><i
 														class="fa fa-print"></i>Delete</a></li> --%>

@@ -114,50 +114,27 @@ label {
 
 						<div class="card-body">
 							<div class="row form-group">
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-									<form:label path="bankName">Bank Name</form:label>
-									<form:input path="bankName" name="bankName" id="bankName"
+								<%-- <div class="col-md-4 col-sm-4 col-lg-4 col-12">
+									<form:label path="chequeBank">Bank Name</form:label>
+									<form:input path="chequeBank" name="chequeBank" id="chequeBank"
 										class="form-control" placeholder="Bank Name" />
-									<form:errors path="bankName"></form:errors>
-								</div>
+									<form:errors path="chequeBank"></form:errors>
+								</div> --%>
 
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-									<form:label path="accountNumber">Account#</form:label>
-									<form:input path="accountNumber" name="accountNumber"
-										id="accountNumber" class="form-control"
-										placeholder="Account Number" />
-									<form:errors path="accountNumber"></form:errors>
-								</div>
 
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-									<form:label path="accountName">Account Name</form:label>
-									<form:input path="accountName" name="accountName"
-										id="accountName" class="form-control"
-										placeholder="Account Name" />
-									<form:errors path="accountName"></form:errors>
-								</div>
-
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-									<form:label path="ifscCode">Ifsc Code</form:label>
-									<form:input path="ifscCode" name="ifscCode" id="ifscCode"
-										class="form-control" placeholder="Ifsc Code" />
-									<form:errors path="ifscCode"></form:errors>
-								</div>
-
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-									<form:label path="branch">Branch</form:label>
-									<form:input path="branch" name="branch" id="branch"
-										class="form-control" placeholder="branch Name" />
-									<form:errors path="branch"></form:errors>
-								</div>
-
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<div class="col-md-6 col-sm-6 col-lg-6 col-12">
 									<form:label path="cheque">Cheque#</form:label>
 									<form:input path="cheque" name="cheque" id="cheque"
 										class="form-control" placeholder="Cheque Number" />
 									<form:errors path="cheque"></form:errors>
 								</div>
 
+								<div class="col-md-6 col-sm-6 col-lg-6 col-12">
+									<form:label path="chequeDate">Cheque Date</form:label>
+									<form:input path="chequeDate" type="date" name="chequeDate"
+										id="chequeDate" class="form-control" placeholder="Cheque Date" />
+									<form:errors path="chequeDate"></form:errors>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -180,21 +157,21 @@ label {
 
 						<div class="card-body">
 							<div class="row form-group">
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<div class="col-md-6 col-sm-6 col-lg-6 col-12">
 									<form:label path="ddNumber">DD#</form:label>
 									<form:input path="ddNumber" name="ddNumber" id="ddNumber"
 										class="form-control" placeholder="DD Number" />
 									<form:errors path="ddNumber"></form:errors>
 								</div>
 
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<%-- <div class="col-md-4 col-sm-4 col-lg-4 col-12">
 									<form:label path="ddBank">DD Bank</form:label>
 									<form:input path="ddBank" name="ddBank" id="ddBank"
 										class="form-control" placeholder="DD Bank" />
 									<form:errors path="ddBank"></form:errors>
-								</div>
+								</div> --%>
 
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<div class="col-md-6 col-sm-6 col-lg-6 col-12">
 									<form:label path="ddDate">Date</form:label>
 									<form:input type="date" path="ddDate" name="ddDate" id="ddDate"
 										class="form-control" placeholder="DD Date" />
