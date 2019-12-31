@@ -3,6 +3,7 @@
  */
 package com.iceico.internship.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
@@ -25,5 +26,9 @@ public interface StudentEntryService {
 	
 	public Double getTotalIncome();
 	
-	
+    public Double getTotalBalance();
+    
+    public Double getTotalPaidAmount();
+    
+    public Double getDailyFeesCollection(Date date);
 }

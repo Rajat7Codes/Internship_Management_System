@@ -48,8 +48,8 @@
 					<span class="info-box-icon push-bottom"><i
 						class="material-icons materialicon">shopping_cart</i></span>
 					<div class="info-box-content">
-						<span class="info-box-text">Orders</span> <span
-							class="info-box-number">450</span>
+						<span class="info-box-text">Total Income</span> <span
+							class="info-box-number">${incomeCount}</span>
 						<div class="progress">
 							<div class="progress-bar" style="width: 45%"></div>
 						</div>
@@ -66,8 +66,8 @@
 					<span class="info-box-icon push-bottom"><i
 						class="material-icons materialicon">redeem</i></span>
 					<div class="info-box-content">
-						<span class="info-box-text">Monthly Sales</span> <span
-							class="info-box-number">155</span>
+						<span class="info-box-text">Total Balance Amount</span> <span
+							class="info-box-number">${balanceCount}</span>
 						<div class="progress">
 							<div class="progress-bar" style="width: 40%"></div>
 						</div>
@@ -84,8 +84,8 @@
 					<span class="info-box-icon push-bottom"><i
 						class="material-icons materialicon">group</i></span>
 					<div class="info-box-content">
-						<span class="info-box-text">New Users</span> <span
-							class="info-box-number">52</span>
+						<span class="info-box-text">Total Paid Amount</span> <span
+							class="info-box-number">${paidAmountCount}</span>
 						<div class="progress">
 							<div class="progress-bar" style="width: 85%"></div>
 						</div>
@@ -102,8 +102,8 @@
 					<span class="info-box-icon push-bottom"><i
 						class="material-icons materialicon">monetization_on</i></span>
 					<div class="info-box-content">
-						<span class="info-box-text">Collection</span> <span
-							class="info-box-number">13,921</span><span>$</span>
+						<span class="info-box-text">Daily Fees Collection</span> <span
+							class="info-box-number">${dailyFeesCollection}</span>
 						<div class="progress">
 							<div class="progress-bar" style="width: 50%"></div>
 						</div>
