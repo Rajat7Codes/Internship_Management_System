@@ -79,7 +79,7 @@
 														class="fa fa-eye"></i>View</a></li>
 												<li><a title="Print"
 													href="<c:url value='/admin/student/entry/delete/${stud.studentEntryId }' />"><i
-														class="fa fa-print"></i>Delete</a></li>
+														class="fa fa-trash"></i>Delete</a></li>
 											</ul>
 										</div></td>
 								</tr>

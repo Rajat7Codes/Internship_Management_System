@@ -62,20 +62,13 @@ public class Fees extends Auditable<String> implements Serializable {
 	@Column(name = "pay_mode")
 	private String payMode;
 
-	@Column(name = "bank_name")
-	private String bankName;
+	@Column(name = "cheque_bank")
+	private String chequeBank;
 
-	@Column(name = "account_number")
-	private Integer accountNumber;
-
-	@Column(name = "account_name")
-	private String accountName;
-
-	@Column(name = "ifsc_code")
-	private String ifscCode;
-
-	@Column(name = "branch")
-	private String branch;
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "cheque_date")
+	private Date chequeDate;
 
 	@Column(name = "cheque")
 	private Integer cheque;
@@ -101,30 +94,23 @@ public class Fees extends Auditable<String> implements Serializable {
 	 * @param feesAmount
 	 * @param date
 	 * @param payMode
-	 * @param bankName
-	 * @param accountNumber
-	 * @param accountName
-	 * @param ifscCode
-	 * @param branch
+	 * @param chequeBank
+	 * @param chequeDate
 	 * @param cheque
 	 * @param ddNumber
 	 * @param ddBank
 	 * @param ddDate
 	 * @param studentEntry
 	 */
-	public Fees(Long feesId, Double feesAmount, Date date, String payMode, String bankName, Integer accountNumber,
-			String accountName, String ifscCode, String branch, Integer cheque, String ddNumber, String ddBank,
-			Date ddDate, StudentEntry studentEntry) {
+	public Fees(Long feesId, Double feesAmount, Date date, String payMode, String chequeBank, Date chequeDate,
+			Integer cheque, String ddNumber, String ddBank, Date ddDate, StudentEntry studentEntry) {
 		super();
 		this.feesId = feesId;
 		this.feesAmount = feesAmount;
 		this.date = date;
 		this.payMode = payMode;
-		this.bankName = bankName;
-		this.accountNumber = accountNumber;
-		this.accountName = accountName;
-		this.ifscCode = ifscCode;
-		this.branch = branch;
+		this.chequeBank = chequeBank;
+		this.chequeDate = chequeDate;
 		this.cheque = cheque;
 		this.ddNumber = ddNumber;
 		this.ddBank = ddBank;
@@ -189,73 +175,31 @@ public class Fees extends Auditable<String> implements Serializable {
 	}
 
 	/**
-	 * @return the bankName
+	 * @return the chequeBank
 	 */
-	public String getBankName() {
-		return bankName;
+	public String getChequeBank() {
+		return chequeBank;
 	}
 
 	/**
-	 * @param bankName the bankName to set
+	 * @param chequeBank the chequeBank to set
 	 */
-	public void setBankName(String bankName) {
-		this.bankName = bankName;
+	public void setChequeBank(String chequeBank) {
+		this.chequeBank = chequeBank;
 	}
 
 	/**
-	 * @return the accountNumber
+	 * @return the chequeDate
 	 */
-	public Integer getAccountNumber() {
-		return accountNumber;
+	public Date getChequeDate() {
+		return chequeDate;
 	}
 
 	/**
-	 * @param accountNumber the accountNumber to set
+	 * @param chequeDate the chequeDate to set
 	 */
-	public void setAccountNumber(Integer accountNumber) {
-		this.accountNumber = accountNumber;
-	}
-
-	/**
-	 * @return the accountName
-	 */
-	public String getAccountName() {
-		return accountName;
-	}
-
-	/**
-	 * @param accountName the accountName to set
-	 */
-	public void setAccountName(String accountName) {
-		this.accountName = accountName;
-	}
-
-	/**
-	 * @return the ifscCode
-	 */
-	public String getIfscCode() {
-		return ifscCode;
-	}
-
-	/**
-	 * @param ifscCode the ifscCode to set
-	 */
-	public void setIfscCode(String ifscCode) {
-		this.ifscCode = ifscCode;
-	}
-
-	/**
-	 * @return the branch
-	 */
-	public String getBranch() {
-		return branch;
-	}
-
-	/**
-	 * @param branch the branch to set
-	 */
-	public void setBranch(String branch) {
-		this.branch = branch;
+	public void setChequeDate(Date chequeDate) {
+		this.chequeDate = chequeDate;
 	}
 
 	/**
