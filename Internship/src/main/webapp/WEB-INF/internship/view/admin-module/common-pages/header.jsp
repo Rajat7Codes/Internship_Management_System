@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,9 +12,9 @@
 		<div class="page-header-inner ">
 			<!-- logo start -->
 			<div class="page-logo logo-white">
-				<a href="#"> <img alt=""
-					src="${pageContext.request.contextPath }/static/img/logo/vbcmrLogo50X50.gif">
-					<span class="logo-default">VBCMR</span>
+				<a href="#"> <%-- <img alt=""
+					src="${pageContext.request.contextPath }/static/img/logo/vbcmrLogo50X50.gif"> --%>
+					<span class="logo-default">INTERNSHIP</span>
 				</a>
 			</div>
 			<!-- logo end -->
@@ -178,7 +179,13 @@
 										</span>
 									</a></li>
 
-
+									<li><a
+										href="${pageContext.request.contextPath }/admin/internship/session">
+											<span class="photo"><i class="fa fa-calendar"></i></span> <!-- <span class="subject"> </span> -->
+											<span class="subject"> <span class="from">INTERNSHIP
+													SESSION</span>
+										</span>
+									</a></li>
 
 									<li><a
 										href="${pageContext.request.contextPath }/admin/internship/duration">

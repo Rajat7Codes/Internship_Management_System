@@ -86,7 +86,8 @@
 								<tr>
 									<td>${ind.index+1 }</td>
 									<td>${fy.year }</td>
-									<td>${fy.active }</td>
+									<td><c:if test="${fy.active =='true'}">Active</c:if> <c:if
+											test="${fy.active =='false'}">Inactive</c:if></td>
 
 									<td class="valigntop"><div class="btn-group">
 											<button

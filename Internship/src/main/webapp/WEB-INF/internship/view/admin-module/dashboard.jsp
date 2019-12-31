@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,16 +13,6 @@
 
 .notificationicon {
 	margin-top: 10px;
-}
-</style>
-<style>
-.btn-circle.btn-xs {
-	width: 20px;
-	height: 20px;
-	padding: 0px 0px;
-	border-radius: 50px;
-	font-size: 12px;
-	text-align: center;
 }
 </style>
 </head>
@@ -48,8 +37,8 @@
 					<span class="info-box-icon push-bottom"><i
 						class="material-icons materialicon">shopping_cart</i></span>
 					<div class="info-box-content">
-						<span class="info-box-text">Orders</span> <span
-							class="info-box-number">450</span>
+						<span class="info-box-text">Total Income</span> <span
+							class="info-box-number">${incomeCount}</span>
 						<div class="progress">
 							<div class="progress-bar" style="width: 45%"></div>
 						</div>
@@ -66,8 +55,8 @@
 					<span class="info-box-icon push-bottom"><i
 						class="material-icons materialicon">redeem</i></span>
 					<div class="info-box-content">
-						<span class="info-box-text">Monthly Sales</span> <span
-							class="info-box-number">155</span>
+						<span class="info-box-text">Total Balance Amount</span> <span
+							class="info-box-number">${balanceCount}</span>
 						<div class="progress">
 							<div class="progress-bar" style="width: 40%"></div>
 						</div>
@@ -84,8 +73,8 @@
 					<span class="info-box-icon push-bottom"><i
 						class="material-icons materialicon">group</i></span>
 					<div class="info-box-content">
-						<span class="info-box-text">New Users</span> <span
-							class="info-box-number">52</span>
+						<span class="info-box-text">Total Paid Amount</span> <span
+							class="info-box-number">${paidAmountCount}</span>
 						<div class="progress">
 							<div class="progress-bar" style="width: 85%"></div>
 						</div>
@@ -102,8 +91,8 @@
 					<span class="info-box-icon push-bottom"><i
 						class="material-icons materialicon">monetization_on</i></span>
 					<div class="info-box-content">
-						<span class="info-box-text">Collection</span> <span
-							class="info-box-number">13,921</span><span>$</span>
+						<span class="info-box-text">Daily Fees Collection</span> <span
+							class="info-box-number">${dailyFeesCollection}</span>
 						<div class="progress">
 							<div class="progress-bar" style="width: 50%"></div>
 						</div>
@@ -111,30 +100,29 @@
 						</span>
 					</div>
 					<!-- /.info-box-content -->
-
-
-
 				</div>
 				<!-- /.info-box -->
 			</div>
 			<!-- /.col -->
-
-
-			<!-- STUDENT LIST -->
-
-			<div class="row">
-				<div class="col-md-12 col-sm-12">
-					<div class="card  card-box">
-						<div class="card-head">
-							<header>ACTIVE YEAR STUDENTS LIST</header>
-							<div class="tools">
-								<a class="fa fa-repeat btn-color box-refresh"
-									href="javascript:;"></a> <a
-									class="t-collapse btn-color fa fa-chevron-down"
-									href="javascript:;"></a> <a
-									class="t-close btn-color fa fa-times" href="javascript:;"></a>
-							</div>
-						</div>
+		</div>
+	</div>
+	<!-- end widget -->
+	<!-- chart start -->
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card card-box">
+				<div class="card-head">
+					<header>Chart Survey</header>
+					<div class="tools">
+						<a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+						<a class="t-collapse btn-color fa fa-chevron-down"
+							href="javascript:;"></a> <a class="t-close btn-color fa fa-times"
+							href="javascript:;"></a>
+					</div>
+				</div>
+				<div class="card-body no-padding height-9">
+					<div class="row">
+						<!-- <canvas id="canvas1"></canvas> -->
 						<div class="card-body ">
 							<div class="table-wrap">
 								<div
@@ -179,35 +167,8 @@
 					</div>
 				</div>
 			</div>
-
-
-
 		</div>
-	</div>
-
-
-	<!-- end widget -->
-	<!-- chart start -->
-	<div class="row">
-		<div class="col-sm-8">
-			<div class="card card-box">
-				<div class="card-head">
-					<header>Chart Survey</header>
-					<div class="tools">
-						<a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
-						<a class="t-collapse btn-color fa fa-chevron-down"
-							href="javascript:;"></a> <a class="t-close btn-color fa fa-times"
-							href="javascript:;"></a>
-					</div>
-				</div>
-				<div class="card-body no-padding height-9">
-					<div class="row">
-						<canvas id="canvas1"></canvas>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4">
+		<!-- <div class="col-sm-4">
 			<div class="card card-box">
 				<div class="card-head">
 					<header>Chart Survey</header>
@@ -224,10 +185,10 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 	<!-- Chart end -->
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-md-8 col-sm-12 col-12">
 			<div class="card card-box">
 				<div class="card-head">
@@ -445,10 +406,10 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<div class="row">
 		<!-- Quick Mail start -->
-		<div class="col-lg-6 col-md-12 col-sm-12 col-12">
+		<!-- <div class="col-lg-6 col-md-12 col-sm-12 col-12">
 			<div class="card-box">
 				<div class="card-head">
 					<header>Quick Mail</header>
@@ -498,9 +459,9 @@
 									<div id="summernote"></div>
 									<input type="file" class="default" multiple>
 								</div>
-								<!--   <div class="btn-group margin-top-20 ">
+								  <div class="btn-group margin-top-20 ">
 	                                                <button class="btn btn-primary btn-sm margin-right-10"><i class="fa fa-check"></i> Send</button>
-                                           		</div> -->
+                                           		</div>
 								<div class="box-footer clearfix">
 									<button type="button"
 										class="mdl-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-primary pull-right">
@@ -512,10 +473,10 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- Quick Mail end -->
 		<!-- Activity feed start -->
-		<div class="col-lg-6 col-md-12 col-sm-12 col-12">
+		<%-- <div class="col-lg-6 col-md-12 col-sm-12 col-12">
 			<div class="card-box">
 				<div class="card-head">
 					<header>Activity Feed</header>
@@ -617,10 +578,10 @@
 					</ul>
 				</div>
 			</div>
-		</div>
+		</div> --%>
 		<!-- Activity feed end -->
 	</div>
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-lg-6 col-md-12 col-sm-12 col-12">
 			<div class="card-box">
 				<div class="card-head">
@@ -783,9 +744,9 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- start Payment Details -->
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-md-12 col-sm-12">
 			<div class="card  card-box">
 				<div class="card-head">
@@ -933,9 +894,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<script
-		src="${pageContext.request.contextPath }/static/plugins/jquery/jquery.min.js"></script>
+	</div> -->
 </body>
 </html>
