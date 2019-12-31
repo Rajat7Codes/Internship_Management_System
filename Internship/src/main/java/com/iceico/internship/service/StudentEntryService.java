@@ -22,4 +22,8 @@ public interface StudentEntryService {
 	public List<StudentEntry> getStudentEntryList();
 
 	public void deleteStudentEntry(Long studentEntryId);
+	
+	public Double getTotalIncome();
+	
+	
 }

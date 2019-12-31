@@ -77,9 +77,9 @@
 												<li><a title="View"
 													href="<c:url value='/admin/student/entry/view/${stud.studentEntryId }'  />"><i
 														class="fa fa-eye"></i>View</a></li>
-												<%-- <li><a title="Print"
+												<li><a title="Print"
 													href="<c:url value='/admin/student/entry/delete/${stud.studentEntryId }' />"><i
-														class="fa fa-print"></i>Delete</a></li> --%>
+														class="fa fa-print"></i>Delete</a></li>
 											</ul>
 										</div></td>
 								</tr>
