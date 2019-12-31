@@ -69,9 +69,17 @@ public class FeesController {
 	public String getReceipt(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException {
 		modelMap.addAttribute("studentEntry", this.studentEntryService.getStudentEntryById(studentEntryId));
+		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
 		modelMap.addAttribute("user", this.getPrincipal());
-
 		return "viewReceipt";
+	}
+
+	@GetMapping("/admin/fees/receipt/print/{studentEntryId}")
+	public String printReciept(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
+			throws ResourceNotFoundException {
+
+		modelMap.addAttribute("user", this.getPrincipal());
+		return "printReciept";
 	}
 
 	@PostMapping("/admin/fees/save")
@@ -82,25 +90,17 @@ public class FeesController {
 			modelMap.addAttribute("user", this.getPrincipal());
 			return "feesList";
 		} else {
-//			System.out.println("paid amt ====>>>" + fees.getStudentEntry().getPaidFees());
-//			Float prevPaidAmt = fees.getStudentEntry().getPaidFees();
+			Double prevPaidAmt = fees.getStudentEntry().getPaidFees();
+			System.out.println("student module paid fees" + prevPaidAmt);
 
-//			Float paidAmt = fees.getFeesAmount();
-//			System.out.println("paidAmt====" + paidAmt);
-//
-//			StudentEntry entry = fees.getStudentEntry();
-//			System.out.println("fees amt===========" + entry.getFeesAmount());
-//
-//			Float totalAmt = fees.getStudentEntry().getFeesAmount();
-//			System.out.println("totalAmt====" + totalAmt);
-//			Float disAmt = fees.getStudentEntry().getDiscount();
-//			System.out.println("disAmt===" + disAmt);
-//
-//			Float finalAmt = totalAmt - disAmt;
-//			System.out.println("finalAmt====" + finalAmt);
+			Double totalBalAmt = fees.getStudentEntry().getBalanceFees();
+			System.out.println("Student Entry balance fees amt=====>" + totalBalAmt);
 
-//			fees.getStudentEntry().setBalanceFees(finalAmt - paidAmt);
-//			fees.getStudentEntry().setPaidFees(prevPaidAmt + paidAmt);
+			Double paidAmt = fees.getFeesAmount();
+			System.out.println("fees modulee paid amt=====>" + paidAmt);
+
+			fees.getStudentEntry().setPaidFees(prevPaidAmt + paidAmt);
+			fees.getStudentEntry().setBalanceFees(totalBalAmt - paidAmt);
 
 			this.feesService.saveFees(fees);
 			modelMap.addAttribute("user", this.getPrincipal());

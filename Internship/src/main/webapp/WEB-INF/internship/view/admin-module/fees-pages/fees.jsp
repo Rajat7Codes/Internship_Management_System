@@ -66,6 +66,9 @@
 												<li><a title="Edit"
 													href="<c:url value='/admin/fees/receipt/${stud.studentEntryId }' />"><i
 														class="fa fa-edit"></i>Receipt</a></li>
+												<li><a title="Edit"
+													href="<c:url value='/admin/fees/receipt/print/${stud.studentEntryId }' />"><i
+														class="fa fa-edit"></i>Print Receipt</a></li>
 												<li><a title="View"
 													href="<c:url value='/admin/fees/pay/${stud.studentEntryId }' />"><i
 														class="fa fa-eye"></i>Pay</a></li>

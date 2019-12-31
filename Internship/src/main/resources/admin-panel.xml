@@ -145,4 +145,6 @@
 			value="/WEB-INF/internship/view/admin-module/fees-pages/viewReceipt.jsp" />
 	</definition>
 
+
+
 </tiles-definitions>
