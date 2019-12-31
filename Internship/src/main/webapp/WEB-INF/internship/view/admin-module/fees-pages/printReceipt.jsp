@@ -11,7 +11,7 @@
 	</style>
 </head>
 
-<body style="background-color: whitesmoke; border: 2px solid grey; padding: 20px; margin: auto;  width: 90%;" onload="//window.print()">
+<body style="background-color: whitesmoke; border: 2px solid grey; padding: 20px; margin: auto;  width: 90%;" onload="window.print()">
 	<table style="width: 100%;">
 		<tr>
 			<td>
