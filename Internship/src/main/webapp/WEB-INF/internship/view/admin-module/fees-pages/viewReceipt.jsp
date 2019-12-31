@@ -55,17 +55,16 @@
 									<td>${stud.getCollege().collegeName }</td>
 									<td>${stud.date }</td>
 							<c:forEach var="stud" items="${studentEntryList }"
+=======
+							<c:forEach var="fees" items="${studentEntry.getFees() }"
+>>>>>>> f92016b01d5044e05e1382e04ff669c3501b4ebd
 								varStatus="ind">
 								<tr>
 									<td>${ind.index+1 }</td>
-									<td>${stud.getFees().feesAmount }</td>
-									<%-- <td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
-									<td>${stud.getCollege().collegeName }</td>
-									<td>${stud.getDepartment().departmentName }</td>
-									<td>${stud.feesAmount }</td>
-									<td>${stud.paidFees }</td>
-									<td>${stud.balanceFees }</td> --%>
-
+									<td>${fees.feesId }</td>
+									<td>${fees.feesAmount }</td>
+									<td>${fees.date }</td>
+									<td>${fees.payMode }</td>
 
 									<td class="valigntop"><div class="btn-group">
 											<button
@@ -75,14 +74,11 @@
 											</button>
 											<ul class="dropdown-menu pull-left" role="menu">
 												<li><a title="Edit"
-													href="<c:url value='/admin/fees/receipt/${stud.studentEntryId }' />"><i
-														class="fa fa-edit"></i>Receipt</a></li>
-												<li><a title="View"
-													href="<c:url value='/admin/fees/pay/${stud.studentEntryId }' />"><i
-														class="fa fa-eye"></i>Pay</a></li>
+													href="<c:url value='/admin/fees/receipt/edit/${fees.feesId }' />"><i
+														class="fa fa-edit"></i>Edit</a></li>
 												<li><a title="Print"
-													href="<c:url value='/admin/student/entry/delete/${stud.studentEntryId }' />"><i
-														class="fa fa-print"></i>Delete</a></li>
+													href="<c:url value='/admin/fees/receipt/print/${fees.feesId }' />"><i
+														class="fa fa-print"></i>Print</a></li>
 											</ul>
 										</div></td>
 								</tr>

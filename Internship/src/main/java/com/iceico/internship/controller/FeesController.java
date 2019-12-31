@@ -72,16 +72,25 @@ public class FeesController {
 		//return "printReceipt";
 		
 		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
+		modelMap.addAttribute("feesList", this.feesService.getFeesList());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "viewReceipt";
 	}
 
-	@GetMapping("/admin/fees/receipt/print/{studentEntryId}")
-	public String printReciept(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
+	@GetMapping("/admin/fees/receipt/print/{feesId}")
+	public String printReciept(@PathVariable("feesId") Long feesId, ModelMap modelMap, Locale locale)
+			throws ResourceNotFoundException {
+		modelMap.addAttribute("fees", this.feesService.getFeesById(feesId));
+		modelMap.addAttribute("user", this.getPrincipal());
+		return "printReciept";
+	}
+
+	@GetMapping("/admin/fees/receipt/edit/{feesId}")
+	public String editReciept(@PathVariable("feesId") Long feesId, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException {
 
 		modelMap.addAttribute("user", this.getPrincipal());
-		return "printReciept";
+		return "payFees";
 	}
 
 	@PostMapping("/admin/fees/save")
