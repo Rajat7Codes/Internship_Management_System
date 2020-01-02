@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.Fees;
-import com.iceico.internship.model.StudentEntry;
 import com.iceico.internship.service.FeesService;
 import com.iceico.internship.service.StudentEntryService;
 import com.iceico.internship.util.ListHelper;
@@ -49,10 +48,8 @@ public class FeesController {
 
 	@GetMapping("/admin/fees")
 	public String getFees(ModelMap modelMap, Locale locale) {
-		modelMap.addAttribute("fees", new Fees());
 		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
 		modelMap.addAttribute("user", this.getPrincipal());
-
 		return "feesList";
 	}
 
@@ -70,10 +67,6 @@ public class FeesController {
 	public String getReceipt(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException {
 		modelMap.addAttribute("studentEntry", this.studentEntryService.getStudentEntryById(studentEntryId));
-		//return "printReceipt";
-		
-		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
-		modelMap.addAttribute("feesList", this.feesService.getFeesList());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "viewReceipt";
 	}
@@ -107,19 +100,15 @@ public class FeesController {
 			return "feesList";
 		} else {
 			Double prevPaidAmt = fees.getStudentEntry().getPaidFees();
-			System.out.println("student module paid fees" + prevPaidAmt);
-
 			Double totalBalAmt = fees.getStudentEntry().getBalanceFees();
-			System.out.println("Student Entry balance fees amt=====>" + totalBalAmt);
-
 			Double paidAmt = fees.getFeesAmount();
-			System.out.println("fees modulee paid amt=====>" + paidAmt);
 
 			fees.getStudentEntry().setPaidFees(prevPaidAmt + paidAmt);
 			fees.getStudentEntry().setBalanceFees(totalBalAmt - paidAmt);
 
-			this.feesService.saveFees(fees);
 			modelMap.addAttribute("user", this.getPrincipal());
+			this.feesService.saveFees(fees);
+
 			return "redirect:/admin/fees";
 		}
 	}

@@ -135,7 +135,7 @@
 	<definition name="payFeesNew" extends="adminbase.definition">
 		<put-attribute name="title" value="fees" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/fees-pages/payFeesNew.jsp" />
+			value="/WEB-INF/internship/view/admin-module/fees-pages/newFeesPay.jsp" />
 	</definition>
 
 	<definition name="viewReceipt"

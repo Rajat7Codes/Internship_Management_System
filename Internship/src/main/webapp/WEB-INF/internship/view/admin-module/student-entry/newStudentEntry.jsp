@@ -97,7 +97,6 @@ label {
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
 								<form:label path="financialYear">Financial Year</form:label>
-
 								<form:select class="form-control" name="financialYear"
 									path="financialYear" id="financialYear" itemLabel="year"
 									items="${fyList }" itemValue="financialYearId">
@@ -107,7 +106,6 @@ label {
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
 								<form:label path="department">Department</form:label>
-
 								<form:select class="form-control" name="financialYear"
 									path="department" id="department" itemLabel="departmentName"
 									items="${departmentList }" itemValue="departmentId">
@@ -124,22 +122,22 @@ label {
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
 								<form:label path="discount">Discount</form:label>
-								<form:input path="discount" name="fees" id="discount"
-									class="form-control" placeholder="discount" />
+								<form:input path="discount" name="discount" id="discount"
+									class="form-control" placeholder="Discount" />
 								<form:errors path="discount"></form:errors>
 							</div>
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
 								<form:label path="extension">Extension</form:label>
-								<form:input path="extension" name="fees" id="extension"
-									class="form-control" placeholder="extension" />
+								<form:input path="extension" name="extension" id="extension"
+									class="form-control" placeholder="Extension" />
 								<form:errors path="extension"></form:errors>
 							</div>
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
 								<form:label path="date">Joining Date</form:label>
 								<form:input type="date" path="date" name="date" id="date"
-									class="form-control" placeholder="date" />
+									class="form-control" />
 								<form:errors path="date"></form:errors>
 							</div>
 						</div>

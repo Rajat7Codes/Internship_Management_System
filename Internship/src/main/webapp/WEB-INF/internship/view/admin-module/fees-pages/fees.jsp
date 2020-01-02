@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +22,7 @@
 		<div class="col-md-12">
 			<div class="card card-topline-darkgreen">
 				<div class="card-header  card-head pl-4" id="grad">
-					<strong class="card-title text-white">STUDENT LIST</strong>
+					<strong class="card-title text-white">FEES MASTER</strong>
 				</div>
 				&nbsp;
 				<div class="card-body">
@@ -32,13 +31,13 @@
 						<thead>
 							<tr>
 								<th>Sr.No.</th>
-								<th>Student_Id</th>
+								<th>Student Id</th>
 								<th>Name</th>
 								<th>College</th>
 								<th>Department</th>
 								<th>Fees</th>
-								<th>Paid_Fees</th>
-								<th>Balance_Fees</th>
+								<th>Paid Fees</th>
+								<th>Balance Fees</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -54,8 +53,6 @@
 									<td>${stud.feesAmount }</td>
 									<td>${stud.paidFees }</td>
 									<td>${stud.balanceFees }</td>
-
-
 									<td class="valigntop"><div class="btn-group">
 											<button
 												class="btn btn-xs btn-success dropdown-toggle no-margin"
@@ -63,18 +60,12 @@
 												Actions <i class="fa fa-angle-down"></i>
 											</button>
 											<ul class="dropdown-menu pull-left" role="menu">
-												<li><a title="Edit"
+												<li><a title="Receipts"
 													href="<c:url value='/admin/fees/receipt/view/${stud.studentEntryId }' />"><i
-														class="fa fa-eye"></i>View Receipt</a></li>
-												<%-- <li><a title="Edit"
-													href="<c:url value='/admin/fees/receipt/print/${stud.studentEntryId }' />"><i
-														class="fa fa-edit"></i>Print Receipt</a></li> --%>
-												<li><a title="View"
+														class="fa fa-eye"></i>Receipts</a></li>
+												<li><a title="Pay"
 													href="<c:url value='/admin/fees/pay/${stud.studentEntryId }' />"><i
 														class="fa fa-rupee"></i>Pay</a></li>
-												<%-- <li><a title="Print"
-													href="<c:url value='/admin/student/entry/delete/${stud.studentEntryId }' />"><i
-														class="fa fa-print"></i>Delete</a></li> --%>
 											</ul>
 										</div></td>
 								</tr>
@@ -87,7 +78,4 @@
 	</div>
 
 </body>
-
-<script
-	src="${pageContext.request.contextPath }/static/plugins/jquery/jquery.min.js"></script>
 </html>

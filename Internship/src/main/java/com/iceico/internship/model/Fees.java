@@ -68,21 +68,10 @@ public class Fees extends Auditable<String> implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "cheque_date")
-	private Date chequeDate;
+	private Date payModeDate;
 
 	@Column(name = "cheque")
-	private Integer cheque;
-
-	@Column(name = "dd_number")
-	private String ddNumber;
-
-	@Column(name = "dd_bank")
-	private String ddBank;
-
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name = "dd_date")
-	private Date ddDate;
+	private Integer num;
 
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "studentEntryId", insertable = true, nullable = true, updatable = true)
@@ -95,26 +84,20 @@ public class Fees extends Auditable<String> implements Serializable {
 	 * @param date
 	 * @param payMode
 	 * @param chequeBank
-	 * @param chequeDate
-	 * @param cheque
-	 * @param ddNumber
-	 * @param ddBank
-	 * @param ddDate
+	 * @param payModeDate
+	 * @param num
 	 * @param studentEntry
 	 */
-	public Fees(Long feesId, Double feesAmount, Date date, String payMode, String chequeBank, Date chequeDate,
-			Integer cheque, String ddNumber, String ddBank, Date ddDate, StudentEntry studentEntry) {
+	public Fees(Long feesId, Double feesAmount, Date date, String payMode, String chequeBank, Date payModeDate,
+			Integer num, StudentEntry studentEntry) {
 		super();
 		this.feesId = feesId;
 		this.feesAmount = feesAmount;
 		this.date = date;
 		this.payMode = payMode;
 		this.chequeBank = chequeBank;
-		this.chequeDate = chequeDate;
-		this.cheque = cheque;
-		this.ddNumber = ddNumber;
-		this.ddBank = ddBank;
-		this.ddDate = ddDate;
+		this.payModeDate = payModeDate;
+		this.num = num;
 		this.studentEntry = studentEntry;
 	}
 
@@ -189,73 +172,31 @@ public class Fees extends Auditable<String> implements Serializable {
 	}
 
 	/**
-	 * @return the chequeDate
+	 * @return the payModeDate
 	 */
-	public Date getChequeDate() {
-		return chequeDate;
+	public Date getPayModeDate() {
+		return payModeDate;
 	}
 
 	/**
-	 * @param chequeDate the chequeDate to set
+	 * @param payModeDate the payModeDate to set
 	 */
-	public void setChequeDate(Date chequeDate) {
-		this.chequeDate = chequeDate;
+	public void setPayModeDate(Date payModeDate) {
+		this.payModeDate = payModeDate;
 	}
 
 	/**
-	 * @return the cheque
+	 * @return the num
 	 */
-	public Integer getCheque() {
-		return cheque;
+	public Integer getNum() {
+		return num;
 	}
 
 	/**
-	 * @param cheque the cheque to set
+	 * @param num the num to set
 	 */
-	public void setCheque(Integer cheque) {
-		this.cheque = cheque;
-	}
-
-	/**
-	 * @return the ddNumber
-	 */
-	public String getDdNumber() {
-		return ddNumber;
-	}
-
-	/**
-	 * @param ddNumber the ddNumber to set
-	 */
-	public void setDdNumber(String ddNumber) {
-		this.ddNumber = ddNumber;
-	}
-
-	/**
-	 * @return the ddBank
-	 */
-	public String getDdBank() {
-		return ddBank;
-	}
-
-	/**
-	 * @param ddBank the ddBank to set
-	 */
-	public void setDdBank(String ddBank) {
-		this.ddBank = ddBank;
-	}
-
-	/**
-	 * @return the ddDate
-	 */
-	public Date getDdDate() {
-		return ddDate;
-	}
-
-	/**
-	 * @param ddDate the ddDate to set
-	 */
-	public void setDdDate(Date ddDate) {
-		this.ddDate = ddDate;
+	public void setNum(Integer num) {
+		this.num = num;
 	}
 
 	/**
@@ -271,5 +212,4 @@ public class Fees extends Auditable<String> implements Serializable {
 	public void setStudentEntry(StudentEntry studentEntry) {
 		this.studentEntry = studentEntry;
 	}
-
 }
