@@ -12,21 +12,24 @@ label {
 	padding-top: 10px;
 	font-weight: bold;
 }
+
+.fees-details {
+	text-indent:10px; 
+	width:100%;
+	/*padding: 10px 0px;*/
+	font-size: 20px;
+}
 </style>
 </head>
 <body>
 	<div>
-		<form:form
-			action="${pageContext.request.contextPath }/admin/fees/save"
-			modelAttribute="fees" name="fees" id="fees" method="post">
-
+		<form:form action="${pageContext.request.contextPath }/admin/fees/save" modelAttribute="fees" name="fees" id="fees" method="post">
 			<form:hidden path="feesId" />
-
 			<div class="row">
 				<div class="col-4">
 					<div class="card card-topline-darkgreen">
 						<div class="card-header card-head pl-4" id="grad">
-							<strong class="card-title text-white"> ADD FEES </strong>
+							<strong class="card-title text-white"> STUDENT </strong>
 							<div class="tools">
 								<a class="fa fa-repeat btn-color box-refresh"
 									href="javascript:;"></a> <a
@@ -76,11 +79,10 @@ label {
 					</div>
 				</div>
 
-
 				<div class="col-8">
 					<div class="card card-topline-darkgreen">
 						<div class="card-header card-head pl-4" id="grad">
-							<strong class="card-title text-white"> ADD FEES </strong>
+							<strong class="card-title text-white"> PAY FEES </strong>
 							<div class="tools">
 								<a class="fa fa-repeat btn-color box-refresh"
 									href="javascript:;"></a> <a
@@ -89,7 +91,26 @@ label {
 									class="t-close btn-color fa fa-times" href="javascript:;"></a>
 							</div>
 						</div>
+						
 						<div class="col-md-12">
+							<div class="row">
+								<div class="col-sm-3">
+									<label  class="clear-top-margin"> <i class="fa fa-rupee"> </i> TOTAL FEES </label>
+									<input class="fees-details bg-b-orange text-white" value="${studentEntry.feesAmount}" name="balanceFees" />
+								</div>
+								<div class="col-sm-3">
+									<label class="clear-top-margin"> <i class="fa fa-rupee"> </i> DISCOUNT FEES </label>
+									<input class="fees-details bg-b-purple text-white" value="${studentEntry.discount}" name="balanceFees" />
+								</div>
+								<div class="col-sm-3">
+									<label class="clear-top-margin"> <i class="fa fa-rupee"> </i> PAID FEES </label>
+									<input class="fees-details bg-b-cyan text-white" value="${studentEntry.paidFees}" name="balanceFees"  />
+								</div>
+								<div class="col-sm-3">
+									<label class="clear-top-margin"> <i class="fa fa-rupee"> </i> BALANCE FEES </label>
+									<input class="fees-details bg-b-black text-white" value="${studentEntry.balanceFees}" name="balanceFees"  />
+								</div>
+							</div>
 							<div class="card-body">
 								<div class="row form-group">
 									<div class="col-md-6 col-sm-6 col-lg-6 col-12">
@@ -116,31 +137,23 @@ label {
 										<form:errors path="payMode"></form:errors>
 									</div>
 
-									<div class="col-md-6 col-sm-6 col-lg-6 col-12" id="num"
-										style="display: none;">
+									<div class="col-md-6 col-sm-6 col-lg-6 col-12" id="num" style="display: none;">
 										<form:label path="payModeDate">
-											<span id="chequeNumber" style="display: none;">Cheque
-												#</span>
-											<span id="ddNumber" style="display: none;">DD #</span>
-										</form:label>
-										<form:input path="payModeDate" name="payModeDate"
-											id="payModeDate" class="form-control"
-											placeholder="Enter Number" />
-										<form:errors path="payModeDate"></form:errors>
-									</div>
-
-									<div class="col-md-6 col-sm-6 col-lg-6 col-12" id="date1"
-										style="display: none;">
-										<form:label path="num">
-											<span id="chequeDate" style="display: none;">Cheque
-												Date</span>
+											<span id="chequeDate" style="display: none;">Cheque Date</span>
 											<span id="ddDate" style="display: none;">DD Date</span>
 										</form:label>
-										<form:input path="num" type="date" name="num" id="num"
-											class="form-control" />
+										<form:input path="payModeDate" type="date" name="payModeDate" id="payModeDate" class="form-control" />
+										<form:errors path="payModeDate"></form:errors>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 col-lg-6 col-12" id="date1" style="display: none;">
+										<form:label path="num">
+											<span id="chequeNumber" style="display: none;">Cheque #</span>
+											<span id="ddNumber" style="display: none;">DD #</span>
+										</form:label>
+										<form:input path="num" name="num" id="num"  placeholder="Enter Number" class="form-control" />
 										<form:errors path="num"></form:errors>
 									</div>
-
 								</div>
 							</div>
 						</div>

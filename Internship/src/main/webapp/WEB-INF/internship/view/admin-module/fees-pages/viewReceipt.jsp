@@ -57,9 +57,9 @@
 												Actions <i class="fa fa-angle-down"></i>
 											</button>
 											<ul class="dropdown-menu pull-left" role="menu">
-												<li><a title="Edit"
+												<!--  <li><a title="Edit"
 													href="<c:url value='/admin/fees/receipt/edit/${fees.feesId }' />"><i
-														class="fa fa-edit"></i>Edit</a></li>
+														class="fa fa-edit"></i>Edit</a></li>  -->
 												<li><a title="Print"
 													href="<c:url value='/admin/fees/receipt/print/${fees.feesId }' />"><i
 														class="fa fa-print"></i>Print</a></li>
