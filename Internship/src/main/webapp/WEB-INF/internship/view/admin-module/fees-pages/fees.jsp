@@ -38,6 +38,8 @@
 								<th>Fees</th>
 								<th>Paid Fees</th>
 								<th>Balance Fees</th>
+								<th>Status</th>
+								<th>Certificate</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -53,6 +55,22 @@
 									<td>${stud.feesAmount }</td>
 									<td>${stud.paidFees }</td>
 									<td>${stud.balanceFees }</td>
+									<td>${stud.payStatus }</td>
+									<td class="valigntop"><div class="btn-group">
+											<button
+												class="btn btn-xs btn-success dropdown-toggle no-margin"
+												type="button" data-toggle="dropdown" aria-expanded="false">
+												Certificate <i class="fa fa-angle-down"></i>
+											</button>
+											<ul class="dropdown-menu pull-left" role="menu">
+												<li><a title="joiningLetter"
+													href="<c:url value='/admin/fees/joining/letter/${stud.studentEntryId }' />"><i
+														class="fa fa-eye"></i>Joining Letter</a></li>
+												<li><a title="offerLetter"
+													href="<c:url value='/admin/fees/offer/letter/${stud.studentEntryId }' />"><i
+														class="fa fa-rupee"></i>Offer Letter</a></li>
+											</ul>
+										</div></td>
 									<td class="valigntop"><div class="btn-group">
 											<button
 												class="btn btn-xs btn-success dropdown-toggle no-margin"
