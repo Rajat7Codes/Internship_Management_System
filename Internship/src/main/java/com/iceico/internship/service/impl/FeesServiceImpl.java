@@ -3,8 +3,12 @@
  */
 package com.iceico.internship.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,6 +36,13 @@ public class FeesServiceImpl implements FeesService {
 	@Autowired
 	private FeesRepository feesRepository;
 
+	@Autowired
+	private EntityManager entityManager;
+
+	private Session getSession() {
+		return entityManager.unwrap(Session.class);
+	}
+
 	@Override
 	public void saveFees(Fees fees) {
 		this.feesRepository.save(fees);
@@ -51,7 +62,13 @@ public class FeesServiceImpl implements FeesService {
 	@Override
 	public void deleteFees(Long feesId) {
 		this.feesRepository.deleteById(feesId);
-		;
+	}
+
+	@Override
+	public Double getdailyFeesCollection(Date date) {
+		// System.out.println("date====> "+date);
+		return (Double) this.getSession().createQuery("select sum(feesAmount) from Fees where date=:date ")
+				.setParameter("date", date).uniqueResult();
 	}
 
 }

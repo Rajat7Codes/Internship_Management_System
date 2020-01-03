@@ -91,8 +91,15 @@
 					<span class="info-box-icon push-bottom"><i
 						class="material-icons materialicon">monetization_on</i></span>
 					<div class="info-box-content">
+
 						<span class="info-box-text">Daily Fees Collection</span> <span
-							class="info-box-number">${dailyFeesCollection}</span>
+							class="info-box-number"> <c:if
+								test="${dailyFeesCollection == null }">
+								0
+							</c:if> <c:if test="${dailyFeesCollection != null}">
+   							${dailyFeesCollection}
+							</c:if>
+						</span>
 						<div class="progress">
 							<div class="progress-bar" style="width: 50%"></div>
 						</div>

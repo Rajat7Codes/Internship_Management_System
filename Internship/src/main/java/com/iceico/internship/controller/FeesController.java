@@ -71,6 +71,24 @@ public class FeesController {
 		return "viewReceipt";
 	}
 
+	/* certification */
+
+	@GetMapping("/admin/fees/joining/letter/{studentEntryId}")
+	public String getJoiningLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap,
+			Locale locale) throws ResourceNotFoundException {
+
+		modelMap.addAttribute("user", this.getPrincipal());
+		return "joiningLetter";
+	}
+
+	@GetMapping("/admin/fees/offer/letter/{studentEntryId}")
+	public String getOfferLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
+			throws ResourceNotFoundException {
+
+		modelMap.addAttribute("user", this.getPrincipal());
+		return "offerLetter";
+	}
+
 	@GetMapping("/admin/fees/receipt/print/{feesId}")
 	public String printReciept(@PathVariable("feesId") Long feesId, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException {

@@ -62,8 +62,8 @@ public class Fees extends Auditable<String> implements Serializable {
 	@Column(name = "pay_mode")
 	private String payMode;
 
-	@Column(name = "cheque_bank")
-	private String chequeBank;
+	@Column(name = "bank")
+	private String bank;
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -83,19 +83,19 @@ public class Fees extends Auditable<String> implements Serializable {
 	 * @param feesAmount
 	 * @param date
 	 * @param payMode
-	 * @param chequeBank
+	 * @param bank
 	 * @param payModeDate
 	 * @param num
 	 * @param studentEntry
 	 */
-	public Fees(Long feesId, Double feesAmount, Date date, String payMode, String chequeBank, Date payModeDate,
-			Integer num, StudentEntry studentEntry) {
+	public Fees(Long feesId, Double feesAmount, Date date, String payMode, String bank, Date payModeDate, Integer num,
+			StudentEntry studentEntry) {
 		super();
 		this.feesId = feesId;
 		this.feesAmount = feesAmount;
 		this.date = date;
 		this.payMode = payMode;
-		this.chequeBank = chequeBank;
+		this.bank = bank;
 		this.payModeDate = payModeDate;
 		this.num = num;
 		this.studentEntry = studentEntry;
@@ -158,17 +158,17 @@ public class Fees extends Auditable<String> implements Serializable {
 	}
 
 	/**
-	 * @return the chequeBank
+	 * @return the bank
 	 */
-	public String getChequeBank() {
-		return chequeBank;
+	public String getBank() {
+		return bank;
 	}
 
 	/**
-	 * @param chequeBank the chequeBank to set
+	 * @param bank the bank to set
 	 */
-	public void setChequeBank(String chequeBank) {
-		this.chequeBank = chequeBank;
+	public void setBank(String bank) {
+		this.bank = bank;
 	}
 
 	/**
@@ -212,4 +212,5 @@ public class Fees extends Auditable<String> implements Serializable {
 	public void setStudentEntry(StudentEntry studentEntry) {
 		this.studentEntry = studentEntry;
 	}
+
 }
