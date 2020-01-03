@@ -71,6 +71,24 @@ public class FeesController {
 		return "viewReceipt";
 	}
 
+	/* certification */
+
+	@GetMapping("/admin/fees/joining/letter/{studentEntryId}")
+	public String getJoiningLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap,
+			Locale locale) throws ResourceNotFoundException {
+
+		modelMap.addAttribute("user", this.getPrincipal());
+		return "joiningLetter";
+	}
+
+	@GetMapping("/admin/fees/offer/letter/{studentEntryId}")
+	public String getOfferLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
+			throws ResourceNotFoundException {
+
+		modelMap.addAttribute("user", this.getPrincipal());
+		return "offerLetter";
+	}
+
 	@GetMapping("/admin/fees/receipt/print/{feesId}")
 	public String printReciept(@PathVariable("feesId") Long feesId, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException {
@@ -102,9 +120,18 @@ public class FeesController {
 			Double prevPaidAmt = fees.getStudentEntry().getPaidFees();
 			Double totalBalAmt = fees.getStudentEntry().getBalanceFees();
 			Double paidAmt = fees.getFeesAmount();
+			String status;
+
+			Double finalBalAmt = totalBalAmt - paidAmt;
+			System.out.println("final bal amt =====>>" + finalBalAmt);
+
+			if (finalBalAmt == 0) {
+				status = "Paid";
+				fees.getStudentEntry().setPayStatus(status);
+			}
 
 			fees.getStudentEntry().setPaidFees(prevPaidAmt + paidAmt);
-			fees.getStudentEntry().setBalanceFees(totalBalAmt - paidAmt);
+			fees.getStudentEntry().setBalanceFees(finalBalAmt);
 
 			modelMap.addAttribute("user", this.getPrincipal());
 			this.feesService.saveFees(fees);

@@ -159,4 +159,26 @@
 			value="/WEB-INF/internship/view/admin-module/fees-pages/feesReturn.jsp" />
 	</definition>
 
+	<!-- certification -->
+
+	<definition name="joiningLetter"
+		extends="adminbase.definition">
+		<put-attribute name="title" value="joining letter" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/certificates/joiningLetter.jsp" />
+	</definition>
+
+	<definition name="offerLetter"
+		extends="adminbase.definition">
+		<put-attribute name="title" value="offer letter" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/certificates/offerLetter.jsp" />
+	</definition>
+
+
+
+
+
+
+
 </tiles-definitions>

@@ -86,6 +86,9 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	@Column(name = "date")
 	private Date date;
 
+	@Column(name = "pay_status")
+	private String payStatus;
+
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "internDurId", insertable = true, nullable = true, updatable = true)
 	@JsonIgnore
@@ -136,6 +139,7 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	 * @param balanceFees
 	 * @param extension
 	 * @param date
+	 * @param payStatus
 	 * @param internshipDuration
 	 * @param internshipSession
 	 * @param internshipType
@@ -145,7 +149,7 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	 * @param fees
 	 */
 	public StudentEntry(Long studentEntryId, String firstName, String middleName, String lastName, Double feesAmount,
-			Double discount, Double paidFees, Double balanceFees, String extension, Date date,
+			Double discount, Double paidFees, Double balanceFees, String extension, Date date, String payStatus,
 			InternshipDuration internshipDuration, InternshipSession internshipSession, InternshipType internshipType,
 			FinancialYear financialYear, College college, Department department, List<Fees> fees) {
 		super();
@@ -159,6 +163,7 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 		this.balanceFees = balanceFees;
 		this.extension = extension;
 		this.date = date;
+		this.payStatus = payStatus;
 		this.internshipDuration = internshipDuration;
 		this.internshipSession = internshipSession;
 		this.internshipType = internshipType;
@@ -309,6 +314,20 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	}
 
 	/**
+	 * @return the payStatus
+	 */
+	public String getPayStatus() {
+		return payStatus;
+	}
+
+	/**
+	 * @param payStatus the payStatus to set
+	 */
+	public void setPayStatus(String payStatus) {
+		this.payStatus = payStatus;
+	}
+
+	/**
 	 * @return the internshipDuration
 	 */
 	public InternshipDuration getInternshipDuration() {
@@ -405,4 +424,5 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	public void setFees(List<Fees> fees) {
 		this.fees = fees;
 	}
+
 }
