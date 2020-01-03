@@ -36,5 +36,20 @@ public class ListHelper {
 		
 		return list;
 	}
+	
+	@Transactional
+	public List<String> getStatusList(){
+		
+		List <String> statuslist= new ArrayList <String>();
+		
+		statuslist.add("New");
+		statuslist.add("Joined");
+		statuslist.add("Persuing");
+		statuslist.add("Discontinued");
+		statuslist.add("Released");
+		
+		return statuslist;
+		
+	}
 
 }

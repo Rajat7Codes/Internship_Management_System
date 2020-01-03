@@ -84,7 +84,11 @@
 												<li><a title="Pay"
 													href="<c:url value='/admin/fees/pay/${stud.studentEntryId }' />"><i
 														class="fa fa-rupee"></i>Pay</a></li>
+												<li><a title="Return"
+													href="<c:url value='/admin/fees/return/${stud.studentEntryId }' />"><!-- <i
+														class="fa fa-eye"></i> -->Return</a></li>
 											</ul>
+											
 										</div></td>
 								</tr>
 							</c:forEach>
