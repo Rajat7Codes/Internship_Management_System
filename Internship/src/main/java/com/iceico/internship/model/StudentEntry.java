@@ -118,6 +118,11 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	@JoinColumn(name = "departmentId", insertable = true, nullable = true, updatable = true)
 	@JsonIgnore
 	private Department department;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "studentEntry", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<FeesReturn> feesReturn;
+
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "studentEntry", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

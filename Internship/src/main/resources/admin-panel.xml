@@ -151,6 +151,13 @@
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/fees-pages/printReceipt.jsp" />
 	</definition>
+	
+	<definition name="feesReturn"
+		extends="adminbase.definition">
+		<put-attribute name="title" value="fees" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/fees-pages/feesReturn.jsp" />
+	</definition>
 
 	<!-- certification -->
 
