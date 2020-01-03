@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -24,11 +23,11 @@
 		<div class="col-md-12">
 			<div class="card card-topline-darkgreen">
 				<div class="card-header  card-head pl-4" id="grad">
-					<strong class="card-title text-white">STUDENT ENTRY LIST</strong> <a
+					<strong class="card-title text-white">STUDENT LIST</strong> <a
 						title="Edit" class="btn btn-success"
 						style="float: right; margin-right: 10px; margin-top: 2px;"
-						href="<c:url value='/admin/student/entry/new' />"><i></i>NEW
-						STUDENT ENTRY</a>
+						href="<c:url value='/admin/student/entry/new' />">NEW STUDENT
+					</a>
 				</div>
 				&nbsp;
 				<div class="card-body">
@@ -43,8 +42,6 @@
 								<th>Duration</th>
 								<th>Type</th>
 								<th>Fees</th>
-								<th>Discount</th>
-								<th>Extension</th>
 								<th>Joining Date</th>
 								<th>Action</th>
 							</tr>
@@ -60,8 +57,6 @@
 									<td>${stud.getInternshipDuration().duration }</td>
 									<td>${stud.getInternshipType().type }</td>
 									<td>${stud.feesAmount }</td>
-									<td>${stud.discount }</td>
-									<td>${stud.extension }</td>
 									<td>${stud.date }</td>
 
 									<td class="valigntop"><div class="btn-group">
@@ -77,9 +72,9 @@
 												<li><a title="View"
 													href="<c:url value='/admin/student/entry/view/${stud.studentEntryId }'  />"><i
 														class="fa fa-eye"></i>View</a></li>
-												<li><a title="Print"
+												<%-- <li><a title="Print"
 													href="<c:url value='/admin/student/entry/delete/${stud.studentEntryId }' />"><i
-														class="fa fa-print"></i>Delete</a></li>
+														class="fa fa-trash"></i>Delete</a></li> --%>
 											</ul>
 										</div></td>
 								</tr>
@@ -90,9 +85,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
-
-<script
-	src="${pageContext.request.contextPath }/static/plugins/jquery/jquery.min.js"></script>
 </html>

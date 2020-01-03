@@ -88,8 +88,8 @@ public class StudentEntryServiceIMPL implements StudentEntryService {
 	@Override
 	public Double getDailyFeesCollection(Date date) {
 
-		return (Double) this.getSession().createQuery("select sum(feesAmount) from StudentEntry where date=:date").setParameter("date", date)
-				.uniqueResult();
+		return (Double) this.getSession().createQuery("select sum(feesAmount) from StudentEntry where date=:date")
+				.setParameter("date", date).uniqueResult();
 
 	}
 

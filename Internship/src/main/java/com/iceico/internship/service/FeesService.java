@@ -3,6 +3,7 @@
  */
 package com.iceico.internship.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
@@ -21,4 +22,6 @@ public interface FeesService {
 	public List<Fees> getFeesList();
 
 	public void deleteFees(Long feesId);
+	
+	public Double getdailyFeesCollection(Date date);
 }

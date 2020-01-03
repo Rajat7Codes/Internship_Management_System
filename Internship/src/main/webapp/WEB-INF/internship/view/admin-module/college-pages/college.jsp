@@ -23,14 +23,10 @@
 		<div class="col-md-12">
 			<div class="card card-topline-darkgreen">
 				<div class="card-header  card-head pl-4" id="grad">
-
-					<!-- <strong class="card-title text-white"> COLLEGE INFORMATION
-						LIST</strong> <a title="Edit" class="btn btn-success"
-						<strong class="card-title text-white">COLLEGE INFORMATION
-						LIST</strong></a> -->
-					<a title="Edit" class="btn btn-success"
+					<strong class="card-title text-white">COLLEGE LIST</strong> <a
+						title="Edit" class="btn btn-success"
 						style="float: right; margin-right: 10px; margin-top: 2px;"
-						href="<c:url value='/admin/college/new' />"><i></i>ADD COLLEGE</a>
+						href="<c:url value='/admin/college/new' />">NEW COLLEGE</a>
 				</div>
 				&nbsp;
 				<div class="card-body">
@@ -57,7 +53,8 @@
 									<td>${college.getInternshipSession().sessionName }</td>
 									<td>${college.contactNo }</td>
 									<td>${college.alternateContactNo }</td>
-									<td>${college.mouStatus }</td>
+									<td><c:if test="${college.mouStatus=='true' }">Signed</c:if>
+										<c:if test="${college.mouStatus =='false'}">Unsigned</c:if></td>
 									<td>${college.tnpHead }</td>
 									<td>${college.contactPerson }</td>
 									<td class="valigntop"><div class="btn-group">

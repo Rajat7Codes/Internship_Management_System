@@ -34,7 +34,7 @@
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
 								<form:label path="year">Financial Year</form:label>
 								<form:input path="year" name="year" id="year"
-									class="form-control" placeholder="Academic Year" />
+									class="form-control" placeholder="Financial Year" />
 								<form:errors path="year"></form:errors>
 							</div>
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
@@ -63,7 +63,7 @@
 		<div class="col-md-8">
 			<div class="card card-topline-darkgreen">
 				<div class="card-header  card-head pl-4" id="grad">
-					<strong class="card-title text-white">ACADEMIC YEAR LIST</strong>
+					<strong class="card-title text-white">FINANCIAL YEAR LIST</strong>
 					<div class="tools">
 						<a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
 						<a class="t-collapse btn-color fa fa-chevron-down"
@@ -86,7 +86,8 @@
 								<tr>
 									<td>${ind.index+1 }</td>
 									<td>${fy.year }</td>
-									<td>${fy.active }</td>
+									<td><c:if test="${fy.active =='true'}">Active</c:if> <c:if
+											test="${fy.active =='false'}">Inactive</c:if></td>
 
 									<td class="valigntop"><div class="btn-group">
 											<button
