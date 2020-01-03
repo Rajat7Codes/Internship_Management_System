@@ -145,7 +145,7 @@
 				<td style="display: block; float: left; width: 8%;">of dates</td>
 				<td style="display: block; float: left; width: 20%; border-bottom: 1px solid black;"> &nbsp; <strong> ${ fees.date }</strong></td>
 				<td style="display: block; float: left; width: 7%;">Bank</td>
-				<td style="display: block; float: left; width: 23%; border-bottom: 1px solid black;"> &nbsp; <strong>${ fees.chequeBank }</strong></td>
+				<td style="display: block; float: left; width: 23%; border-bottom: 1px solid black;"> &nbsp; <strong>${ fees.bank }</strong></td>
 			</tr>
 		</table>
 		<table style="width: 100%;">
