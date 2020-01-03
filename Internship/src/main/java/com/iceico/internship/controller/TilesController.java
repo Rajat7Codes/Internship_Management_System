@@ -4,7 +4,6 @@
 package com.iceico.internship.controller;
 
 import java.text.ParseException;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.FinancialYear;
 import com.iceico.internship.model.StudentEntry;
+import com.iceico.internship.service.FeesService;
 import com.iceico.internship.service.FinancialYearService;
 import com.iceico.internship.service.StudentEntryService;
 
@@ -41,6 +41,9 @@ public class TilesController {
 	@Autowired
 	private StudentEntryService studentEntryService;
 
+	@Autowired
+	private FeesService feesService;
+
 	@RequestMapping("/admin/dashboard")
 	public String adminDashboard(ModelMap modelMap, Locale locale) throws ResourceNotFoundException, ParseException {
 		modelMap.addAttribute("user", this.getPrincipal());
@@ -50,10 +53,11 @@ public class TilesController {
 		FinancialYear financialYear = this.financialYearService.getActiveFinancialYear();
 		List<StudentEntry> studentEntries = financialYear.getStudentEntry();
 		modelMap.addAttribute("studentEntryList", studentEntries);
-		modelMap.addAttribute("incomeCount", studentEntryService.getTotalIncome() + "");
-		modelMap.addAttribute("balanceCount", studentEntryService.getTotalBalance() + "");
-		modelMap.addAttribute("paidAmountCount", studentEntryService.getTotalPaidAmount() + "");
-		modelMap.addAttribute("dailyFeesCollection", studentEntryService.getDailyFeesCollection(date) + "");
+		modelMap.addAttribute("incomeCount", studentEntryService.getTotalIncome());
+		modelMap.addAttribute("balanceCount", studentEntryService.getTotalBalance());
+		modelMap.addAttribute("paidAmountCount", studentEntryService.getTotalPaidAmount());
+		modelMap.addAttribute("dailyFeesCollection", feesService.getdailyFeesCollection(date));
+
 		modelMap.addAttribute("user", this.getPrincipal());
 
 		return "adminDashboard";
