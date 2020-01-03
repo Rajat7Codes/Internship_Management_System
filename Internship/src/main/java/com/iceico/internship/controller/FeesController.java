@@ -120,9 +120,18 @@ public class FeesController {
 			Double prevPaidAmt = fees.getStudentEntry().getPaidFees();
 			Double totalBalAmt = fees.getStudentEntry().getBalanceFees();
 			Double paidAmt = fees.getFeesAmount();
+			String status;
+
+			Double finalBalAmt = totalBalAmt - paidAmt;
+			System.out.println("final bal amt =====>>" + finalBalAmt);
+
+			if (finalBalAmt == 0) {
+				status = "Paid";
+				fees.getStudentEntry().setPayStatus(status);
+			}
 
 			fees.getStudentEntry().setPaidFees(prevPaidAmt + paidAmt);
-			fees.getStudentEntry().setBalanceFees(totalBalAmt - paidAmt);
+			fees.getStudentEntry().setBalanceFees(finalBalAmt);
 
 			modelMap.addAttribute("user", this.getPrincipal());
 			this.feesService.saveFees(fees);

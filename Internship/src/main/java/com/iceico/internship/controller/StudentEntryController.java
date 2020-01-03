@@ -99,11 +99,17 @@ public class StudentEntryController {
 		} else {
 			Double fees = studentEntry.getFeesAmount();
 			Double discount = studentEntry.getDiscount();
+
+			String status = "UnPaid";
+
 			fees = fees - discount;
+			System.out.println("calculated fees =====>" + fees);
 			Double paid = 0d;
 			Double balFees = (fees - paid);
-			studentEntry.setBalanceFees(balFees);
+
 			studentEntry.setPaidFees(paid);
+			studentEntry.setBalanceFees(balFees);
+			studentEntry.setPayStatus(status);
 
 			this.studentEntryService.saveStudentEntry(studentEntry);
 			modelMap.addAttribute("user", this.getPrincipal());
