@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -118,11 +119,10 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	@JoinColumn(name = "departmentId", insertable = true, nullable = true, updatable = true)
 	@JsonIgnore
 	private Department department;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "studentEntry", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<FeesReturn> feesReturn;
 
+	@JsonIgnore
+	@OneToOne(mappedBy = "studentEntry", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+	private FeesReturn feesReturn;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "studentEntry", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -146,12 +146,14 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	 * @param financialYear
 	 * @param college
 	 * @param department
+	 * @param feesReturn
 	 * @param fees
 	 */
 	public StudentEntry(Long studentEntryId, String firstName, String middleName, String lastName, Double feesAmount,
 			Double discount, Double paidFees, Double balanceFees, String extension, Date date, String payStatus,
 			InternshipDuration internshipDuration, InternshipSession internshipSession, InternshipType internshipType,
-			FinancialYear financialYear, College college, Department department, List<Fees> fees) {
+			FinancialYear financialYear, College college, Department department, FeesReturn feesReturn,
+			List<Fees> fees) {
 		super();
 		this.studentEntryId = studentEntryId;
 		this.firstName = firstName;
@@ -170,6 +172,7 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 		this.financialYear = financialYear;
 		this.college = college;
 		this.department = department;
+		this.feesReturn = feesReturn;
 		this.fees = fees;
 	}
 
@@ -409,6 +412,20 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	 */
 	public void setDepartment(Department department) {
 		this.department = department;
+	}
+
+	/**
+	 * @return the feesReturn
+	 */
+	public FeesReturn getFeesReturn() {
+		return feesReturn;
+	}
+
+	/**
+	 * @param feesReturn the feesReturn to set
+	 */
+	public void setFeesReturn(FeesReturn feesReturn) {
+		this.feesReturn = feesReturn;
 	}
 
 	/**

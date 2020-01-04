@@ -43,6 +43,7 @@
 								<th>Type</th>
 								<th>Fees</th>
 								<th>Joining Date</th>
+								<th>Certificate</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -58,6 +59,21 @@
 									<td>${stud.getInternshipType().type }</td>
 									<td>${stud.feesAmount }</td>
 									<td>${stud.date }</td>
+									<td class="valigntop"><div class="btn-group">
+											<button
+												class="btn btn-xs btn-success dropdown-toggle no-margin"
+												type="button" data-toggle="dropdown" aria-expanded="false">
+												Certificate <i class="fa fa-angle-down"></i>
+											</button>
+											<ul class="dropdown-menu pull-left" role="menu">
+												<li><a title="joiningLetter"
+													href="<c:url value='/admin/student/entry/joining/letter/${stud.studentEntryId }' />"><i
+														class="fa fa-eye"></i>Joining Letter</a></li>
+												<li><a title="offerLetter"
+													href="<c:url value='/admin/student/entry/offer/letter/${stud.studentEntryId }' />"><i
+														class="fa fa-rupee"></i>Offer Letter</a></li>
+											</ul>
+										</div></td>
 
 									<td class="valigntop"><div class="btn-group">
 											<button

@@ -3,6 +3,9 @@
  */
 package com.iceico.internship.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import javax.validation.Valid;
@@ -146,6 +149,50 @@ public class StudentEntryController {
 			Locale locale) throws ResourceNotFoundException {
 		this.studentEntryService.deleteStudentEntry(studentEntryId);
 		return "redirect:/admin/student/entry";
+	}
+
+	/* certification */
+
+	@GetMapping("/admin/student/entry/joining/letter/{studentEntryId}")
+	public String getJoiningLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap,
+			Locale locale) throws ResourceNotFoundException, Exception {
+
+		StudentEntry studentEntry = this.studentEntryService.getStudentEntryById(studentEntryId);
+		System.out.println("student id ====>" + studentEntryId);
+
+		Date date = studentEntry.getDate();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String stDate = simpleDateFormat.format(date);
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(simpleDateFormat.parse(stDate));
+		calendar.add(Calendar.DATE, 15); // number of days to add
+		stDate = simpleDateFormat.format(calendar.getTime());
+		modelMap.addAttribute("dateAfterFifteenDays", stDate);
+
+		/*
+		 * String joiningStatus = studentEntry.getJoiningStatus();
+		 * System.out.println("joining status ====>" + joiningStatus);
+		 * 
+		 * if (joiningStatus.equals("No")) { System.out.println("inside if condition");
+		 * modelMap.addAttribute("stud",
+		 * this.studentEntryService.getStudentEntryById(studentEntryId));
+		 * System.out.println("after model map condition");
+		 * studentEntry.setJoiningStatus("Yes"); System.out.println("db status  ======>"
+		 * + studentEntry.getJoiningStatus()); } else {
+		 * System.out.println("inside else condition");
+		 * modelMap.addAttribute("errorMessage", "already given offer letter"); }
+		 */
+
+		modelMap.addAttribute("user", this.getPrincipal());
+		return "joiningLetter";
+	}
+
+	@GetMapping("/admin/student/entry/offer/letter/{studentEntryId}")
+	public String getOfferLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
+			throws ResourceNotFoundException {
+
+		modelMap.addAttribute("user", this.getPrincipal());
+		return "offerLetter";
 	}
 
 	/**

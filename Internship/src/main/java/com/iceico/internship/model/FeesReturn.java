@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -39,6 +40,9 @@ public class FeesReturn extends Auditable<String> implements Serializable {
 
 	private static final long serialVersionUID = 4839603085954401830L;
 
+	public FeesReturn() {
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "fees_return_id")
@@ -54,6 +58,11 @@ public class FeesReturn extends Auditable<String> implements Serializable {
 
 	@Column(name = "status")
 	private String status;
+
+	@OneToOne
+	@JoinColumn(name = "studentEntryId", insertable = true, nullable = true, updatable = true)
+	@JsonIgnore
+	private StudentEntry studentEntry;
 
 	/**
 	 * @param feesReturnId
@@ -71,45 +80,46 @@ public class FeesReturn extends Auditable<String> implements Serializable {
 		this.studentEntry = studentEntry;
 	}
 
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-	@JoinColumn(name = "studentEntryId", insertable = true, nullable = true, updatable = true)
-	@JsonIgnore
-	private StudentEntry studentEntry;
-
-	public FeesReturn() {
-		// TODO Auto-generated constructor stub
-	}
-
+	/**
+	 * @return the feesReturnId
+	 */
 	public Long getFeesReturnId() {
 		return feesReturnId;
 	}
 
+	/**
+	 * @param feesReturnId the feesReturnId to set
+	 */
 	public void setFeesReturnId(Long feesReturnId) {
 		this.feesReturnId = feesReturnId;
 	}
 
+	/**
+	 * @return the date
+	 */
 	public Date getDate() {
 		return date;
 	}
 
+	/**
+	 * @param date the date to set
+	 */
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
+	/**
+	 * @return the reason
+	 */
 	public String getReason() {
 		return reason;
 	}
 
+	/**
+	 * @param reason the reason to set
+	 */
 	public void setReason(String reason) {
 		this.reason = reason;
-	}
-
-	public StudentEntry getStudentEntry() {
-		return studentEntry;
-	}
-
-	public void setStudentEntry(StudentEntry studentEntry) {
-		this.studentEntry = studentEntry;
 	}
 
 	/**
@@ -124,6 +134,20 @@ public class FeesReturn extends Auditable<String> implements Serializable {
 	 */
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	/**
+	 * @return the studentEntry
+	 */
+	public StudentEntry getStudentEntry() {
+		return studentEntry;
+	}
+
+	/**
+	 * @param studentEntry the studentEntry to set
+	 */
+	public void setStudentEntry(StudentEntry studentEntry) {
+		this.studentEntry = studentEntry;
 	}
 
 }
