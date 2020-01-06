@@ -90,6 +90,9 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	@Column(name = "pay_status")
 	private String payStatus;
 
+	@Column(name = "student_status")
+	private String studentStatus;
+
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "internDurId", insertable = true, nullable = true, updatable = true)
 	@JsonIgnore
@@ -140,6 +143,7 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	 * @param extension
 	 * @param date
 	 * @param payStatus
+	 * @param studentStatus
 	 * @param internshipDuration
 	 * @param internshipSession
 	 * @param internshipType
@@ -151,9 +155,9 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	 */
 	public StudentEntry(Long studentEntryId, String firstName, String middleName, String lastName, Double feesAmount,
 			Double discount, Double paidFees, Double balanceFees, String extension, Date date, String payStatus,
-			InternshipDuration internshipDuration, InternshipSession internshipSession, InternshipType internshipType,
-			FinancialYear financialYear, College college, Department department, FeesReturn feesReturn,
-			List<Fees> fees) {
+			String studentStatus, InternshipDuration internshipDuration, InternshipSession internshipSession,
+			InternshipType internshipType, FinancialYear financialYear, College college, Department department,
+			FeesReturn feesReturn, List<Fees> fees) {
 		super();
 		this.studentEntryId = studentEntryId;
 		this.firstName = firstName;
@@ -166,6 +170,7 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 		this.extension = extension;
 		this.date = date;
 		this.payStatus = payStatus;
+		this.studentStatus = studentStatus;
 		this.internshipDuration = internshipDuration;
 		this.internshipSession = internshipSession;
 		this.internshipType = internshipType;
@@ -328,6 +333,20 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	 */
 	public void setPayStatus(String payStatus) {
 		this.payStatus = payStatus;
+	}
+
+	/**
+	 * @return the studentStatus
+	 */
+	public String getStudentStatus() {
+		return studentStatus;
+	}
+
+	/**
+	 * @param studentStatus the studentStatus to set
+	 */
+	public void setStudentStatus(String studentStatus) {
+		this.studentStatus = studentStatus;
 	}
 
 	/**

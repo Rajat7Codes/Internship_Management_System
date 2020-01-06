@@ -30,6 +30,7 @@ import com.iceico.internship.service.InternshipDurationService;
 import com.iceico.internship.service.InternshipSessionService;
 import com.iceico.internship.service.InternshipTypeService;
 import com.iceico.internship.service.StudentEntryService;
+import com.iceico.internship.util.ListHelper;
 
 /**
  * @author SAMEER KADGAYE
@@ -68,6 +69,9 @@ public class StudentEntryController {
 	@Autowired
 	private CollegeService collegeService;
 
+	@Autowired
+	private ListHelper listHelper;
+
 	@GetMapping("/admin/student/entry/new")
 	public String getStudentEntry(ModelMap modelMap, Locale locale) {
 		StudentEntry studentEntry = new StudentEntry();
@@ -80,6 +84,7 @@ public class StudentEntryController {
 		modelMap.addAttribute("internDurList", this.internshipDurationService.getInternshipDurationList());
 		modelMap.addAttribute("fyList", this.financialYearService.getFinancialYearList());
 		modelMap.addAttribute("departmentList", this.departmentService.getDepartmentList());
+		modelMap.addAttribute("statusList", this.listHelper.getStatusList());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "newStudentEntry";
 	}
@@ -98,6 +103,7 @@ public class StudentEntryController {
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
 			modelMap.addAttribute("user", this.getPrincipal());
+
 			return "studentEntry";
 		} else {
 			Double fees = studentEntry.getFeesAmount();
