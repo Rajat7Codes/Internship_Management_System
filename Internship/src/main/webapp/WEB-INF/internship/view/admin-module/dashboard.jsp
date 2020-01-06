@@ -38,7 +38,9 @@
 						class="material-icons materialicon">shopping_cart</i></span>
 					<div class="info-box-content">
 						<span class="info-box-text">Total Income</span> <span
-							class="info-box-number">${incomeCount}</span>
+							class="info-box-number"> <c:if
+								test="${incomeCount == null }">0</c:if> <c:if
+								test="${incomeCount != null }">${incomeCount}</c:if></span>
 						<div class="progress">
 							<div class="progress-bar" style="width: 45%"></div>
 						</div>
@@ -56,7 +58,9 @@
 						class="material-icons materialicon">redeem</i></span>
 					<div class="info-box-content">
 						<span class="info-box-text">Total Balance Amount</span> <span
-							class="info-box-number">${balanceCount}</span>
+							class="info-box-number"><c:if
+								test="${balanceCount == null }">0</c:if> <c:if
+								test="${balanceCount != null }">${balanceCount}</c:if></span>
 						<div class="progress">
 							<div class="progress-bar" style="width: 40%"></div>
 						</div>
@@ -74,7 +78,9 @@
 						class="material-icons materialicon">group</i></span>
 					<div class="info-box-content">
 						<span class="info-box-text">Total Paid Amount</span> <span
-							class="info-box-number">${paidAmountCount}</span>
+							class="info-box-number"><c:if
+								test="${paidAmountCount == null }">0</c:if> <c:if
+								test="${paidAmountCount != null }">${paidAmountCount}</c:if></span>
 						<div class="progress">
 							<div class="progress-bar" style="width: 85%"></div>
 						</div>
@@ -92,7 +98,7 @@
 						class="material-icons materialicon">monetization_on</i></span>
 					<div class="info-box-content">
 
-						<span class="info-box-text">Daily Fees Collection</span> <span
+						<span class="info-box-text">Daily Collection</span> <span
 							class="info-box-number"> <c:if
 								test="${dailyFeesCollection == null }">
 								0

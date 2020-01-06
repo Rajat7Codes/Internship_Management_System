@@ -158,31 +158,24 @@ public class StudentEntryController {
 			Locale locale) throws ResourceNotFoundException, Exception {
 
 		StudentEntry studentEntry = this.studentEntryService.getStudentEntryById(studentEntryId);
-		System.out.println("student id ====>" + studentEntryId);
-
 		Date date = studentEntry.getDate();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		String stDate = simpleDateFormat.format(date);
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(simpleDateFormat.parse(stDate));
-		calendar.add(Calendar.DATE, 15); // number of days to add
+		calendar.add(Calendar.DATE, 15);
 		stDate = simpleDateFormat.format(calendar.getTime());
-		modelMap.addAttribute("dateAfterFifteenDays", stDate);
 
-		/*
-		 * String joiningStatus = studentEntry.getJoiningStatus();
-		 * System.out.println("joining status ====>" + joiningStatus);
-		 * 
-		 * if (joiningStatus.equals("No")) { System.out.println("inside if condition");
-		 * modelMap.addAttribute("stud",
-		 * this.studentEntryService.getStudentEntryById(studentEntryId));
-		 * System.out.println("after model map condition");
-		 * studentEntry.setJoiningStatus("Yes"); System.out.println("db status  ======>"
-		 * + studentEntry.getJoiningStatus()); } else {
-		 * System.out.println("inside else condition");
-		 * modelMap.addAttribute("errorMessage", "already given offer letter"); }
-		 */
-
+		Integer joinStatus = studentEntry.getJoinCount();
+		if (joinStatus == null) {
+			studentEntry.setJoinCount(1);
+			modelMap.addAttribute("offer", true);
+			modelMap.addAttribute("dateAfterFifteenDays", stDate);
+			modelMap.addAttribute("stud", this.studentEntryService.getStudentEntryById(studentEntryId));
+		} else {
+			modelMap.addAttribute("offer", false);
+			modelMap.addAttribute("errorMessage", "Offer Letter Already Given ");
+		}
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "joiningLetter";
 	}
