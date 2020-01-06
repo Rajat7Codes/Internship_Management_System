@@ -200,6 +200,13 @@
 											<span class="subject"> <span class="from">DEPARTMENT</span>
 										</span>
 									</a></li>
+									
+									<li><a
+										href="${pageContext.request.contextPath }/admin/holiday">
+											<span class="photo"><i class="fa fa-list-alt"></i></span> <!-- <span class="subject"> </span> -->
+											<span class="subject"> <span class="from">HOLIDAY</span>
+										</span>
+									</a></li>
 
 									<!-- <li><a href="#"> <span class="photo"> <img
 												src="assets/img/user/user3.jpg" class="img-circle" alt="">

@@ -3,6 +3,7 @@
  */
 package com.iceico.internship.controller;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -152,7 +153,6 @@ public class StudentEntryController {
 	}
 
 	/* certification */
-
 	@GetMapping("/admin/student/entry/joining/letter/{studentEntryId}")
 	public String getJoiningLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap,
 			Locale locale) throws ResourceNotFoundException, Exception {
@@ -183,7 +183,19 @@ public class StudentEntryController {
 	@GetMapping("/admin/student/entry/offer/letter/{studentEntryId}")
 	public String getOfferLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException {
-
+		StudentEntry studentEntry = this.studentEntryService.getStudentEntryById(studentEntryId);
+		Date date = studentEntry.getDate();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		String joiningDate = simpleDateFormat.format(date);
+		modelMap.addAttribute("joiningDate", joiningDate);
+		
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		Calendar calobj = Calendar.getInstance();
+		
+		modelMap.addAttribute("currentDate", df.format(calobj.getTime()));
+		
+		modelMap.addAttribute("duration", studentEntry.getInternshipDuration().getDuration());
+		modelMap.addAttribute("stud", studentEntry);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "offerLetter";
 	}

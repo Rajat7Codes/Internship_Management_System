@@ -125,6 +125,15 @@
 	</definition>
 
 
+	<!-- Holiday -->
+	<definition name="holiday"
+		extends="adminbase.definition">
+		<put-attribute name="title" value="Holiday" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/other-pages/holiday.jsp" />
+	</definition>
+
+
 	<!-- Fees Module -->
 	<definition name="feesList" extends="adminbase.definition">
 		<put-attribute name="title" value="fees" />
