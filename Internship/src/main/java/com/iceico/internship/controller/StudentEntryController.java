@@ -166,16 +166,19 @@ public class StudentEntryController {
 		calendar.add(Calendar.DATE, 15);
 		stDate = simpleDateFormat.format(calendar.getTime());
 
-		Integer joinStatus = studentEntry.getJoinCount();
-		if (joinStatus == null) {
-			studentEntry.setJoinCount(1);
-			modelMap.addAttribute("offer", true);
-			modelMap.addAttribute("dateAfterFifteenDays", stDate);
-			modelMap.addAttribute("stud", this.studentEntryService.getStudentEntryById(studentEntryId));
-		} else {
-			modelMap.addAttribute("offer", false);
-			modelMap.addAttribute("errorMessage", "Offer Letter Already Given ");
-		}
+		/*
+		 * Integer joinStatus = studentEntry.getJoinCount(); if (joinStatus == null) {
+		 * studentEntry.setJoinCount(1); modelMap.addAttribute("offer", true);
+		 * modelMap.addAttribute("dateAfterFifteenDays", stDate);
+		 * modelMap.addAttribute("stud",
+		 * this.studentEntryService.getStudentEntryById(studentEntryId)); } else {
+		 * modelMap.addAttribute("offer", false); modelMap.addAttribute("errorMessage",
+		 * "Offer Letter Already Given "); }
+		 */
+
+		modelMap.addAttribute("offer", true);
+		modelMap.addAttribute("dateAfterFifteenDays", stDate);
+		modelMap.addAttribute("stud", this.studentEntryService.getStudentEntryById(studentEntryId));
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "joiningLetter";
 	}
