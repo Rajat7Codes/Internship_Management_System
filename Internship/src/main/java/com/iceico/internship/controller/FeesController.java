@@ -111,6 +111,11 @@ public class FeesController {
 				status = "Paid";
 				fees.getStudentEntry().setPayStatus(status);
 			}
+			
+			if (paidAmt == 0) {
+				status = "Unpaid";
+				fees.getStudentEntry().setPayStatus(status);
+			}
 
 			fees.getStudentEntry().setPaidFees(prevPaidAmt + paidAmt);
 			fees.getStudentEntry().setBalanceFees(finalBalAmt);

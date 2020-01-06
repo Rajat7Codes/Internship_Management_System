@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.FeesReturn;
-import com.iceico.internship.model.StudentEntry;
 import com.iceico.internship.service.FeesReturnService;
 import com.iceico.internship.service.StudentEntryService;
 import com.iceico.internship.util.ListHelper;
@@ -69,9 +68,9 @@ public class FeesReturnController {
 
 			paidAmount = 0.00;
 			feesReturn.getStudentEntry().setPaidFees(paidAmount);
-		
+
 			balanceAmount = feesAmount - discount;
-			
+
 			feesReturn.getStudentEntry().setBalanceFees(balanceAmount);
 			studentStatus = "Discontinued";
 			feesReturn.getStudentEntry().setStudentStatus(studentStatus);
@@ -82,36 +81,6 @@ public class FeesReturnController {
 		return "redirect:/admin/fees";
 	}
 
-	/*
-	 * else { Double prevPaidAmt = fees.getStudentEntry().getPaidFees(); Double
-	 * totalBalAmt = fees.getStudentEntry().getBalanceFees(); Double paidAmt =
-	 * fees.getFeesAmount(); String status;
-	 * 
-	 * Double finalBalAmt = totalBalAmt - paidAmt;
-	 * System.out.println("final bal amt =====>>" + finalBalAmt);
-	 * 
-	 * if (finalBalAmt == 0) { status = "Paid";
-	 * fees.getStudentEntry().setPayStatus(status); }
-	 * 
-	 * fees.getStudentEntry().setPaidFees(prevPaidAmt + paidAmt);
-	 * fees.getStudentEntry().setBalanceFees(finalBalAmt);
-	 * 
-	 * modelMap.addAttribute("user", this.getPrincipal());
-	 * this.feesService.saveFees(fees);
-	 * 
-	 * return "redirect:/admin/fees"; }
-	 */
-
-	/*
-	 * @GetMapping("/admin/fees/return/edit/{feesReturnId}") public String
-	 * editReciept(@PathVariable("feesReturnId") Long feesReturnId, ModelMap
-	 * modelMap, Locale locale) throws ResourceNotFoundException { FeesReturn
-	 * feesReturn = this.feesReturnService.getFeesReturnById(feesReturnId);
-	 * modelMap.addAttribute("studentEntry", feesReturn.getStudentEntry());
-	 * modelMap.addAttribute("statusList", this.listHelper.getPaymentModeList());
-	 * modelMap.addAttribute("feesReturn", feesReturn);
-	 * modelMap.addAttribute("user", this.getPrincipal()); return "feesReturn"; }
-	 */
 	public FeesReturnController() {
 
 	}
