@@ -61,6 +61,7 @@ public class FeesReturnController {
 		Double feesAmount = feesReturn.getStudentEntry().getFeesAmount();
 		Double discount = feesReturn.getStudentEntry().getDiscount();
 		String studentStatus;
+		String status;
 
 		System.out.println("The fees to be returned:" + paidAmount);
 
@@ -72,6 +73,10 @@ public class FeesReturnController {
 			balanceAmount = feesAmount - discount;
 
 			feesReturn.getStudentEntry().setBalanceFees(balanceAmount);
+
+			status = "Unpaid";
+			feesReturn.getStudentEntry().setPayStatus(status);
+
 			studentStatus = "Discontinued";
 			feesReturn.getStudentEntry().setStudentStatus(studentStatus);
 		}

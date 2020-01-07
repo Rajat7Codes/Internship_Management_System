@@ -14,10 +14,10 @@
 }
 
 /* .image:before {
-	visibility: hidden;
-	position: absolute;
-	content:
-		url("${pageContext.request.contextPath }/static/img/iceico_letterHead.png");
+visibility: hidden;
+position: absolute;
+content:
+url("${pageContext.request.contextPath }/static/img/iceico_letterHead.png");
 } */
 @media print {
 	.image {
@@ -30,18 +30,17 @@
 }
 
 /* @media print {
-	.test {
-		content:
-			url(${pageContext.request.contextPath }/static/img/iceico_letterHead.png);
-	}
+.test {
+content:
+url(${pageContext.request.contextPath }/static/img/iceico_letterHead.png);
+}
 } */
 </style>
 </head>
 <body onload="window.print();">
-
 	<div class="image" id="image">
 		<%-- <div
-		style="background-image: url('${pageContext.request.contextPath }/static/img/iceico_letterHead.png');">
+style="background-image: url('${pageContext.request.contextPath }/static/img/iceico_letterHead.png');">
  --%>
 
 		<div class="backimage" id="backimage">
@@ -49,6 +48,12 @@
 				src="${pageContext.request.contextPath }/static/img/iceico_letterHead.png"
 				class="brand_logo" alt="Logo" style="width: 100%; height: 100%" />
 		</div>
+
+		<c:if test="${ offer == false }">
+			<div align="center" style="margin: 30%">
+				<h1>${errorMessage}</h1>
+			</div>
+		</c:if>
 
 		<c:if test="${ offer == true }">
 			<br>
@@ -73,7 +78,7 @@
 					style="margin-left: 22px; font-size: 26px; font-family: Times New Roman;">
 					<tr>
 						<td>Date :</td>
-						<td><strong> ${dateAfterFifteenDays } </strong></td>
+						<td><strong> ${ joiningDate } </strong></td>
 					</tr>
 					<tr>
 						<td>Name :</td>
@@ -95,7 +100,7 @@
 								department of ICEICO Technologies Pvt. Ltd. which is commence on
 								Date:&nbsp;&nbsp; <strong
 									style="border-bottom: 1px solid black;">
-									${joiningDateInStandardFormat }</strong>&nbsp;&nbsp; and he/she pursing
+									${ joiningDate }</strong>&nbsp;&nbsp; and he/she pursing
 								Internship in department
 							</div></td>
 					</tr>
@@ -104,8 +109,8 @@
 								your arrival at ICEICO Technologies Pvt. Ltd.</div></td>
 					</tr>
 					<!-- <tr>
-					<td>Your's faithfully,</td>
-				</tr> -->
+<td>Your's faithfully,</td>
+</tr> -->
 				</table>
 				<br> <br>
 
