@@ -3,10 +3,11 @@
  */
 package com.iceico.internship.controller;
 
-import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.validation.Valid;
@@ -23,10 +24,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
+import com.iceico.internship.model.Holiday;
 import com.iceico.internship.model.StudentEntry;
 import com.iceico.internship.service.CollegeService;
 import com.iceico.internship.service.DepartmentService;
 import com.iceico.internship.service.FinancialYearService;
+import com.iceico.internship.service.HolidayService;
 import com.iceico.internship.service.InternshipDurationService;
 import com.iceico.internship.service.InternshipSessionService;
 import com.iceico.internship.service.InternshipTypeService;
@@ -69,6 +72,9 @@ public class StudentEntryController {
 
 	@Autowired
 	private CollegeService collegeService;
+	
+	@Autowired 
+	private HolidayService holidayService;
 
 	@Autowired
 	private ListHelper listHelper;
@@ -188,20 +194,45 @@ public class StudentEntryController {
 
 	@GetMapping("/admin/student/entry/offer/letter/{studentEntryId}")
 	public String getOfferLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
-			throws ResourceNotFoundException {
+			throws ResourceNotFoundException, ParseException {
 		StudentEntry studentEntry = this.studentEntryService.getStudentEntryById(studentEntryId);
-		Date date = studentEntry.getDate();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-		String joiningDate = simpleDateFormat.format(date);
-		modelMap.addAttribute("joiningDate", joiningDate);
 		
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-		Calendar calobj = Calendar.getInstance();
+		Integer offerStatus = studentEntry.getOfferCount();
+		if (offerStatus == null) {
+			studentEntry.setOfferCount(1);
+			List<Holiday> holidayList = this.holidayService.getHolidayList();
+			
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+			
+			// Gets Joining Date from Database
+			modelMap.addAttribute("joiningDate", simpleDateFormat.format(studentEntry.getDate()));
+			
+			Calendar calendar = Calendar.getInstance();
+			
+			// Generates Current Date
+			modelMap.addAttribute("currentDate", simpleDateFormat.format(calendar.getTime()).toString());
+			
+			// Checks for Holiday after 15 days
+			calendar.add(Calendar.DATE, 15);
+			for(int i=0; i<holidayList.size(); i++) {
+				String stDate = simpleDateFormat.format(holidayList.get(i).getDate());
+				Calendar calendar1 = Calendar.getInstance();
+				calendar1.setTime(simpleDateFormat.parse(stDate));
+				if(simpleDateFormat.format(calendar.getTime()).toString().equals(simpleDateFormat.format(calendar1.getTime()).toString())) {
+					calendar.add(Calendar.DATE, 1);
+					i=0;
+				}
+			}
+	
+			modelMap.addAttribute("reportingDate", simpleDateFormat.format(calendar.getTime()).toString());
+			modelMap.addAttribute("duration", studentEntry.getInternshipDuration().getDuration());
+			modelMap.addAttribute("stud", studentEntry);
+			modelMap.addAttribute("offer", true);
+		} else {
+			modelMap.addAttribute("offer", false);
+			modelMap.addAttribute("errorMessage", "Offer Letter Already Given ");
+		}
 		
-		modelMap.addAttribute("currentDate", df.format(calobj.getTime()));
-		
-		modelMap.addAttribute("duration", studentEntry.getInternshipDuration().getDuration());
-		modelMap.addAttribute("stud", studentEntry);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "offerLetter";
 	}

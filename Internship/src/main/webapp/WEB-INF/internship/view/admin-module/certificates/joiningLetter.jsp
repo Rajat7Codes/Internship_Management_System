@@ -76,12 +76,8 @@
 				</tr>
 			</table>
 			<br> <br> <br>
-
-
 			<h4 style="margin-left: 20px;">Yours faithfully,</h4>
 			<br> <br> <br> <br>
-
-
 			<table style="margin-left: 10px; font-size: 20px;">
 				<tr>
 					<td>HR Authority/Manager</td>
@@ -92,15 +88,12 @@
 				</tr>
 			</table>
 			<br> <br> <br> <br>
-
 			<h1 align="center">91, Ganesh Nagar, Nandanwan, Nagpur-09. Mob
 				No.-8007004287 ,</h1>
 			<h1 align="center">848586588.info@iceico.in.www.iceico.in</h1>
 
-
 		</div>
 	</c:if>
-
 
 	<script type="text/javascript">
 		function myDate() {

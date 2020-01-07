@@ -8,7 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body style="font-family: 'Times New Roman'; background-color: shokewhite; border: 2px solid black; padding: 20px; font-size: 26px;" onload="window.print();">
-
+	
+	<c:if test="${ offer == false }">
+		<div align="center" style="margin: 30%">
+			<h1>${errorMessage}</h1>
+		</div>
+	</c:if>
+	<c:if test="${ offer == true }">
 	<div>
 		<div style="text-align: center">
 			<img width="100px"
@@ -22,18 +28,18 @@
 			Internship Offer Letter</h3>
 
 		<div>
-			Date: ${ currentDate } <br>
-			Name: ${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName } 
+			Date: <strong>${ currentDate }</strong> <br>
+			Name: <strong>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</strong>
 		</div>
 		<br>
 		<br>
 		<div>
-				Dear ${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }, <br>
+				Dear <strong>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName },</strong> <br>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We are pleased to offer you Internship for Internship Program
 				at ICEICO Technologies Pvt. Ltd. which will commence on Dt.:
-				${ joiningDate }. This is paid internship program of complete ${ duration }
+				<strong>${ joiningDate }</strong>. This is paid internship program of complete <strong>${ duration }</strong>
 				program. <br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please report to HR (name of supervisor) on Dt.: ${ joiningDate } at
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please report to HR (name of supervisor) on Dt.: <strong>${ reportingDate }</strong> at
 				10:00 am prior to your commencement of internship. There will be
 				interview while you come for reporting. According your interview
 				result your selection will be confirmed. You will be required to
@@ -65,6 +71,6 @@
 			</h3>
 		</div>
 	</div>
-
+</c:if>
 </body>
 </html>
