@@ -61,8 +61,6 @@
 			<br>
 			<br>
 			<br>
-			<br>
-			<br>
 
 			<div style="padding: 36px;">
 				<div align="center">

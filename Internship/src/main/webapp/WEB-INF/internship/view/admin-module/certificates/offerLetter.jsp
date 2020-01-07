@@ -15,7 +15,7 @@
 }
 </style>
 <body
-	style="font-family: 'Times New Roman'; background-color: shokewhite; padding: 20px; font-size: 26px; "
+	style="font-family: 'Times New Roman'; background-color: shokewhite; padding: 20px; font-size: 26px;"
 	onload="window.print();">
 
 
@@ -28,9 +28,11 @@
 	</div>
 
 
-	<div style="padding: 50px; padding-left:70px;">
-		<h3 style="text-align: center; text-decoration: underline; margin-bottom: 0;">
-			<br> <br> <br> <br> <br>Internship Offer Letter
+	<div style="padding: 50px; padding-left: 70px;">
+		<h3
+			style="text-align: center; text-decoration: underline; margin-bottom: 0;">
+			<br> <br> <br> <br> <br>Internship Offer
+			Letter
 		</h3>
 
 		<div>
