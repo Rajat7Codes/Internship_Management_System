@@ -72,8 +72,8 @@ public class StudentEntryController {
 
 	@Autowired
 	private CollegeService collegeService;
-	
-	@Autowired 
+
+	@Autowired
 	private HolidayService holidayService;
 
 	@Autowired
@@ -173,21 +173,24 @@ public class StudentEntryController {
 		Date date = studentEntry.getDate();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		String stDate = simpleDateFormat.format(date);
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(simpleDateFormat.parse(stDate));
-		calendar.add(Calendar.DATE, 15);
-		stDate = simpleDateFormat.format(calendar.getTime());
 
 		Integer joinStatus = studentEntry.getJoinCount();
 		if (joinStatus == null) {
 			studentEntry.setJoinCount(1);
 			modelMap.addAttribute("offer", true);
-			modelMap.addAttribute("dateAfterFifteenDays", stDate);
+			modelMap.addAttribute("joiningDate", stDate);
 			modelMap.addAttribute("stud", this.studentEntryService.getStudentEntryById(studentEntryId));
 		} else {
 			modelMap.addAttribute("offer", false);
-			modelMap.addAttribute("errorMessage", "Offer Letter Already Given ");
+			modelMap.addAttribute("errorMessage", "Joining Letter Already Given ");
 		}
+
+		/*
+		 * modelMap.addAttribute("offer", true);
+		 * modelMap.addAttribute("joiningDateInStandardFormat", stDate);
+		 * modelMap.addAttribute("stud",
+		 * this.studentEntryService.getStudentEntryById(studentEntryId));
+		 */
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "joiningLetter";
 	}
@@ -196,34 +199,35 @@ public class StudentEntryController {
 	public String getOfferLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException, ParseException {
 		StudentEntry studentEntry = this.studentEntryService.getStudentEntryById(studentEntryId);
-		
+
 		Integer offerStatus = studentEntry.getOfferCount();
 		if (offerStatus == null) {
 			studentEntry.setOfferCount(1);
 			List<Holiday> holidayList = this.holidayService.getHolidayList();
-			
+
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-			
+
 			// Gets Joining Date from Database
 			modelMap.addAttribute("joiningDate", simpleDateFormat.format(studentEntry.getDate()));
-			
+
 			Calendar calendar = Calendar.getInstance();
-			
+
 			// Generates Current Date
 			modelMap.addAttribute("currentDate", simpleDateFormat.format(calendar.getTime()).toString());
-			
+
 			// Checks for Holiday after 15 days
 			calendar.add(Calendar.DATE, 15);
-			for(int i=0; i<holidayList.size(); i++) {
+			for (int i = 0; i < holidayList.size(); i++) {
 				String stDate = simpleDateFormat.format(holidayList.get(i).getDate());
 				Calendar calendar1 = Calendar.getInstance();
 				calendar1.setTime(simpleDateFormat.parse(stDate));
-				if(simpleDateFormat.format(calendar.getTime()).toString().equals(simpleDateFormat.format(calendar1.getTime()).toString())) {
+				if (simpleDateFormat.format(calendar.getTime()).toString()
+						.equals(simpleDateFormat.format(calendar1.getTime()).toString())) {
 					calendar.add(Calendar.DATE, 1);
-					i=0;
+					i = 0;
 				}
 			}
-	
+
 			modelMap.addAttribute("reportingDate", simpleDateFormat.format(calendar.getTime()).toString());
 			modelMap.addAttribute("duration", studentEntry.getInternshipDuration().getDuration());
 			modelMap.addAttribute("stud", studentEntry);
@@ -232,7 +236,9 @@ public class StudentEntryController {
 			modelMap.addAttribute("offer", false);
 			modelMap.addAttribute("errorMessage", "Offer Letter Already Given ");
 		}
-		
+
+		modelMap.addAttribute("duration", studentEntry.getInternshipDuration().getDuration());
+		modelMap.addAttribute("stud", studentEntry);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "offerLetter";
 	}

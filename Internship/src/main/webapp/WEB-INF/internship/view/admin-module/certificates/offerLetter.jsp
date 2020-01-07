@@ -7,37 +7,42 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body style="font-family: 'Times New Roman'; background-color: shokewhite; border: 2px solid black; padding: 20px; font-size: 26px;" onload="window.print();">
-	
-	<c:if test="${ offer == false }">
+<style type="text/css">
+#backimage {
+	position: absolute;
+	z-index: -1;
+}
+</style>
+<body
+	style="font-family: 'Times New Roman'; background-color: shokewhite; padding: 20px; font-size: 26px; "
+	onload="window.print();">
+
+<c:if test="${ offer == false }">
 		<div align="center" style="margin: 30%">
 			<h1>${errorMessage}</h1>
 		</div>
 	</c:if>
 	<c:if test="${ offer == true }">
-	<div>
-		<div style="text-align: center">
-			<img width="100px"
-				src="${pageContext.request.contextPath }/static/img/Iceico_round.png">
-			<h2 style="font-weight: bold; color: #000066">ICEICO Technologies Pvt. Ltd.</h2>
-		</div>
 
-		<p style="text-align: right">CIN - U74999MH2017PTC303106</p>
+	<div class="backimage" id="backimage">
+		<img
+			src="${pageContext.request.contextPath }/static/img/iceico_letterHead.png"
+			class="brand_logo" alt="Logo" style="width: 100%; height: 100%" />
+	</div>
 
-		<h3 style="text-align: center; text-decoration: underline;">
-			Internship Offer Letter</h3>
-
+	<div style="padding: 50px; padding-left:70px;">
+		<h3 style="text-align: center; text-decoration: underline; margin-bottom: 0;">
+			<br> <br> <br> <br> <br>Internship Offer Letter
+		</h3>
 		<div>
 			Date: <strong>${ currentDate }</strong> <br>
 			Name: <strong>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</strong>
 		</div>
 		<br>
-		<br>
 		<div>
 				Dear <strong>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName },</strong> <br>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We are pleased to offer you Internship for Internship Program
-				at ICEICO Technologies Pvt. Ltd. which will commence on Dt.:
-				<strong>${ joiningDate }</strong>. This is paid internship program of complete <strong>${ duration }</strong>
+				at ICEICO Technologies Pvt. Ltd. which will commence on Dt.: <strong>${ joiningDate }</strong>. This is paid internship program of complete <strong>${ duration }</strong>
 				program. <br>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please report to HR (name of supervisor) on Dt.: <strong>${ reportingDate }</strong> at
 				10:00 am prior to your commencement of internship. There will be
@@ -49,27 +54,15 @@
 				Ltd.
 		</div>
 		<br>
-		<br>
 		<div>
-			Yours faithfully, <br><br>
-			HR Professional<br>
-			ICEICO Technologies Pvt. Ltd.<br>
-		</div> <br>
-		<div style="text-align: center">Note: If you have any queries of comments, please call me immediately.</div>
-		<br><br><br>
-		<div style="text-align: center">
-			<h3 style="font-weight: bold; color: #000066">
-				91, Ganesh Nagar, Nandanvan, Nagpur-09 <img width="8px"
-					src="https://img.icons8.com/material-outlined/24/000000/filled-circle--v1.png">Mob
-				No. - 8007004287
-			</h3>
-			<h3 style="font-weight: bold; color: #000066">
-				8485869588<img width="8px"
-					src="https://img.icons8.com/material-outlined/24/000000/filled-circle--v1.png">info@iceico.in<img
-					width="8px"
-					src="https://img.icons8.com/material-outlined/24/000000/filled-circle--v1.png">www.iceico.in
-			</h3>
+			Yours faithfully, <br> HR Professional<br> ICEICO
+			Technologies Pvt. Ltd.<br>
 		</div>
+
+		<div style="text-align: center">Note: If you have any queries of
+			comments, please call me immediately.</div>
+		<br> <br> <br>
+
 	</div>
 </c:if>
 </body>
