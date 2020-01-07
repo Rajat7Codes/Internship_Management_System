@@ -192,12 +192,12 @@ public class StudentEntryController {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		String joiningDate = simpleDateFormat.format(date);
 		modelMap.addAttribute("joiningDate", joiningDate);
-		
+
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-		Calendar calobj = Calendar.getInstance();
-		
-		modelMap.addAttribute("currentDate", df.format(calobj.getTime()));
-		
+		// Calendar calobj = Calendar.getInstance();
+
+		// modelMap.addAttribute("currentDate", df.format(calobj.getTime()));
+
 		modelMap.addAttribute("duration", studentEntry.getInternshipDuration().getDuration());
 		modelMap.addAttribute("stud", studentEntry);
 		modelMap.addAttribute("user", this.getPrincipal());
