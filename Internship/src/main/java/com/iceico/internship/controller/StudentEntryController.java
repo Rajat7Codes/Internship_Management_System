@@ -4,7 +4,6 @@
 package com.iceico.internship.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -161,10 +160,6 @@ public class StudentEntryController {
 		Date date = studentEntry.getDate();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		String stDate = simpleDateFormat.format(date);
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(simpleDateFormat.parse(stDate));
-		calendar.add(Calendar.DATE, 15);
-		stDate = simpleDateFormat.format(calendar.getTime());
 
 		/*
 		 * Integer joinStatus = studentEntry.getJoinCount(); if (joinStatus == null) {
@@ -177,7 +172,7 @@ public class StudentEntryController {
 		 */
 
 		modelMap.addAttribute("offer", true);
-		modelMap.addAttribute("dateAfterFifteenDays", stDate);
+		modelMap.addAttribute("joiningDateInStandardFormat", stDate);
 		modelMap.addAttribute("stud", this.studentEntryService.getStudentEntryById(studentEntryId));
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "joiningLetter";

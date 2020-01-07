@@ -24,8 +24,7 @@
 			<p>Date:</p>
 			<p>Name:</p>
 		</div>
-		<br>
-		<br>
+		<br> <br>
 		<div>
 			<p>
 				Dear <span id="name"></span>,
@@ -43,8 +42,7 @@
 			<p>We look forward to your arrival at ICEICO Technologies Pvt.
 				Ltd.</p>
 		</div>
-		<br>
-		<br>
+		<br> <br>
 		<div>
 			<p>Yours faithfully,</p>
 			<br>
