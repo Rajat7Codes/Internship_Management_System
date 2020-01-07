@@ -8,13 +8,17 @@
 <title>Insert title here</title>
 
 <style type="text/css">
-.image:before {
+#backimage {
+	position: absolute;
+	z-index: -1;
+}
+
+/* .image:before {
 	visibility: hidden;
 	position: absolute;
 	content:
 		url("${pageContext.request.contextPath }/static/img/iceico_letterHead.png");
-}
-
+} */
 @media print {
 	.image {
 		position: relative;
@@ -35,13 +39,16 @@
 </head>
 <body onload="window.print();">
 
-	<div class="image">
+	<div class="image" id="image">
 		<%-- <div
 		style="background-image: url('${pageContext.request.contextPath }/static/img/iceico_letterHead.png');">
  --%>
-		<%-- <img
-		src="${pageContext.request.contextPath }/static/img/iceico_letterHead.png"
-		class="brand_logo" alt="Logo" style="width: 100%; height: 100%" /> --%>
+
+		<div class="backimage" id="backimage">
+			<img
+				src="${pageContext.request.contextPath }/static/img/iceico_letterHead.png"
+				class="brand_logo" alt="Logo" style="width: 100%; height: 100%" />
+		</div>
 
 		<c:if test="${ offer == true }">
 			<br>
@@ -75,7 +82,7 @@
 						<td><strong>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</strong></td>
 					</tr>
 				</table>
-				<br> <br> <br> <br>
+				<br> <br> <br>
 
 				<table
 					style="margin-left: 22px; font-size: 26px; width: 96%; font-family: Times New Roman;">
@@ -102,13 +109,13 @@
 					<td>Your's faithfully,</td>
 				</tr> -->
 				</table>
-				<br> <br> <br>
+				<br> <br>
 
 
 				<div
 					style="margin-left: 22px; font-family: Times New Roman; font-size: 26px;">Yours
 					faithfully,</div>
-				<br> <br> <br> <br>
+				<br>
 
 
 				<table
