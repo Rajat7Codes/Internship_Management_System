@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.InternshipSession;
 import com.iceico.internship.repository.InternshipSessionRepository;
 import com.iceico.internship.service.InternshipSessionService;
@@ -48,8 +49,9 @@ public class InternshipSessionServiceImpl implements InternshipSessionService {
 	}
 
 	@Override
-	public InternshipSession getSessionById(Long sessionId) {
-		return this.internshipSessionRepository.findById(sessionId).get();
+	public InternshipSession getSessionById(Long sessionId) throws ResourceNotFoundException {
+		return this.internshipSessionRepository.findById(sessionId).orElseThrow(() 
+				-> new ResourceNotFoundException("Not Data Found At Id " + sessionId));
 	}
 
 }

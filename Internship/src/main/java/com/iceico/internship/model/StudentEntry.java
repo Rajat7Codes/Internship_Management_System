@@ -90,6 +90,8 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	@Column(name = "pay_status")
 	private String payStatus;
 
+	@Column(name = "student_status")
+	private String studentStatus;
 	@Column(name = "offer_count")
 	private Integer offerCount;
 
@@ -146,6 +148,7 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	 * @param extension
 	 * @param date
 	 * @param payStatus
+	 * @param studentStatus
 	 * @param offerCount
 	 * @param joinCount
 	 * @param internshipDuration
@@ -159,7 +162,7 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	 */
 	public StudentEntry(Long studentEntryId, String firstName, String middleName, String lastName, Double feesAmount,
 			Double discount, Double paidFees, Double balanceFees, String extension, Date date, String payStatus,
-			Integer offerCount, Integer joinCount, InternshipDuration internshipDuration,
+			String studentStatus, Integer offerCount, Integer joinCount, InternshipDuration internshipDuration,
 			InternshipSession internshipSession, InternshipType internshipType, FinancialYear financialYear,
 			College college, Department department, FeesReturn feesReturn, List<Fees> fees) {
 		super();
@@ -174,6 +177,7 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 		this.extension = extension;
 		this.date = date;
 		this.payStatus = payStatus;
+		this.studentStatus = studentStatus;
 		this.offerCount = offerCount;
 		this.joinCount = joinCount;
 		this.internshipDuration = internshipDuration;
@@ -341,6 +345,20 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	}
 
 	/**
+	 * @return the studentStatus
+	 */
+	public String getStudentStatus() {
+		return studentStatus;
+	}
+
+	/**
+	 * @param studentStatus the studentStatus to set
+	 */
+	public void setStudentStatus(String studentStatus) {
+		this.studentStatus = studentStatus;
+	}
+
+	/*
 	 * @return the offerCount
 	 */
 	public Integer getOfferCount() {

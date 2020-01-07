@@ -70,8 +70,7 @@
 														class="fa fa-rupee"></i>Pay</a></li>
 												<li><a title="Return"
 													href="<c:url value='/admin/fees/return/${stud.studentEntryId }' />">
-														<!-- <i
-														class="fa fa-eye"></i> -->Return
+														<i class="fa fa-rupee"></i>Return Fees
 												</a></li>
 											</ul>
 										</div></td>

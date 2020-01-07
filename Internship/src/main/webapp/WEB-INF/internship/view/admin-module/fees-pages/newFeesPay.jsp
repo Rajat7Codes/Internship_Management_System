@@ -85,7 +85,7 @@ label {
 				<div class="col-8">
 					<div class="card card-topline-darkgreen">
 						<div class="card-header card-head pl-4" id="grad">
-							<strong class="card-title text-white"> PAY FEES </strong>
+							<strong class="card-title text-white"> RETURN FEES </strong>
 							<div class="tools">
 								<a class="fa fa-repeat btn-color box-refresh"
 									href="javascript:;"></a> <a
@@ -96,7 +96,7 @@ label {
 						</div>
 
 						<div class="col-md-12">
-							<div class="row">
+							<div class="row"> 
 								<div class="col-sm-3">
 									<label class="clear-top-margin"> <i class="fa fa-rupee">
 									</i> TOTAL FEES

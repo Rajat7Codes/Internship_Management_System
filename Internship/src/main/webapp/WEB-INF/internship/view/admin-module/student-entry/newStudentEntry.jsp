@@ -134,12 +134,24 @@ label {
 								<form:errors path="extension"></form:errors>
 							</div>
 
-							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+							<div class="col-md-6 col-sm-6 col-lg-6 col-12">
 								<form:label path="date">Joining Date</form:label>
 								<form:input type="date" path="date" name="date" id="date"
 									class="form-control" />
 								<form:errors path="date"></form:errors>
 							</div>
+
+
+							<div class="col-md-6 col-sm-6 col-lg-6 col-12">
+								<form:label path="studentStatus">Status</form:label>
+								<form:select path="studentStatus" class="form-control"
+									name="studentStatus" id="studentStatus">
+									<form:options items="${statusList}"></form:options>
+								</form:select>
+								<form:errors path="studentStatus"></form:errors>
+							</div>
+
+
 						</div>
 					</div>
 				</div>
