@@ -12,8 +12,7 @@
 		<div class="page-header-inner ">
 			<!-- logo start -->
 			<div class="page-logo logo-white">
-				<a href="#"> <%-- <img alt=""
-					src="${pageContext.request.contextPath }/static/img/logo/vbcmrLogo50X50.gif"> --%>
+				<a href="#"> <img style="width:26px" src="${pageContext.request.contextPath }/static/img/Iceico_round.png">
 					<span class="logo-default">INTERNSHIP</span>
 				</a>
 			</div>
