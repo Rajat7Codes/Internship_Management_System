@@ -143,6 +143,7 @@ public class StudentEntryController {
 		modelMap.addAttribute("internDurList", this.internshipDurationService.getInternshipDurationList());
 		modelMap.addAttribute("fyList", this.financialYearService.getFinancialYearList());
 		modelMap.addAttribute("departmentList", this.departmentService.getDepartmentList());
+		modelMap.addAttribute("statusList", this.listHelper.getStatusList());
 		modelMap.addAttribute("user", this.getPrincipal());
 
 		return "newStudentEntry";
@@ -152,6 +153,7 @@ public class StudentEntryController {
 	public String viewStudentEntry(@PathVariable("studentEntryId") @Valid Long studentEntryId, ModelMap modelMap,
 			Locale locale) throws ResourceNotFoundException {
 		modelMap.addAttribute("studentEntry", this.studentEntryService.getStudentEntryById(studentEntryId));
+		modelMap.addAttribute("statusList", this.listHelper.getStatusList());
 		modelMap.addAttribute("user", this.getPrincipal());
 
 		return "viewStudentEntry";

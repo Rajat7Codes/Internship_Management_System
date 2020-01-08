@@ -109,8 +109,14 @@ label {
 									</div>
 
 
+									<div class="col-md-6 col-sm-6 col-lg-6 col-12">
+										<form:label path="reason">Reason </form:label>
+										<form:input path="reason" name="reason" id="reason"
+											class="form-control" placeholder="Reason" />
+										<form:errors path="reason"></form:errors>
+									</div>
 
-								<%-- 	<div class="col-md-6 col-sm-6 col-lg-6 col-12">
+									<%-- 	<div class="col-md-6 col-sm-6 col-lg-6 col-12">
 										<form:label path="studentStatus">Status</form:label>
 										<form:select path="studentStatus" class="form-control" name="studentStatus"
 											id="studentStatus">
@@ -121,13 +127,6 @@ label {
 
 
 
-
-									<div class="col-12">
-										<form:label path="reason">Reason </form:label>
-										<form:input path="reason" name="reason" id="reason"
-											class="form-control" placeholder="Reason" />
-										<form:errors path="reason"></form:errors>
-									</div>
 
 
 
