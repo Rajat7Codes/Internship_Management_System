@@ -69,7 +69,7 @@
 	rel="stylesheet" type="text/css" />
 <!-- favicon -->
 <link rel="shortcut icon"
-	href="${pageContext.request.contextPath }/static/img/logo/vbcmrLogo50X50.gif" />
+	href="${pageContext.request.contextPath }/static/img/Iceico_round.png" />
 
 <style>
 .form-control {
