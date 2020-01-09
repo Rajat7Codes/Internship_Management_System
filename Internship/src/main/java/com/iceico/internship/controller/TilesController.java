@@ -46,7 +46,6 @@ public class TilesController {
 
 	@RequestMapping("/admin/dashboard")
 	public String adminDashboard(ModelMap modelMap, Locale locale) throws ResourceNotFoundException, ParseException {
-		modelMap.addAttribute("user", this.getPrincipal());
 
 		Date date = new Date();
 
