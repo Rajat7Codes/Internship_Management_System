@@ -140,6 +140,12 @@
 			value="/WEB-INF/internship/view/admin-module/fees-pages/fees.jsp" />
 	</definition>
 
+	<definition name="feesSummary" extends="adminbase.definition">
+		<put-attribute name="title" value="fees summary" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/fees-pages/feesSummary.jsp" />
+	</definition>
+
 	<definition name="payFeesNew" extends="adminbase.definition">
 		<put-attribute name="title" value="fees" />
 		<put-attribute name="body"

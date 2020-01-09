@@ -73,18 +73,15 @@
 															<i class="fa fa-check" aria-hidden="true"> </i>
 														</c:if>
 												</a></li>
-												<li ><a title="offerLetter"
-													onclick="checkOffer(<c:if test="${stud.offerCount!=1}">null</c:if>${stud.offerCount}, ${stud.studentEntryId })"><i
-														class="fa fa-file-text-o" aria-hidden="true"></i>Offer
-														Letter <c:if test="${stud.offerCount==1}">
+												<li><a title="offerLetter" onclick="checkOffer(<c:if test="${stud.offerCount!=1}">null</c:if>${stud.offerCount}, ${stud.studentEntryId })"><i
+														class="fa fa-file-text-o" aria-hidden="true"></i>Offer Letter <c:if test="${stud.offerCount==1}">
 															<i class="fa fa-check" aria-hidden="true"></i>
 														</c:if> </a></li>
 
 												<li ><a
 													title="internshipCertificate"
 													onclick="checkInternship(<c:if test="${stud.internshipCount!=1}">null</c:if>${stud.internshipCount}, ${stud.studentEntryId })"><i
-														class="fa fa-file-text-o" aria-hidden="true"></i>Internship
-														Certificate<c:if test="${stud.internshipCount==1}"><i class="fa fa-check" aria-hidden="true"></i>
+														class="fa fa-file-text-o" aria-hidden="true"></i>Internship Certificate<c:if test="${stud.internshipCount==1}"><i class="fa fa-check" aria-hidden="true"></i>
 														</c:if> </a></li>
 
 

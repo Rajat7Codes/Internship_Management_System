@@ -55,6 +55,13 @@ public class FeesController {
 		return "feesList";
 	}
 
+	@GetMapping("/admin/fees/summary")
+	public String getFeesSummary(ModelMap modelMap, Locale locale) {
+		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
+		modelMap.addAttribute("user", this.getPrincipal());
+		return "feesSummary";
+	}
+
 	@GetMapping("/admin/fees/pay/{studentEntryId}")
 	public String payFees(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException {
