@@ -97,6 +97,9 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 
 	@Column(name = "join_count")
 	private Integer joinCount;
+	
+	@Column(name = "internship_count")
+	private Integer internshipCount;
 
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "internDurId", insertable = true, nullable = true, updatable = true)
@@ -136,6 +139,8 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	@OneToMany(mappedBy = "studentEntry", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Fees> fees;
 
+
+
 	/**
 	 * @param studentEntryId
 	 * @param firstName
@@ -151,6 +156,7 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	 * @param studentStatus
 	 * @param offerCount
 	 * @param joinCount
+	 * @param internshipCount
 	 * @param internshipDuration
 	 * @param internshipSession
 	 * @param internshipType
@@ -162,9 +168,10 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	 */
 	public StudentEntry(Long studentEntryId, String firstName, String middleName, String lastName, Double feesAmount,
 			Double discount, Double paidFees, Double balanceFees, String extension, Date date, String payStatus,
-			String studentStatus, Integer offerCount, Integer joinCount, InternshipDuration internshipDuration,
-			InternshipSession internshipSession, InternshipType internshipType, FinancialYear financialYear,
-			College college, Department department, FeesReturn feesReturn, List<Fees> fees) {
+			String studentStatus, Integer offerCount, Integer joinCount, Integer internshipCount,
+			InternshipDuration internshipDuration, InternshipSession internshipSession, InternshipType internshipType,
+			FinancialYear financialYear, College college, Department department, FeesReturn feesReturn,
+			List<Fees> fees) {
 		super();
 		this.studentEntryId = studentEntryId;
 		this.firstName = firstName;
@@ -180,6 +187,7 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 		this.studentStatus = studentStatus;
 		this.offerCount = offerCount;
 		this.joinCount = joinCount;
+		this.internshipCount = internshipCount;
 		this.internshipDuration = internshipDuration;
 		this.internshipSession = internshipSession;
 		this.internshipType = internshipType;
@@ -384,6 +392,22 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	 */
 	public void setJoinCount(Integer joinCount) {
 		this.joinCount = joinCount;
+	}
+
+	
+	
+	/**
+	 * @return the internshipCount
+	 */
+	public Integer getInternshipCount() {
+		return internshipCount;
+	}
+
+	/**
+	 * @param internshipCount the internshipCount to set
+	 */
+	public void setInternshipCount(Integer internshipCount) {
+		this.internshipCount = internshipCount;
 	}
 
 	/**

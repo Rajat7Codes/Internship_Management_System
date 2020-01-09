@@ -126,8 +126,7 @@
 
 
 	<!-- Holiday -->
-	<definition name="holiday"
-		extends="adminbase.definition">
+	<definition name="holiday" extends="adminbase.definition">
 		<put-attribute name="title" value="Holiday" />
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/other-pages/holiday.jsp" />
@@ -187,6 +186,15 @@
 		<put-attribute name="title" value="offer letter" />
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/certificates/offerLetter.jsp" />
+	</definition>
+
+
+	<definition name="internshipCertificate"
+		extends="adminbase.definition">
+		<put-attribute name="title"
+			value="internship certificate" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/certificates/internshipCertificate.jsp" />
 	</definition>
 
 

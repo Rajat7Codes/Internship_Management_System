@@ -35,9 +35,10 @@
 								<th>Name</th>
 								<th>College</th>
 								<th>Department</th>
-								<th>Fees</th>
+								<th>Total Fees</th>
 								<th>Paid Fees</th>
 								<th>Balance Fees</th>
+								<th>Student Status</th>
 								<th>Status</th>
 								<th>Action</th>
 							</tr>
@@ -47,13 +48,15 @@
 								varStatus="ind">
 								<tr>
 									<td>${ind.index+1 }</td>
-									<td>${stud.getCollege().collegeId }</td>
+									<td>${stud.studentEntryId }</td>
 									<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
 									<td>${stud.getCollege().collegeName }</td>
 									<td>${stud.getDepartment().departmentName }</td>
 									<td>${stud.feesAmount }</td>
 									<td>${stud.paidFees }</td>
+
 									<td>${stud.balanceFees }</td>
+									<td>${stud.studentStatus}</td>
 									<td>${stud.payStatus }</td>
 									<td class="valigntop"><div class="btn-group">
 											<button

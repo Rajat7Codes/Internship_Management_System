@@ -122,6 +122,14 @@ label {
 									class="form-control" readonly="true" />
 								<form:errors path="date"></form:errors>
 							</div>
+							
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<form:label path="studentStatus">Status</form:label>
+								<form:input type="studentStatus" path="studentStatus" name="studentStatus" id="studentStatus"
+									class="form-control" readonly="true" />
+								<form:errors path="studentStatus"></form:errors>
+							</div>
+							
 						</div>
 					</div>
 				</div>

@@ -82,6 +82,7 @@ public class StudentEntryServiceIMPL implements StudentEntryService {
 
 	@Override
 	public Double getTotalPaidAmount() {
+
 		return (Double) this.getSession().createQuery("select sum(paidFees) from StudentEntry").uniqueResult();
 	}
 
