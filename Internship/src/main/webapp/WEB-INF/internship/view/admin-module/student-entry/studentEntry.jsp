@@ -74,7 +74,7 @@
 														</c:if>
 												</a></li>
 												<li><a title="offerLetter" onclick="checkOffer(<c:if test="${stud.offerCount!=1}">null</c:if>${stud.offerCount}, ${stud.studentEntryId })"><i
-														class="fa fa-file-text-o" aria-hidden="true"></i>Offer
+														class="fa fa-file-text-o" aria-hidden="true"></i> Offer
 														Letter <c:if test="${stud.offerCount==1}">
 															<i class="fa fa-check" aria-hidden="true"></i>
 														</c:if> </a></li>
