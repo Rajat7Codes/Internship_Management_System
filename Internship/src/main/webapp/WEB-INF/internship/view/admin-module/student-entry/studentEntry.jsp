@@ -62,22 +62,32 @@
 									<td class="valigntop"><div class="btn-group">
 											<button
 												class="btn btn-xs btn-success dropdown-toggle no-margin"
-												type="button" data-toggle="dropdown" aria-expanded="false">
+												type="button" data-toggle="dropdown" aria-expanded="false" >
 												Certificate <i class="fa fa-angle-down"></i>
 											</button>
-											<ul class="dropdown-menu pull-left" role="menu">
-												<li><a title="joiningLetter" onclick='checkJoining(<c:if test="${stud.joinCount!=1}">null</c:if>${stud.joinCount}, ${stud.studentEntryId })'
-													>
+											<ul class="dropdown-menu pull-left  role="menu" style=' padding-right:20px;' >
+												<li  ><a title="joiningLetter"
+													onclick='checkJoining(<c:if test="${stud.joinCount!=1}">null</c:if>${stud.joinCount}, ${stud.studentEntryId })'>
 														<i class="fa fa-file-text-o" aria-hidden="true"></i>
 														Joining Letter <c:if test="${stud.joinCount==1}">
 															<i class="fa fa-check" aria-hidden="true"> </i>
 														</c:if>
 												</a></li>
-												<li><a title="offerLetter" onclick="checkOffer(<c:if test="${stud.offerCount!=1}">null</c:if>${stud.offerCount}, ${stud.studentEntryId })"><i
+												<li ><a title="offerLetter"
+													onclick="checkOffer(<c:if test="${stud.offerCount!=1}">null</c:if>${stud.offerCount}, ${stud.studentEntryId })"><i
 														class="fa fa-file-text-o" aria-hidden="true"></i>Offer
 														Letter <c:if test="${stud.offerCount==1}">
 															<i class="fa fa-check" aria-hidden="true"></i>
 														</c:if> </a></li>
+
+												<li ><a
+													title="internshipCertificate"
+													onclick="checkInternship(<c:if test="${stud.internshipCount!=1}">null</c:if>${stud.internshipCount}, ${stud.studentEntryId })"><i
+														class="fa fa-file-text-o" aria-hidden="true"></i>Internship
+														Certificate<c:if test="${stud.internshipCount==1}"><i class="fa fa-check" aria-hidden="true"></i>
+														</c:if> </a></li>
+
+
 											</ul>
 										</div></td>
 
@@ -101,15 +111,15 @@
 										</div></td>
 								</tr>
 							</c:forEach>
-							
+
 						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-<script>
+
+	<script>
 	function checkJoining( joinCount, studentId ) {
 		if(joinCount==1) {
 			window.alert('Joining Letter Already Given');
@@ -117,11 +127,19 @@
 			window.location = "/admin/student/entry/joining/letter/"+studentId;
 		}
 	}
+	
 	function checkOffer( offerCount, studentId ) {
 		if(offerCount==1) {
 			window.alert('Offer Letter Already Given');
 		} else {
 			window.location = "/admin/student/entry/offer/letter/"+studentId;
+		}
+	}
+	function checkInternship( internshipCount, studentId ) {
+		if(internshipCount==1) {
+			window.alert('Internship Certificate Already Given');
+		} else {
+			window.location = "/admin/student/entry/internship/certificate/"+studentId;
 		}
 	}
 </script>
