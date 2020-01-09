@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.Fees;
+import com.iceico.internship.model.StudentEntry;
 import com.iceico.internship.service.FeesService;
 import com.iceico.internship.service.StudentEntryService;
 import com.iceico.internship.util.ListHelper;
@@ -49,8 +50,16 @@ public class FeesController {
 	@GetMapping("/admin/fees")
 	public String getFees(ModelMap modelMap, Locale locale) {
 		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
+		modelMap.addAttribute("studentEntry", new StudentEntry());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "feesList";
+	}
+
+	@GetMapping("/admin/fees/summary")
+	public String getFeesSummary(ModelMap modelMap, Locale locale) {
+		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
+		modelMap.addAttribute("user", this.getPrincipal());
+		return "feesSummary";
 	}
 
 	@GetMapping("/admin/fees/pay/{studentEntryId}")
@@ -111,7 +120,7 @@ public class FeesController {
 				status = "Paid";
 				fees.getStudentEntry().setPayStatus(status);
 			}
-			
+
 			if (paidAmt == 0) {
 				status = "Unpaid";
 				fees.getStudentEntry().setPayStatus(status);

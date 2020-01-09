@@ -41,7 +41,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="fees" items="${studentEntry.getFees() }"
+							<c:forEach var="fees" items="${studentEntry.fees }"
 								varStatus="ind">
 								<tr>
 									<td>${ind.index+1 }</td>

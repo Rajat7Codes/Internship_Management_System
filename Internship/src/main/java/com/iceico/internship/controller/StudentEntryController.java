@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.Holiday;
+import com.iceico.internship.model.InternshipSession;
 import com.iceico.internship.model.StudentEntry;
 import com.iceico.internship.service.CollegeService;
 import com.iceico.internship.service.DepartmentService;
@@ -152,6 +153,7 @@ public class StudentEntryController {
 	public String viewStudentEntry(@PathVariable("studentEntryId") @Valid Long studentEntryId, ModelMap modelMap,
 			Locale locale) throws ResourceNotFoundException {
 		modelMap.addAttribute("studentEntry", this.studentEntryService.getStudentEntryById(studentEntryId));
+		modelMap.addAttribute("statusList", this.listHelper.getStatusList());
 		modelMap.addAttribute("user", this.getPrincipal());
 
 		return "viewStudentEntry";
@@ -283,6 +285,44 @@ public class StudentEntryController {
 		modelMap.addAttribute("stud", studentEntry);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "offerLetter";
+	}
+
+	@GetMapping("/admin/student/entry/internship/certificate/{studentEntryId}")
+	public String getInternshipCertificate(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap,
+			Locale locale) throws ResourceNotFoundException, ParseException {
+		StudentEntry studentEntry = this.studentEntryService.getStudentEntryById(studentEntryId);
+
+		Integer internshipStatus = studentEntry.getInternshipCount();
+		if (internshipStatus == null) {
+			studentEntry.setInternshipCount(1);
+
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
+			Calendar calendar = Calendar.getInstance();
+
+			// Generates Current Date
+			modelMap.addAttribute("currentDate", simpleDateFormat.format(calendar.getTime()).toString());
+
+			modelMap.addAttribute("duration", studentEntry.getInternshipDuration().getDuration());
+			modelMap.addAttribute("stud", studentEntry);
+			modelMap.addAttribute("collegeName", studentEntry.getCollege().getCollegeName());
+			modelMap.addAttribute("offer", true);
+
+			// Get internship session(start date & end date from database)
+
+			modelMap.addAttribute("startDate",
+					simpleDateFormat.format(studentEntry.getInternshipSession().getStartDate()));
+			modelMap.addAttribute("endDate", simpleDateFormat.format(studentEntry.getInternshipSession().getEndDate()));
+		} else {
+			modelMap.addAttribute("offer", false);
+			modelMap.addAttribute("errorMessage", "Internship Certificate Already Given ");
+		}
+
+		modelMap.addAttribute("duration", studentEntry.getInternshipDuration().getDuration());
+		/* modelMap.addAttribute("stud", studentEntry); */
+		modelMap.addAttribute("stud", this.studentEntryService.getStudentEntryById(studentEntryId));
+		modelMap.addAttribute("user", this.getPrincipal());
+		return "internshipCertificate";
 	}
 
 	/**

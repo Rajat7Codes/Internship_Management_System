@@ -14,7 +14,7 @@
 }
 </style>
 <body
-	style="font-family: 'Times New Roman'; background-color: shokewhite; padding: 20px; font-size: 26px;"
+	style="background-color: shokewhite; padding: 20px; font-size: 26px;"
 	onload="window.print();">
 
 	<c:if test="${ offer == false }">
@@ -31,9 +31,10 @@
 		</div>
 
 
-		<div style="padding: 50px; padding-left: 70px;">
+		<div
+			style="padding: 50px; padding-left: 70px; font-family: 'Times New Roman';">
 			<h3
-				style="text-align: center; text-decoration: underline; margin-bottom: 0;">
+				style="text-align: center; text-decoration: underline; margin-bottom: 0; font-family: 'Times New Roman';">
 				<br> <br> <br> <br> <br>Internship Offer
 				Letter
 			</h3>
