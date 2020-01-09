@@ -278,7 +278,6 @@ public class StudentEntryController {
 			modelMap.addAttribute("offer", false);
 			modelMap.addAttribute("errorMessage", "Offer Letter Already Given ");
 		}
-
 		modelMap.addAttribute("duration", studentEntry.getInternshipDuration().getDuration());
 		modelMap.addAttribute("reportingDate", stDate);
 		modelMap.addAttribute("stud", studentEntry);
