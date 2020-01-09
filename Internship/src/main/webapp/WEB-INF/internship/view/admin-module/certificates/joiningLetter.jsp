@@ -13,13 +13,7 @@
 	z-index: -1;
 }
 
-/* .image:before {
-visibility: hidden;
-position: absolute;
-content:
-url("${pageContext.request.contextPath }/static/img/iceico_letterHead.png");
-} */
-@media print {
+/* @media print {
 	.image {
 		position: relative;
 	}
@@ -27,21 +21,11 @@ url("${pageContext.request.contextPath }/static/img/iceico_letterHead.png");
 		visibility: visible;
 		top: 0;
 	}
-}
-
-/* @media print {
-.test {
-content:
-url(${pageContext.request.contextPath }/static/img/iceico_letterHead.png);
-}
 } */
 </style>
 </head>
 <body onload="window.print();">
 	<div class="image" id="image">
-		<%-- <div
-style="background-image: url('${pageContext.request.contextPath }/static/img/iceico_letterHead.png');">
- --%>
 
 		<div class="backimage" id="backimage">
 			<img
@@ -78,7 +62,7 @@ style="background-image: url('${pageContext.request.contextPath }/static/img/ice
 					style="margin-left: 22px; font-size: 26px; font-family: Times New Roman;">
 					<tr>
 						<td>Date :</td>
-						<td><strong> ${ joiningDate } </strong></td>
+						<td><strong> ${ date } </strong></td>
 					</tr>
 					<tr>
 						<td>Name :</td>
@@ -110,14 +94,10 @@ style="background-image: url('${pageContext.request.contextPath }/static/img/ice
 
 				</table>
 				<br> <br>
-
-
 				<div
 					style="margin-left: 22px; font-family: Times New Roman; font-size: 26px;">Yours
 					faithfully,</div>
 				<br>
-
-
 				<table
 					style="margin-left: 22px; font-size: 26px; font-family: Times New Roman;">
 					<tr>
@@ -129,15 +109,8 @@ style="background-image: url('${pageContext.request.contextPath }/static/img/ice
 					</tr>
 				</table>
 				<br>
-
-
 			</div>
-
-
 		</c:if>
-
-
 	</div>
-
 </body>
 </html>

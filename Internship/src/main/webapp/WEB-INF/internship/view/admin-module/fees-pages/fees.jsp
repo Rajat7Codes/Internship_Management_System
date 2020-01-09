@@ -35,7 +35,7 @@
 								<th>Name</th>
 								<th>College</th>
 								<th>Department</th>
-								<th>Fees</th>
+								<th>Total Fees</th>
 								<th>Paid Fees</th>
 								<th>Balance Fees</th>
 								<th>Student Status</th>
