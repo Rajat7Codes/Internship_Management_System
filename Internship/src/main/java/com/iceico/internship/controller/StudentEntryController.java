@@ -145,7 +145,6 @@ public class StudentEntryController {
 		modelMap.addAttribute("departmentList", this.departmentService.getDepartmentList());
 		modelMap.addAttribute("statusList", this.listHelper.getStatusList());
 		modelMap.addAttribute("user", this.getPrincipal());
-
 		return "newStudentEntry";
 	}
 
