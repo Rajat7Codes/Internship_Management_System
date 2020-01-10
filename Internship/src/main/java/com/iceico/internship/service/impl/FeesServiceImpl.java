@@ -54,6 +54,8 @@ public class FeesServiceImpl implements FeesService {
 				.orElseThrow(() -> new ResourceNotFoundException("Fees Not Found" + feesId));
 	}
 
+	
+	
 	@Override
 	public List<Fees> getFeesList() {
 		return this.feesRepository.findAll();
@@ -69,6 +71,17 @@ public class FeesServiceImpl implements FeesService {
 		// System.out.println("date====> "+date);
 		return (Double) this.getSession().createQuery("select sum(feesAmount) from Fees where date=:date ")
 				.setParameter("date", date).uniqueResult();
+	}
+
+	@Override
+	public List<Fees> filterFeesByDate(String startDate, String endDate) {
+		return (List<Fees>) this.getSession().createQuery("From Fees where date BETWEEN str_to_date('"+startDate+"', '%Y-%m-%d') AND str_to_date('"+endDate+"', '%Y-%m-%d')").list();
+	}
+
+	@Override
+	public List<Fees> filterFeesByYear(String year) {
+		
+		return (List<Fees>) this.getSession().createQuery("From Fees where date  ").list();
 	}
 
 }

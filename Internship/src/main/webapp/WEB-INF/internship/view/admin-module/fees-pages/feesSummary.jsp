@@ -22,23 +22,78 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<div class="row form-group">
-						<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-							<label>Start Date</label> <input class="form-control" type="date" />
+					<div class="text-center p-4">
+						<div class="form-check-inline">
+							<label class="form-check-label"> <input type="radio"
+								id="dateWiseRadio" onclick="if(this.checked){ searchOption(); }"
+								name="search-type"> Date Wise Search
+							</label>
 						</div>
+						<div class="form-check-inline">
+							<label class="form-check-label"> <input type="radio"
+								id="yearWiseRadio" onclick="if(this.checked){ searchOption()}"
+								name="search-type"> Year Wise Search
+							</label>
+						</div>
+						<script>
+							function searchOption() {
+								if (document.getElementById('dateWiseRadio').checked) {
+									document.getElementById('dateSearch').style.display = 'block';
+									document.getElementById('yearSearch').style.display = 'none';
+									document.getElementById('year').value = "";
+								}
+								if (document.getElementById('yearWiseRadio').checked) {
+									document.getElementById('dateSearch').style.display = 'none';
+									document.getElementById('yearSearch').style.display = 'block';
+									document.getElementById('startDate').value = "";
+									document.getElementById('endDate').value = "";
+								}
+							}
+						</script>
+					</div>
 
-						<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-							<label>End Date</label> <input class="form-control" type="date" />
-						</div>
-						<div
-							class="col-md-4 col-sm-4 col-lg-4 col-12 text-right pl-3 my-auto">
-							<button class="btn btn-danger btn-lg " type="reset">SEARCH</button>
-						</div>
+					<div id="dateSearch" style="display: none;">
+						<form id="date-form">
+							<div class="row form-group">
+								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+									<label>Start Date</label> <input id="startDate"
+										name="startDate" class="form-control" type="date" />
+								</div>
+
+								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+									<label>End Date</label> <input id="endDate" name="endDate"
+										class="form-control" type="date" />
+								</div>
+								<div
+									class="col-md-4 col-sm-4 col-lg-4 col-12 text-right pl-3 my-auto">
+									<button class="btn btn-danger btn-lg" onclick="date_submit()">SEARCH</button>
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<div id="yearSearch" style="display: none;">
+						<form id="year-form">
+							<div class="row form-group">
+								<div class="col-md-8 col-sm-8 col-lg-8 col-12">
+									<label>Year</label> <select id="year" name="year" class="custom-select">
+											<option value=""> --SELECT YEAR-- </option>
+										<c:forEach var="fy" items="${financialYearList}" varStatus="ind">
+											<option value="${fy.year}">${fy.year}</option>
+										</c:forEach>
+									</select>
+								</div>
+								<div
+									class="col-md-4 col-sm-4 col-lg-4 col-12 text-right pl-3 my-auto">
+									<button class="btn btn-danger btn-lg" onclick="year_search()">SEARCH</button>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-12">
+		<div class="col-md-12" id="fees-table" style="display: none">
 			<div class="card card-topline-darkgreen">
 				<div class="card-header  card-head pl-4" id="grad">
 					<strong class="card-title text-white">FEES MASTER</strong>
@@ -62,29 +117,61 @@
 								<th>Payment Mode</th>
 							</tr>
 						</thead>
-						<tbody>
-							<c:forEach var="stud" items="${studentEntryList }" varStatus="ind">
-								<c:forEach var="fees" items="${ stud.getFees() }" varStatus="ind">
-								<tr>
-									<td>${ind.index+1 }</td>
-									<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
-									<td>${stud.getCollege().collegeName }</td>
-									<td>${stud.getDepartment().departmentName }</td>
-									<td>${stud.feesAmount }</td>
-									<td>${stud.paidFees }</td>
-									<td>${stud.balanceFees }</td>
-									<td>${stud.payStatus }</td>
-									<td>${fees.feesAmount }</td>
-									<td>${fees.date }</td>
-									<td>${fees.payMode }</td>
-								</tr>
-								</c:forEach>
-							</c:forEach>
+						<tbody id="tableBody">
+
 						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
+	<script>
+		function date_submit() {
+
+			data = {
+				"startDate" : $("#startDate").val(),
+				"endDate" : $("#endDate").val(),
+				"year" : $("#year").val()
+			};
+
+			// $("#btn-search").prop("disabled", true);
+			$.ajax({
+					type : "GET",
+					contentType : "application/json",
+					url : "/fees/summary/filter",
+					data : data,
+					dataType : 'json',
+					cache : false,
+					timeout : 600000,
+					success : function(response) {
+					
+					var trHTML = '';
+						
+					$
+					.each( response, function(i, item) {
+						console.log(JSON.stringify(response));
+						
+					trHTML += '<tr>'
+					
+					/* +'<td>'+ item.studentEntry.studentFirstName+' '+item.studentEntry.studentMiddleName+' '+item.studentEntry.studentLastName+'</td>'
+					+'<td>'+ item.studentEntry.college+'</td>'
+					+'<td>'+ item.studentEntry.departmentList.departmentName+'</td>' */
+					+'<td>'+ item.feesAmount+'</td>'
+					/*+'<td>'+ item.paidFees+'</td>'
+					+'<td>'+ item.balanceFees+'</td>'
+					+'<td>'+ item.payStatus+'</td>'
+					+'<td>'+ item.feesAmount+'</td>'
+					+'<td>'+ item.date+'</td>' */
+					+'<td>'+ item.payMode+'</td>'
+					+ '</tr>';
+					});
+					}
+				});
+			document.getElementById("fees-table").style.display = "block";
+			document.getElementById("tableBody").innerHtml = trHTML;
+		}
+	</script>
 </body>
 </html>
