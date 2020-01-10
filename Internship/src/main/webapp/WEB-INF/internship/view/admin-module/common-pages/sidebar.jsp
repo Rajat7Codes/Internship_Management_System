@@ -44,22 +44,6 @@
 							<span class="title">Student Entry</span>
 					</a></li>
 
-					<li class="nav-item"><a href="#" class="nav-link nav-toggle">
-							<i class="material-icons">payment</i> <span class="title">Fees</span>
-							<span class="selected"></span> <span class="arrow open"></span>
-					</a>
-						<ul class="sub-menu">
-							<li class="nav-item"><a
-								href="${pageContext.request.contextPath }/admin/fees"
-								class="nav-link "> <span class="title">Fees</span>
-							</a></li>
-							<li class="nav-item"><a
-								href="${pageContext.request.contextPath }/admin/fees/summary"
-								class="nav-link "> <span class="title">Fees Summary</span>
-							</a></li>
-
-						</ul></li>
-
 					<!-- <li class="nav-item start active"><a href="#"
 						class="nav-link nav-toggle"> <i class="material-icons">dashboard</i>
 							<span class="title">Dashboard</span> <span class="selected"></span>

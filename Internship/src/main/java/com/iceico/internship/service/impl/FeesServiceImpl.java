@@ -19,7 +19,10 @@ import com.iceico.internship.repository.FeesRepository;
 import com.iceico.internship.service.FeesService;
 
 /**
- * @author sameer
+ * @author SAMEER KADGAYE
+ * @version 0.1
+ * 
+ *          Created Date : 27/12/2019
  *
  */
 @Service
@@ -69,6 +72,19 @@ public class FeesServiceImpl implements FeesService {
 		// System.out.println("date====> "+date);
 		return (Double) this.getSession().createQuery("select sum(feesAmount) from Fees where date=:date ")
 				.setParameter("date", date).uniqueResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Fees> filterFeesByDate(String startDate, String endDate) {
+		return (List<Fees>) this.getSession().createQuery("From Fees where date BETWEEN str_to_date('" + startDate
+				+ "', '%Y-%m-%d') AND str_to_date('" + endDate + "', '%Y-%m-%d')").list();
+	}
+
+	@Override
+	public List<Fees> filterFeesByYear(String year) {
+
+		return (List<Fees>) this.getSession().createQuery("From Fees where date  ").list();
 	}
 
 }

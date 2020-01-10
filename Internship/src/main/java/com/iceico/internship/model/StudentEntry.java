@@ -123,12 +123,12 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "collegeId", insertable = true, nullable = true, updatable = true)
-	@JsonIgnore
+//	@JsonIgnore
 	private College college;
 
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "departmentId", insertable = true, nullable = true, updatable = true)
-	@JsonIgnore
+//	@JsonIgnore
 	private Department department;
 
 	@JsonIgnore
