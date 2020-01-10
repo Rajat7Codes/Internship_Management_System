@@ -10,7 +10,10 @@ import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.StudentEntry;
 
 /**
- * @author sameer
+ * @author SAMEER KADGAYE
+ * @version 0.1
+ * 
+ *          Created Date : 27/12/2019
  *
  */
 
@@ -23,12 +26,12 @@ public interface StudentEntryService {
 	public List<StudentEntry> getStudentEntryList();
 
 	public void deleteStudentEntry(Long studentEntryId);
-	
+
 	public Double getTotalIncome();
-	
-    public Double getTotalBalance();
-    
-    public Double getTotalPaidAmount();
-    
-    public Double getDailyFeesCollection(Date date);
+
+	public Double getTotalBalance();
+
+	public Double getTotalPaidAmount();
+
+	public Double getDailyFeesCollection(Date date);
 }

@@ -51,7 +51,7 @@
 				This is paid internship program of complete <strong>${ duration }</strong>
 				program. <br>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please
-				report to HR (name of supervisor) on Dt.: <strong>${ reportingDate }</strong>
+				report to HR (name of supervisor) on Dt.: <strong>${ joiningDate }</strong>
 				at 10:00 am prior to your commencement of internship. There will be
 				interview while you come for reporting. According your interview
 				result your selection will be confirmed. You will be required to
