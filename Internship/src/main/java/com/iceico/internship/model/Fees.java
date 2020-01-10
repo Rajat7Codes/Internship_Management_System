@@ -27,7 +27,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.iceico.internship.audit.Auditable;
 
 /**
- * @author sameer
+ * @author SAMEER KADGAYE
+ * @version 0.1
+ * 
+ *          Created Date : 27/12/2019
  *
  */
 @Entity

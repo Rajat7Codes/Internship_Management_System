@@ -10,7 +10,10 @@ import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.Fees;
 
 /**
- * @author sameer
+ * @author SAMEER KADGAYE
+ * @version 0.1
+ * 
+ *          Created Date : 27/12/2019
  *
  */
 public interface FeesService {
@@ -22,6 +25,6 @@ public interface FeesService {
 	public List<Fees> getFeesList();
 
 	public void deleteFees(Long feesId);
-	
+
 	public Double getdailyFeesCollection(Date date);
 }
