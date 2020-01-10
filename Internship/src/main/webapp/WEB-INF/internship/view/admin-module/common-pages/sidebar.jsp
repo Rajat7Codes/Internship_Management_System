@@ -44,44 +44,6 @@
 							<span class="title">Student Entry</span>
 					</a></li>
 
-					<%-- <li class="nav-item"><a
-						href="${pageContext.request.contextPath }/admin/fees"
-						class="nav-link nav-toggle"> <i class="material-icons">verified_user</i>
-							<span class="title">Fees</span>
-					</a></li> --%>
-
-					<%-- <li class="nav-item dropdown"><a class="dropdown-toggle"
-						type="button" data-toggle="dropdown"> <i
-							class="material-icons">keyboard_arrow_down</i> Fees
-					</a>
-						<ul class="dropdown-menu">
-							<li><a style="font-weight: 400 !important"
-								href="${pageContext.request.contextPath }/admin/fees">Fees
-									Master</a></li>
-							<li><a style="font-weight: 400 !important"
-								href="${pageContext.request.contextPath }/admin/fees/summary">Fees
-									Summary</a></li>
-						</ul></li> --%>
-
-
-
-					<li class="nav-item"><a href="#" class="nav-link nav-toggle">
-							<i class="material-icons">verified_user</i> <span class="title">Fees</span>
-							<span class="selected"></span> <span class="arrow open"></span>
-					</a>
-						<ul class="sub-menu">
-							<li class="nav-item"><a
-								href="${pageContext.request.contextPath }/admin/fees"
-								class="nav-link "> <span class="title">Fees Master</span>
-							</a></li>
-							<li class="nav-item"><a
-								href="${pageContext.request.contextPath }/admin/fees/summary"
-								class="nav-link "> <span class="title">Fees Summary</span>
-							</a></li>
-
-						</ul></li>
-
-
 					<!-- <li class="nav-item start active"><a href="#"
 						class="nav-link nav-toggle"> <i class="material-icons">dashboard</i>
 							<span class="title">Dashboard</span> <span class="selected"></span>

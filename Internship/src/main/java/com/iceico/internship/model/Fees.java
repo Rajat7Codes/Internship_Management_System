@@ -78,7 +78,7 @@ public class Fees extends Auditable<String> implements Serializable {
 
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "studentEntryId", insertable = true, nullable = true, updatable = true)
-	@JsonIgnore
+//	@JsonIgnore
 	private StudentEntry studentEntry;
 
 	/**

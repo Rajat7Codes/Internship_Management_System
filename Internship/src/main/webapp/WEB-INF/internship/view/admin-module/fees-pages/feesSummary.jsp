@@ -35,72 +35,55 @@
 								name="search-type"> Year Wise Search
 							</label>
 						</div>
-						<script>
-							function searchOption() {
-								if (document.getElementById('dateWiseRadio').checked) {
-									document.getElementById('dateSearch').style.display = 'block';
-									document.getElementById('yearSearch').style.display = 'none';
-									document.getElementById('year').value = "";
-								}
-								if (document.getElementById('yearWiseRadio').checked) {
-									document.getElementById('dateSearch').style.display = 'none';
-									document.getElementById('yearSearch').style.display = 'block';
-									document.getElementById('startDate').value = "";
-									document.getElementById('endDate').value = "";
-								}
-							}
-						</script>
 					</div>
 
 					<div id="dateSearch" style="display: none;">
-						<form id="date-form">
-							<div class="row form-group">
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-									<label>Start Date</label> <input id="startDate"
-										name="startDate" class="form-control" type="date" />
-								</div>
-
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-									<label>End Date</label> <input id="endDate" name="endDate"
-										class="form-control" type="date" />
-								</div>
-								<div
-									class="col-md-4 col-sm-4 col-lg-4 col-12 text-right pl-3 my-auto">
-									<button class="btn btn-danger btn-lg" onclick="date_submit()">SEARCH</button>
-								</div>
+						<div class="row form-group">
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<label>Start Date</label> <input id="startDate" name="startDate"
+									class="form-control" type="date" />
 							</div>
-						</form>
+
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
+								<label>End Date</label> <input id="endDate" name="endDate"
+									class="form-control" type="date" />
+							</div>
+							<div
+								class="col-md-4 col-sm-4 col-lg-4 col-12 text-right pl-3 my-auto">
+								<button class="btn btn-danger btn-lg" onclick="date_submit()">SEARCH</button>
+							</div>
+						</div>
 					</div>
 
 					<div id="yearSearch" style="display: none;">
-						<form id="year-form">
-							<div class="row form-group">
-								<div class="col-md-8 col-sm-8 col-lg-8 col-12">
-									<label>Year</label> <select id="year" name="year" class="custom-select">
-											<option value=""> --SELECT YEAR-- </option>
-										<c:forEach var="fy" items="${financialYearList}" varStatus="ind">
-											<option value="${fy.year}">${fy.year}</option>
-										</c:forEach>
-									</select>
-								</div>
-								<div
-									class="col-md-4 col-sm-4 col-lg-4 col-12 text-right pl-3 my-auto">
-									<button class="btn btn-danger btn-lg" onclick="year_search()">SEARCH</button>
-								</div>
+						<div class="row form-group">
+							<div class="col-md-8 col-sm-8 col-lg-8 col-12">
+								<label>Year</label> <select id="year" name="year"
+									class="custom-select">
+									<option value="">--SELECT YEAR--</option>
+									<c:forEach var="fy" items="${financialYearList}"
+										varStatus="ind">
+										<option value="${fy.year}">${fy.year}</option>
+									</c:forEach>
+								</select>
 							</div>
-						</form>
+							<div
+								class="col-md-4 col-sm-4 col-lg-4 col-12 text-right pl-3 my-auto">
+								<button class="btn btn-danger btn-lg" onclick="year_search()">SEARCH</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-12" id="fees-table" style="display: none">
+		<div class="col-md-12" id="fees-table">
 			<div class="card card-topline-darkgreen">
 				<div class="card-header  card-head pl-4" id="grad">
 					<strong class="card-title text-white">FEES MASTER</strong>
 				</div>
 				&nbsp;
 				<div class="card-body">
-					<table id="bootstrap-data-table-export"
+					<table id="feesSummaryTable"
 						class="table table-striped table-responsive">
 						<thead>
 							<tr>
@@ -108,13 +91,14 @@
 								<th>Name</th>
 								<th>College</th>
 								<th>Department</th>
-								<th>Fees</th>
+								<th>Total Fees</th>
+								<th>Discount</th>
 								<th>Paid Fees</th>
 								<th>Balance Fees</th>
-								<th>Status</th>
 								<th>Fees Amount</th>
 								<th>Payment Date</th>
 								<th>Payment Mode</th>
+								<th>Status</th>
 							</tr>
 						</thead>
 						<tbody id="tableBody">
@@ -125,53 +109,72 @@
 			</div>
 		</div>
 	</div>
-
-
-	<script>
-		function date_submit() {
-
-			data = {
-				"startDate" : $("#startDate").val(),
-				"endDate" : $("#endDate").val(),
-				"year" : $("#year").val()
-			};
-
-			// $("#btn-search").prop("disabled", true);
-			$.ajax({
-					type : "GET",
-					contentType : "application/json",
-					url : "/fees/summary/filter",
-					data : data,
-					dataType : 'json',
-					cache : false,
-					timeout : 600000,
-					success : function(response) {
-					
-					var trHTML = '';
-						
-					$
-					.each( response, function(i, item) {
-						console.log(JSON.stringify(response));
-						
-					trHTML += '<tr>'
-					
-					/* +'<td>'+ item.studentEntry.studentFirstName+' '+item.studentEntry.studentMiddleName+' '+item.studentEntry.studentLastName+'</td>'
-					+'<td>'+ item.studentEntry.college+'</td>'
-					+'<td>'+ item.studentEntry.departmentList.departmentName+'</td>' */
-					+'<td>'+ item.feesAmount+'</td>'
-					/*+'<td>'+ item.paidFees+'</td>'
-					+'<td>'+ item.balanceFees+'</td>'
-					+'<td>'+ item.payStatus+'</td>'
-					+'<td>'+ item.feesAmount+'</td>'
-					+'<td>'+ item.date+'</td>' */
-					+'<td>'+ item.payMode+'</td>'
-					+ '</tr>';
-					});
-					}
-				});
-			document.getElementById("fees-table").style.display = "block";
-			document.getElementById("tableBody").innerHtml = trHTML;
-		}
-	</script>
 </body>
+
+<script>
+	function searchOption() {
+		if (document.getElementById('dateWiseRadio').checked) {
+			document.getElementById('dateSearch').style.display = 'block';
+			document.getElementById('yearSearch').style.display = 'none';
+			document.getElementById('year').value = "";
+		}
+		if (document.getElementById('yearWiseRadio').checked) {
+			document.getElementById('dateSearch').style.display = 'none';
+			document.getElementById('yearSearch').style.display = 'block';
+			document.getElementById('startDate').value = "";
+			document.getElementById('endDate').value = "";
+		}
+	}
+</script>
+
+<script>
+	function date_submit() {
+
+		data = {
+			"startDate" : $("#startDate").val(),
+			"endDate" : $("#endDate").val(),
+			"year" : $("#year").val()
+		};
+
+		$.ajax({
+			type : "GET",
+			contentType : "application/json",
+			url : "/fees/summary/filter",
+			data : data,
+			dataType : 'json',
+			cache : false,
+			timeout : 600000,
+			success : function(response) {
+				alert(JSON.stringify(response));
+				var trHTML = '';
+
+				$.each(response, function(i, item) {
+					trHTML += '<tr><td>' + "&nbsp;" + (i + 1) + '</td><td>'
+							+ "&nbsp;" + +item.studentEntry.firstName
+							+ "&nbsp;" + item.studentEntry.middleName
+							+ "&nbsp;" + item.studentEntry.lastName + "&nbsp;"
+							+ '</td><td>' + "&nbsp;"
+							+ item.studentEntry.college.collegeName
+							+ '</td><td>' + "&nbsp;"
+							+ item.studentEntry.department.departmentName
+							+ '</td><td>' + "&nbsp;"
+							+ item.studentEntry.feesAmount + '</td><td>'
+							+ "&nbsp;" + item.studentEntry.discount
+							+ '</td><td>' + "&nbsp;"
+							+ item.studentEntry.paidFees + '</td><td>'
+							+ "&nbsp;" + item.studentEntry.balanceFees
+							+ '</td><td>' + "&nbsp;" + item.feesAmount
+							+ '</td><td>' + "&nbsp;" + new Date(item.date).getDate()+"-"+ (new Date(item.date).getMonth()+1)+"-"+ new Date(item.date).getFullYear()
+							+ '</td><td>' + "&nbsp;" + item.payMode
+							+ '</td><td>' + "&nbsp;" + item.payStatus
+							+ '</td></tr>';
+				});
+
+				$('#feesSummaryTable').append(trHTML);
+			}
+		});
+		$("#fees-table").css("display", "block");
+	}
+</script>
+
 </html>
