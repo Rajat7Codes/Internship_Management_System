@@ -10,15 +10,19 @@
 <style>
 label {
 	padding-top: 10px;
-	font-weight: bold;
+	font-weight: bolder;
+	font-size:13px;
+}
+
+#text-black {
+	color: black;
 }
 
 .fees-details {
 	text-indent: 10px;
-	width: 100%;
-	/*padding: 10px 0px;*/
 	font-size: 20px;
-	width: 100%;
+	color: white;
+	font-weight: bold;
 }
 </style>
 </head>
@@ -96,32 +100,49 @@ label {
 						</div>
 
 						<div class="col-md-12">
-							<div class="row" style="padding:10px 24px"> 
-								<div class="col-sm-3">
+							<div class="row" style="padding: 10px 24px">
+								<div class="col-md-6 col-xl-3 col-12">
 									<label class="clear-top-margin"> <i class="fa fa-rupee">
 									</i> TOTAL FEES
-									</label> <input class="fees-details bg-b-orange text-white"
-										value="${studentEntry.feesAmount}" name="balanceFees" />
+									</label> <input
+										style="background-color: blue; width: 100%; border: 0px;"
+										class=" form-control fees-details"
+										value="${studentEntry.feesAmount}" name="balanceFees"
+										readonly="readonly" />
 								</div>
-								<div class="col-sm-3">
+
+								<div class="col-md-6 col-xl-3 col-12">
 									<label class="clear-top-margin"> <i class="fa fa-rupee">
 									</i> DISCOUNT FEES
-									</label> <input class="fees-details bg-b-purple text-white"
-										value="${studentEntry.discount}" name="balanceFees" />
+									</label><input
+										style="background-color: green; width: 100%; border: 0px;"
+										class=" form-control fees-details"
+										value="${studentEntry.discount}" name="balanceFees"
+										readonly="readonly" />
 								</div>
-								<div class="col-sm-3">
+								<div class="col-md-6 col-xl-3 col-12">
 									<label class="clear-top-margin"> <i class="fa fa-rupee">
 									</i> PAID FEES
-									</label> <input class="fees-details bg-b-cyan text-white"
-										value="${studentEntry.paidFees}" name="balanceFees" />
+									</label> <input
+										style="background-color: orange; width: 100%; border: 0px;"
+										class=" form-control fees-details"
+										value="${studentEntry.paidFees}" name="balanceFees"
+										readonly="readonly" />
 								</div>
-								<div class="col-sm-3">
+								<div class="col-md-6 col-xl-3 col-12">
 									<label class="clear-top-margin"> <i class="fa fa-rupee">
 									</i> BALANCE FEES
-									</label> <input class="fees-details bg-b-black text-white"
-										value="${studentEntry.balanceFees}" name="balanceFees" />
+									</label> <input
+										style="background-color: yellow; width: 100%; border: 0pxs;"
+										id="text-black" class="form-control fees-details"
+										value="${studentEntry.balanceFees}" name="balanceFees"
+										readonly="readonly" />
 								</div>
 							</div>
+
+
+							<hr>
+
 							<div class="card-body">
 								<div class="row form-group">
 									<div class="col-md-6 col-sm-6 col-lg-6 col-12">
