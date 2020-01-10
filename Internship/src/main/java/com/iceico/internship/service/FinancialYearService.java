@@ -9,7 +9,10 @@ import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.FinancialYear;
 
 /**
- * @author Puja
+ * @author SAMEER KADGAYE
+ * @version 0.1
+ * 
+ *          Created Date : 27/12/2019
  *
  */
 public interface FinancialYearService {

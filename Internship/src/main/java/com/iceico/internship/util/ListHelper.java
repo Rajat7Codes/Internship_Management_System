@@ -10,10 +10,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @author DIPAWALI K. GABHANE
+ * @author SAMEER KADGAYE
  * @version 0.1
  * 
- *          Created Date : 18/12/2019
+ *          Created Date : 27/12/2019
  *
  */
 @Transactional
@@ -33,23 +33,23 @@ public class ListHelper {
 		list.add("Cash");
 		list.add("Cheque");
 		list.add("DD");
-		
+
 		return list;
 	}
-	
+
 	@Transactional
-	public List<String> getStatusList(){
-		
-		List <String> statuslist= new ArrayList <String>();
-		
+	public List<String> getStatusList() {
+
+		List<String> statuslist = new ArrayList<String>();
+
 		statuslist.add("New");
 		statuslist.add("Joined");
 		statuslist.add("Persuing");
 		statuslist.add("Discontinued");
 		statuslist.add("Released");
-		
+
 		return statuslist;
-		
+
 	}
 
 }
