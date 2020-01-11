@@ -198,7 +198,12 @@
 	</definition>
 
 
-
+	<definition name="offerLetterView"
+		extends="adminbase.definition">
+		<put-attribute name="title" value="offer letter" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/certificates/offerLetterView.jsp" />
+	</definition>
 
 
 
