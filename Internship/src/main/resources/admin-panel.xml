@@ -140,7 +140,8 @@
 			value="/WEB-INF/internship/view/admin-module/fees-pages/fees.jsp" />
 	</definition>
 
-	<definition name="feesSummary" extends="adminbase.definition">
+	<definition name="feesSummary"
+		extends="adminbase.definition">
 		<put-attribute name="title" value="fees summary" />
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/fees-pages/feesSummary.jsp" />
@@ -198,9 +199,13 @@
 	</definition>
 
 
-
-
-
+	<definition name="viewInternshipCertificate"
+		extends="adminbase.definition">
+		<put-attribute name="title"
+			value="internship certificate view" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/certificates/viewInternshipCertificate.jsp" />
+	</definition>
 
 
 </tiles-definitions>

@@ -329,7 +329,15 @@ public class StudentEntryController {
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "internshipCertificate";
 	}
-	
+
+	@GetMapping("/admin/student/entry/internship/certificate/view")
+	public String viewInternshipCertificate( ModelMap modelMap,
+			Locale locale) throws ResourceNotFoundException, ParseException {
+
+		
+		return "viewInternshipCertificate";
+	}
+
 	@GetMapping("/admin/student/entry/joining/letter/view/{studentEntryId}")
 	public String viewJoiningLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap,
 			Locale locale) throws ResourceNotFoundException, Exception {
@@ -389,8 +397,7 @@ public class StudentEntryController {
 
 		return "viewJoiningLetter";
 	}
-	
-	
+
 	@GetMapping("/admin/student/entry/offer/letter/view/{studentEntryId}")
 	public String viewOfferLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException, ParseException {
@@ -456,7 +463,6 @@ public class StudentEntryController {
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "viewOfferLetter";
 	}
-
 
 	/**
 	 * This method returns the principal[user-name] of logged-in user.
