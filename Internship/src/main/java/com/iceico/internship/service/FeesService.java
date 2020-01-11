@@ -28,7 +28,5 @@ public interface FeesService {
 
 	public Double getdailyFeesCollection(Date date);
 
-	public List<Fees> filterFeesByDate( String startDate, String endDate);
-	
-	public List<Fees> filterFeesByYear( String year );
+	public List<Fees> filterFeesByDate(String startDate, String endDate);
 }

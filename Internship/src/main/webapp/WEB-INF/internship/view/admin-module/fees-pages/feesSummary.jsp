@@ -72,7 +72,11 @@
 							</div>
 							<div
 								class="col-md-4 col-sm-4 col-lg-4 col-12 text-center pl-3 my-auto">
+								<<<<<<< HEAD
 								<button class="btn btn-danger btn-md" onclick="year_submit()"
+									=======
+								<button class="btn btn-danger btn-md" onclick="year_submit();"
+>>>>>>> cfc05b52fecc20730fee8ae1f68d9cb536e2d3b5
 									style="margin-top: 30px;">SEARCH</button>
 							</div>
 						</div>
@@ -106,7 +110,6 @@
 							</tr>
 						</thead>
 						<tbody id="tableBody">
-
 						</tbody>
 					</table>
 				</div>
@@ -182,18 +185,20 @@
 	}
 </script>
 
-<script>
+
+<!-- script for AJAX year -->
+<script type="text/javascript">
 	function year_submit() {
 
 		data = {
-			"year" : $("#year").val(),
+			"year" : $("#year").val()
 		};
-
+		alert(JSON.stringify(data));
 		$
 				.ajax({
 					type : "GET",
 					contentType : "application/json",
-					url : "/admin/fees/summary/filter/year",
+					url : "/fees/summary/filter/year",
 					data : data,
 					dataType : 'json',
 					cache : false,
@@ -211,12 +216,7 @@
 											for (var i = 0, studentEntry_len = studentEntry.length; i < studentEntry_len; i += 1) {
 
 												// Here you are accessing to the item of Array using index of item.
-												var se = studentEntry[i];
-
-												/* for (var j = 0, fees_len = fees.length; j < fees_len; j += 1) { */
-
-												var feesObj = fees[j];
-												alert("feesObj======" + feesObj);
+												var j = studentEntry[i]; 
 
 												trHTML += '<tr><td>' + "&nbsp;"
 														+ (i + 1)
@@ -257,12 +257,11 @@
 														+ +'</td></tr>';
 											}
 										});
+
 						$('#feesSummaryTable').append(trHTML);
 					}
 				});
 		$("#fees-table").css("display", "block");
 	}
 </script>
-
-
 </html>

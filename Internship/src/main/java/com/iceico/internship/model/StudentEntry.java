@@ -98,7 +98,7 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 
 	@Column(name = "join_count")
 	private Integer joinCount;
-	
+
 	@Column(name = "internship_count")
 	private Integer internshipCount;
 
@@ -136,12 +136,9 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	@OneToOne(mappedBy = "studentEntry", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	private FeesReturn feesReturn;
 
-//	@JsonIgnore
 	@JsonManagedReference
 	@OneToMany(mappedBy = "studentEntry", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Fees> fees;
-
-
 
 	/**
 	 * @param studentEntryId
@@ -396,8 +393,6 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 		this.joinCount = joinCount;
 	}
 
-	
-	
 	/**
 	 * @return the internshipCount
 	 */

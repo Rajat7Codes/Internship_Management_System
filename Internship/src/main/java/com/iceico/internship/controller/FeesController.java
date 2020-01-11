@@ -93,15 +93,13 @@ public class FeesController {
 	}
 
 	@SuppressWarnings("deprecation")
-	@RequestMapping(value = "/admin/fees/summary/filter/year", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
+	@RequestMapping(value = "/fees/summary/filter/year", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
 	public @ResponseBody FinancialYear filterStudentListByYear(@RequestParam("year") String year)
 			throws JsonProcessingException, ParseException {
 
 		System.out.println("year========" + year);
 		return this.financialYearService.searchByYear(year);
 	}
-
-	//////////////////////////////////////////////////////
 
 	@GetMapping("/admin/fees/pay/{studentEntryId}")
 	public String payFees(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
