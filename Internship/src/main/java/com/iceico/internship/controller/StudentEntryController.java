@@ -469,6 +469,12 @@ public class StudentEntryController {
 		return "viewOfferLetter";
 	}
 
+	@GetMapping("/admin/student/entry/offer/letter/display")
+	public String offerLetterView(ModelMap modelMap, Locale locale) throws ResourceNotFoundException, ParseException {
+
+		return "offerLetterView";
+	}
+
 	/**
 	 * This method returns the principal[user-name] of logged-in user.
 	 */
