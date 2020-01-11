@@ -26,41 +26,44 @@
 						<div class="form-check-inline">
 							<label class="form-check-label"> <input type="radio"
 								id="dateWiseRadio" onclick="if(this.checked){ searchOption(); }"
-								name="search-type"> Date Wise Search
+								name="search-type"><strong> By Date</strong>
 							</label>
 						</div>
 						<div class="form-check-inline">
 							<label class="form-check-label"> <input type="radio"
 								id="yearWiseRadio" onclick="if(this.checked){ searchOption()}"
-								name="search-type"> Year Wise Search
+								name="search-type"> <strong>By Year</strong>
 							</label>
 						</div>
 					</div>
 
 					<div id="dateSearch" style="display: none;">
+						<hr>
 						<div class="row form-group">
-							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-								<label>Start Date</label> <input id="startDate" name="startDate"
-									class="form-control" type="date" />
+							<div class="col-md-5 col-sm-5 col-lg-5 col-12">
+								<label><strong>Start Date</strong></label> <input id="startDate"
+									name="startDate" class="form-control" type="date" />
 							</div>
 
-							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
-								<label>End Date</label> <input id="endDate" name="endDate"
-									class="form-control" type="date" />
+							<div class="col-md-5 col-sm-5 col-lg-5 col-12">
+								<label><strong>End Date</strong></label> <input id="endDate"
+									name="endDate" class="form-control" type="date" />
 							</div>
 							<div
-								class="col-md-4 col-sm-4 col-lg-4 col-12 text-right pl-3 my-auto">
-								<button class="btn btn-danger btn-lg" onclick="date_submit()">SEARCH</button>
+								class="col-md-2 col-sm-2 col-lg-2 col-12 text-center pl-3 my-auto">
+								<button class="btn btn-danger btn-md" onclick="date_submit()"
+									style="margin-top: 30px;">SEARCH</button>
 							</div>
 						</div>
 					</div>
 
 					<div id="yearSearch" style="display: none;">
+						<hr>
 						<div class="row form-group">
 							<div class="col-md-8 col-sm-8 col-lg-8 col-12">
-								<label>Year</label> <select id="year" name="year"
-									class="custom-select">
-									<option value="">--SELECT YEAR--</option>
+								<label><strong>Financial Year</strong></label> <select id="year"
+									name="year" class="custom-select">
+									<option value="">-- SELECT FINANCIAL YEAR --</option>
 									<c:forEach var="fy" items="${financialYearList}"
 										varStatus="ind">
 										<option value="${fy.year}">${fy.year}</option>
@@ -68,15 +71,16 @@
 								</select>
 							</div>
 							<div
-								class="col-md-4 col-sm-4 col-lg-4 col-12 text-right pl-3 my-auto">
-								<button class="btn btn-danger btn-lg" onclick="year_search()">SEARCH</button>
+								class="col-md-4 col-sm-4 col-lg-4 col-12 text-center pl-3 my-auto">
+								<button class="btn btn-danger btn-md" onclick="date_submit()"
+									style="margin-top: 30px;">SEARCH</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-12" id="fees-table">
+		<div class="col-md-12" id="fees-table" style="display: none;">
 			<div class="card card-topline-darkgreen">
 				<div class="card-header  card-head pl-4" id="grad">
 					<strong class="card-title text-white">FEES MASTER</strong>
@@ -150,7 +154,7 @@
 
 				$.each(response, function(i, item) {
 					trHTML += '<tr><td>' + "&nbsp;" + (i + 1) + '</td><td>'
-							+ "&nbsp;" + +item.studentEntry.firstName
+							+ "&nbsp;" + item.studentEntry.firstName
 							+ "&nbsp;" + item.studentEntry.middleName
 							+ "&nbsp;" + item.studentEntry.lastName + "&nbsp;"
 							+ '</td><td>' + "&nbsp;"

@@ -69,7 +69,6 @@ public class FeesServiceImpl implements FeesService {
 
 	@Override
 	public Double getdailyFeesCollection(Date date) {
-		// System.out.println("date====> "+date);
 		return (Double) this.getSession().createQuery("select sum(feesAmount) from Fees where date=:date ")
 				.setParameter("date", date).uniqueResult();
 	}
@@ -77,14 +76,16 @@ public class FeesServiceImpl implements FeesService {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Fees> filterFeesByDate(String startDate, String endDate) {
-		return (List<Fees>) this.getSession().createQuery("From Fees where date BETWEEN str_to_date('" + startDate
-				+ "', '%Y-%m-%d') AND str_to_date('" + endDate + "', '%Y-%m-%d')").list();
+		return (List<Fees>) this.getSession().createQuery("from Fees where date BETWEEN str_to_date('" + startDate
+				+ "', '%Y-%m-%d') AND str_to_date('" + endDate + "', '%Y-%m-%d')").getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Fees> filterFeesByYear(String year) {
-
-		return (List<Fees>) this.getSession().createQuery("From Fees where date  ").list();
+		System.out.println("year in dao impl ==============="+year);
+		return this.getSession().createQuery("from FinancialYear where year=:year").setParameter("year", year)
+				.getResultList();
 	}
 
 }
