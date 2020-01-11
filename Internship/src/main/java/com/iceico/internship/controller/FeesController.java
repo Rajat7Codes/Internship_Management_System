@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.Fees;
+import com.iceico.internship.model.FinancialYear;
 import com.iceico.internship.model.StudentEntry;
 import com.iceico.internship.service.FeesService;
 import com.iceico.internship.service.FinancialYearService;
@@ -86,33 +87,19 @@ public class FeesController {
 	public @ResponseBody List<Fees> filterStudentListByDate(@RequestParam("startDate") String startDate,
 			@RequestParam("endDate") String endDate) throws JsonProcessingException, ParseException {
 
-		/*
-		 * System.out.println("sdate========"+startDate);
-		 * System.out.println("edate========"+endDate);
-		 * System.out.println("year========"+year);
-		 */
-
+		System.out.println("sdate========" + startDate);
+		System.out.println("edate========" + endDate);
 		return this.feesService.filterFeesByDate(startDate, endDate);
-
 	}
 
 	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "/fees/summary/filter/year", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
-	public @ResponseBody List<Fees> filterStudentListByYear(@RequestParam("year") String year)
+	public @ResponseBody FinancialYear filterStudentListByYear(@RequestParam("year") String year)
 			throws JsonProcessingException, ParseException {
 
-		/*
-		 * System.out.println("year========" + year); List<Fees> feesList =
-		 * feesService.filterFeesByYear(year);
-		 * 
-		 * for (Fees fees : feesList) { System.out.println("Fees amt ====> " +
-		 * fees.getFeesAmount()); }
-		 */
-
-		return this.feesService.filterFeesByYear(year);
+		System.out.println("year========" + year);
+		return this.financialYearService.searchByYear(year);
 	}
-
-	//////////////////////////////////////////////////////////
 
 	@GetMapping("/admin/fees/pay/{studentEntryId}")
 	public String payFees(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)

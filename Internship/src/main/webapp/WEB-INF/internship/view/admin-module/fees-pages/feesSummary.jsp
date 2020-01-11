@@ -72,6 +72,8 @@
 							</div>
 							<div
 								class="col-md-4 col-sm-4 col-lg-4 col-12 text-center pl-3 my-auto">
+
+
 								<button class="btn btn-danger btn-md" onclick="year_submit();"
 									style="margin-top: 30px;">SEARCH</button>
 							</div>
@@ -182,8 +184,6 @@
 </script>
 
 
-
-
 <!-- script for AJAX year -->
 <script type="text/javascript">
 	function year_submit() {
@@ -210,55 +210,50 @@
 										response,
 										function(i, item) {
 											var studentEntry = item.studentEntry;
-											/* alert("array"
-													+ JSON
-															.stringify(studentEntry)); */
 
 											for (var i = 0, studentEntry_len = studentEntry.length; i < studentEntry_len; i += 1) {
-												/* alert("inside loop"); */
 
-												var j = studentEntry[i]; // Here you are accessing to the item of Array using index of item.
-												alert("first name New==="
-														+ j.firstName);
+												// Here you are accessing to the item of Array using index of item.
+												var j = studentEntry[i];
 
 												trHTML += '<tr><td>' + "&nbsp;"
 														+ (i + 1)
 														+ '</td><td>'
 														+ "&nbsp;"
-														+ j.firstName
+														+ se.firstName
 														+ "&nbsp;"
-														+ j.middleName
+														+ se.middleName
 														+ "&nbsp;"
-														+ j.lastName
+														+ se.lastName
 														+ "&nbsp;"
 														+ '</td><td>'
 														+ "&nbsp;"
-														+ j.college.collegeName
+														+ se.college.collegeName
 														+ '</td><td>'
 														+ "&nbsp;"
-														+ j.department.departmentName
+														+ se.department.departmentName
 														+ '</td><td>'
 														+ "&nbsp;"
-														+ j.feesAmount
-														+ '</td><td>'
-														+ "&nbsp;" + j.discount
-														+ '</td><td>'
-														+ "&nbsp;" + j.paidFees
+														+ se.feesAmount
 														+ '</td><td>'
 														+ "&nbsp;"
-														+ j.balanceFees
+														+ se.discount
 														+ '</td><td>'
 														+ "&nbsp;"
-														+ +'</td><td>'
+														+ se.paidFees
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ se.balanceFees
+														+ '</td><td>'
+														+ "&nbsp;" + +"-"
+														+ +"-" + +'</td><td>'
 														+ "&nbsp;" + +"-"
 														+ +"-" + +'</td><td>'
 														+ "&nbsp;"
 														+ +'</td><td>'
 														+ "&nbsp;"
 														+ +'</td></tr>';
-
 											}
-
 										});
 
 						$('#feesSummaryTable').append(trHTML);
@@ -267,5 +262,4 @@
 		$("#fees-table").css("display", "block");
 	}
 </script>
-
 </html>

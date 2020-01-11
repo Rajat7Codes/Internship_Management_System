@@ -136,7 +136,6 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	@OneToOne(mappedBy = "studentEntry", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	private FeesReturn feesReturn;
 
-	
 	@JsonManagedReference
 	@OneToMany(mappedBy = "studentEntry", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Fees> fees;
