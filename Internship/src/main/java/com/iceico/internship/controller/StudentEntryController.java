@@ -465,8 +465,6 @@ public class StudentEntryController {
 		return "offerLetterView";
 	}
 	
-	
-	
 
 	/**
 	 * This method returns the principal[user-name] of logged-in user.
