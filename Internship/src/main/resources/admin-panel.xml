@@ -198,7 +198,7 @@
 			value="/WEB-INF/internship/view/admin-module/certificates/internshipCertificate.jsp" />
 	</definition>
 
-<<<<<<< HEAD
+
 	<definition name="viewJoiningLetter"
 		extends="adminbase.definition">
 		<put-attribute name="title"
@@ -208,7 +208,7 @@
 	</definition>
 	
 	
-=======
+
 
 	<definition name="offerLetterView"
 		extends="adminbase.definition">
@@ -216,9 +216,4 @@
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/certificates/offerLetterView.jsp" />
 	</definition>
-
-
-
-
->>>>>>> 788e21493d8aa7f2a281fd66bb461ced7c2ca8ca
 </tiles-definitions>
