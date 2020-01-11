@@ -39,9 +39,9 @@
 								<th>Name</th>
 								<th>College</th>
 								<th>Session</th>
-								<th>Duration</th>
+								<!-- <th>Duration</th>
 								<th>Type</th>
-								<th>Fees</th>
+								<th>Fees</th> -->
 								<th>Joining Date</th>
 								<th>Student Status</th>
 								<th>Certificate</th>
@@ -56,9 +56,9 @@
 									<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
 									<td>${stud.getCollege().collegeName }</td>
 									<td>${stud.getInternshipSession().sessionName }</td>
-									<td>${stud.getInternshipDuration().duration }</td>
+									<%-- 	<td>${stud.getInternshipDuration().duration }</td>
 									<td>${stud.getInternshipType().type }</td>
-									<td>${stud.feesAmount }</td>
+									<td>${stud.feesAmount }</td> --%>
 									<td>${stud.date }</td>
 									<td>${stud.studentStatus}</td>
 									<td class="valigntop"><div class="btn-group">
@@ -72,15 +72,16 @@
 
 												<li><a title="offerLetter"
 													onclick="checkOffer(<c:if test="${stud.offerCount!=1}">null</c:if>${stud.offerCount}, ${stud.studentEntryId })"><i
-														class="fa fa-file-text-o" aria-hidden="true"></i>Offer
-														Letter <c:if test="${stud.offerCount==1}">
+														class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Offer
+														Letter&nbsp;&nbsp;&nbsp;&nbsp;<c:if
+															test="${stud.offerCount==1}">
 															<i class="fa fa-check" aria-hidden="true"></i>
 														</c:if> </a></li>
 
 												<li><a title="joiningLetter"
 													onclick='checkJoining(<c:if test="${stud.joinCount!=1}">null</c:if>${stud.joinCount}, ${stud.studentEntryId })'>
-														<i class="fa fa-file-text-o" aria-hidden="true"></i>
-														Joining Letter <c:if test="${stud.joinCount==1}">
+														<i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;
+														Joining Letter&nbsp; <c:if test="${stud.joinCount==1}">
 															<i class="fa fa-check" aria-hidden="true"> </i>
 														</c:if>
 												</a></li>
@@ -88,8 +89,8 @@
 
 												<li><a title="internshipCertificate"
 													onclick="checkInternship(<c:if test="${stud.internshipCount!=1}">null</c:if>${stud.internshipCount}, ${stud.studentEntryId })"><i
-														class="fa fa-file-text-o" aria-hidden="true"></i>Internship
-														Certificate<c:if test="${stud.internshipCount==1}">
+														class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Internship
+														Crt.&nbsp;<c:if test="${stud.internshipCount==1}">
 															<i class="fa fa-check" aria-hidden="true"></i>
 														</c:if> </a></li>
 											</ul>
