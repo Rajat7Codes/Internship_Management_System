@@ -23,7 +23,7 @@ import javax.persistence.TemporalType;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.iceico.internship.audit.Auditable;
 
 /**
@@ -79,6 +79,7 @@ public class Fees extends Auditable<String> implements Serializable {
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "studentEntryId", insertable = true, nullable = true, updatable = true)
 //	@JsonIgnore
+	@JsonBackReference
 	private StudentEntry studentEntry;
 
 	/**

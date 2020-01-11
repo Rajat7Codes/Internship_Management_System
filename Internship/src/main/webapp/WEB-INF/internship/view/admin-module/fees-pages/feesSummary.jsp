@@ -72,7 +72,7 @@
 							</div>
 							<div
 								class="col-md-4 col-sm-4 col-lg-4 col-12 text-center pl-3 my-auto">
-								<button class="btn btn-danger btn-md" onclick="date_submit()"
+								<button class="btn btn-danger btn-md" onclick="year_submit()"
 									style="margin-top: 30px;">SEARCH</button>
 							</div>
 						</div>
@@ -137,13 +137,12 @@
 		data = {
 			"startDate" : $("#startDate").val(),
 			"endDate" : $("#endDate").val(),
-			"year" : $("#year").val()
 		};
 
 		$.ajax({
 			type : "GET",
 			contentType : "application/json",
-			url : "/fees/summary/filter",
+			url : "/fees/summary/filter/date",
 			data : data,
 			dataType : 'json',
 			cache : false,
@@ -154,9 +153,9 @@
 
 				$.each(response, function(i, item) {
 					trHTML += '<tr><td>' + "&nbsp;" + (i + 1) + '</td><td>'
-							+ "&nbsp;" + item.studentEntry.firstName
-							+ "&nbsp;" + item.studentEntry.middleName
-							+ "&nbsp;" + item.studentEntry.lastName + "&nbsp;"
+							+ "&nbsp;" + item.studentEntry.firstName + "&nbsp;"
+							+ item.studentEntry.middleName + "&nbsp;"
+							+ item.studentEntry.lastName + "&nbsp;"
 							+ '</td><td>' + "&nbsp;"
 							+ item.studentEntry.college.collegeName
 							+ '</td><td>' + "&nbsp;"
@@ -168,10 +167,12 @@
 							+ item.studentEntry.paidFees + '</td><td>'
 							+ "&nbsp;" + item.studentEntry.balanceFees
 							+ '</td><td>' + "&nbsp;" + item.feesAmount
-							+ '</td><td>' + "&nbsp;" + new Date(item.date).getDate()+"-"+ (new Date(item.date).getMonth()+1)+"-"+ new Date(item.date).getFullYear()
-							+ '</td><td>' + "&nbsp;" + item.payMode
-							+ '</td><td>' + "&nbsp;" + item.payStatus
-							+ '</td></tr>';
+							+ '</td><td>' + "&nbsp;"
+							+ new Date(item.date).getDate() + "-"
+							+ (new Date(item.date).getMonth() + 1) + "-"
+							+ new Date(item.date).getFullYear() + '</td><td>'
+							+ "&nbsp;" + item.payMode + '</td><td>' + "&nbsp;"
+							+ item.payStatus + '</td></tr>';
 				});
 
 				$('#feesSummaryTable').append(trHTML);
@@ -180,5 +181,88 @@
 		$("#fees-table").css("display", "block");
 	}
 </script>
+
+<script>
+	function year_submit() {
+
+		data = {
+			"year" : $("#year").val(),
+		};
+
+		$
+				.ajax({
+					type : "GET",
+					contentType : "application/json",
+					url : "/admin/fees/summary/filter/year",
+					data : data,
+					dataType : 'json',
+					cache : false,
+					timeout : 600000,
+					success : function(response) {
+						alert(JSON.stringify(response));
+						var trHTML = '';
+
+						$
+								.each(
+										response,
+										function(i, item) {
+											var studentEntry = item.studentEntry;
+
+											for (var i = 0, studentEntry_len = studentEntry.length; i < studentEntry_len; i += 1) {
+
+												// Here you are accessing to the item of Array using index of item.
+												var se = studentEntry[i];
+
+												/* for (var j = 0, fees_len = fees.length; j < fees_len; j += 1) { */
+
+												var feesObj = fees[j];
+												alert("feesObj======" + feesObj);
+
+												trHTML += '<tr><td>' + "&nbsp;"
+														+ (i + 1)
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ se.firstName
+														+ "&nbsp;"
+														+ se.middleName
+														+ "&nbsp;"
+														+ se.lastName
+														+ "&nbsp;"
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ se.college.collegeName
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ se.department.departmentName
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ se.feesAmount
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ se.discount
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ se.paidFees
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ se.balanceFees
+														+ '</td><td>'
+														+ "&nbsp;" + +"-"
+														+ +"-" + +'</td><td>'
+														+ "&nbsp;" + +"-"
+														+ +"-" + +'</td><td>'
+														+ "&nbsp;"
+														+ +'</td><td>'
+														+ "&nbsp;"
+														+ +'</td></tr>';
+											}
+										});
+						$('#feesSummaryTable').append(trHTML);
+					}
+				});
+		$("#fees-table").css("display", "block");
+	}
+</script>
+
 
 </html>

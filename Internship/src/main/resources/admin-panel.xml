@@ -140,7 +140,8 @@
 			value="/WEB-INF/internship/view/admin-module/fees-pages/fees.jsp" />
 	</definition>
 
-	<definition name="feesSummary" extends="adminbase.definition">
+	<definition name="feesSummary"
+		extends="adminbase.definition">
 		<put-attribute name="title" value="fees summary" />
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/fees-pages/feesSummary.jsp" />
@@ -197,9 +198,22 @@
 			value="/WEB-INF/internship/view/admin-module/certificates/internshipCertificate.jsp" />
 	</definition>
 
+	<!-- Internship drive student pages -->
+
+	<definition name="newDriveStudent"
+		extends="adminbase.definition">
+		<put-attribute name="title" value="New Drive Student" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/internship-drive-pages/newDriveStudent.jsp" />
+	</definition>
 
 
-
+	<definition name="driveStudent"
+		extends="adminbase.definition">
+		<put-attribute name="title" value="Drive Student" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/internship-drive-pages/allDriveStudents.jsp" />
+	</definition>
 
 
 

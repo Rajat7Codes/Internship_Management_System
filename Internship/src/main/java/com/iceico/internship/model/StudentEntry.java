@@ -27,6 +27,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.iceico.internship.audit.Auditable;
 
 /**
@@ -135,7 +136,8 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 	@OneToOne(mappedBy = "studentEntry", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	private FeesReturn feesReturn;
 
-	@JsonIgnore
+//	@JsonIgnore
+	@JsonManagedReference
 	@OneToMany(mappedBy = "studentEntry", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Fees> fees;
 

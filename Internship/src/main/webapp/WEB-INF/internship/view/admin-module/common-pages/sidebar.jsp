@@ -59,6 +59,17 @@
 							</a></li>
 						</ul></li>
 
+					<li class="nav-item"><a href="#" class="nav-link nav-toggle">
+							<i class="material-icons">verified_user</i> <span class="title">Internship
+								Drive</span> <span class="selected"></span> <span class="arrow open"></span>
+					</a>
+						<ul class="sub-menu">
+							<li class="nav-item"><a
+								href="${pageContext.request.contextPath }/admin/internship/drive/student"
+								class="nav-link "> <span class="title">All Students</span>
+							</a></li>
+						</ul></li>
+
 
 
 

@@ -3,7 +3,6 @@
  */
 package com.iceico.internship.service.impl;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -68,5 +67,11 @@ public class FinancialYearServiceIMPL implements FinancialYearService {
 	public FinancialYear getActiveFinancialYear() {
 		return (FinancialYear) this.getSession().createQuery("from FinancialYear where active=:active")
 				.setParameter("active", true).uniqueResult();
+	}
+
+	@Override
+	public FinancialYear searchByYear(String year) {
+		return (FinancialYear) this.getSession().createQuery("from  FinancialYear where year=:year").setParameter("year", year)
+				.uniqueResult();
 	}
 }
