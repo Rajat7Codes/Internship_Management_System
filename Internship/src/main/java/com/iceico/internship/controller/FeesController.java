@@ -3,11 +3,14 @@
  */
 package com.iceico.internship.controller;
 
+import java.text.ParseException;
+import java.util.List;
 import java.util.Locale;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -17,11 +20,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.Fees;
+import com.iceico.internship.model.FinancialYear;
 import com.iceico.internship.model.StudentEntry;
 import com.iceico.internship.service.FeesService;
+import com.iceico.internship.service.FinancialYearService;
 import com.iceico.internship.service.StudentEntryService;
 import com.iceico.internship.util.ListHelper;
 
@@ -39,6 +49,7 @@ public class FeesController {
 	 * 
 	 */
 	public FeesController() {
+
 	}
 
 	@Autowired
@@ -46,6 +57,9 @@ public class FeesController {
 
 	@Autowired
 	private StudentEntryService studentEntryService;
+
+	@Autowired
+	private FinancialYearService financialYearService;
 
 	@Autowired
 	private ListHelper listHelper;
@@ -61,8 +75,30 @@ public class FeesController {
 	@GetMapping("/admin/fees/summary")
 	public String getFeesSummary(ModelMap modelMap, Locale locale) {
 		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
+		modelMap.addAttribute("financialYearList", this.financialYearService.getFinancialYearList());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "feesSummary";
+	}
+
+	//////////////////////////////////////////////////////
+
+	@SuppressWarnings("deprecation")
+	@RequestMapping(value = "/fees/summary/filter/date", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
+	public @ResponseBody List<Fees> filterStudentListByDate(@RequestParam("startDate") String startDate,
+			@RequestParam("endDate") String endDate) throws JsonProcessingException, ParseException {
+
+		System.out.println("sdate========" + startDate);
+		System.out.println("edate========" + endDate);
+		return this.feesService.filterFeesByDate(startDate, endDate);
+	}
+
+	@SuppressWarnings("deprecation")
+	@RequestMapping(value = "/fees/summary/filter/year", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
+	public @ResponseBody FinancialYear filterStudentListByYear(@RequestParam("year") String year)
+			throws JsonProcessingException, ParseException {
+
+		System.out.println("year========" + year);
+		return this.financialYearService.searchByYear(year);
 	}
 
 	@GetMapping("/admin/fees/pay/{studentEntryId}")

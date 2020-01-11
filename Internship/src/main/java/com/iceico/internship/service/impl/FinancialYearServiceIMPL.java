@@ -68,4 +68,10 @@ public class FinancialYearServiceIMPL implements FinancialYearService {
 		return (FinancialYear) this.getSession().createQuery("from FinancialYear where active=:active")
 				.setParameter("active", true).uniqueResult();
 	}
+
+	@Override
+	public FinancialYear searchByYear(String year) {
+		return (FinancialYear) this.getSession().createQuery("from  FinancialYear where year=:year").setParameter("year", year)
+				.uniqueResult();
+	}
 }

@@ -27,4 +27,6 @@ public interface FeesService {
 	public void deleteFees(Long feesId);
 
 	public Double getdailyFeesCollection(Date date);
+
+	public List<Fees> filterFeesByDate(String startDate, String endDate);
 }

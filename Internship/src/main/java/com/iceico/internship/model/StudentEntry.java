@@ -27,6 +27,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.iceico.internship.audit.Auditable;
 
 /**
@@ -97,7 +98,7 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 
 	@Column(name = "join_count")
 	private Integer joinCount;
-	
+
 	@Column(name = "internship_count")
 	private Integer internshipCount;
 
@@ -123,23 +124,21 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "collegeId", insertable = true, nullable = true, updatable = true)
-	@JsonIgnore
+//	@JsonIgnore
 	private College college;
 
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "departmentId", insertable = true, nullable = true, updatable = true)
-	@JsonIgnore
+//	@JsonIgnore
 	private Department department;
 
 	@JsonIgnore
 	@OneToOne(mappedBy = "studentEntry", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	private FeesReturn feesReturn;
 
-	@JsonIgnore
+	@JsonManagedReference
 	@OneToMany(mappedBy = "studentEntry", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Fees> fees;
-
-
 
 	/**
 	 * @param studentEntryId
@@ -394,8 +393,6 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 		this.joinCount = joinCount;
 	}
 
-	
-	
 	/**
 	 * @return the internshipCount
 	 */

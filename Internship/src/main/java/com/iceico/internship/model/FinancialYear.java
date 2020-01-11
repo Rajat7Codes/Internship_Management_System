@@ -19,7 +19,6 @@ import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.iceico.internship.audit.Auditable;
 
 /**
@@ -55,7 +54,7 @@ public class FinancialYear extends Auditable<String> implements Serializable {
 	@Column(name = "active")
 	private boolean active;
 
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToMany(mappedBy = "financialYear", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<StudentEntry> studentEntry;
 
