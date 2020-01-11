@@ -45,6 +45,7 @@
 								<th>Joining Date</th>
 								<th>Student Status</th>
 								<th>Certificate</th>
+								<th>View Certificate</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -94,6 +95,41 @@
 														</c:if> </a></li>
 											</ul>
 										</div></td>
+
+									<td class="valigntop"><div class="btn-group">
+											<button
+												class="btn btn-xs btn-success dropdown-toggle no-margin"
+												type="button" data-toggle="dropdown" aria-expanded="false">
+												Certificate <i class="fa fa-angle-down"></i>
+											</button>
+											<ul class="dropdown-menu pull-left  role="
+												menu" style='padding-right: 20px;'>
+
+												<li><a title="offerLetter"
+													onclick="checkOffer(<c:if test="${stud.offerCount!=1}">null</c:if>${stud.offerCount}, ${stud.studentEntryId })"><i
+														class="fa fa-file-text-o" aria-hidden="true"></i>Offer
+														Letter <c:if test="${stud.offerCount==1}">
+															<i class="fa fa-check" aria-hidden="true"></i>
+														</c:if> </a></li>
+
+												<li><a title="joiningLetter"
+													onclick='checkJoining(<c:if test="${stud.joinCount!=1}">null</c:if>${stud.joinCount}, ${stud.studentEntryId })'>
+														<i class="fa fa-file-text-o" aria-hidden="true"></i>
+														Joining Letter <c:if test="${stud.joinCount==1}">
+															<i class="fa fa-check" aria-hidden="true"> </i>
+														</c:if>
+												</a></li>
+
+
+												<li><a title="internshipCertificate"
+													onclick="checkInternship(<c:if test="${stud.internshipCount!=1}">null</c:if>${stud.internshipCount}, ${stud.studentEntryId })"><i
+														class="fa fa-file-text-o" aria-hidden="true"></i>Internship
+														Certificate<c:if test="${stud.internshipCount==1}">
+															<i class="fa fa-check" aria-hidden="true"></i>
+														</c:if> </a></li>
+											</ul>
+										</div></td>
+
 
 									<td class="valigntop"><div class="btn-group">
 											<button

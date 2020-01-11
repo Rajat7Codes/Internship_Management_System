@@ -79,13 +79,4 @@ public class FeesServiceImpl implements FeesService {
 		return (List<Fees>) this.getSession().createQuery("from Fees where date BETWEEN str_to_date('" + startDate
 				+ "', '%Y-%m-%d') AND str_to_date('" + endDate + "', '%Y-%m-%d')").getResultList();
 	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Fees> filterFeesByYear(String year) {
-		System.out.println("year in dao impl ==============="+year);
-		return this.getSession().createQuery("from FinancialYear where year=:year").setParameter("year", year)
-				.getResultList();
-	}
-
 }

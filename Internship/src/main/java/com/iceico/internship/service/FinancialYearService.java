@@ -27,4 +27,6 @@ public interface FinancialYearService {
 
 	public FinancialYear getActiveFinancialYear();
 
+	public FinancialYear searchByYear(String year);
+
 }
