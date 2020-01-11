@@ -168,7 +168,7 @@
 							+ item.studentEntry.paidFees + '</td><td>'
 							+ "&nbsp;" + item.studentEntry.balanceFees
 							+ '</td><td>' + "&nbsp;" + item.feesAmount
-							+ '</td><td>' + "&nbsp;" + new Date(item.date)
+							+ '</td><td>' + "&nbsp;" + new Date(item.date).getDate()+"-"+ (new Date(item.date).getMonth()+1)+"-"+ new Date(item.date).getFullYear()
 							+ '</td><td>' + "&nbsp;" + item.payMode
 							+ '</td><td>' + "&nbsp;" + item.payStatus
 							+ '</td></tr>';
