@@ -3,7 +3,6 @@
  */
 package com.iceico.internship.service.impl;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;

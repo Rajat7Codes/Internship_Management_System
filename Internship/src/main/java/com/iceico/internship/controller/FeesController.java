@@ -48,7 +48,7 @@ public class FeesController {
 	 * 
 	 */
 	public FeesController() {
-		
+
 	}
 
 	@Autowired
@@ -78,41 +78,41 @@ public class FeesController {
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "feesSummary";
 	}
-	
+
 	//////////////////////////////////////////////////////
 
-	
 	@SuppressWarnings("deprecation")
-	@RequestMapping(value = "/fees/summary/filter", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
-	public @ResponseBody List<Fees> filterStudentListByDate(@RequestParam("startDate") String startDate, 
-			@RequestParam("endDate") String endDate, @RequestParam("year") String year )
-	throws JsonProcessingException, ParseException {
-		
-		
+	@RequestMapping(value = "/fees/summary/filter/date", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
+	public @ResponseBody List<Fees> filterStudentListByDate(@RequestParam("startDate") String startDate,
+			@RequestParam("endDate") String endDate) throws JsonProcessingException, ParseException {
 
-		System.out.println("sdate========"+startDate);
-		System.out.println("edate========"+endDate);
-		System.out.println("year========"+year);
-		
-		if(year.equals("")) {
-			System.out.println("date========");
-			return this.feesService.filterFeesByDate(startDate, endDate);	
-		} else {
-			System.out.println("year========="+year);
-			return this.feesService.filterFeesByYear(year);
-		}
+		/*
+		 * System.out.println("sdate========"+startDate);
+		 * System.out.println("edate========"+endDate);
+		 * System.out.println("year========"+year);
+		 */
+
+		return this.feesService.filterFeesByDate(startDate, endDate);
+
 	}
-	
+
 	@SuppressWarnings("deprecation")
-	@RequestMapping(value = "/admin/fees/summary/filter/date", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
-	public @ResponseBody List<Fees> filterStudentListByYear( )
-	throws JsonProcessingException, ParseException {
-		
-		return null;
+	@RequestMapping(value = "/fees/summary/filter/year", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
+	public @ResponseBody List<Fees> filterStudentListByYear(@RequestParam("year") String year)
+			throws JsonProcessingException, ParseException {
+
+		/*
+		 * System.out.println("year========" + year); List<Fees> feesList =
+		 * feesService.filterFeesByYear(year);
+		 * 
+		 * for (Fees fees : feesList) { System.out.println("Fees amt ====> " +
+		 * fees.getFeesAmount()); }
+		 */
+
+		return this.feesService.filterFeesByYear(year);
 	}
-	
-	//////////////////////////////////////////////////////
-	
+
+	//////////////////////////////////////////////////////////
 
 	@GetMapping("/admin/fees/pay/{studentEntryId}")
 	public String payFees(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)

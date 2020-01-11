@@ -72,7 +72,7 @@
 							</div>
 							<div
 								class="col-md-4 col-sm-4 col-lg-4 col-12 text-center pl-3 my-auto">
-								<button class="btn btn-danger btn-md" onclick="date_submit()"
+								<button class="btn btn-danger btn-md" onclick="year_submit();"
 									style="margin-top: 30px;">SEARCH</button>
 							</div>
 						</div>
@@ -106,7 +106,6 @@
 							</tr>
 						</thead>
 						<tbody id="tableBody">
-
 						</tbody>
 					</table>
 				</div>
@@ -137,13 +136,12 @@
 		data = {
 			"startDate" : $("#startDate").val(),
 			"endDate" : $("#endDate").val(),
-			"year" : $("#year").val()
 		};
 
 		$.ajax({
 			type : "GET",
 			contentType : "application/json",
-			url : "/fees/summary/filter",
+			url : "/fees/summary/filter/date",
 			data : data,
 			dataType : 'json',
 			cache : false,
@@ -154,9 +152,9 @@
 
 				$.each(response, function(i, item) {
 					trHTML += '<tr><td>' + "&nbsp;" + (i + 1) + '</td><td>'
-							+ "&nbsp;" + item.studentEntry.firstName
-							+ "&nbsp;" + item.studentEntry.middleName
-							+ "&nbsp;" + item.studentEntry.lastName + "&nbsp;"
+							+ "&nbsp;" + item.studentEntry.firstName + "&nbsp;"
+							+ item.studentEntry.middleName + "&nbsp;"
+							+ item.studentEntry.lastName + "&nbsp;"
 							+ '</td><td>' + "&nbsp;"
 							+ item.studentEntry.college.collegeName
 							+ '</td><td>' + "&nbsp;"
@@ -168,15 +166,104 @@
 							+ item.studentEntry.paidFees + '</td><td>'
 							+ "&nbsp;" + item.studentEntry.balanceFees
 							+ '</td><td>' + "&nbsp;" + item.feesAmount
-							+ '</td><td>' + "&nbsp;" + new Date(item.date).getDate()+"-"+ (new Date(item.date).getMonth()+1)+"-"+ new Date(item.date).getFullYear()
-							+ '</td><td>' + "&nbsp;" + item.payMode
-							+ '</td><td>' + "&nbsp;" + item.payStatus
-							+ '</td></tr>';
+							+ '</td><td>' + "&nbsp;"
+							+ new Date(item.date).getDate() + "-"
+							+ (new Date(item.date).getMonth() + 1) + "-"
+							+ new Date(item.date).getFullYear() + '</td><td>'
+							+ "&nbsp;" + item.payMode + '</td><td>' + "&nbsp;"
+							+ item.payStatus + '</td></tr>';
 				});
 
 				$('#feesSummaryTable').append(trHTML);
 			}
 		});
+		$("#fees-table").css("display", "block");
+	}
+</script>
+
+
+
+
+<!-- script for AJAX year -->
+<script type="text/javascript">
+	function year_submit() {
+
+		data = {
+			"year" : $("#year").val()
+		};
+		alert(JSON.stringify(data));
+		$
+				.ajax({
+					type : "GET",
+					contentType : "application/json",
+					url : "/fees/summary/filter/year",
+					data : data,
+					dataType : 'json',
+					cache : false,
+					timeout : 600000,
+					success : function(response) {
+						alert(JSON.stringify(response));
+						var trHTML = '';
+
+						$
+								.each(
+										response,
+										function(i, item) {
+											var studentEntry = item.studentEntry;
+											/* alert("array"
+													+ JSON
+															.stringify(studentEntry)); */
+
+											for (var i = 0, studentEntry_len = studentEntry.length; i < studentEntry_len; i += 1) {
+												/* alert("inside loop"); */
+
+												var j = studentEntry[i]; // Here you are accessing to the item of Array using index of item.
+												alert("first name New==="
+														+ j.firstName);
+
+												trHTML += '<tr><td>' + "&nbsp;"
+														+ (i + 1)
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ j.firstName
+														+ "&nbsp;"
+														+ j.middleName
+														+ "&nbsp;"
+														+ j.lastName
+														+ "&nbsp;"
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ j.college.collegeName
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ j.department.departmentName
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ j.feesAmount
+														+ '</td><td>'
+														+ "&nbsp;" + j.discount
+														+ '</td><td>'
+														+ "&nbsp;" + j.paidFees
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ j.balanceFees
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ +'</td><td>'
+														+ "&nbsp;" + +"-"
+														+ +"-" + +'</td><td>'
+														+ "&nbsp;"
+														+ +'</td><td>'
+														+ "&nbsp;"
+														+ +'</td></tr>';
+
+											}
+
+										});
+
+						$('#feesSummaryTable').append(trHTML);
+					}
+				});
 		$("#fees-table").css("display", "block");
 	}
 </script>

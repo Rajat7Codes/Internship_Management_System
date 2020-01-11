@@ -83,9 +83,10 @@ public class FeesServiceImpl implements FeesService {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Fees> filterFeesByYear(String year) {
-		System.out.println("year in dao impl ==============="+year);
+		System.out.println("year in dao impl ===============" + year);
 		return this.getSession().createQuery("from FinancialYear where year=:year").setParameter("year", year)
 				.getResultList();
+
 	}
 
 }
