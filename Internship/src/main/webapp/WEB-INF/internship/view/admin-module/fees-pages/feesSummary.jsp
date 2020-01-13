@@ -132,7 +132,6 @@
 
 
 <script type="text/javascript">
-	<script>
 	function date_submit() {
 
 		data = {
