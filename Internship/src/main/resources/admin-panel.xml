@@ -183,27 +183,27 @@
 
 	<!-- certification -->
 
-	<definition name="joiningLetter"
+	<definition name="printJoiningLetter"
 		extends="adminbase.definition">
 		<put-attribute name="title" value="joining letter" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/certificates/joiningLetter.jsp" />
+			value="/WEB-INF/internship/view/admin-module/certificates/printJoiningLetter.jsp" />
 	</definition>
 
-	<definition name="offerLetter"
+	<definition name="printOfferLetter"
 		extends="adminbase.definition">
 		<put-attribute name="title" value="offer letter" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/certificates/offerLetter.jsp" />
+			value="/WEB-INF/internship/view/admin-module/certificates/printOfferLetter.jsp" />
 	</definition>
 
 
-	<definition name="internshipCertificate"
+	<definition name="printInternshipCertificate"
 		extends="adminbase.definition">
 		<put-attribute name="title"
 			value="internship certificate" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/certificates/internshipCertificate.jsp" />
+			value="/WEB-INF/internship/view/admin-module/certificates/printInternshipCertificate.jsp" />
 	</definition>
 
 
@@ -224,23 +224,15 @@
 	</definition>
 
 
-	<definition name="offerLetterView"
+	<definition name="viewOfferLetter"
 		extends="adminbase.definition">
 		<put-attribute name="title" value="offer letter" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/certificates/offerLetterView.jsp" />
+			value="/WEB-INF/internship/view/admin-module/certificates/viewOfferLetter.jsp" />
 	</definition>
 
 
 	<!-- Internship drive student pages -->
-
-
-	<definition name="viewJoiningLetter"
-		extends="adminbase.definition">
-		<put-attribute name="title" value="joining letter  view" />
-		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/certificates/viewJoiningLetter.jsp" />
-	</definition>
 
 	<definition name="newDriveStudent"
 		extends="adminbase.definition">
