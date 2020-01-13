@@ -35,7 +35,7 @@
 			<div class="col-xl-3 col-md-6 col-12">
 				<div class="info-box bg-b-orange">
 					<span class="info-box-icon push-bottom"><i
-						class="material-icons materialicon">shopping_cart</i></span>
+						class="material-icons materialicon">monetization_on</i></span>
 					<div class="info-box-content">
 						<span class="info-box-text">Total Income</span> <span
 							class="info-box-number"> <c:if
@@ -55,7 +55,7 @@
 			<div class="col-xl-3 col-md-6 col-12">
 				<div class="info-box bg-b-purple">
 					<span class="info-box-icon push-bottom"><i
-						class="material-icons materialicon">redeem</i></span>
+						class="material-icons materialicon">monetization_on</i></span>
 					<div class="info-box-content">
 						<span class="info-box-text">Total Balance Amount</span> <span
 							class="info-box-number"><c:if
@@ -75,7 +75,7 @@
 			<div class="col-xl-3 col-md-6 col-12">
 				<div class="info-box bg-b-cyan">
 					<span class="info-box-icon push-bottom"><i
-						class="material-icons materialicon">group</i></span>
+						class="material-icons materialicon">monetization_on</i></span>
 					<div class="info-box-content">
 						<span class="info-box-text">Total Paid Amount</span> <span
 							class="info-box-number"><c:if
