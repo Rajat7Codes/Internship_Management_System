@@ -95,15 +95,9 @@ public class FeesController {
 
 		List<Fees> list = this.feesService.filterFeesByDate(startDate, endDate);
 
-		JSONArray feesArray = new JSONArray();
+		
 		for (Fees fees : list) {
-			JSONObject feesObject = new JSONObject();
-			feesObject.put("date", fees.getDate());
-			feesObject.put("payMode", fees.getPayMode());
-			feesObject.put("feesAmount", fees.getFeesAmount());
-
-			JSONArray studEntryArray = new JSONArray();
-
+			
 			JSONObject studEntryObject = new JSONObject();
 			studEntryObject.put("firstName", fees.getStudentEntry().getFirstName());
 			studEntryObject.put("middleName", fees.getStudentEntry().getMiddleName());
@@ -113,24 +107,64 @@ public class FeesController {
 			studEntryObject.put("discount", fees.getStudentEntry().getDiscount());
 			studEntryObject.put("balanceFees", fees.getStudentEntry().getBalanceFees());
 			studEntryObject.put("payStatus", fees.getStudentEntry().getPayStatus());
-
-			studEntryArray.add(studEntryObject);
-
-			JSONObject collegeObject = new JSONObject();
-			collegeObject.put("collegeName", fees.getStudentEntry().getCollege().getCollegeName());
-
-			JSONObject departmentObject = new JSONObject();
-			departmentObject.put("departmentName", fees.getStudentEntry().getDepartment().getDepartmentName());
-
-			studEntryObject.put("college", collegeObject);
-			studEntryObject.put("department", departmentObject);
-			feesObject.put("studentEntry", studEntryArray);
-
-			feesArray.add(feesObject);
-			// System.out.println("Json ======>> " + feesArray);
+			studEntryObject.put("collegeName", fees.getStudentEntry().getCollege().getCollegeName());
 		}
-		System.out.println("Json ======>> " + feesArray);
-		return feesArray;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
+		 * JSONArray feesArray = new JSONArray(); for (Fees fees : list) { JSONObject
+		 * feesObject = new JSONObject(); feesObject.put("date", fees.getDate());
+		 * feesObject.put("payMode", fees.getPayMode()); feesObject.put("feesAmount",
+		 * fees.getFeesAmount());
+		 * 
+		 * JSONArray studEntryArray = new JSONArray();
+		 * 
+		 * JSONObject studEntryObject = new JSONObject();
+		 * studEntryObject.put("firstName", fees.getStudentEntry().getFirstName());
+		 * studEntryObject.put("middleName", fees.getStudentEntry().getMiddleName());
+		 * studEntryObject.put("lastName", fees.getStudentEntry().getLastName());
+		 * studEntryObject.put("feesAmount", fees.getStudentEntry().getFeesAmount());
+		 * studEntryObject.put("paidFees", fees.getStudentEntry().getPaidFees());
+		 * studEntryObject.put("discount", fees.getStudentEntry().getDiscount());
+		 * studEntryObject.put("balanceFees", fees.getStudentEntry().getBalanceFees());
+		 * studEntryObject.put("payStatus", fees.getStudentEntry().getPayStatus());
+		 * 
+		 * studEntryArray.add(studEntryObject);
+		 * 
+		 * JSONObject collegeObject = new JSONObject(); collegeObject.put("collegeName",
+		 * fees.getStudentEntry().getCollege().getCollegeName());
+		 * 
+		 * JSONObject departmentObject = new JSONObject();
+		 * departmentObject.put("departmentName",
+		 * fees.getStudentEntry().getDepartment().getDepartmentName());
+		 * 
+		 * studEntryObject.put("college", collegeObject);
+		 * studEntryObject.put("department", departmentObject);
+		 * feesObject.put("studentEntry", studEntryArray);
+		 * 
+		 * feesArray.add(feesObject); // System.out.println("Json ======>> " +
+		 * feesArray); } System.out.println("Json ======>> " + feesArray); return
+		 * feesArray;
+		 */
+		
+		
+		
+		
+		
+		
+		return null;
 	}
 
 	/* AJAX CALL FOR SEARCH BY YEAR */
@@ -139,50 +173,31 @@ public class FeesController {
 	public @ResponseBody JSONObject filterStudentListByYear(@RequestParam("year") String year)
 			throws JsonProcessingException, ParseException {
 
-		System.out.println("year========" + year);
-
 		FinancialYear financialYear = this.financialYearService.searchByYear(year);
 
 		JSONObject fyObject = new JSONObject();
-		JSONArray studEntryArray = new JSONArray();
+		JSONArray feesArray = new JSONArray();
 
 		for (StudentEntry studentEntry : financialYear.getStudentEntry()) {
-			JSONObject studEntryObject = new JSONObject();
-
-			studEntryObject.put("firstName", studentEntry.getFirstName());
-			studEntryObject.put("middleName", studentEntry.getMiddleName());
-			studEntryObject.put("lastName", studentEntry.getLastName());
-			studEntryObject.put("feesAmount", studentEntry.getFeesAmount());
-			studEntryObject.put("paidFees", studentEntry.getPaidFees());
-			studEntryObject.put("discount", studentEntry.getDiscount());
-			studEntryObject.put("balanceFees", studentEntry.getBalanceFees());
-			studEntryObject.put("payStatus", studentEntry.getPayStatus());
-			studEntryArray.add(studEntryObject);
-
-			JSONObject collegeObject = new JSONObject();
-			collegeObject.put("collegeName", studentEntry.getCollege().getCollegeName());
-
-			JSONObject departmentObject = new JSONObject();
-			departmentObject.put("departmentName", studentEntry.getDepartment().getDepartmentName());
-
-			JSONArray feesArray = new JSONArray();
-
-			for (Fees fees : studentEntry.getFees()) {
+			for (Fees feesEntry : studentEntry.getFees()) {
 				JSONObject feesObject = new JSONObject();
-				feesObject.put("date", fees.getDate());
-				feesObject.put("payMode", fees.getPayMode());
-				feesObject.put("feesAmount", fees.getFeesAmount());
+				feesObject.put("firstName", studentEntry.getFirstName());
+				feesObject.put("middleName", studentEntry.getMiddleName());
+				feesObject.put("lastName", studentEntry.getLastName());
+				feesObject.put("collegeName", studentEntry.getCollege().getCollegeName());
+				feesObject.put("departmentName", studentEntry.getDepartment().getDepartmentName());
+				feesObject.put("totalFees", studentEntry.getFeesAmount());
+				feesObject.put("discount", studentEntry.getDiscount());
+				feesObject.put("paidFees", studentEntry.getPaidFees());
+				feesObject.put("balanceFees", studentEntry.getBalanceFees());
+				feesObject.put("feesAmount", feesEntry.getFeesAmount());
+				feesObject.put("payDate", feesEntry.getDate());
+				feesObject.put("payMode", feesEntry.getPayMode());
+				feesObject.put("payStatus", studentEntry.getPayStatus());
 				feesArray.add(feesObject);
 			}
-
-			studEntryObject.put("college", collegeObject);
-			studEntryObject.put("department", departmentObject);
-			studEntryObject.put("fees", feesArray);
-
-			fyObject.put("studentEntry", studEntryArray);
-
 		}
-
+		fyObject.put("studentEntry", feesArray);
 		return fyObject;
 	}
 
