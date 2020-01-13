@@ -27,7 +27,7 @@
 				</div>
 				&nbsp;
 				<div class="card-body">
-					<table id="bootstrap-data-table-export"
+					<table id="example1" style="overflow: hidden;"
 						class="table table-striped table-responsive">
 						<thead>
 							<tr>
