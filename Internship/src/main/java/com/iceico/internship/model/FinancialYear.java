@@ -56,6 +56,7 @@ public class FinancialYear extends Auditable<String> implements Serializable {
 	private boolean active;
 
 //	@JsonIgnore
+
 	@JsonManagedReference
 	@OneToMany(mappedBy = "financialYear", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<StudentEntry> studentEntry;

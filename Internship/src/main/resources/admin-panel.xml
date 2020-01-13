@@ -97,6 +97,17 @@
 			value="/WEB-INF/internship/view/admin-module/student-entry/viewStudentEntry.jsp" />
 	</definition>
 
+
+
+	<definition name="studentEntryCertificates"
+		extends="adminbase.definition">
+		<put-attribute name="title"
+			value="Student Entry Certificates" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/certificates/studentEntryCertificates.jsp" />
+	</definition>
+
+
 	<!-- Internship Session Page -->
 	<definition name="internshipSession"
 		extends="adminbase.definition">
