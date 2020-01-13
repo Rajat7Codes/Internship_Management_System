@@ -141,7 +141,7 @@
 								<div
 									class="table-responsive tblHeightSet small-slimscroll-style">
 									<table class="table display product-overview mb-30"
-										id="support_table">
+										id="">
 										<thead>
 											<tr>
 												<th>Sr.No.</th>
