@@ -256,14 +256,62 @@
 						alert(JSON.stringify(response));
 						var trHTML = '';
 
-						for (var j = 0, studentEntry_len = response.studentEntry.length; j < studentEntry_len; j += 1) {
-
-							$
-									.each(
+							$.each(
 											response.studentEntry,
 											function(i, item) {
-
 												trHTML += '<tr><td>' + "&nbsp;"
+												+ (i + 1)
+												+ '</td><td>'
+												+ "&nbsp;"
+												+ item.firstName
+												+ "&nbsp;"
+												+ item.middleName
+												+ "&nbsp;"
+												+ item.lastName
+												+ '</td><td>'
+												+ "&nbsp;"
+												+ item.collegeName
+												+ '</td><td>'
+												+ "&nbsp;"
+												+ item.departmentName
+												+ '</td><td>'
+												+ "&nbsp;"
+												+ item.totalFees
+												+ '</td><td>'
+												+ "&nbsp;"
+												+ item.discount
+												+ '</td><td>'
+												+ "&nbsp;"
+												+ item.paidFees
+												+ '</td><td>'
+												+ "&nbsp;"
+												+ item.balanceFees
+												+ '</td><td>'
+												+ "&nbsp;"
+												+ item.feesAmount
+												+ "&nbsp;"
+												+ "</td><td>"
+												+ new Date(
+														item.payDate)
+														.getDate()
+												+ "-"
+												+ (new Date(
+														item.payDate)
+														.getMonth() + 1)
+												+ "-"
+												+ new Date(
+														item.payDate)
+														.getFullYear()
+												+ '</td><td>'
+												+ "&nbsp;"
+												+ item.payMode
+												+ '</td><td>'
+												+ "&nbsp;"
+												+ item.payStatus
+												+ '</td></tr>';
+												
+												
+												/* trHTML += '<tr><td>' + "&nbsp;"
 														+ (i + 1)
 														+ '</td><td>'
 														+ "&nbsp;"
@@ -294,6 +342,7 @@
 														+ "&nbsp;"
 														+ item.fees.feesAmount
 														+ "&nbsp;"
+														+ "</td><td>"
 														+ new Date(
 																item.fees.date)
 																.getDate()
@@ -311,9 +360,8 @@
 														+ '</td><td>'
 														+ "&nbsp;"
 														+ item.fees.payStatus
-														+ '</td></tr>';
+														+ '</td></tr>'; */
 											});
-						}
 						$('#feesSummaryTable').append(trHTML);
 					}
 				});
