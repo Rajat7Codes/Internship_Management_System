@@ -95,7 +95,7 @@
 
 			<div class="text">
 
-				Date: <strong>${ currentDate }</strong> <br> Name: <strong>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</strong>
+				Date: <strong>${ date }</strong> <br> Name: <strong>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</strong>
 
 			</div>
 

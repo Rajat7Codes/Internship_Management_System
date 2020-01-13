@@ -138,42 +138,42 @@
 						<!-- <canvas id="canvas1"></canvas> -->
 						<div class="card-body ">
 							<div class="table-wrap">
-								<div
-									class="table-responsive tblHeightSet small-slimscroll-style">
-									<table class="table display product-overview mb-30"
-										id="support_table">
-										<thead>
-											<tr>
-												<th>Sr.No.</th>
-												<th>Name</th>
-												<th>College</th>
-												<th>Session</th>
-												<th>Duration</th>
-												<th>Type</th>
-												<th>Fees</th>
-												<th>Discount</th>
-												<th>Extension</th>
-												<th>Joining Date</th>
-											</tr>
-										</thead>
-										<tbody>
-											<c:forEach var="stud" items="${studentEntryList }"
-												varStatus="ind">
+								<div class="table-responsive">
+									<div class="tblHeightSet small-slimscroll-style">
+										<table class="table display product-overview mb-30" id="">
+											<thead>
 												<tr>
-													<td>${ind.index+1 }</td>
-													<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
-													<td>${stud.getCollege().collegeName }</td>
-													<td>${stud.getInternshipSession().sessionName }</td>
-													<td>${stud.getInternshipDuration().duration }</td>
-													<td>${stud.getInternshipType().type }</td>
-													<td>${stud.feesAmount }</td>
-													<td>${stud.discount }</td>
-													<td>${stud.extension }</td>
-													<td>${stud.date }</td>
+													<th>Sr.No.</th>
+													<th>Name</th>
+													<th>College</th>
+													<th>Session</th>
+													<th>Duration</th>
+													<th>Type</th>
+													<th>Fees</th>
+													<th>Discount</th>
+													<th>Extension</th>
+													<th>Joining Date</th>
 												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
+											</thead>
+											<tbody>
+												<c:forEach var="stud" items="${studentEntryList }"
+													varStatus="ind">
+													<tr>
+														<td>${ind.index+1 }</td>
+														<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
+														<td>${stud.getCollege().collegeName }</td>
+														<td>${stud.getInternshipSession().sessionName }</td>
+														<td>${stud.getInternshipDuration().duration }</td>
+														<td>${stud.getInternshipType().type }</td>
+														<td>${stud.feesAmount }</td>
+														<td>${stud.discount }</td>
+														<td>${stud.extension }</td>
+														<td>${stud.date }</td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</div>
 								</div>
 							</div>
 						</div>

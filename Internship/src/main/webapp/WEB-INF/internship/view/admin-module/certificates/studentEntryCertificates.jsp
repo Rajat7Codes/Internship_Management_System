@@ -23,15 +23,11 @@
 		<div class="col-md-12">
 			<div class="card card-topline-darkgreen">
 				<div class="card-header  card-head pl-4" id="grad">
-					<strong class="card-title text-white">STUDENT LIST</strong> <a
-						title="Edit" class="btn btn-success"
-						style="float: right; margin-right: 10px; margin-top: 2px;"
-						href="<c:url value='/admin/student/entry/new' />">NEW STUDENT
-					</a>
+					<strong class="card-title text-white">STUDENT LIST</strong>
 				</div>
 				&nbsp;
 				<div class="card-body">
-					<table id="bootstrap-data-table-export"
+					<table id="example1" style="overflow: hidden;"
 						class="table table-striped table-responsive">
 						<thead>
 							<tr>
@@ -61,12 +57,15 @@
 												Offer Letter <i class="fa fa-angle-down"></i>
 											</button>
 											<ul class="dropdown-menu pull-left" role="menu">
-												<li><a title="Edit"
-													href="<c:url value='/admin/student/entry/edit/${stud.studentEntryId }' />"><i
-														class="fa fa-edit"></i>Edit</a></li>
 												<li><a title="View"
-													href="<c:url value='/admin/student/entry/view/${stud.studentEntryId }'  />"><i
-														class="fa fa-eye"></i>View</a></li>
+													href="<c:url value='/admin/student/entry/offer/letter/view/${stud.studentEntryId }'  />"><i
+														class="fa fa-eye"></i> &nbsp;View &nbsp;&nbsp;&nbsp;</a></li>
+												<li><a title="offerLetter"
+													onclick="checkOffer(<c:if test="${stud.offerCount!=1}">null</c:if>${stud.offerCount}, ${stud.studentEntryId })"><i
+														class="fa fa-print" aria-hidden="true"></i>&nbsp;&nbsp;Print
+														&nbsp;&nbsp;&nbsp;&nbsp;<c:if test="${stud.offerCount==1}">
+															<i class="fa fa-check" aria-hidden="true"></i>
+														</c:if> </a></li>
 											</ul>
 										</div></td>
 									<td class="valigntop"><div class="btn-group">
@@ -76,12 +75,18 @@
 												Joining Letter <i class="fa fa-angle-down"></i>
 											</button>
 											<ul class="dropdown-menu pull-left" role="menu">
-												<li><a title="Edit"
-													href="<c:url value='/admin/student/entry/edit/${stud.studentEntryId }' />"><i
-														class="fa fa-edit"></i>Edit</a></li>
 												<li><a title="View"
-													href="<c:url value='/admin/student/entry/view/${stud.studentEntryId }'  />"><i
-														class="fa fa-eye"></i>View</a></li>
+													href="<c:url value='/admin/student/entry/joining/letter/view/${stud.studentEntryId }'  />"><i
+														class="fa fa-eye"></i> &nbsp;View &nbsp;&nbsp;&nbsp;</a></li>
+
+												<li><a title="joiningLetter"
+													onclick='checkJoining(<c:if test="${stud.joinCount!=1}">null</c:if>${stud.joinCount}, ${stud.studentEntryId })'>
+														<i class="fa fa-print" aria-hidden="true"></i>&nbsp;
+														Print&nbsp;&nbsp;&nbsp;&nbsp; <c:if
+															test="${stud.joinCount==1}">
+															<i class="fa fa-check" aria-hidden="true"> </i>
+														</c:if>
+												</a></li>
 											</ul>
 										</div></td>
 									<td class="valigntop"><div class="btn-group">
@@ -91,17 +96,21 @@
 												Internship Certificate <i class="fa fa-angle-down"></i>
 											</button>
 											<ul class="dropdown-menu pull-left" role="menu">
-												<li><a title="Edit"
-													href="<c:url value='/admin/student/entry/edit/${stud.studentEntryId }' />"><i
-														class="fa fa-edit"></i>Edit</a></li>
 												<li><a title="View"
-													href="<c:url value='/admin/student/entry/view/${stud.studentEntryId }'  />"><i
-														class="fa fa-eye"></i>View</a></li>
+													href="<c:url value='/admin/student/entry/internship/certificate/view/${stud.studentEntryId }'  />"><i
+														class="fa fa-eye"></i> &nbsp;View &nbsp;&nbsp;&nbsp;</a></li>
+
+												<li><a title="internshipCertificate"
+													onclick="checkInternship(<c:if test="${stud.internshipCount!=1}">null</c:if>${stud.internshipCount}, ${stud.studentEntryId })"><i
+														class="fa fa-print" aria-hidden="true"></i> &nbsp;Print
+														&nbsp;&nbsp;&nbsp;&nbsp;<c:if
+															test="${stud.internshipCount==1}">
+															<i class="fa fa-check" aria-hidden="true"></i>
+														</c:if> </a></li>
 											</ul>
 										</div></td>
 								</tr>
 							</c:forEach>
-
 						</tbody>
 					</table>
 				</div>
@@ -114,16 +123,15 @@
 			if (joinCount == 1) {
 				window.alert('Joining Letter Already Given');
 			} else {
-				window.location = "/admin/student/entry/joining/letter/"
+				window.location = "/admin/student/entry/joining/letter/print/"
 						+ studentId;
 			}
 		}
-
 		function checkOffer(offerCount, studentId) {
 			if (offerCount == 1) {
 				window.alert('Offer Letter Already Given');
 			} else {
-				window.location = "/admin/student/entry/offer/letter/"
+				window.location = "/admin/student/entry/offer/letter/print/"
 						+ studentId;
 			}
 		}
@@ -131,7 +139,7 @@
 			if (internshipCount == 1) {
 				window.alert('Internship Certificate Already Given');
 			} else {
-				window.location = "/admin/student/entry/internship/certificate/"
+				window.location = "/admin/student/entry/internship/certificate/print/"
 						+ studentId;
 			}
 		}
