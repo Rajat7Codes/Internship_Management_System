@@ -132,13 +132,14 @@
 
 
 <script type="text/javascript">
+	<script>
 	function date_submit() {
 
 		data = {
 			"startDate" : $("#startDate").val(),
 			"endDate" : $("#endDate").val(),
 		};
-		//alert(JSON.stringify(data));
+
 		$
 				.ajax({
 					type : "GET",
@@ -149,84 +150,36 @@
 					cache : false,
 					timeout : 600000,
 					success : function(response) {
-						alert(JSON.stringify(response));
+						//alert("response=====" + JSON.stringify(response));
 						var trHTML = '';
 
-						alert("response Length ====>>>" + response.length);
+						$.each(response, function(i, item) {
 
-						alert("response Length ====>>>" + response.studentEntry);
-						/* for (var i = 0; i<=response.length; i++) {
-						//	alert("response Length ====>>>" + response.studentEntry);
-						/* for (var i = 0; i <= response.length; i++) {
-
-							alert("Inside ");
-							alert("Inside ====>>>"
-									+ response.studentEntry.length);
-						} */
-						for (var j = 0, studentEntry_len = response.length; j < studentEntry_len; j += 1) {
-
-							$
-									.each(
-											response,
-											function(i, item) {
-												alert("Item ======>> "
-														+ JSON
-																.stringify(item.studentEntry));
-												//alert("FirstName ======>> " + item.studentEntry.firstname);
-
-												trHTML += '<tr><td>' + "&nbsp;"
-														+ (i + 1)
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.firstName
-														+ "&nbsp;"
-														+ item.middleName
-														+ "&nbsp;"
-														+ item.lastName
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.college.collegeName
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.department.departmentName
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.feesAmount
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.discount
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.paidFees
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.balanceFees
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.fees.feesAmount
-														+ "&nbsp;"
-														+ new Date(
-																item.fees.date)
-																.getDate()
-														+ "-"
-														+ (new Date(
-																item.fees.date)
-																.getMonth() + 1)
-														+ "-"
-														+ new Date(
-																item.fees.date)
-																.getFullYear()
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.fees.payMode
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.fees.payStatus
-														+ '</td></tr>';
-											});
-						}
+							trHTML += '<tr><td>' + "&nbsp;" + (i + 1)
+									+ '</td><td>' + "&nbsp;" + item.firstName
+									+ "&nbsp;" + item.middleName + "&nbsp;"
+									+ item.lastName + "&nbsp;" + '</td><td>'
+									+ "&nbsp;" + item.collegeName + '</td><td>'
+									+ "&nbsp;" + item.departmentName
+									+ '</td><td>' + "&nbsp;" + item.totalFees
+									+ '</td><td>' + "&nbsp;" + item.discount
+									+ '</td><td>' + "&nbsp;" + item.paidFees
+									+ '</td><td>' + "&nbsp;" + item.balanceFees
+									+ '</td><td>' + "&nbsp;" + item.feesAmount
+									+ '</td><td>' + "&nbsp;"
+									+ new Date(item.feesDate).getDate() + "-"
+									+ (new Date(item.feesDate).getMonth() + 1)
+									+ "-"
+									+ new Date(item.feesDate).getFullYear()
+									+ '</td><td>' + "&nbsp;" + item.payMode
+									+ '</td><td>' + "&nbsp;" + item.paidStatus
+									+ '</td></tr>';
+						});
+						$('#feesSummaryTable tr td').remove();
 						$('#feesSummaryTable').append(trHTML);
+
 					}
+
 				});
 		$("#fees-table").css("display", "block");
 	}
@@ -378,6 +331,7 @@
 
 						});
 
+						$('#feesSummaryTable tr td').remove();
 						$('#feesSummaryTable').append(trHTML);
 
 					}
@@ -388,5 +342,6 @@
 
 	}
 </script>
+
 
 </html>
