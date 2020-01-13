@@ -155,35 +155,36 @@
 								.each(
 										response,
 										function(i, item) {
-
+											alert(JSON
+													.stringify(item.studentEntry));
 											trHTML += '<tr><td>' + "&nbsp;"
 													+ (i + 1)
 													+ '</td><td>'
 													+ "&nbsp;"
-													+ item.studentEntry.firstName
+													+ item.firstName
 													+ "&nbsp;"
-													+ item.studentEntry.middleName
+													+ item.middleName
 													+ "&nbsp;"
-													+ item.studentEntry.lastName
+													+ item.lastName
 													+ "&nbsp;"
 													+ '</td><td>'
 													+ "&nbsp;"
-													+ item.studentEntry.college.collegeName
+													+ 
 													+ '</td><td>'
 													+ "&nbsp;"
-													+ item.studentEntry.department.departmentName
+													+ 
 													+ '</td><td>'
 													+ "&nbsp;"
-													+ item.studentEntry.feesAmount
+													+ item.feesAmount
 													+ '</td><td>'
 													+ "&nbsp;"
-													+ item.studentEntry.discount
+													+ item.discount
 													+ '</td><td>'
 													+ "&nbsp;"
-													+ item.studentEntry.paidFees
+													+ item.paidFees
 													+ '</td><td>'
 													+ "&nbsp;"
-													+ item.studentEntry.balanceFees
+													+ item.balanceFees
 													+ '</td><td>'
 													+ "&nbsp;"
 													+ item.feesAmount
@@ -240,66 +241,55 @@
 											response.studentEntry,
 											function(i, item) {
 
-												for (var k = 0, fees_len = item.fees.length; k < fees_len; k += 1) {
-
-													$
-															.each(
-																	response.fees,
-																	function(i,
-																			items) {
-
-																		trHTML += '<tr><td>'
-																				+ "&nbsp;"
-																				+ (i + 1)
-																				+ '</td><td>'
-																				+ "&nbsp;"
-																				+ item.firstName
-																				+ "&nbsp;"
-																				+ item.middleName
-																				+ "&nbsp;"
-																				+ item.lastName
-																				+ '</td><td>'
-																				+ "&nbsp;"
-																				+ item.college.collegeName
-																				+ '</td><td>'
-																				+ "&nbsp;"
-																				+ item.department.departmentName
-																				+ '</td><td>'
-																				+ "&nbsp;"
-																				+ item.feesAmount
-																				+ '</td><td>'
-																				+ "&nbsp;"
-																				+ item.discount
-																				+ '</td><td>'
-																				+ "&nbsp;"
-																				+ item.paidFees
-																				+ '</td><td>'
-																				+ "&nbsp;"
-																				+ item.balanceFees
-																				+ '</td><td>'
-																				+ "&nbsp;"
-																				+ items.fees.feesAmount
-																				+ "&nbsp;"
-																				+ new Date(
-																						items.fees.date)
-																						.getDate()
-																				+ "-"
-																				+ (new Date(
-																						items.fees.date)
-																						.getMonth() + 1)
-																				+ "-"
-																				+ new Date(
-																						items.fees.date)
-																						.getFullYear()
-																				+ '</td><td>'
-																				+ "&nbsp;"
-																				+ items.fees.payMode
-																				+ '</td><td>'
-																				+ "&nbsp;"
-																				+ items.fees.payStatus
-																				+ '</td></tr>';
-																	});
-												}
+												trHTML += '<tr><td>' + "&nbsp;"
+														+ (i + 1)
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ item.firstName
+														+ "&nbsp;"
+														+ item.middleName
+														+ "&nbsp;"
+														+ item.lastName
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ item.college.collegeName
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ item.department.departmentName
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ item.feesAmount
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ item.discount
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ item.paidFees
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ item.balanceFees
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ item.fees.feesAmount
+														+ "&nbsp;"
+														+ new Date(
+																item.fees.date)
+																.getDate()
+														+ "-"
+														+ (new Date(
+																item.fees.date)
+																.getMonth() + 1)
+														+ "-"
+														+ new Date(
+																item.fees.date)
+																.getFullYear()
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ item.fees.payMode
+														+ '</td><td>'
+														+ "&nbsp;"
+														+ item.payStatus
+														+ '</td></tr>';
 											});
 						}
 						$('#feesSummaryTable').append(trHTML);
