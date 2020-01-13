@@ -337,6 +337,19 @@ public class StudentEntryController {
 		return "internshipCertificate";
 	}
 
+	@GetMapping("/admin/student/entry/internship/certificate/view")
+	public String viewInternshipCertificate(ModelMap modelMap, Locale locale)
+			throws ResourceNotFoundException, ParseException {
+
+		return "viewInternshipCertificate";
+	}
+
+	@GetMapping("/admin/student/entry/joining/letter/view/")
+	public String viewJoiningLetter(ModelMap modelMap, Locale locale) throws ResourceNotFoundException, ParseException {
+
+		return "viewJoiningLetter";
+	}
+
 	@GetMapping("/admin/student/entry/joining/letter/view/{studentEntryId}")
 	public String viewJoiningLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap,
 			Locale locale) throws ResourceNotFoundException, Exception {
