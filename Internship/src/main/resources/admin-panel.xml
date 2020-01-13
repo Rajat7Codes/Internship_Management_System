@@ -97,9 +97,6 @@
 			value="/WEB-INF/internship/view/admin-module/student-entry/viewStudentEntry.jsp" />
 	</definition>
 
-
-
-
 	<!-- Internship Session Page -->
 	<definition name="internshipSession"
 		extends="adminbase.definition">
@@ -215,10 +212,6 @@
 			value="/WEB-INF/internship/view/admin-module/certificates/viewJoiningLetter.jsp" />
 	</definition>
 
-	
-	
-
-
 
 	<definition name="offerLetterView"
 		extends="adminbase.definition">
@@ -236,13 +229,13 @@
 		<put-attribute name="title" value="joining letter  view" />
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/certificates/viewJoiningLetter.jsp" />
+	</definition>
 
 	<definition name="newDriveStudent"
 		extends="adminbase.definition">
 		<put-attribute name="title" value="New Drive Student" />
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/internship-drive-pages/newDriveStudent.jsp" />
-
 	</definition>
 
 	<definition name="driveStudent"
