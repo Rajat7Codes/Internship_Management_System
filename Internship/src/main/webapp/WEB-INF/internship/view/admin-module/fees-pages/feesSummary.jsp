@@ -210,11 +210,13 @@
 										response,
 										function(i, item) {
 											var studentEntry = item.studentEntry;
+											alert("student entry =====>   "
+													+ studentEntry);
 
 											for (var i = 0, studentEntry_len = studentEntry.length; i < studentEntry_len; i += 1) {
 
 												// Here you are accessing to the item of Array using index of item.
-												var j = studentEntry[i];
+												var se = studentEntry[i];
 
 												trHTML += '<tr><td>' + "&nbsp;"
 														+ (i + 1)
