@@ -154,20 +154,24 @@
 						var trHTML = '';
 
 						alert("response Length ====>>>" + response.length);
-						
-						alert("response Length ====>>>" + response.studentEntry);
-	                   /* for (var i = 0; i<=response.length; i++) {
+
+						//	alert("response Length ====>>>" + response.studentEntry);
+						/* for (var i = 0; i <= response.length; i++) {
 
 							alert("Inside ");
-							alert("Inside ====>>>" + response.studentEntry.length);
+							alert("Inside ====>>>"
+									+ response.studentEntry.length);
 						} */
-
-						for (var j = 0, studentEntry_len = response.studentEntry.length; j < studentEntry_len; j += 1) {
+						for (var j = 0, studentEntry_len = response.length; j < studentEntry_len; j += 1) {
 
 							$
 									.each(
-											response.studentEntry,
+											response,
 											function(i, item) {
+												alert("Item ======>> "
+														+ JSON
+																.stringify(item.studentEntry));
+												//alert("FirstName ======>> " + item.studentEntry.firstname);
 
 												trHTML += '<tr><td>' + "&nbsp;"
 														+ (i + 1)
@@ -255,6 +259,9 @@
 					success : function(response) {
 						alert(JSON.stringify(response));
 						var trHTML = '';
+
+						alert("student entry length====>>"
+								+ response.studentEntry.length);
 
 						for (var j = 0, studentEntry_len = response.studentEntry.length; j < studentEntry_len; j += 1) {
 
