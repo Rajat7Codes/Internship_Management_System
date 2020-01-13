@@ -120,8 +120,9 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "financialYearId", insertable = true, nullable = true, updatable = true)
-	@JsonIgnore
-//	@JsonBackReference
+
+	// @JsonIgnore
+	@JsonBackReference
 	private FinancialYear financialYear;
 
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)

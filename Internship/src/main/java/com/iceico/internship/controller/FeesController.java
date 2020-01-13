@@ -127,8 +127,9 @@ public class FeesController {
 			feesObject.put("studentEntry", studEntryArray);
 
 			feesArray.add(feesObject);
+			// System.out.println("Json ======>> " + feesArray);
 		}
-
+		System.out.println("Json ======>> " + feesArray);
 		return feesArray;
 	}
 

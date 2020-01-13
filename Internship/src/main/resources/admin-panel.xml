@@ -98,6 +98,7 @@
 	</definition>
 
 
+
 	<definition name="studentEntryCertificates"
 		extends="adminbase.definition">
 		<put-attribute name="title"
@@ -105,6 +106,7 @@
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/certificates/studentEntryCertificates.jsp" />
 	</definition>
+
 
 	<!-- Internship Session Page -->
 	<definition name="internshipSession"
@@ -181,27 +183,27 @@
 
 	<!-- certification -->
 
-	<definition name="joiningLetter"
+	<definition name="printJoiningLetter"
 		extends="adminbase.definition">
 		<put-attribute name="title" value="joining letter" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/certificates/joiningLetter.jsp" />
+			value="/WEB-INF/internship/view/admin-module/certificates/printJoiningLetter.jsp" />
 	</definition>
 
-	<definition name="offerLetter"
+	<definition name="printOfferLetter"
 		extends="adminbase.definition">
 		<put-attribute name="title" value="offer letter" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/certificates/offerLetter.jsp" />
+			value="/WEB-INF/internship/view/admin-module/certificates/printOfferLetter.jsp" />
 	</definition>
 
 
-	<definition name="internshipCertificate"
+	<definition name="printInternshipCertificate"
 		extends="adminbase.definition">
 		<put-attribute name="title"
 			value="internship certificate" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/certificates/internshipCertificate.jsp" />
+			value="/WEB-INF/internship/view/admin-module/certificates/printInternshipCertificate.jsp" />
 	</definition>
 
 
@@ -221,28 +223,22 @@
 			value="/WEB-INF/internship/view/admin-module/certificates/viewJoiningLetter.jsp" />
 	</definition>
 
-	<definition name="offerLetterView"
+
+	<definition name="viewOfferLetter"
 		extends="adminbase.definition">
 		<put-attribute name="title" value="offer letter" />
 		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/certificates/offerLetterView.jsp" />
+			value="/WEB-INF/internship/view/admin-module/certificates/viewOfferLetter.jsp" />
 	</definition>
+
 
 	<!-- Internship drive student pages -->
 
-<<<<<<< HEAD
-	<definition name="viewJoiningLetter"
-		extends="adminbase.definition">
-		<put-attribute name="title" value="joining letter  view" />
-		<put-attribute name="body"
-			value="/WEB-INF/internship/view/admin-module/certificates/viewJoiningLetter.jsp" />
-=======
 	<definition name="newDriveStudent"
 		extends="adminbase.definition">
 		<put-attribute name="title" value="New Drive Student" />
 		<put-attribute name="body"
 			value="/WEB-INF/internship/view/admin-module/internship-drive-pages/newDriveStudent.jsp" />
->>>>>>> 03e485674b290b66abb1d8cc61d3f31b6e4897c7
 	</definition>
 
 	<definition name="driveStudent"

@@ -173,7 +173,7 @@ public class StudentEntryController {
 	}
 
 	/* certification */
-	@GetMapping("/admin/student/entry/joining/letter/{studentEntryId}")
+	@GetMapping("/admin/student/entry/joining/letter/print/{studentEntryId}")
 	public String getJoiningLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap,
 			Locale locale) throws ResourceNotFoundException, Exception {
 
@@ -230,10 +230,10 @@ public class StudentEntryController {
 		modelMap.addAttribute("user", this.getPrincipal());
 		modelMap.addAttribute("stud", studentEntry);
 
-		return "joiningLetter";
+		return "printJoiningLetter";
 	}
 
-	@GetMapping("/admin/student/entry/offer/letter/{studentEntryId}")
+	@GetMapping("/admin/student/entry/offer/letter/print/{studentEntryId}")
 	public String getOfferLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException, ParseException {
 		StudentEntry studentEntry = this.studentEntryService.getStudentEntryById(studentEntryId);
@@ -296,10 +296,10 @@ public class StudentEntryController {
 		modelMap.addAttribute("currentDate", stDate);
 		modelMap.addAttribute("stud", studentEntry);
 		modelMap.addAttribute("user", this.getPrincipal());
-		return "offerLetter";
+		return "printOfferLetter";
 	}
 
-	@GetMapping("/admin/student/entry/internship/certificate/{studentEntryId}")
+	@GetMapping("/admin/student/entry/internship/certificate/print/{studentEntryId}")
 	public String getInternshipCertificate(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap,
 			Locale locale) throws ResourceNotFoundException, ParseException {
 		StudentEntry studentEntry = this.studentEntryService.getStudentEntryById(studentEntryId);
@@ -334,20 +334,7 @@ public class StudentEntryController {
 		/* modelMap.addAttribute("stud", studentEntry); */
 		modelMap.addAttribute("stud", this.studentEntryService.getStudentEntryById(studentEntryId));
 		modelMap.addAttribute("user", this.getPrincipal());
-		return "internshipCertificate";
-	}
-
-	@GetMapping("/admin/student/entry/internship/certificate/view")
-	public String viewInternshipCertificate(ModelMap modelMap, Locale locale)
-			throws ResourceNotFoundException, ParseException {
-
-		return "viewInternshipCertificate";
-	}
-
-	@GetMapping("/admin/student/entry/joining/letter/view/")
-	public String viewJoiningLetter(ModelMap modelMap, Locale locale) throws ResourceNotFoundException, ParseException {
-
-		return "viewJoiningLetter";
+		return "printInternshipCertificate";
 	}
 
 	@GetMapping("/admin/student/entry/joining/letter/view/{studentEntryId}")
@@ -369,39 +356,30 @@ public class StudentEntryController {
 		SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat("EEEE");
 		String day = newSimpleDateFormat.format(newDate); // for check which day comes on 15 days later
 		List<Holiday> holidayList = this.holidayService.getHolidayList();
-		Integer joinStatus = studentEntry.getJoinCount();
 
-		if (joinStatus == null) {
-			studentEntry.setJoinCount(1);
-			this.studentEntryService.saveStudentEntry(studentEntry);
-			modelMap.addAttribute("offer", true);
-			for (int i = 0; i < holidayList.size(); i++) {
-				String stDate1 = simpleDateFormat.format(holidayList.get(i).getDate());
-				Calendar calendar1 = Calendar.getInstance();
-				calendar1.setTime(simpleDateFormat.parse(stDate1));
+		for (int i = 0; i < holidayList.size(); i++) {
+			String stDate1 = simpleDateFormat.format(holidayList.get(i).getDate());
+			Calendar calendar1 = Calendar.getInstance();
+			calendar1.setTime(simpleDateFormat.parse(stDate1));
 
-				if (simpleDateFormat.format(calendar.getTime()).toString().equals(
-						simpleDateFormat.format(calendar1.getTime()).toString()) || day.equalsIgnoreCase("sunday")) {
-					if (simpleDateFormat.format(calendar.getTime()).toString()
-							.equals(simpleDateFormat.format(calendar1.getTime()).toString())) {
-						calendar.add(Calendar.DATE, 1);
-						stDate = simpleDateFormat.format(calendar.getTime());
-						modelMap.addAttribute("date", stDate);
-						i = 0;
-					}
-					Date newDate1 = simpleDateFormat.parse(stDate);
-					SimpleDateFormat newSimpleDateFormat1 = new SimpleDateFormat("EEEE");
-					String day1 = newSimpleDateFormat1.format(newDate1);
-					if (day1.equalsIgnoreCase("sunday")) {
-						calendar.add(Calendar.DATE, 1);
-						stDate = simpleDateFormat.format(calendar.getTime());
-						modelMap.addAttribute("date", stDate);
-					}
+			if (simpleDateFormat.format(calendar.getTime()).toString().equals(
+					simpleDateFormat.format(calendar1.getTime()).toString()) || day.equalsIgnoreCase("sunday")) {
+				if (simpleDateFormat.format(calendar.getTime()).toString()
+						.equals(simpleDateFormat.format(calendar1.getTime()).toString())) {
+					calendar.add(Calendar.DATE, 1);
+					stDate = simpleDateFormat.format(calendar.getTime());
+					modelMap.addAttribute("date", stDate);
+					i = 0;
+				}
+				Date newDate1 = simpleDateFormat.parse(stDate);
+				SimpleDateFormat newSimpleDateFormat1 = new SimpleDateFormat("EEEE");
+				String day1 = newSimpleDateFormat1.format(newDate1);
+				if (day1.equalsIgnoreCase("sunday")) {
+					calendar.add(Calendar.DATE, 1);
+					stDate = simpleDateFormat.format(calendar.getTime());
+					modelMap.addAttribute("date", stDate);
 				}
 			}
-		} else {
-			modelMap.addAttribute("offer", false);
-			modelMap.addAttribute("errorMessage", "Offer Letter Already Given ");
 		}
 		modelMap.addAttribute("date", stDate);
 		modelMap.addAttribute("user", this.getPrincipal());
@@ -429,45 +407,36 @@ public class StudentEntryController {
 		SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat("EEEE");
 		String day = newSimpleDateFormat.format(newDate); // for check which day comes on 1 day later
 		List<Holiday> holidayList = this.holidayService.getHolidayList();
-		Integer offerStatus = studentEntry.getOfferCount();
 
-		if (offerStatus == null) {
-			studentEntry.setOfferCount(1);
-			this.studentEntryService.saveStudentEntry(studentEntry);
-			modelMap.addAttribute("offer", true);
-			for (int i = 0; i < holidayList.size(); i++) {
-				String stDate1 = simpleDateFormat.format(holidayList.get(i).getDate());
-				Calendar calendar1 = Calendar.getInstance();
-				calendar1.setTime(simpleDateFormat.parse(stDate1));
+		for (int i = 0; i < holidayList.size(); i++) {
+			String stDate1 = simpleDateFormat.format(holidayList.get(i).getDate());
+			Calendar calendar1 = Calendar.getInstance();
+			calendar1.setTime(simpleDateFormat.parse(stDate1));
 
-				if (simpleDateFormat.format(calendar.getTime()).toString().equals(
-						simpleDateFormat.format(calendar1.getTime()).toString()) || day.equalsIgnoreCase("sunday")) {
-					if (simpleDateFormat.format(calendar.getTime()).toString()
-							.equals(simpleDateFormat.format(calendar1.getTime()).toString())) {
-						// System.out.println("inside holiday date");
-						calendar.add(Calendar.DATE, -1);
-						stDate = simpleDateFormat.format(calendar.getTime());
-						// System.out.println("Holiday Date =====>" + stDate);
-						modelMap.addAttribute("currentDate", stDate);
-						i = 0;
-					}
-					Date newDate1 = simpleDateFormat.parse(stDate);
-					// System.out.println("newDate1 =====>>>" + newDate1);
-					SimpleDateFormat newSimpleDateFormat1 = new SimpleDateFormat("EEEE");
-					String day1 = newSimpleDateFormat1.format(newDate1);
-					// System.out.println("day1 =====>>>" + day1);
-					if (day1.equalsIgnoreCase("sunday")) {
-						// System.out.println("inside sunday date");
-						calendar.add(Calendar.DATE, -1);
-						stDate = simpleDateFormat.format(calendar.getTime());
-						// System.out.println("Sunday Date =====>" + stDate);
-						modelMap.addAttribute("currentDate", stDate);
-					}
+			if (simpleDateFormat.format(calendar.getTime()).toString().equals(
+					simpleDateFormat.format(calendar1.getTime()).toString()) || day.equalsIgnoreCase("sunday")) {
+				if (simpleDateFormat.format(calendar.getTime()).toString()
+						.equals(simpleDateFormat.format(calendar1.getTime()).toString())) {
+					// System.out.println("inside holiday date");
+					calendar.add(Calendar.DATE, -1);
+					stDate = simpleDateFormat.format(calendar.getTime());
+					// System.out.println("Holiday Date =====>" + stDate);
+					modelMap.addAttribute("currentDate", stDate);
+					i = 0;
+				}
+				Date newDate1 = simpleDateFormat.parse(stDate);
+				// System.out.println("newDate1 =====>>>" + newDate1);
+				SimpleDateFormat newSimpleDateFormat1 = new SimpleDateFormat("EEEE");
+				String day1 = newSimpleDateFormat1.format(newDate1);
+				// System.out.println("day1 =====>>>" + day1);
+				if (day1.equalsIgnoreCase("sunday")) {
+					// System.out.println("inside sunday date");
+					calendar.add(Calendar.DATE, -1);
+					stDate = simpleDateFormat.format(calendar.getTime());
+					// System.out.println("Sunday Date =====>" + stDate);
+					modelMap.addAttribute("currentDate", stDate);
 				}
 			}
-		} else {
-			modelMap.addAttribute("offer", false);
-			modelMap.addAttribute("errorMessage", "Offer Letter Already Given ");
 		}
 		modelMap.addAttribute("duration", studentEntry.getInternshipDuration().getDuration());
 		modelMap.addAttribute("currentDate", stDate);
@@ -476,10 +445,26 @@ public class StudentEntryController {
 		return "viewOfferLetter";
 	}
 
-	@GetMapping("/admin/student/entry/offer/letter/display")
-	public String offerLetterView(ModelMap modelMap, Locale locale) throws ResourceNotFoundException, ParseException {
-
-		return "offerLetterView";
+	@GetMapping("/admin/student/entry/internship/certificate/view/{studentEntryId}")
+	public String viewInternshipCertificate(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap,
+			Locale locale) throws ResourceNotFoundException, ParseException {
+		StudentEntry studentEntry = this.studentEntryService.getStudentEntryById(studentEntryId);
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		Calendar calendar = Calendar.getInstance();
+		// Generates Current Date
+		modelMap.addAttribute("currentDate", simpleDateFormat.format(calendar.getTime()).toString());
+		modelMap.addAttribute("duration", studentEntry.getInternshipDuration().getDuration());
+		modelMap.addAttribute("stud", studentEntry);
+		modelMap.addAttribute("collegeName", studentEntry.getCollege().getCollegeName());
+		modelMap.addAttribute("offer", true);
+		// Get internship session(start date & end date from database)
+		modelMap.addAttribute("startDate", simpleDateFormat.format(studentEntry.getInternshipSession().getStartDate()));
+		modelMap.addAttribute("endDate", simpleDateFormat.format(studentEntry.getInternshipSession().getEndDate()));
+		modelMap.addAttribute("duration", studentEntry.getInternshipDuration().getDuration());
+		/* modelMap.addAttribute("stud", studentEntry); */
+		modelMap.addAttribute("stud", this.studentEntryService.getStudentEntryById(studentEntryId));
+		modelMap.addAttribute("user", this.getPrincipal());
+		return "viewInternshipCertificate";
 	}
 
 	/**

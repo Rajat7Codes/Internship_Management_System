@@ -44,8 +44,8 @@
 								<th>Fees</th> -->
 								<th>Joining Date</th>
 								<th>Student Status</th>
-								<th>Certificate</th>
-								<th>View Certificate</th>
+								<!-- <th>Certificate</th>
+								<th>View Certificate</th> -->
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -62,7 +62,7 @@
 									<td>${stud.feesAmount }</td> --%>
 									<td>${stud.date }</td>
 									<td>${stud.studentStatus}</td>
-									<td class="valigntop"><div class="btn-group">
+									<%-- <td class="valigntop"><div class="btn-group">
 											<button
 												class="btn btn-xs btn-success dropdown-toggle no-margin"
 												type="button" data-toggle="dropdown" aria-expanded="false">
@@ -95,9 +95,9 @@
 															<i class="fa fa-check" aria-hidden="true"></i>
 														</c:if> </a></li>
 											</ul>
-										</div></td>
+										</div></td> --%>
 
-									<td class="valigntop"><div class="btn-group">
+									<%-- <td class="valigntop"><div class="btn-group">
 											<button
 												class="btn btn-xs btn-success dropdown-toggle no-margin"
 												type="button" data-toggle="dropdown" aria-expanded="false">
@@ -129,7 +129,7 @@
 															<i class="fa fa-check" aria-hidden="true"></i>
 														</c:if> </a></li>
 											</ul>
-										</div></td>
+										</div></td> --%>
 
 
 									<td class="valigntop"><div class="btn-group">
