@@ -130,7 +130,7 @@
 
 
 
-
+<!--Script for Ajax date  -->
 
 <script type="text/javascript">
 	function date_submit() {
@@ -154,9 +154,9 @@
 						var trHTML = '';
 
 						alert("response Length ====>>>" + response.length);
-						
+
 						alert("response Length ====>>>" + response.studentEntry);
-	                   /* for (var i = 0; i<=response.length; i++) {
+						/* for (var i = 0; i<=response.length; i++) {
 
 							alert("Inside ");
 							alert("Inside ====>>>" + response.studentEntry.length);
@@ -320,7 +320,4 @@
 		$("#fees-table").css("display", "block");
 	}
 </script>
-
-
-
 </html>
