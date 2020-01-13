@@ -9,6 +9,8 @@ import java.util.Locale;
 
 import javax.validation.Valid;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -82,23 +84,105 @@ public class FeesController {
 
 	//////////////////////////////////////////////////////
 
-	@SuppressWarnings("deprecation")
+	/* AJAX CALL FOR SEARCH BY DATE */
+	@SuppressWarnings({ "deprecation", "unchecked" })
 	@RequestMapping(value = "/fees/summary/filter/date", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
 	public @ResponseBody List<Fees> filterStudentListByDate(@RequestParam("startDate") String startDate,
 			@RequestParam("endDate") String endDate) throws JsonProcessingException, ParseException {
 
 		System.out.println("sdate========" + startDate);
 		System.out.println("edate========" + endDate);
-		return this.feesService.filterFeesByDate(startDate, endDate);
+
+		List<Fees> list = this.feesService.filterFeesByDate(startDate, endDate);
+
+		JSONArray feesArray = new JSONArray();
+		for (Fees fees : list) {
+			JSONObject feesObject = new JSONObject();
+			feesObject.put("date", fees.getDate());
+			feesObject.put("payMode", fees.getPayMode());
+			feesObject.put("feesAmount", fees.getFeesAmount());
+
+			JSONArray studEntryArray = new JSONArray();
+
+			JSONObject studEntryObject = new JSONObject();
+			studEntryObject.put("firstName", fees.getStudentEntry().getFirstName());
+			studEntryObject.put("middleName", fees.getStudentEntry().getMiddleName());
+			studEntryObject.put("lastName", fees.getStudentEntry().getLastName());
+			studEntryObject.put("feesAmount", fees.getStudentEntry().getFeesAmount());
+			studEntryObject.put("paidFees", fees.getStudentEntry().getPaidFees());
+			studEntryObject.put("discount", fees.getStudentEntry().getDiscount());
+			studEntryObject.put("balanceFees", fees.getStudentEntry().getBalanceFees());
+			studEntryObject.put("payStatus", fees.getStudentEntry().getPayStatus());
+
+			studEntryArray.add(studEntryObject);
+
+			JSONObject collegeObject = new JSONObject();
+			collegeObject.put("collegeName", fees.getStudentEntry().getCollege().getCollegeName());
+
+			JSONObject departmentObject = new JSONObject();
+			departmentObject.put("departmentName", fees.getStudentEntry().getDepartment().getDepartmentName());
+
+			studEntryObject.put("college", collegeObject);
+			studEntryObject.put("department", departmentObject);
+			feesObject.put("studentEntry", studEntryArray);
+
+			feesArray.add(feesObject);
+		}
+
+		return feesArray;
 	}
 
-	@SuppressWarnings("deprecation")
+	/* AJAX CALL FOR SEARCH BY YEAR */
+	@SuppressWarnings({ "deprecation", "unchecked" })
 	@RequestMapping(value = "/fees/summary/filter/year", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
-	public @ResponseBody FinancialYear filterStudentListByYear(@RequestParam("year") String year)
+	public @ResponseBody JSONObject filterStudentListByYear(@RequestParam("year") String year)
 			throws JsonProcessingException, ParseException {
 
 		System.out.println("year========" + year);
-		return this.financialYearService.searchByYear(year);
+
+		FinancialYear financialYear = this.financialYearService.searchByYear(year);
+
+		JSONObject fyObject = new JSONObject();
+		JSONArray studEntryArray = new JSONArray();
+
+		for (StudentEntry studentEntry : financialYear.getStudentEntry()) {
+			JSONObject studEntryObject = new JSONObject();
+
+			studEntryObject.put("firstName", studentEntry.getFirstName());
+			studEntryObject.put("middleName", studentEntry.getMiddleName());
+			studEntryObject.put("lastName", studentEntry.getLastName());
+			studEntryObject.put("feesAmount", studentEntry.getFeesAmount());
+			studEntryObject.put("paidFees", studentEntry.getPaidFees());
+			studEntryObject.put("discount", studentEntry.getDiscount());
+			studEntryObject.put("balanceFees", studentEntry.getBalanceFees());
+			studEntryObject.put("payStatus", studentEntry.getPayStatus());
+			studEntryArray.add(studEntryObject);
+
+			JSONObject collegeObject = new JSONObject();
+			collegeObject.put("collegeName", studentEntry.getCollege().getCollegeName());
+
+			JSONObject departmentObject = new JSONObject();
+			departmentObject.put("departmentName", studentEntry.getDepartment().getDepartmentName());
+
+			JSONArray feesArray = new JSONArray();
+
+			for (Fees fees : studentEntry.getFees()) {
+				JSONObject feesObject = new JSONObject();
+				feesObject.put("date", fees.getDate());
+				feesObject.put("payMode", fees.getPayMode());
+				feesObject.put("feesAmount", fees.getFeesAmount());
+				feesArray.add(feesObject);
+			}
+
+			studEntryObject.put("college", collegeObject);
+			studEntryObject.put("department", departmentObject);
+			studEntryObject.put("fees", feesArray);
+
+			fyObject.put("studentEntry", studEntryArray);
+
+		}
+
+		return fyObject;
 	}
 
 	@GetMapping("/admin/fees/pay/{studentEntryId}")

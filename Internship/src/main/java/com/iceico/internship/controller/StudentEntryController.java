@@ -80,7 +80,7 @@ public class StudentEntryController {
 	private ListHelper listHelper;
 
 	@GetMapping("/admin/student/entry/new")
-	public String getStudentEntry(ModelMap modelMap, Locale locale) {
+	public String newStudentEntry(ModelMap modelMap, Locale locale) {
 		StudentEntry studentEntry = new StudentEntry();
 		studentEntry.setFinancialYear(this.financialYearService.getActiveFinancialYear());
 
@@ -97,7 +97,7 @@ public class StudentEntryController {
 	}
 
 	@GetMapping("/admin/student/entry")
-	public String newStudentEntry(ModelMap modelMap, Locale locale) {
+	public String getStudentEntry(ModelMap modelMap, Locale locale) {
 		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "studentEntry";
@@ -163,6 +163,13 @@ public class StudentEntryController {
 			Locale locale) throws ResourceNotFoundException {
 		this.studentEntryService.deleteStudentEntry(studentEntryId);
 		return "redirect:/admin/student/entry";
+	}
+
+	@GetMapping("/admin/student/entry/certifcates")
+	public String studentEntry(ModelMap modelMap, Locale locale) {
+		modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
+		modelMap.addAttribute("user", this.getPrincipal());
+		return "studentEntryCertificates";
 	}
 
 	/* certification */
@@ -329,7 +336,7 @@ public class StudentEntryController {
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "internshipCertificate";
 	}
-	
+
 	@GetMapping("/admin/student/entry/joining/letter/view/{studentEntryId}")
 	public String viewJoiningLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap,
 			Locale locale) throws ResourceNotFoundException, Exception {
@@ -389,8 +396,7 @@ public class StudentEntryController {
 
 		return "viewJoiningLetter";
 	}
-	
-	
+
 	@GetMapping("/admin/student/entry/offer/letter/view/{studentEntryId}")
 	public String viewOfferLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException, ParseException {
@@ -457,16 +463,11 @@ public class StudentEntryController {
 		return "viewOfferLetter";
 	}
 
-	
 	@GetMapping("/admin/student/entry/offer/letter/display")
-	public String offerLetterView( ModelMap modelMap, Locale locale)
-			throws ResourceNotFoundException, ParseException {
-		
+	public String offerLetterView(ModelMap modelMap, Locale locale) throws ResourceNotFoundException, ParseException {
+
 		return "offerLetterView";
 	}
-	
-	
-	
 
 	/**
 	 * This method returns the principal[user-name] of logged-in user.

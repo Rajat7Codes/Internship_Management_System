@@ -43,6 +43,12 @@
 						class="nav-link nav-toggle"> <i class="material-icons">verified_user</i>
 							<span class="title">Student Entry</span>
 					</a></li>
+					
+					<li class="nav-item"><a
+						href="${pageContext.request.contextPath }/admin/student/entry/certifcates"
+						class="nav-link nav-toggle"> <i class="material-icons">verified_user</i>
+							<span class="title">Certificates</span>
+					</a></li>
 
 					<li class="nav-item"><a href="#" class="nav-link nav-toggle">
 							<i class="material-icons">payment</i> <span class="title">Fees</span>

@@ -12,7 +12,8 @@
 		<div class="page-header-inner ">
 			<!-- logo start -->
 			<div class="page-logo logo-white">
-				<a href="#"> <img style="width:26px" src="${pageContext.request.contextPath }/static/img/Iceico_round.png">
+				<a href="#"> <img style="width: 25px" height="25px"
+					src="${pageContext.request.contextPath }/static/img/Iceico_round.png">
 					<span class="logo-default">INTERNSHIP</span>
 				</a>
 			</div>
@@ -199,7 +200,7 @@
 											<span class="subject"> <span class="from">DEPARTMENT</span>
 										</span>
 									</a></li>
-									
+
 									<li><a
 										href="${pageContext.request.contextPath }/admin/holiday">
 											<span class="photo"><i class="fa fa-list-alt"></i></span> <!-- <span class="subject"> </span> -->
