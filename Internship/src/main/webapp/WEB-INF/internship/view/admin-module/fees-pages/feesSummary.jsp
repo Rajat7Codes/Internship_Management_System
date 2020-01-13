@@ -375,8 +375,6 @@
 
 							+ '</td></tr>';
 
-							
-
 						});
 
 						$('#feesSummaryTable').append(trHTML);
