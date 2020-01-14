@@ -84,7 +84,13 @@
 					<strong class="card-title text-white">FEES MASTER</strong>
 				</div>
 				&nbsp;
+
+				<div class="card-body" align="right">
+					<input placeholder=" Search" id="searchInput">
+				</div>
+
 				<div class="card-body">
+
 					<table id="feesSummaryTable"
 						class="table table-striped table-responsive">
 						<thead>
@@ -112,6 +118,26 @@
 	</div>
 </body>
 
+<script
+	src="${pageContext.request.contextPath }/static/plugins/jquery/jquery.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(
+			function() {
+				$("#searchInput").on(
+						"keyup",
+						function() {
+							var value = $(this).val().toLowerCase();
+							$("#tableBody tr").filter(
+									function() {
+										$(this).toggle(
+												$(this).text().toLowerCase()
+														.indexOf(value) > -1)
+									});
+						});
+			});
+</script>
+
 <script>
 	function searchOption() {
 		if (document.getElementById('dateWiseRadio').checked) {
@@ -128,7 +154,7 @@
 	}
 </script>
 
-<script>
+<script type="text/javascript">
 	function date_submit() {
 
 		data = {
@@ -188,8 +214,6 @@
 			"year" : $("#year").val()
 		};
 
-		alert(JSON.stringify(data));
-
 		$
 				.ajax({
 					type : "GET",
@@ -234,6 +258,5 @@
 		$("#fees-table").css("display", "block");
 	}
 </script>
-
 
 </html>

@@ -31,9 +31,9 @@
 
 <!-- data tables -->
 <!-- data tables -->
-<link
+<%-- <link
 	href="${pageContext.request.contextPath }/static/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css"
-	rel="stylesheet" type="text/css" />
+	rel="stylesheet" type="text/css" /> --%>
 <!-- 
 <link
 	href="http://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"
@@ -150,11 +150,11 @@
 		src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> -->
 
 
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		jQuery(document).ready(function() {
 			jQuery('#example1').DataTable();
 		});
-	</script>
+	</script> -->
 
 </body>
 </html>
