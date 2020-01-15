@@ -11,10 +11,9 @@
 	<div class="page-header navbar navbar-fixed-top">
 		<div class="page-header-inner ">
 			<!-- logo start -->
-			<div class="page-logo logo-white">
-				<a href="#"> <img style="width: 25px" height="25px"
+			<div class="page-logo logo-white" align="center">
+				<a href="#"> <img style="width: 40px" height="40px" align="middle"
 					src="${pageContext.request.contextPath }/static/img/Iceico_round.png">
-					<span class="logo-default">INTERNSHIP</span>
 				</a>
 			</div>
 			<!-- logo end -->
