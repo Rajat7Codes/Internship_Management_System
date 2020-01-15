@@ -78,7 +78,7 @@
 					<input type="text" id="login" class="form-group fadeIn second"
 						name="ssoId" placeholder="Username"> <input
 						type="password" id="password" class="form-group fadeIn third"
-						name="password" placeholder="password"> 
+						name="password" placeholder="Password"> 
 					<label style="width:100%" class="text-center pt-4 pb-3 text-secondary"> <input type="checkbox" name="remember-me"
 						id="rememberme"> Remember Me
 					</label><input

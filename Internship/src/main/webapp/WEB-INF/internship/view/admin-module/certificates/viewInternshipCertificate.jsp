@@ -95,8 +95,8 @@
 
 			<h3 class="text-center header">
 				<span
-					style="font-family: 'Times New Roman'; border-bottom: 0.5px solid black;">Internship
-					Certificate</span>
+					style="font-family: 'Times New Roman'; border-bottom: 0.5px solid black; font-weight: bold;"><u>Internship
+					Certificate</u></span>
 			</h3>
 			<div class="text">
 

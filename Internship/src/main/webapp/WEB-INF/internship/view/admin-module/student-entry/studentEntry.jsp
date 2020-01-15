@@ -31,7 +31,7 @@
 				</div>
 				&nbsp;
 				<div class="card-body">
-					<table id="bootstrap-data-table-export"
+					<table id=""
 						class="table table-striped table-responsive">
 						<thead>
 							<tr>

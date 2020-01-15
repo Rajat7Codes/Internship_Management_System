@@ -87,7 +87,7 @@ public class FeesController {
 	/* AJAX CALL FOR SEARCH BY DATE */
 	@SuppressWarnings({ "deprecation", "unchecked" })
 	@RequestMapping(value = "/fees/summary/filter/date", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
-	public @ResponseBody List<Fees> filterStudentListByDate(@RequestParam("startDate") String startDate,
+	public @ResponseBody JSONArray filterStudentListByDate(@RequestParam("startDate") String startDate,
 			@RequestParam("endDate") String endDate) throws JsonProcessingException, ParseException {
 
 		System.out.println("sdate========" + startDate);
@@ -96,40 +96,29 @@ public class FeesController {
 		List<Fees> list = this.feesService.filterFeesByDate(startDate, endDate);
 
 		JSONArray feesArray = new JSONArray();
-		for (Fees fees : list) {
-			JSONObject feesObject = new JSONObject();
-			feesObject.put("date", fees.getDate());
-			feesObject.put("payMode", fees.getPayMode());
-			feesObject.put("feesAmount", fees.getFeesAmount());
+		// JSONObject fyObject = new JSONObject();
 
-			JSONArray studEntryArray = new JSONArray();
+		for (Fees fees : list) {
 
 			JSONObject studEntryObject = new JSONObject();
 			studEntryObject.put("firstName", fees.getStudentEntry().getFirstName());
 			studEntryObject.put("middleName", fees.getStudentEntry().getMiddleName());
 			studEntryObject.put("lastName", fees.getStudentEntry().getLastName());
-			studEntryObject.put("feesAmount", fees.getStudentEntry().getFeesAmount());
+			studEntryObject.put("totalFees", fees.getStudentEntry().getFeesAmount());
 			studEntryObject.put("paidFees", fees.getStudentEntry().getPaidFees());
 			studEntryObject.put("discount", fees.getStudentEntry().getDiscount());
 			studEntryObject.put("balanceFees", fees.getStudentEntry().getBalanceFees());
 			studEntryObject.put("payStatus", fees.getStudentEntry().getPayStatus());
+			studEntryObject.put("collegeName", fees.getStudentEntry().getCollege().getCollegeName());
+			studEntryObject.put("departmentName", fees.getStudentEntry().getDepartment().getDepartmentName());
+			studEntryObject.put("feesAmount", fees.getFeesAmount());
+			studEntryObject.put("feesDate", fees.getDate());
+			studEntryObject.put("payMode", fees.getPayMode());
+			studEntryObject.put("paidStatus", fees.getStudentEntry().getPayStatus());
 
-			studEntryArray.add(studEntryObject);
-
-			JSONObject collegeObject = new JSONObject();
-			collegeObject.put("collegeName", fees.getStudentEntry().getCollege().getCollegeName());
-
-			JSONObject departmentObject = new JSONObject();
-			departmentObject.put("departmentName", fees.getStudentEntry().getDepartment().getDepartmentName());
-
-			studEntryObject.put("college", collegeObject);
-			studEntryObject.put("department", departmentObject);
-			feesObject.put("studentEntry", studEntryArray);
-
-			feesArray.add(feesObject);
-			// System.out.println("Json ======>> " + feesArray);
+			feesArray.add(studEntryObject);
 		}
-		System.out.println("Json ======>> " + feesArray);
+		// System.out.println("Array json ======>>>" + feesArray);
 		return feesArray;
 	}
 
@@ -140,13 +129,14 @@ public class FeesController {
 			throws JsonProcessingException, ParseException {
 
 		FinancialYear financialYear = this.financialYearService.searchByYear(year);
-		
-		JSONObject fyObject = new JSONObject(); 
+
+		JSONObject fyObject = new JSONObject();
 		JSONArray feesArray = new JSONArray();
-		
-		for( StudentEntry studentEntry : financialYear.getStudentEntry()) {
-			for( Fees feesEntry : studentEntry.getFees()) {
-				JSONObject feesObject = new JSONObject(); 
+
+		for (StudentEntry studentEntry : financialYear.getStudentEntry()) {
+			for (Fees feesEntry : studentEntry.getFees()) {
+				JSONObject feesObject = new JSONObject();
+
 				feesObject.put("firstName", studentEntry.getFirstName());
 				feesObject.put("middleName", studentEntry.getMiddleName());
 				feesObject.put("lastName", studentEntry.getLastName());
@@ -163,7 +153,7 @@ public class FeesController {
 				feesArray.add(feesObject);
 			}
 		}
-		fyObject.put( "studentEntry", feesArray);
+		fyObject.put("studentEntry", feesArray);
 		return fyObject;
 	}
 

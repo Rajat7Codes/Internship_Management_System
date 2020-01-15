@@ -84,7 +84,13 @@
 					<strong class="card-title text-white">FEES MASTER</strong>
 				</div>
 				&nbsp;
+
+				<div class="card-body" align="right">
+					<input placeholder=" Search" id="searchInput">
+				</div>
+
 				<div class="card-body">
+
 					<table id="feesSummaryTable"
 						class="table table-striped table-responsive">
 						<thead>
@@ -112,6 +118,26 @@
 	</div>
 </body>
 
+<script
+	src="${pageContext.request.contextPath }/static/plugins/jquery/jquery.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(
+			function() {
+				$("#searchInput").on(
+						"keyup",
+						function() {
+							var value = $(this).val().toLowerCase();
+							$("#tableBody tr").filter(
+									function() {
+										$(this).toggle(
+												$(this).text().toLowerCase()
+														.indexOf(value) > -1)
+									});
+						});
+			});
+</script>
+
 <script>
 	function searchOption() {
 		if (document.getElementById('dateWiseRadio').checked) {
@@ -135,7 +161,7 @@
 			"startDate" : $("#startDate").val(),
 			"endDate" : $("#endDate").val(),
 		};
-		//alert(JSON.stringify(data));
+
 		$
 				.ajax({
 					type : "GET",
@@ -146,76 +172,30 @@
 					cache : false,
 					timeout : 600000,
 					success : function(response) {
-						alert(JSON.stringify(response));
 						var trHTML = '';
 
-						alert("response Length ====>>>" + response.length);
-
-						alert("response Length ====>>>" + response.studentEntry);
-						/* for (var i = 0; i<=response.length; i++) {
-
-							alert("Inside ");
-							alert("Inside ====>>>" + response.studentEntry.length);
-						} */
-
-						for (var j = 0, studentEntry_len = response.studentEntry.length; j < studentEntry_len; j += 1) {
-
-							$
-									.each(
-											response.studentEntry,
-											function(i, item) {
-
-												trHTML += '<tr><td>' + "&nbsp;"
-														+ (i + 1)
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.firstName
-														+ "&nbsp;"
-														+ item.middleName
-														+ "&nbsp;"
-														+ item.lastName
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.college.collegeName
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.department.departmentName
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.feesAmount
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.discount
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.paidFees
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.balanceFees
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.fees.feesAmount
-														+ "&nbsp;"
-														+ new Date(
-																item.fees.date)
-																.getDate()
-														+ "-"
-														+ (new Date(
-																item.fees.date)
-																.getMonth() + 1)
-														+ "-"
-														+ new Date(
-																item.fees.date)
-																.getFullYear()
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.fees.payMode
-														+ '</td><td>'
-														+ "&nbsp;"
-														+ item.fees.payStatus
-														+ '</td></tr>';
-											});
-						}
+						$.each(response, function(i, item) {
+							trHTML += '<tr><td>' + "&nbsp;" + (i + 1)
+									+ '</td><td>' + "&nbsp;" + item.firstName
+									+ "&nbsp;" + item.middleName + "&nbsp;"
+									+ item.lastName + "&nbsp;" + '</td><td>'
+									+ "&nbsp;" + item.collegeName + '</td><td>'
+									+ "&nbsp;" + item.departmentName
+									+ '</td><td>' + "&nbsp;" + item.totalFees
+									+ '</td><td>' + "&nbsp;" + item.discount
+									+ '</td><td>' + "&nbsp;" + item.paidFees
+									+ '</td><td>' + "&nbsp;" + item.balanceFees
+									+ '</td><td>' + "&nbsp;" + item.feesAmount
+									+ '</td><td>' + "&nbsp;"
+									+ new Date(item.feesDate).getDate() + "-"
+									+ (new Date(item.feesDate).getMonth() + 1)
+									+ "-"
+									+ new Date(item.feesDate).getFullYear()
+									+ '</td><td>' + "&nbsp;" + item.payMode
+									+ '</td><td>' + "&nbsp;" + item.paidStatus
+									+ '</td></tr>';
+						});
+						$('#feesSummaryTable tr td').remove();
 						$('#feesSummaryTable').append(trHTML);
 					}
 				});
@@ -224,12 +204,14 @@
 </script>
 
 <!-- script for AJAX year -->
+
 <script type="text/javascript">
 	function year_submit() {
 
 		data = {
 			"year" : $("#year").val()
 		};
+
 		$
 				.ajax({
 					type : "GET",
@@ -268,6 +250,7 @@
 						$('#feesSummaryTable').append(trHTML);
 					}
 				});
+
 		$("#fees-table").css("display", "block");
 	}
 </script>

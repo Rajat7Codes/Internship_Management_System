@@ -51,8 +51,17 @@ public class TilesController {
 		Date date = new Date();
 
 		FinancialYear financialYear = this.financialYearService.getActiveFinancialYear();
-		List<StudentEntry> studentEntries = financialYear.getStudentEntry();
-		modelMap.addAttribute("studentEntryList", studentEntries);
+		System.out.println("fy===============" + financialYear);
+		System.out.println("==================" + financialYear.getStudentEntry());
+		if (financialYear.getStudentEntry() == null) {
+			System.out.println("===============================");
+			if (financialYear.getStudentEntry().isEmpty()) {
+				System.out.println("===============");
+//				modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
+			}
+		} else {
+			modelMap.addAttribute("studentEntryList", financialYear.getStudentEntry());
+		}
 		modelMap.addAttribute("incomeCount", studentEntryService.getTotalIncome());
 		modelMap.addAttribute("balanceCount", studentEntryService.getTotalBalance());
 		modelMap.addAttribute("paidAmountCount", studentEntryService.getTotalPaidAmount());
