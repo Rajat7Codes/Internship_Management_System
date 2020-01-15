@@ -38,7 +38,7 @@
 								<th>Joining Date</th>
 								<th>Offer Letter</th>
 								<th>Joining Letter</th>
-								<th>Internship Certificate</th>
+								<th>Internship Completion</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -50,65 +50,41 @@
 									<td>${stud.getCollege().collegeName }</td>
 									<td>${stud.getInternshipSession().sessionName }</td>
 									<td>${stud.date }</td>
-									<td class="valigntop"><div class="btn-group">
-											<button
-												class="btn btn-xs btn-success dropdown-toggle no-margin"
-												type="button" data-toggle="dropdown" aria-expanded="false">
-												Offer Letter <i class="fa fa-angle-down"></i>
-											</button>
-											<ul class="dropdown-menu pull-left" role="menu">
-												<li><a title="View"
-													href="<c:url value='/admin/student/entry/offer/letter/view/${stud.studentEntryId }'  />"><i
-														class="fa fa-eye"></i> &nbsp;View &nbsp;&nbsp;&nbsp;</a></li>
-												<li><a title="offerLetter"
-													onclick="checkOffer(<c:if test="${stud.offerCount!=1}">null</c:if>${stud.offerCount}, ${stud.studentEntryId })"><i
-														class="fa fa-print" aria-hidden="true"></i>&nbsp;&nbsp;Print
-														&nbsp;&nbsp;&nbsp;&nbsp;<c:if test="${stud.offerCount==1}">
-															<i class="fa fa-check" aria-hidden="true"></i>
-														</c:if> </a></li>
-											</ul>
-										</div></td>
-									<td class="valigntop"><div class="btn-group">
-											<button
-												class="btn btn-xs btn-success dropdown-toggle no-margin"
-												type="button" data-toggle="dropdown" aria-expanded="false">
-												Joining Letter <i class="fa fa-angle-down"></i>
-											</button>
-											<ul class="dropdown-menu pull-left" role="menu">
-												<li><a title="View"
-													href="<c:url value='/admin/student/entry/joining/letter/view/${stud.studentEntryId }'  />"><i
-														class="fa fa-eye"></i> &nbsp;View &nbsp;&nbsp;&nbsp;</a></li>
+									<td><a data-toggle="tooltip" title="View"
+										href="<c:url value='/admin/student/entry/offer/letter/view/${stud.studentEntryId }'  />"><i
+											class="text-center p-2 rounded-circle bg-success fa fa-eye"></i></a>
 
-												<li><a title="joiningLetter"
-													onclick='checkJoining(<c:if test="${stud.joinCount!=1}">null</c:if>${stud.joinCount}, ${stud.studentEntryId })'>
-														<i class="fa fa-print" aria-hidden="true"></i>&nbsp;
-														Print&nbsp;&nbsp;&nbsp;&nbsp; <c:if
-															test="${stud.joinCount==1}">
-															<i class="fa fa-check" aria-hidden="true"> </i>
-														</c:if>
-												</a></li>
-											</ul>
-										</div></td>
-									<td class="valigntop"><div class="btn-group">
-											<button
-												class="btn btn-xs btn-success dropdown-toggle no-margin"
-												type="button" data-toggle="dropdown" aria-expanded="false">
-												Internship Certificate <i class="fa fa-angle-down"></i>
-											</button>
-											<ul class="dropdown-menu pull-left" role="menu">
-												<li><a title="View"
-													href="<c:url value='/admin/student/entry/internship/certificate/view/${stud.studentEntryId }'  />"><i
-														class="fa fa-eye"></i> &nbsp;View &nbsp;&nbsp;&nbsp;</a></li>
+										<a data-toggle="tooltip" title="Print"
+										onclick="checkOffer(<c:if test="${stud.offerCount!=1}">null</c:if>${stud.offerCount}, ${stud.studentEntryId })"><i
+											class="text-center p-2 rounded-circle bg-success fa fa-print"
+											aria-hidden="true"></i>
+										<%-- 
+												<c:if test="${stud.offerCount==1}">
+													<i class="text-center p-2 rounded-circle bg-success fa fa-check" aria-hidden="true"></i>
+												</c:if>  --%></a></td>
 
-												<li><a title="internshipCertificate"
-													onclick="checkInternship(<c:if test="${stud.internshipCount!=1}">null</c:if>${stud.internshipCount}, ${stud.studentEntryId })"><i
-														class="fa fa-print" aria-hidden="true"></i> &nbsp;Print
-														&nbsp;&nbsp;&nbsp;&nbsp;<c:if
-															test="${stud.internshipCount==1}">
-															<i class="fa fa-check" aria-hidden="true"></i>
-														</c:if> </a></li>
-											</ul>
-										</div></td>
+
+									<td class="valigntop"><a data-toggle="tooltip"
+										title="View"
+										href="<c:url value='/admin/student/entry/joining/letter/view/${stud.studentEntryId }'  />">
+											<i
+											class="text-center p-2 rounded-circle bg-success fa fa-eye"></i>
+									</a> <a data-toggle="tooltip" title="Print"
+										onclick='checkJoining(<c:if test="${stud.joinCount!=1}">null</c:if>${stud.joinCount}, ${stud.studentEntryId })'>
+											<i
+											class="text-center p-2 rounded-circle bg-success fa fa-print"
+											aria-hidden="true"></i>
+									</a></td>
+									<td class="valigntop"><a title="View"
+										href="<c:url value='/admin/student/entry/internship/certificate/view/${stud.studentEntryId }'  />"><i
+											class="text-center p-2 rounded-circle bg-success fa fa-eye"></i></a>
+
+										<a title="Print"
+										onclick="checkInternship(<c:if test="${stud.internshipCount!=1}">null</c:if>${stud.internshipCount}, ${stud.studentEntryId })">
+											<i
+											class="text-center p-2 rounded-circle bg-success fa fa-print"
+											aria-hidden="true"></i>
+									</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -144,9 +120,5 @@
 			}
 		}
 	</script>
-
-
-
-
 </body>
 </html>

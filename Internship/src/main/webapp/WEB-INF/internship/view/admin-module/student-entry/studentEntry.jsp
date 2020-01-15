@@ -132,24 +132,17 @@
 										</div></td> --%>
 
 
-									<td class="valigntop"><div class="btn-group">
-											<button
-												class="btn btn-xs btn-success dropdown-toggle no-margin"
-												type="button" data-toggle="dropdown" aria-expanded="false">
-												Actions <i class="fa fa-angle-down"></i>
-											</button>
-											<ul class="dropdown-menu pull-left" role="menu">
-												<li><a title="Edit"
-													href="<c:url value='/admin/student/entry/edit/${stud.studentEntryId }' />"><i
-														class="fa fa-edit"></i>Edit</a></li>
-												<li><a title="View"
-													href="<c:url value='/admin/student/entry/view/${stud.studentEntryId }'  />"><i
-														class="fa fa-eye"></i>View</a></li>
-												<%-- <li><a title="Print"
-													href="<c:url value='/admin/student/entry/delete/${stud.studentEntryId }' />"><i
-														class="fa fa-trash"></i>Delete</a></li> --%>
-											</ul>
-										</div></td>
+									<td class="valigntop"><a data-toggle="tooltip"
+										title="Edit"
+										href="<c:url value='/admin/student/entry/edit/${stud.studentEntryId }' />"><i
+											style="width: 27px; height: 27px;"
+											class="text-center p-2 rounded-circle bg-success fa fa-edit"></i></a>
+										<a data-toggle="tooltip" title="View"
+										href="<c:url value='/admin/student/entry/view/${stud.studentEntryId }'  />"><i
+											style="width: 27px; height: 27px;"
+											class="text-center p-2 rounded-circle bg-success fa fa-eye"></i></a>
+
+									</td>
 								</tr>
 							</c:forEach>
 
@@ -161,29 +154,32 @@
 	</div>
 
 	<script>
-	function checkJoining( joinCount, studentId ) {
-		if(joinCount==1) {
-			window.alert('Joining Letter Already Given');
-		} else {
-			window.location = "/admin/student/entry/joining/letter/"+studentId;
+		function checkJoining(joinCount, studentId) {
+			if (joinCount == 1) {
+				window.alert('Joining Letter Already Given');
+			} else {
+				window.location = "/admin/student/entry/joining/letter/"
+						+ studentId;
+			}
 		}
-	}
-	
-	function checkOffer( offerCount, studentId ) {
-		if(offerCount==1) {
-			window.alert('Offer Letter Already Given');
-		} else {
-			window.location = "/admin/student/entry/offer/letter/"+studentId;
+
+		function checkOffer(offerCount, studentId) {
+			if (offerCount == 1) {
+				window.alert('Offer Letter Already Given');
+			} else {
+				window.location = "/admin/student/entry/offer/letter/"
+						+ studentId;
+			}
 		}
-	}
-	function checkInternship( internshipCount, studentId ) {
-		if(internshipCount==1) {
-			window.alert('Internship Certificate Already Given');
-		} else {
-			window.location = "/admin/student/entry/internship/certificate/"+studentId;
+		function checkInternship(internshipCount, studentId) {
+			if (internshipCount == 1) {
+				window.alert('Internship Certificate Already Given');
+			} else {
+				window.location = "/admin/student/entry/internship/certificate/"
+						+ studentId;
+			}
 		}
-	}
-</script>
+	</script>
 
 
 

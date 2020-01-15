@@ -139,56 +139,10 @@ public class FeesController {
 	public @ResponseBody JSONObject filterStudentListByYear(@RequestParam("year") String year)
 			throws JsonProcessingException, ParseException {
 
-		/*
-		 * System.out.println("year========" + year);
-		 * 
-		 * FinancialYear financialYear = this.financialYearService.searchByYear(year);
-		 * 
-		 * JSONObject fyObject = new JSONObject(); JSONArray studEntryArray = new
-		 * JSONArray();
-		 * 
-		 * for (StudentEntry studentEntry : financialYear.getStudentEntry()) {
-		 * JSONObject studEntryObject = new JSONObject();
-		 * 
-		 * studEntryObject.put("firstName", studentEntry.getFirstName());
-		 * studEntryObject.put("middleName", studentEntry.getMiddleName());
-		 * studEntryObject.put("lastName", studentEntry.getLastName());
-		 * studEntryObject.put("feesAmount", studentEntry.getFeesAmount());
-		 * studEntryObject.put("paidFees", studentEntry.getPaidFees());
-		 * studEntryObject.put("discount", studentEntry.getDiscount());
-		 * studEntryObject.put("balanceFees", studentEntry.getBalanceFees());
-		 * studEntryObject.put("payStatus", studentEntry.getPayStatus());
-		 * studEntryArray.add(studEntryObject);
-		 * 
-		 * JSONObject collegeObject = new JSONObject(); collegeObject.put("collegeName",
-		 * studentEntry.getCollege().getCollegeName());
-		 * 
-		 * JSONObject departmentObject = new JSONObject();
-		 * departmentObject.put("departmentName",
-		 * studentEntry.getDepartment().getDepartmentName());
-		 * 
-		 * JSONArray feesArray = new JSONArray();
-		 * 
-		 * for (Fees fees : studentEntry.getFees()) { JSONObject feesObject = new
-		 * JSONObject(); feesObject.put("date", fees.getDate());
-		 * feesObject.put("payMode", fees.getPayMode()); feesObject.put("feesAmount",
-		 * fees.getFeesAmount()); feesArray.add(feesObject); }
-		 * 
-		 * studEntryObject.put("college", collegeObject);
-		 * studEntryObject.put("department", departmentObject);
-		 * studEntryObject.put("fees", feesArray);
-		 * 
-		 * fyObject.put("studentEntry", studEntryArray);
-		 * 
-		 * }
-		 */
-
-		
 		FinancialYear financialYear = this.financialYearService.searchByYear(year);
 		
 		JSONObject fyObject = new JSONObject(); 
 		JSONArray feesArray = new JSONArray();
-		
 		
 		for( StudentEntry studentEntry : financialYear.getStudentEntry()) {
 			for( Fees feesEntry : studentEntry.getFees()) {

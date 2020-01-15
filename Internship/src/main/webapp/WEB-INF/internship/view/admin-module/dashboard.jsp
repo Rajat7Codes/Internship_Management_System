@@ -15,6 +15,8 @@
 	margin-top: 10px;
 }
 </style>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 </head>
 <body>
 	<div class="page-bar">
@@ -178,6 +180,13 @@
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 py-1">
+			<div class="card">
+				<div class="card-body">
+					<canvas id="chLine"></canvas>
 				</div>
 			</div>
 		</div>
@@ -909,4 +918,51 @@
 		</div>
 	</div> -->
 </body>
+<script>
+	/* chart.js chart examples */
+
+	//chart colors
+	var colors = [ '#007bff', '#28a745', '#333333', '#c3e6cb', '#dc3545',
+			'#6c757d' ];
+
+	/* large line chart */
+	var chLine = document.getElementById("chLine");
+	var chartData = {
+		labels : [ "S", "M", "T", "W", "T", "F", "S" ],
+		datasets : [ {
+			data : [ ${dailyFeesCollection1}, ${dailyFeesCollection2}, ${dailyFeesCollection3}, ${dailyFeesCollection4}, ${dailyFeesCollection5}, ${dailyFeesCollection6}, ${dailyFeesCollection} ],
+			backgroundColor : 'transparent',
+			borderColor : colors[0],
+			borderWidth : 4,
+			pointBackgroundColor : colors[0]
+		}
+		//{
+		//  data: [639, 465, 493, 478, 589, 632, 674],
+		//  backgroundColor: colors[3],
+		//  borderColor: colors[1],
+		//  borderWidth: 4,
+		//  pointBackgroundColor: colors[1]
+		//}
+		]
+	};
+	if (chLine) {
+		new Chart(chLine, {
+			type : 'line',
+			data : chartData,
+			options : {
+				scales : {
+					xAxes : [ {
+						ticks : {
+							beginAtZero : false
+						}
+					} ]
+				},
+				legend : {
+					display : false
+				},
+				responsive : true
+			}
+		});
+	}
+</script>
 </html>

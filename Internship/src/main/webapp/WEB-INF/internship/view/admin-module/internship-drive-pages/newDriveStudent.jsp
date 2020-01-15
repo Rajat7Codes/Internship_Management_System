@@ -46,9 +46,11 @@ label {
 							</div>
 
 							<div class="col-md-6 col-sm-6 col-lg-6 col-12">
-								<form:label path="college">College Name</form:label>
-								<form:input path="college" name="college" id="college"
-									class="form-control" placeholder="College Name" />
+								<form:label path="college">College</form:label>
+								<form:select class="form-control" name="college" path="college"
+									id="college" itemLabel="collegeName" items="${collegeList }"
+									itemValue="collegeId">
+								</form:select>
 								<form:errors path="college" class="errors" />
 							</div>
 
