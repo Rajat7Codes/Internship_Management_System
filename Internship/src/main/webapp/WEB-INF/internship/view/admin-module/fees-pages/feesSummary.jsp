@@ -331,6 +331,7 @@
 
 						});
 
+						$('#feesSummaryTable tr td').remove();
 						$('#feesSummaryTable').append(trHTML);
 
 					}
