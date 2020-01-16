@@ -46,6 +46,7 @@ public class InternshipTypeController {
 	public String getInternshipType(ModelMap modelMap, Locale locale) {
 		modelMap.addAttribute("internshipType", new InternshipType());
 		modelMap.addAttribute("internshipTypeList", this.internshipTypeService.getInternshipTypeList());
+		modelMap.addAttribute("edit", false);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "internshipType";
 	}
@@ -75,6 +76,7 @@ public class InternshipTypeController {
 			Locale locale) throws ResourceNotFoundException {
 		modelMap.addAttribute("internshipType", this.internshipTypeService.getInternshipTypeById(internTypeId));
 		modelMap.addAttribute("internshipTypeList", this.internshipTypeService.getInternshipTypeList());
+		modelMap.addAttribute("edit", true);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "internshipType";
 	}

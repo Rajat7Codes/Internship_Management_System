@@ -84,13 +84,8 @@
 					<strong class="card-title text-white">FEES MASTER</strong>
 				</div>
 				&nbsp;
-
-				<div class="card-body" align="right">
-					<input placeholder=" Search" id="searchInput">
-				</div>
-
 				<div class="card-body">
-
+					<input placeholder="Search" id="searchInput" class="mb-4 float-right">
 					<table id="feesSummaryTable"
 						class="table table-striped table-responsive">
 						<thead>

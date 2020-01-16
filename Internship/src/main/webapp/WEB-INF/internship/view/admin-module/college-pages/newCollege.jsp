@@ -168,7 +168,7 @@
 				</div>
 				<div class="row form-group">
 					<div class="col-md-12 col-sm-12 col-lg-12 col-12 text-right pl-3 ">
-						<button class="btn btn-danger btn-lg " type="reset">RESET</button>
+						<c:if test="${ edit==false }"><button class="btn btn-danger btn-lg" type="reset">RESET</button></c:if>
 						<button class="btn btn-success btn-lg" id="grad" type="submit">SAVE</button>
 					</div>
 				</div>

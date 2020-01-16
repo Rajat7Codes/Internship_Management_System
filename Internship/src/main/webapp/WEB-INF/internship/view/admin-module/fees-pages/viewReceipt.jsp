@@ -50,21 +50,13 @@
 									<td>${fees.date }</td>
 									<td>${fees.payMode }</td>
 
-									<td class="valigntop"><div class="btn-group">
-											<button
-												class="btn btn-xs btn-success dropdown-toggle no-margin"
-												type="button" data-toggle="dropdown" aria-expanded="false">
-												Actions <i class="fa fa-angle-down"></i>
-											</button>
-											<ul class="dropdown-menu pull-left" role="menu">
-												<!--  <li><a title="Edit"
-													href="<c:url value='/admin/fees/receipt/edit/${fees.feesId }' />"><i
-														class="fa fa-edit"></i>Edit</a></li>  -->
-												<li><a title="Print"
-													href="<c:url value='/admin/fees/receipt/print/${fees.feesId }' />"><i
-														class="fa fa-print"></i>Print</a></li>
-											</ul>
-										</div></td>
+									<td class="valigntop"><a data-toggle="tooltip"
+										title="Print"
+										href="<c:url value='/admin/fees/receipt/print/${fees.feesId }' />">
+											<i
+											class="text-center p-2 rounded-circle bg-success fa fa-print"
+											aria-hidden="true"></i>
+									</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
