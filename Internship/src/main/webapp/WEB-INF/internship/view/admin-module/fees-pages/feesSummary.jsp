@@ -84,7 +84,13 @@
 					<strong class="card-title text-white">FEES MASTER</strong>
 				</div>
 				&nbsp;
+
+				<div class="card-body" align="right">
+					<input placeholder=" Search" id="searchInput">
+				</div>
+
 				<div class="card-body">
+
 					<table id="feesSummaryTable"
 						class="table table-striped table-responsive">
 						<thead>
@@ -112,6 +118,26 @@
 	</div>
 </body>
 
+<script
+	src="${pageContext.request.contextPath }/static/plugins/jquery/jquery.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(
+			function() {
+				$("#searchInput").on(
+						"keyup",
+						function() {
+							var value = $(this).val().toLowerCase();
+							$("#tableBody tr").filter(
+									function() {
+										$(this).toggle(
+												$(this).text().toLowerCase()
+														.indexOf(value) > -1)
+									});
+						});
+			});
+</script>
+
 <script>
 	function searchOption() {
 		if (document.getElementById('dateWiseRadio').checked) {
@@ -128,11 +154,7 @@
 	}
 </script>
 
-
-
-
-
-<script>
+<script type="text/javascript">
 	function date_submit() {
 
 		data = {
@@ -150,11 +172,9 @@
 					cache : false,
 					timeout : 600000,
 					success : function(response) {
-						//alert("response=====" + JSON.stringify(response));
 						var trHTML = '';
 
 						$.each(response, function(i, item) {
-
 							trHTML += '<tr><td>' + "&nbsp;" + (i + 1)
 									+ '</td><td>' + "&nbsp;" + item.firstName
 									+ "&nbsp;" + item.middleName + "&nbsp;"
@@ -177,14 +197,11 @@
 						});
 						$('#feesSummaryTable tr td').remove();
 						$('#feesSummaryTable').append(trHTML);
-
 					}
-
 				});
 		$("#fees-table").css("display", "block");
 	}
 </script>
-
 
 <!-- script for AJAX year -->
 
@@ -192,154 +209,49 @@
 	function year_submit() {
 
 		data = {
-
 			"year" : $("#year").val()
-
 		};
 
-		alert(JSON.stringify(data));
-
 		$
-
 				.ajax({
-
 					type : "GET",
-
 					contentType : "application/json",
-
 					url : "${pageContext.request.contextPath}/fees/summary/filter/year",
-
 					data : data,
-
 					dataType : 'json',
-
 					cache : false,
-
 					timeout : 600000,
-
 					success : function(response) {
-
-						alert(JSON.stringify(response));
-
 						var trHTML = '';
 
-						$.each(
-
-						response.studentEntry,
-
-						function(i, item) {
-
-							trHTML += '<tr><td>' + "&nbsp;"
-
-							+ (i + 1)
-
-							+ '</td><td>'
-
-							+ "&nbsp;"
-
-							+ item.firstName
-
-							+ "&nbsp;"
-
-							+ item.middleName
-
-							+ "&nbsp;"
-
-							+ item.lastName
-
-							+ '</td><td>'
-
-							+ "&nbsp;"
-
-							+ item.collegeName
-
-							+ '</td><td>'
-
-							+ "&nbsp;"
-
-							+ item.departmentName
-
-							+ '</td><td>'
-
-							+ "&nbsp;"
-
-							+ item.totalFees
-
-							+ '</td><td>'
-
-							+ "&nbsp;"
-
-							+ item.discount
-
-							+ '</td><td>'
-
-							+ "&nbsp;"
-
-							+ item.paidFees
-
-							+ '</td><td>'
-
-							+ "&nbsp;"
-
-							+ item.balanceFees
-
-							+ '</td><td>'
-
-							+ "&nbsp;"
-
-							+ item.feesAmount
-
-							+ "&nbsp;"
-
-							+ "</td><td>"
-
-							+ new Date(
-
-							item.payDate)
-
-							.getDate()
-
-							+ "-"
-
-							+ (new Date(
-
-							item.payDate)
-
-							.getMonth() + 1)
-
-							+ "-"
-
-							+ new Date(
-
-							item.payDate)
-
-							.getFullYear()
-
-							+ '</td><td>'
-
-							+ "&nbsp;"
-
-							+ item.payMode
-
-							+ '</td><td>'
-
-							+ "&nbsp;"
-
-							+ item.payStatus
-
-							+ '</td></tr>';
-
+						$.each(response.studentEntry, function(i, item) {
+							trHTML += '<tr><td>' + "&nbsp;" + (i + 1)
+									+ '</td><td>' + "&nbsp;" + item.firstName
+									+ "&nbsp;" + item.middleName + "&nbsp;"
+									+ item.lastName + '</td><td>' + "&nbsp;"
+									+ item.collegeName + '</td><td>' + "&nbsp;"
+									+ item.departmentName + '</td><td>'
+									+ "&nbsp;" + item.totalFees + '</td><td>'
+									+ "&nbsp;" + item.discount + '</td><td>'
+									+ "&nbsp;" + item.paidFees + '</td><td>'
+									+ "&nbsp;" + item.balanceFees + '</td><td>'
+									+ "&nbsp;" + item.feesAmount + "&nbsp;"
+									+ "</td><td>"
+									+ new Date(item.payDate).getDate() + "-"
+									+ (new Date(item.payDate).getMonth() + 1)
+									+ "-"
+									+ new Date(item.payDate).getFullYear()
+									+ '</td><td>' + "&nbsp;" + item.payMode
+									+ '</td><td>' + "&nbsp;" + item.payStatus
+									+ '</td></tr>';
 						});
 
 						$('#feesSummaryTable tr td').remove();
 						$('#feesSummaryTable').append(trHTML);
-
 					}
-
 				});
 
 		$("#fees-table").css("display", "block");
-
 	}
 </script>
 

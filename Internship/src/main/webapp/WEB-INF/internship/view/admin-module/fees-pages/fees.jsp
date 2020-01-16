@@ -31,7 +31,6 @@
 						<thead>
 							<tr>
 								<th>Sr.No.</th>
-								<th>Student Id</th>
 								<th>Name</th>
 								<th>College</th>
 								<th>Department</th>
@@ -48,7 +47,6 @@
 								varStatus="ind">
 								<tr>
 									<td>${ind.index+1 }</td>
-									<td>${stud.studentEntryId }</td>
 									<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
 									<td>${stud.getCollege().collegeName }</td>
 									<td>${stud.getDepartment().departmentName }</td>
@@ -58,25 +56,19 @@
 									<td>${stud.balanceFees }</td>
 									<td>${stud.studentStatus}</td>
 									<td>${stud.payStatus }</td>
-									<td class="valigntop"><div class="btn-group">
-											<button
-												class="btn btn-xs btn-success dropdown-toggle no-margin"
-												type="button" data-toggle="dropdown" aria-expanded="false">
-												Actions <i class="fa fa-angle-down"></i>
-											</button>
-											<ul class="dropdown-menu pull-left" role="menu">
-												<li><a title="Receipts"
-													href="<c:url value='/admin/fees/receipt/view/${stud.studentEntryId }' />"><i
-														class="fa fa-eye"></i>Receipts</a></li>
-												<li><a title="Pay"
-													href="<c:url value='/admin/fees/pay/${stud.studentEntryId }' />"><i
-														class="fa fa-rupee"></i>Pay</a></li>
-												<li><a title="Return"
-													href="<c:url value='/admin/fees/return/${stud.studentEntryId }' />">
-														<i class="fa fa-rupee"></i>Return Fees
-												</a></li>
-											</ul>
-										</div></td>
+									<td>
+										<a data-toggle="tooltip" title="Receipts" href="<c:url value='/admin/fees/receipt/view/${stud.studentEntryId }' />">
+											<i style="width: 27px; height: 27px;" class="text-center p-2 rounded-circle bg-success fa fa-eye">  </i> </a>
+											
+									
+										<a data-toggle="tooltip" title="Pay" href="<c:url value='/admin/fees/pay/${stud.studentEntryId }' />"><i
+												style="width: 27px; height: 27px;"
+												class="text-center fa fa-rupee p-2 rounded-circle bg-success"></i></a>
+
+										<a data-toggle="tooltip" title="Return" href="<c:url value='/admin/fees/return/${stud.studentEntryId }' />">
+												<i style="width: 27px; height: 27px;" class="text-center fa fa-refresh p-2 rounded-circle bg-success"></i>
+										</a>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>

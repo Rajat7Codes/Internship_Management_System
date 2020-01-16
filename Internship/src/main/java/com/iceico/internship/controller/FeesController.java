@@ -136,6 +136,7 @@ public class FeesController {
 		for (StudentEntry studentEntry : financialYear.getStudentEntry()) {
 			for (Fees feesEntry : studentEntry.getFees()) {
 				JSONObject feesObject = new JSONObject();
+
 				feesObject.put("firstName", studentEntry.getFirstName());
 				feesObject.put("middleName", studentEntry.getMiddleName());
 				feesObject.put("lastName", studentEntry.getLastName());

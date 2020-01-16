@@ -232,6 +232,13 @@
 	</definition>
 
 
+	<definition name="viewJoiningLetter"
+		extends="adminbase.definition">
+		<put-attribute name="title" value="joining letter  view" />
+		<put-attribute name="body"
+			value="/WEB-INF/internship/view/admin-module/certificates/viewJoiningLetter.jsp" />
+	</definition>
+
 	<!-- Internship drive student pages -->
 
 	<definition name="newDriveStudent"

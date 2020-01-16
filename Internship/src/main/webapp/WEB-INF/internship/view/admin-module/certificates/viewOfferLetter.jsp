@@ -76,7 +76,9 @@
 			alt="Card image">
 		<div class="card-img-overlay"
 			style="padding: 40px; padding-left: 50px; font-family: 'Times New Roman';">
-			<h3 class="text-center header">Internship Offer Letter</h3>
+			<h3 class="text-center header" style="font-family: times new roman;font-weight: bold;">
+				<u>Internship Offer Letter</u>
+			</h3>
 			<div class="text">
 				Date: <strong>${ currentDate }</strong> <br> Name: <strong>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</strong>
 			</div>

@@ -312,6 +312,8 @@ public class StudentEntryController {
 
 			Calendar calendar = Calendar.getInstance();
 
+			
+			
 			// Generates Current Date
 			modelMap.addAttribute("currentDate", simpleDateFormat.format(calendar.getTime()).toString());
 
@@ -330,6 +332,8 @@ public class StudentEntryController {
 			modelMap.addAttribute("errorMessage", "Internship Certificate Already Given ");
 		}
 
+	
+		
 		modelMap.addAttribute("duration", studentEntry.getInternshipDuration().getDuration());
 		/* modelMap.addAttribute("stud", studentEntry); */
 		modelMap.addAttribute("stud", this.studentEntryService.getStudentEntryById(studentEntryId));
