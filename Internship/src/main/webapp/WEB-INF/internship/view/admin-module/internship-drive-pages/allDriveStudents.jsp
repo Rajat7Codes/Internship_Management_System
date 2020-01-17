@@ -52,10 +52,11 @@
 									<td>${stud.college }</td>
 									<td>${stud.emailId}</td>
 									<td>${stud.contactNumber }</td>
-									<td class="valigntop">
-									<a data-toggle="tooltip" title="Edit"
+									<td class="valigntop"><a data-toggle="tooltip"
+										title="Edit"
 										href="<c:url value='/admin/internship/drive/student/edit/${stud.id }' />"><i
-											style="width: 27px; height: 27px;" class="text-center p-2 rounded-circle bg-success fa fa-edit"></i></a>
+											style="width: 27px; height: 27px;"
+											class="text-center p-2 rounded-circle bg-success fa fa-edit"></i></a>
 									</td>
 								</tr>
 							</c:forEach>

@@ -35,7 +35,7 @@
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
 								<form:label path="sessionName">Session</form:label>
 								<form:input path="sessionName" name="sessionName"
-									id="sessionName" class="form-control"
+									id="sessionName" class="form-control" required="required"
 									placeholder="Enter Session" />
 								<form:errors path="sessionName"></form:errors>
 							</div>
@@ -43,14 +43,14 @@
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
 								<form:label path="startDate">Start Date</form:label>
 								<form:input path="startDate" name="startDate" id="startDate"
-									class="form-control" type="date" />
+									required="required" class="form-control" type="date" />
 								<form:errors path="startDate"></form:errors>
 							</div>
 
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
 								<form:label path="endDate">End Date</form:label>
 								<form:input path="endDate" name="endDate" id="endDate"
-									class="form-control" type="date" />
+									required="required" class="form-control" type="date" />
 								<form:errors path="endDate"></form:errors>
 							</div>
 
@@ -65,7 +65,9 @@
 
 						<div class="row form-group">
 							<div class="col-md-12 text-right">
-								<button type="reset" class="btn btn-danger">RESET</button>
+								<c:if test="${ edit==false }">
+									<button class="btn btn-danger" type="reset">RESET</button>
+								</c:if>
 								<button type="submit" class="btn btn-success">SAVE</button>
 							</div>
 						</div>
@@ -107,18 +109,12 @@
 									<td>${session.startDate }</td>
 									<td>${session.endDate }</td>
 									<td>${session.description }</td>
-									<td class="valigntop"><div class="btn-group">
-											<button
-												class="btn btn-xs btn-success dropdown-toggle no-margin"
-												type="button" data-toggle="dropdown" aria-expanded="false">
-												Actions <i class="fa fa-angle-down"></i>
-											</button>
-											<ul class="dropdown-menu pull-left" role="menu">
-												<li><a title="Edit"
-													href="<c:url value='/admin/internship/session/edit/${session.sessionId }' />"><i
-														class="fa fa-edit"></i>Edit</a></li>
-											</ul>
-										</div></td>
+									<td class="valigntop"><a data-toggle="tooltip"
+										title="Edit"
+										href="<c:url value='/admin/internship/session/edit/${session.sessionId }' />"><i
+											style="width: 27px; height: 27px;"
+											class="text-center p-2 rounded-circle bg-success fa fa-edit"></i></a>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>

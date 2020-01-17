@@ -11,6 +11,7 @@
 #backimage {
 	position: absolute;
 	z-index: -1;
+	height: 127% !important;
 }
 
 /* @media print {

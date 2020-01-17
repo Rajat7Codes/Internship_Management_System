@@ -24,16 +24,17 @@
 				<div class="card-body">
 					<form:form
 						action="${pageContext.request.contextPath }/admin/internship/department/save"
-						modelAttribute="department" name="department"
-						id="departmentForm" method="post">
+						modelAttribute="department" name="department" id="departmentForm"
+						method="post">
 
 						<form:hidden path="departmentId" />
 
 						<div class="row form-group">
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
 								<form:label path="departmentName"> Department Name </form:label>
-								<form:input path="departmentName" name="departmentName" id="departmentName"
-									class="form-control" placeholder="Enter Department Name" />
+								<form:input path="departmentName" name="departmentName"
+									id="departmentName" class="form-control"
+									placeholder="Enter Department Name" required="required" />
 								<form:errors path="departmentName"></form:errors>
 							</div>
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
@@ -47,7 +48,9 @@
 
 						<div class="row form-group">
 							<div class="col-md-12 text-right">
-								<button type="reset" class="btn btn-danger">RESET</button>
+								<c:if test="${ edit==false }">
+									<button class="btn btn-danger" type="reset">RESET</button>
+								</c:if>
 								<button type="submit" class="btn btn-success">SAVE</button>
 							</div>
 						</div>
@@ -85,23 +88,11 @@
 									<td>${ind.index+1 }</td>
 									<td>${ departmentList.departmentName }</td>
 									<td>${ departmentList.description }</td>
-									<td class="valigntop">
-										<div class="btn-group">
-											<button
-												class="btn btn-xs btn-success dropdown-toggle no-margin"
-												type="button" data-toggle="dropdown" aria-expanded="false">
-												Actions <i class="fa fa-angle-down"></i>
-											</button>
-											<ul class="dropdown-menu pull-left" role="menu">
-												<li>
-													<a title="Edit" href="
-														<c:url value='/admin/internship/department/edit/${ departmentList.departmentId }' />">
-														<i class="fa fa-edit"></i>
-														Edit
-													</a>
-												</li>
-											</ul>
-										</div>
+									<td class="valigntop"><a data-toggle="tooltip"
+										title="Edit"
+										href="<c:url value='/admin/internship/department/edit/${ departmentList.departmentId }' />"><i
+											style="width: 27px; height: 27px;"
+											class="text-center p-2 rounded-circle bg-success fa fa-edit"></i></a>
 									</td>
 								</tr>
 							</c:forEach>

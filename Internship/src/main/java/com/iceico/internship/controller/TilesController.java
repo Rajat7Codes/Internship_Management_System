@@ -4,9 +4,7 @@
 package com.iceico.internship.controller;
 
 import java.text.ParseException;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.FinancialYear;
-import com.iceico.internship.model.StudentEntry;
 import com.iceico.internship.service.FeesService;
 import com.iceico.internship.service.FinancialYearService;
 import com.iceico.internship.service.StudentEntryService;
@@ -67,13 +64,14 @@ public class TilesController {
 		modelMap.addAttribute("paidAmountCount", studentEntryService.getTotalPaidAmount());
 		modelMap.addAttribute("dailyFeesCollection", feesService.getdailyFeesCollection(date));
 		
-		Calendar calendar = Calendar.getInstance();
-		for(int i=1; i<6; i++) {
-			calendar.add(Calendar.DATE, -1);
-			modelMap.addAttribute("dailyFeesCollection"+i, feesService.getdailyFeesCollection(calendar.getTime()));
-		}
-		
-		modelMap.addAttribute("", feesService.getdailyFeesCollection(date));
+		/*
+		 * Calendar calendar = Calendar.getInstance(); for(int i=1; i<6; i++) {
+		 * calendar.add(Calendar.DATE, -1);
+		 * modelMap.addAttribute("dailyFeesCollection"+i,
+		 * feesService.getdailyFeesCollection(calendar.getTime())); }
+		 * 
+		 * modelMap.addAttribute("", feesService.getdailyFeesCollection(date));
+		 */
 
 		modelMap.addAttribute("user", this.getPrincipal());
 

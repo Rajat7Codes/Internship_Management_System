@@ -50,6 +50,7 @@ public class DriveStudentController {
 	public String newInternshipDriveStudent(ModelMap modelMap, Locale locale) {
 		modelMap.addAttribute("driveStudent", new DriveStudent());
 		modelMap.addAttribute("collegeList", this.collegeService.getCollegeList());
+		modelMap.addAttribute("edit", false);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "newDriveStudent";
 	}
@@ -66,7 +67,6 @@ public class DriveStudentController {
 			ModelMap modelMap, Locale locale) {
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("driveStudentList", this.driveStudentService.getDriveStudentList());
-			
 			modelMap.addAttribute("user", this.getPrincipal());
 			return "newDriveStudent";
 		} else {
@@ -79,9 +79,10 @@ public class DriveStudentController {
 	@GetMapping("/admin/internship/drive/student/edit/{id}")
 	public String editInternshipDriveStudent(@PathVariable("id") Long id, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException {
+		modelMap.addAttribute("edit", true);
 		modelMap.addAttribute("driveStudent", this.driveStudentService.getDriveStudentById(id));
 		modelMap.addAttribute("collegeList", this.collegeService.getCollegeList());
-			modelMap.addAttribute("user", this.getPrincipal());
+		modelMap.addAttribute("user", this.getPrincipal());
 		return "newDriveStudent";
 	}
 

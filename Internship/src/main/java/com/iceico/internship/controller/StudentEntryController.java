@@ -92,6 +92,7 @@ public class StudentEntryController {
 		modelMap.addAttribute("fyList", this.financialYearService.getFinancialYearList());
 		modelMap.addAttribute("departmentList", this.departmentService.getDepartmentList());
 		modelMap.addAttribute("statusList", this.listHelper.getStatusList());
+		modelMap.addAttribute("edit", false);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "newStudentEntry";
 	}
@@ -144,6 +145,7 @@ public class StudentEntryController {
 		modelMap.addAttribute("fyList", this.financialYearService.getFinancialYearList());
 		modelMap.addAttribute("departmentList", this.departmentService.getDepartmentList());
 		modelMap.addAttribute("statusList", this.listHelper.getStatusList());
+		modelMap.addAttribute("edit", true);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "newStudentEntry";
 	}

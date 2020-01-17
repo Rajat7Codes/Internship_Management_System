@@ -26,7 +26,7 @@ label {
 			<div class="col-md-12">
 				<div class="card card-topline-darkgreen">
 					<div class="card-header card-head pl-4" id="grad">
-						<strong class="card-title text-white"> ADD STUDENT </strong>
+						<strong class="card-title text-white"> <c:if test="${ edit==true }">UPDATE</c:if> <c:if test="${ edit==false }">ADD</c:if> STUDENT </strong>
 						<div class="tools">
 							<a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
 							<a class="t-collapse btn-color fa fa-chevron-down"
@@ -159,7 +159,7 @@ label {
 			<div class="col-12">
 				<div class="row form-group">
 					<div class="col-md-12 col-sm-12 col-lg-12 col-12 text-right pl-3 ">
-						<button class="btn btn-danger btn-lg" type="reset">RESET</button>
+						<c:if test="${ edit==false }"><button class="btn btn-danger btn-lg" type="reset">RESET</button></c:if>
 						<button class="btn btn-success btn-lg" id="grad" type="submit">SAVE</button>
 					</div>
 				</div>

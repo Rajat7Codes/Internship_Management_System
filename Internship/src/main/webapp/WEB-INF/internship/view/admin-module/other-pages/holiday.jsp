@@ -25,30 +25,32 @@
 				<div class="card-body">
 					<form:form
 						action="${pageContext.request.contextPath }/admin/holiday/save"
-						modelAttribute="holiday" name="holidayForm"
-						id="holidayForm" method="post">
+						modelAttribute="holiday" name="holidayForm" id="holidayForm"
+						method="post">
 
 						<form:hidden path="holidayId" />
-						
+
 						<div class="row form-group">
 							<div class="col-sm-12">
 								<form:label path="date">Date</form:label>
 								<form:input type="date" path="date" class="form-control"
-									placeholder="Enter Date :" />
+									required="required" placeholder="Enter Date :" />
 								<form:errors path="date"></form:errors>
 							</div>
-						
+
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
 								<form:label path="description">Description</form:label>
 								<form:input path="description" class="form-control"
-									placeholder="Enter description :" />
+									placeholder="Enter description " />
 								<form:errors path="description"></form:errors>
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12 text-right">
-								<button type="reset" class="btn btn-danger">RESET</button>
+								<c:if test="${ edit==false }">
+									<button class="btn btn-danger" type="reset">RESET</button>
+								</c:if>
 								<button type="submit" class="btn btn-success">SAVE</button>
 							</div>
 						</div>
@@ -85,19 +87,12 @@
 									<td>${ind.index+1 }</td>
 									<td>${fy.date }</td>
 									<td>${fy.description }</td>
-
-									<td class="valigntop"><div class="btn-group">
-											<button
-												class="btn btn-xs btn-success dropdown-toggle no-margin"
-												type="button" data-toggle="dropdown" aria-expanded="false">
-												Actions <i class="fa fa-angle-down"></i>
-											</button>
-											<ul class="dropdown-menu pull-left" role="menu">
-												<li><a title="Edit"
-													href="<c:url value='/admin/holiday/edit/${fy.holidayId }' />"><i
-														class="fa fa-edit"></i>Edit</a></li>
-											</ul>
-										</div></td>
+									<td class="valigntop"><a data-toggle="tooltip"
+										title="Edit"
+										href="<c:url value='/admin/holiday/edit/${fy.holidayId }' />"><i
+											style="width: 27px; height: 27px;"
+											class="text-center p-2 rounded-circle bg-success fa fa-edit"></i></a>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>

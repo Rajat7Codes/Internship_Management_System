@@ -43,6 +43,7 @@ public class InternshipDurationController {
 	public String getInternshipDurationPage(ModelMap modelMap, Locale locale) {
 		modelMap.addAttribute("internshipDurationList", this.internshipDurationService.getInternshipDurationList());
 		modelMap.addAttribute("internshipDuration", new InternshipDuration());
+		modelMap.addAttribute("edit", false);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "internshipDuration";
 	}
@@ -52,6 +53,7 @@ public class InternshipDurationController {
 			throws ResourceNotFoundException {
 		modelMap.addAttribute("internshipDurationList", this.internshipDurationService.getInternshipDurationList());
 		modelMap.addAttribute("internshipDuration", this.internshipDurationService.getInternshipDurationById(id));
+		modelMap.addAttribute("edit", true);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "internshipDuration";
 	}
