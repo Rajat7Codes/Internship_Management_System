@@ -36,7 +36,7 @@
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
 								<form:label path="type">Type</form:label>
 								<form:select path="type" name="type" id="type"
-									class="form-control">
+									required="required" class="form-control">
 									<form:option value="Free">Free</form:option>
 									<form:option value="Paid">Paid</form:option>
 								</form:select>

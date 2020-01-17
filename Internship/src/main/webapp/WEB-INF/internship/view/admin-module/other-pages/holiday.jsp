@@ -34,14 +34,14 @@
 							<div class="col-sm-12">
 								<form:label path="date">Date</form:label>
 								<form:input type="date" path="date" class="form-control"
-									placeholder="Enter Date :" />
+									required="required" placeholder="Enter Date :" />
 								<form:errors path="date"></form:errors>
 							</div>
 
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
 								<form:label path="description">Description</form:label>
 								<form:input path="description" class="form-control"
-									placeholder="Enter description :" />
+									placeholder="Enter description " />
 								<form:errors path="description"></form:errors>
 							</div>
 						</div>

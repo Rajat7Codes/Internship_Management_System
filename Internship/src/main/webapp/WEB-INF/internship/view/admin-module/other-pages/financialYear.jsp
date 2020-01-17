@@ -34,12 +34,13 @@
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
 								<form:label path="year">Financial Year</form:label>
 								<form:input path="year" name="year" id="year"
-									class="form-control" placeholder="Financial Year" />
+									class="form-control" placeholder="Financial Year"
+									required="required" />
 								<form:errors path="year"></form:errors>
 							</div>
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
 								<form:label path="active">Status</form:label>
-								<form:select path="active" name="active" id="active"
+								<form:select path="active" name="active" id="active"  required="required"
 									class="form-control">
 									<form:option value="true">Active</form:option>
 									<form:option value="false">Inactive</form:option>

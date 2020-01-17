@@ -24,16 +24,17 @@
 				<div class="card-body">
 					<form:form
 						action="${pageContext.request.contextPath }/admin/internship/department/save"
-						modelAttribute="department" name="department"
-						id="departmentForm" method="post">
+						modelAttribute="department" name="department" id="departmentForm"
+						method="post">
 
 						<form:hidden path="departmentId" />
 
 						<div class="row form-group">
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
 								<form:label path="departmentName"> Department Name </form:label>
-								<form:input path="departmentName" name="departmentName" id="departmentName"
-									class="form-control" placeholder="Enter Department Name" />
+								<form:input path="departmentName" name="departmentName"
+									id="departmentName" class="form-control"
+									placeholder="Enter Department Name" required="required" />
 								<form:errors path="departmentName"></form:errors>
 							</div>
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
@@ -47,7 +48,9 @@
 
 						<div class="row form-group">
 							<div class="col-md-12 text-right">
-								<c:if test="${ edit==false }"><button class="btn btn-danger" type="reset">RESET</button></c:if>
+								<c:if test="${ edit==false }">
+									<button class="btn btn-danger" type="reset">RESET</button>
+								</c:if>
 								<button type="submit" class="btn btn-success">SAVE</button>
 							</div>
 						</div>

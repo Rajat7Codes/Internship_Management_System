@@ -34,7 +34,7 @@
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
 								<form:label path="duration">Duration</form:label>
 								<form:input path="duration" name="duration" id="duration"
-									class="form-control" placeholder="Duration" />
+									class="form-control" placeholder="Duration"  required="required" />
 								<form:errors path="duration"></form:errors>
 							</div>
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
