@@ -37,6 +37,7 @@
 								<form:label path="type">Type</form:label>
 								<form:select path="type" name="type" id="type"
 									required="required" class="form-control">
+									<form:option value="">-- SELECT TYPE --</form:option>
 									<form:option value="Free">Free</form:option>
 									<form:option value="Paid">Paid</form:option>
 								</form:select>

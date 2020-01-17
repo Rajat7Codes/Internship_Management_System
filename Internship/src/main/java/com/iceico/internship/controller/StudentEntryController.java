@@ -114,13 +114,16 @@ public class StudentEntryController {
 
 			return "studentEntry";
 		} else {
-			Double fees = studentEntry.getFeesAmount();
-			Double discount = studentEntry.getDiscount();
+			double fees = studentEntry.getFeesAmount();
+			double discount = 0;
+
+			if (studentEntry.getDiscount() == null) {
+				discount = 0.0;
+			}
 
 			String status = "UnPaid";
 
 			fees = fees - discount;
-			// System.out.println("calculated fees =====>" + fees);
 			Double paid = 0d;
 			Double balFees = (fees - paid);
 
@@ -189,7 +192,6 @@ public class StudentEntryController {
 		calendar.setTime(simpleDateFormat.parse(stDate));
 		calendar.add(Calendar.DATE, 15);
 		stDate = simpleDateFormat.format(calendar.getTime());
-		// System.out.println("15days later date ====>>" + stDate);
 		Date newDate = simpleDateFormat.parse(stDate);
 		SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat("EEEE");
 		String day = newSimpleDateFormat.format(newDate); // for check which day comes on 15 days later
@@ -240,16 +242,16 @@ public class StudentEntryController {
 			throws ResourceNotFoundException, ParseException {
 		StudentEntry studentEntry = this.studentEntryService.getStudentEntryById(studentEntryId);
 		Date date = studentEntry.getDate();
-		// Date currentDate = new Date();
+
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		modelMap.addAttribute("joiningDate", simpleDateFormat.format(date));
-		// modelMap.addAttribute("currentDate", simpleDateFormat.format(currentDate));
+
 		String stDate = simpleDateFormat.format(date);
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(simpleDateFormat.parse(stDate));
 		calendar.add(Calendar.DATE, -1);
 		stDate = simpleDateFormat.format(calendar.getTime());
-		// System.out.println("1day before date ====>>" + stDate);
+
 		Date newDate = simpleDateFormat.parse(stDate);
 		SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat("EEEE");
 		String day = newSimpleDateFormat.format(newDate); // for check which day comes on 1 day later
@@ -269,23 +271,21 @@ public class StudentEntryController {
 						simpleDateFormat.format(calendar1.getTime()).toString()) || day.equalsIgnoreCase("sunday")) {
 					if (simpleDateFormat.format(calendar.getTime()).toString()
 							.equals(simpleDateFormat.format(calendar1.getTime()).toString())) {
-						// System.out.println("inside holiday date");
+
 						calendar.add(Calendar.DATE, -1);
 						stDate = simpleDateFormat.format(calendar.getTime());
-						// System.out.println("Holiday Date =====>" + stDate);
+
 						modelMap.addAttribute("currentDate", stDate);
 						i = 0;
 					}
 					Date newDate1 = simpleDateFormat.parse(stDate);
-					// System.out.println("newDate1 =====>>>" + newDate1);
+
 					SimpleDateFormat newSimpleDateFormat1 = new SimpleDateFormat("EEEE");
 					String day1 = newSimpleDateFormat1.format(newDate1);
-					// System.out.println("day1 =====>>>" + day1);
+
 					if (day1.equalsIgnoreCase("sunday")) {
-						// System.out.println("inside sunday date");
 						calendar.add(Calendar.DATE, -1);
 						stDate = simpleDateFormat.format(calendar.getTime());
-						// System.out.println("Sunday Date =====>" + stDate);
 						modelMap.addAttribute("currentDate", stDate);
 					}
 				}
@@ -314,8 +314,6 @@ public class StudentEntryController {
 
 			Calendar calendar = Calendar.getInstance();
 
-			
-			
 			// Generates Current Date
 			modelMap.addAttribute("currentDate", simpleDateFormat.format(calendar.getTime()).toString());
 
@@ -325,7 +323,6 @@ public class StudentEntryController {
 			modelMap.addAttribute("offer", true);
 
 			// Get internship session(start date & end date from database)
-
 			modelMap.addAttribute("startDate",
 					simpleDateFormat.format(studentEntry.getInternshipSession().getStartDate()));
 			modelMap.addAttribute("endDate", simpleDateFormat.format(studentEntry.getInternshipSession().getEndDate()));
@@ -334,10 +331,7 @@ public class StudentEntryController {
 			modelMap.addAttribute("errorMessage", "Internship Certificate Already Given ");
 		}
 
-	
-		
 		modelMap.addAttribute("duration", studentEntry.getInternshipDuration().getDuration());
-		/* modelMap.addAttribute("stud", studentEntry); */
 		modelMap.addAttribute("stud", this.studentEntryService.getStudentEntryById(studentEntryId));
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "printInternshipCertificate";
@@ -357,7 +351,7 @@ public class StudentEntryController {
 		calendar.setTime(simpleDateFormat.parse(stDate));
 		calendar.add(Calendar.DATE, 15);
 		stDate = simpleDateFormat.format(calendar.getTime());
-		// System.out.println("15days later date ====>>" + stDate);
+
 		Date newDate = simpleDateFormat.parse(stDate);
 		SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat("EEEE");
 		String day = newSimpleDateFormat.format(newDate); // for check which day comes on 15 days later
@@ -399,16 +393,16 @@ public class StudentEntryController {
 			throws ResourceNotFoundException, ParseException {
 		StudentEntry studentEntry = this.studentEntryService.getStudentEntryById(studentEntryId);
 		Date date = studentEntry.getDate();
-		// Date currentDate = new Date();
+
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		modelMap.addAttribute("joiningDate", simpleDateFormat.format(date));
-		// modelMap.addAttribute("currentDate", simpleDateFormat.format(currentDate));
+
 		String stDate = simpleDateFormat.format(date);
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(simpleDateFormat.parse(stDate));
 		calendar.add(Calendar.DATE, -1);
 		stDate = simpleDateFormat.format(calendar.getTime());
-		// System.out.println("1day before date ====>>" + stDate);
+
 		Date newDate = simpleDateFormat.parse(stDate);
 		SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat("EEEE");
 		String day = newSimpleDateFormat.format(newDate); // for check which day comes on 1 day later
@@ -423,23 +417,18 @@ public class StudentEntryController {
 					simpleDateFormat.format(calendar1.getTime()).toString()) || day.equalsIgnoreCase("sunday")) {
 				if (simpleDateFormat.format(calendar.getTime()).toString()
 						.equals(simpleDateFormat.format(calendar1.getTime()).toString())) {
-					// System.out.println("inside holiday date");
 					calendar.add(Calendar.DATE, -1);
 					stDate = simpleDateFormat.format(calendar.getTime());
-					// System.out.println("Holiday Date =====>" + stDate);
 					modelMap.addAttribute("currentDate", stDate);
 					i = 0;
 				}
 				Date newDate1 = simpleDateFormat.parse(stDate);
-				// System.out.println("newDate1 =====>>>" + newDate1);
 				SimpleDateFormat newSimpleDateFormat1 = new SimpleDateFormat("EEEE");
 				String day1 = newSimpleDateFormat1.format(newDate1);
-				// System.out.println("day1 =====>>>" + day1);
+
 				if (day1.equalsIgnoreCase("sunday")) {
-					// System.out.println("inside sunday date");
 					calendar.add(Calendar.DATE, -1);
 					stDate = simpleDateFormat.format(calendar.getTime());
-					// System.out.println("Sunday Date =====>" + stDate);
 					modelMap.addAttribute("currentDate", stDate);
 				}
 			}
@@ -457,17 +446,19 @@ public class StudentEntryController {
 		StudentEntry studentEntry = this.studentEntryService.getStudentEntryById(studentEntryId);
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		Calendar calendar = Calendar.getInstance();
+
 		// Generates Current Date
 		modelMap.addAttribute("currentDate", simpleDateFormat.format(calendar.getTime()).toString());
 		modelMap.addAttribute("duration", studentEntry.getInternshipDuration().getDuration());
 		modelMap.addAttribute("stud", studentEntry);
 		modelMap.addAttribute("collegeName", studentEntry.getCollege().getCollegeName());
 		modelMap.addAttribute("offer", true);
+
 		// Get internship session(start date & end date from database)
 		modelMap.addAttribute("startDate", simpleDateFormat.format(studentEntry.getInternshipSession().getStartDate()));
 		modelMap.addAttribute("endDate", simpleDateFormat.format(studentEntry.getInternshipSession().getEndDate()));
 		modelMap.addAttribute("duration", studentEntry.getInternshipDuration().getDuration());
-		/* modelMap.addAttribute("stud", studentEntry); */
+
 		modelMap.addAttribute("stud", this.studentEntryService.getStudentEntryById(studentEntryId));
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "viewInternshipCertificate";

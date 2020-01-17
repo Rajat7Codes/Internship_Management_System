@@ -74,7 +74,7 @@ public class FeesReturnController {
 
 			feesReturn.getStudentEntry().setBalanceFees(balanceAmount);
 
-			status = "Unpaid";
+			status = "Refund";
 			feesReturn.getStudentEntry().setPayStatus(status);
 
 			studentStatus = "Discontinued";

@@ -90,13 +90,9 @@ public class FeesController {
 	public @ResponseBody JSONArray filterStudentListByDate(@RequestParam("startDate") String startDate,
 			@RequestParam("endDate") String endDate) throws JsonProcessingException, ParseException {
 
-		System.out.println("sdate========" + startDate);
-		System.out.println("edate========" + endDate);
-
 		List<Fees> list = this.feesService.filterFeesByDate(startDate, endDate);
 
 		JSONArray feesArray = new JSONArray();
-		// JSONObject fyObject = new JSONObject();
 
 		for (Fees fees : list) {
 
@@ -118,7 +114,6 @@ public class FeesController {
 
 			feesArray.add(studEntryObject);
 		}
-		// System.out.println("Array json ======>>>" + feesArray);
 		return feesArray;
 	}
 
@@ -209,7 +204,6 @@ public class FeesController {
 			String status;
 
 			Double finalBalAmt = totalBalAmt - paidAmt;
-			System.out.println("final bal amt =====>>" + finalBalAmt);
 
 			if (finalBalAmt == 0) {
 				status = "Paid";
