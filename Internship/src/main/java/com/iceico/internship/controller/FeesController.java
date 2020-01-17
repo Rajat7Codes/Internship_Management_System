@@ -155,8 +155,10 @@ public class FeesController {
 	@GetMapping("/admin/fees/pay/{studentEntryId}")
 	public String payFees(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException {
-		modelMap.addAttribute("studentEntry", this.studentEntryService.getStudentEntryById(studentEntryId));
-		modelMap.addAttribute("fees", new Fees());
+		
+		StudentEntry currentStudentEntry = this.studentEntryService.getStudentEntryById(studentEntryId);
+		modelMap.addAttribute("studentEntry", currentStudentEntry);
+		modelMap.addAttribute("fees", new Fees()); 
 		modelMap.addAttribute("payModeList", this.listHelper.getPaymentModeList());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "payFeesNew";
@@ -201,26 +203,25 @@ public class FeesController {
 			Double prevPaidAmt = fees.getStudentEntry().getPaidFees();
 			Double totalBalAmt = fees.getStudentEntry().getBalanceFees();
 			Double paidAmt = fees.getFeesAmount();
-			String status;
+			String status = null;
 
-			Double finalBalAmt = totalBalAmt - paidAmt;
+			if( totalBalAmt>=paidAmt ) {
+				if(fees.getStudentEntry().getDate().compareTo(fees.getDate())<=0) {
+					fees.getStudentEntry().setBalanceFees(totalBalAmt - paidAmt);
+					fees.getStudentEntry().setPaidFees(prevPaidAmt + paidAmt);
+	
+					if (fees.getStudentEntry().getBalanceFees() == 0) status = "Paid";
 
-			if (finalBalAmt == 0) {
-				status = "Paid";
-				fees.getStudentEntry().setPayStatus(status);
+					if (fees.getFeesAmount() == 0) status = "Unpaid";
+					
+					status = "Unpaid";
+	
+					fees.getStudentEntry().setPayStatus(status);
+					this.feesService.saveFees(fees);
+				}
 			}
-
-			if (paidAmt == 0) {
-				status = "Unpaid";
-				fees.getStudentEntry().setPayStatus(status);
-			}
-
-			fees.getStudentEntry().setPaidFees(prevPaidAmt + paidAmt);
-			fees.getStudentEntry().setBalanceFees(finalBalAmt);
 
 			modelMap.addAttribute("user", this.getPrincipal());
-			this.feesService.saveFees(fees);
-
 			return "redirect:/admin/fees";
 		}
 	}
