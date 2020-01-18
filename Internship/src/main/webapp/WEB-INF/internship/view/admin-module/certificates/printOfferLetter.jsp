@@ -11,6 +11,7 @@
 #backimage {
 	position: absolute;
 	z-index: -1;
+	height: 112% !important
 }
 </style>
 <body
@@ -32,7 +33,7 @@
 
 
 		<div
-			style="padding: 50px; padding-left: 70px; font-family: 'Times New Roman';">
+			style="height:100%; padding: 50px; padding-left: 70px; font-family: 'Times New Roman';">
 			<h3
 				style="text-align: center; text-decoration: underline; margin-bottom: 0; font-family: 'Times New Roman';">
 				<br> <br> <br> <br> <br>Internship Offer

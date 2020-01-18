@@ -46,6 +46,7 @@ public class HolidayController {
 
 		modelMap.addAttribute("holiday", new Holiday());
 		modelMap.addAttribute("holidayList",  this.holidayService.getHolidayList());
+		modelMap.addAttribute("edit", false);
 		return "holiday";
 	}
 	
@@ -71,6 +72,7 @@ public class HolidayController {
 			Locale locale) throws ParseException, ResourceNotFoundException {
 		modelMap.addAttribute("holiday", this.holidayService.getHolidayById(holidayId));
 		modelMap.addAttribute("holidayList", this.holidayService.getHolidayList());
+		modelMap.addAttribute("edit", true);
 		return "holiday";
 	}
 	

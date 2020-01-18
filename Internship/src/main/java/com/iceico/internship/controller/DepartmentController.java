@@ -46,6 +46,7 @@ public class DepartmentController {
 	public String getDepartment(ModelMap modelMap, Locale locale) {
 		modelMap.addAttribute("departmentList", this.departmentService.getDepartmentList());
 		modelMap.addAttribute("department", new Department());
+		modelMap.addAttribute("edit", false);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "department";
 	}
@@ -71,6 +72,7 @@ public class DepartmentController {
 			throws ResourceNotFoundException {
 		modelMap.addAttribute("departmentList", this.departmentService.getDepartmentList());
 		modelMap.addAttribute("department", this.departmentService.getDepartmentById(departmentId));
+		modelMap.addAttribute("edit", true);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "department";
 	}

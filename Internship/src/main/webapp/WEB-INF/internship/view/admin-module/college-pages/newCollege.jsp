@@ -43,7 +43,7 @@
 										<div class="col-md-8 col-sm-8 col-lg-8 col-12">
 											<form:input path="collegeName" name="collegeName"
 												id="collegeName" class="form-control"
-												placeholder="Enter College Name" />
+												placeholder="Enter College Name" required="required" />
 											<form:errors path="collegeName" class="errors" />
 										</div>
 									</div>
@@ -78,7 +78,8 @@
 										</div>
 										<div class="col-md-8 col-sm-8 col-lg-8 col-12">
 											<form:input path="contactNo" name="contactNo" id="contactNo"
-												class="form-control" placeholder="Enter Contact #" />
+												class="form-control" placeholder="Enter Contact #"
+												required="required" />
 											<form:errors path="contactNo" class="errors" />
 										</div>
 									</div>
@@ -110,7 +111,8 @@
 										</div>
 										<div class="col-md-8 col-sm-8 col-lg-8 col-12">
 											<form:input path="tnpHead" name="tnpHead" id="tnpHead"
-												class="form-control" placeholder="Enter T&P Head" />
+												class="form-control" placeholder="Enter T&P Head"
+												required="required" />
 											<form:errors path="tnpHead" class="errors" />
 										</div>
 									</div>
@@ -157,7 +159,8 @@
 										</div>
 										<div class="col-md-8 col-sm-8 col-lg-8 col-12">
 											<form:textarea path="address" name="address" id="address"
-												class="form-control" placeholder="Enter Address here" />
+												class="form-control" placeholder="Enter Address here"
+												required="required" />
 											<form:errors path="address" class="errors" />
 										</div>
 									</div>
@@ -168,7 +171,9 @@
 				</div>
 				<div class="row form-group">
 					<div class="col-md-12 col-sm-12 col-lg-12 col-12 text-right pl-3 ">
-						<button class="btn btn-danger btn-lg " type="reset">RESET</button>
+						<c:if test="${ edit==false }">
+							<button class="btn btn-danger btn-lg" type="reset">RESET</button>
+						</c:if>
 						<button class="btn btn-success btn-lg" id="grad" type="submit">SAVE</button>
 					</div>
 				</div>

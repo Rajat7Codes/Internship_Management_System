@@ -47,6 +47,7 @@ public class InternshipSessionController {
 	public String internshipSession(ModelMap modelMap, Locale locale) {
 		modelMap.addAttribute("session", new InternshipSession());
 		modelMap.addAttribute("sessionList", internshipSessionService.getSessionList());
+		modelMap.addAttribute("edit", false);
 		return "internshipSession";
 	}
 
@@ -73,6 +74,7 @@ public class InternshipSessionController {
 			Locale locale) throws ParseException, ResourceNotFoundException {
 		modelMap.addAttribute("session", internshipSessionService.getSessionById(sessionId));
 		modelMap.addAttribute("sessionList", internshipSessionService.getSessionList());
+		modelMap.addAttribute("edit", true);
 		return "internshipSession";
 	}
 

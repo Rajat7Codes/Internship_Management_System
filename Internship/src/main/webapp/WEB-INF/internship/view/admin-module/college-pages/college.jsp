@@ -57,21 +57,14 @@
 										<c:if test="${college.mouStatus =='false'}">Unsigned</c:if></td>
 									<td>${college.tnpHead }</td>
 									<td>${college.contactPerson }</td>
-									<td class="valigntop"><div class="btn-group">
-											<button
-												class="btn btn-xs btn-success dropdown-toggle no-margin"
-												type="button" data-toggle="dropdown" aria-expanded="false">
-												Actions <i class="fa fa-angle-down"></i>
-											</button>
-											<ul class="dropdown-menu pull-left" role="menu">
-												<li><a title="Edit"
-													href="<c:url value='/admin/college/edit/${college.collegeId }' />"><i
-														class="fa fa-edit"></i>Edit</a></li>
-												<li><a title="View"
-													href="<c:url value='/admin/college/view/${college.collegeId }' />"><i
-														class="fa fa-eye"></i>View</a></li>
-											</ul>
-										</div></td>
+									<td class="valigntop">
+									<a data-toggle="tooltip" title="Edit"
+										href="<c:url value='/admin/college/edit/${college.collegeId }' />"><i
+											style="width: 27px; height: 27px;" class="text-center p-2 rounded-circle bg-success fa fa-edit"></i></a>
+									<a data-toggle="tooltip" title="View"
+										href="<c:url value='/admin/college/view/${college.collegeId }' />"><i
+											style="width: 27px; height: 27px;" class="text-center p-2 rounded-circle bg-success fa fa-eye"></i></a>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>

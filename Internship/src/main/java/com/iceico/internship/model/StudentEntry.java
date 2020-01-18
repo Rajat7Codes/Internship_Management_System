@@ -94,6 +94,7 @@ public class StudentEntry extends Auditable<String> implements Serializable {
 
 	@Column(name = "student_status")
 	private String studentStatus;
+	
 	@Column(name = "offer_count")
 	private Integer offerCount;
 

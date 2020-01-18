@@ -17,14 +17,6 @@
 <!-- Title Page-->
 <%-- <title><tiles:insertAttribute name="title" /></title> --%>
 
-
-
-
-<!-- bootstrap -->
-<link
-	href="${pageContext.request.contextPath }/static/plugins/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css" />
-
 <!-- Bootstrap CSS-->
 <link
 	href="${pageContext.request.contextPath}/static/plugins/bootstrap/css/bootstrap.min.css"

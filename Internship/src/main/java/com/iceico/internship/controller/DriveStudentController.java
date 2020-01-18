@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.DriveStudent;
+import com.iceico.internship.service.CollegeService;
 import com.iceico.internship.service.DriveStudentService;
 
 /**
@@ -42,9 +43,14 @@ public class DriveStudentController {
 	@Autowired
 	private DriveStudentService driveStudentService;
 
+	@Autowired
+	private CollegeService collegeService;
+
 	@GetMapping(value = "/admin/internship/drive/student/new")
 	public String newInternshipDriveStudent(ModelMap modelMap, Locale locale) {
 		modelMap.addAttribute("driveStudent", new DriveStudent());
+		modelMap.addAttribute("collegeList", this.collegeService.getCollegeList());
+		modelMap.addAttribute("edit", false);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "newDriveStudent";
 	}
@@ -73,8 +79,10 @@ public class DriveStudentController {
 	@GetMapping("/admin/internship/drive/student/edit/{id}")
 	public String editInternshipDriveStudent(@PathVariable("id") Long id, ModelMap modelMap, Locale locale)
 			throws ResourceNotFoundException {
+		modelMap.addAttribute("edit", true);
 		modelMap.addAttribute("driveStudent", this.driveStudentService.getDriveStudentById(id));
-			modelMap.addAttribute("user", this.getPrincipal());
+		modelMap.addAttribute("collegeList", this.collegeService.getCollegeList());
+		modelMap.addAttribute("user", this.getPrincipal());
 		return "newDriveStudent";
 	}
 

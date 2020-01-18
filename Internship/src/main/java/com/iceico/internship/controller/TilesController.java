@@ -3,12 +3,15 @@
  */
 package com.iceico.internship.controller;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -17,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.FinancialYear;
-import com.iceico.internship.model.StudentEntry;
 import com.iceico.internship.service.FeesService;
 import com.iceico.internship.service.FinancialYearService;
 import com.iceico.internship.service.StudentEntryService;
@@ -47,18 +49,19 @@ public class TilesController {
 	@RequestMapping("/admin/dashboard")
 	public String adminDashboard(ModelMap modelMap, Locale locale) throws ResourceNotFoundException, ParseException {
 
-		Date date = new Date();
-
 		FinancialYear financialYear = this.financialYearService.getActiveFinancialYear();
-		List<StudentEntry> studentEntries = financialYear.getStudentEntry();
-		modelMap.addAttribute("studentEntryList", studentEntries);
+		if (financialYear.getStudentEntry() == null) {
+			if (financialYear.getStudentEntry().isEmpty()) {
+				modelMap.addAttribute("studentEntryList", this.studentEntryService.getStudentEntryList());
+			}
+		} else {
+			modelMap.addAttribute("studentEntryList", financialYear.getStudentEntry());
+		}
 		modelMap.addAttribute("incomeCount", studentEntryService.getTotalIncome());
 		modelMap.addAttribute("balanceCount", studentEntryService.getTotalBalance());
 		modelMap.addAttribute("paidAmountCount", studentEntryService.getTotalPaidAmount());
-		modelMap.addAttribute("dailyFeesCollection", feesService.getdailyFeesCollection(date));
-
+		modelMap.addAttribute("dailyFeesCollection", feesService.getdailyFeesCollection(new Date()));
 		modelMap.addAttribute("user", this.getPrincipal());
-
 		return "adminDashboard";
 	}
 

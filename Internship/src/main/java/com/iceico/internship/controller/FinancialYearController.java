@@ -44,6 +44,7 @@ public class FinancialYearController {
 
 		modelMap.addAttribute("financialYear", new FinancialYear());
 		modelMap.addAttribute("fyList", this.financialYearService.getFinancialYearList());
+		modelMap.addAttribute("edit", false);
 		return "financialYear";
 	}
 
@@ -67,6 +68,7 @@ public class FinancialYearController {
 			Locale locale) throws ResourceNotFoundException {
 		modelMap.addAttribute("financialYear", this.financialYearService.getFinancialYearById(financialYearId));
 		modelMap.addAttribute("fyList", this.financialYearService.getFinancialYearList());
+		modelMap.addAttribute("edit", true);
 		modelMap.addAttribute("user", this.getPrincipal());
 
 		return "financialYear";

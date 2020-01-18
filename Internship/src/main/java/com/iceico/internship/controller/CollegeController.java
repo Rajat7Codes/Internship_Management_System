@@ -44,6 +44,7 @@ public class CollegeController {
 	public String newCollege(ModelMap modelMap, Locale locale) {
 		modelMap.addAttribute("college", new College());
 		modelMap.addAttribute("internSessionList", this.internshipSessionService.getSessionList());
+		modelMap.addAttribute("edit", false);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "newCollege";
 	}
@@ -74,6 +75,7 @@ public class CollegeController {
 			throws ResourceNotFoundException {
 		modelMap.addAttribute("college", this.collegeService.getCollegeById(id));
 		modelMap.addAttribute("internSessionList", this.internshipSessionService.getSessionList());
+		modelMap.addAttribute("edit", true);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "newCollege";
 	}

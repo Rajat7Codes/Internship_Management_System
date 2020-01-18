@@ -34,12 +34,13 @@
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
 								<form:label path="year">Financial Year</form:label>
 								<form:input path="year" name="year" id="year"
-									class="form-control" placeholder="Financial Year" />
+									class="form-control" placeholder="Financial Year"
+									required="required" />
 								<form:errors path="year"></form:errors>
 							</div>
 							<div class="col-md-12 col-sm-12 col-lg-12 col-12">
 								<form:label path="active">Status</form:label>
-								<form:select path="active" name="active" id="active"
+								<form:select path="active" name="active" id="active"  required="required"
 									class="form-control">
 									<form:option value="true">Active</form:option>
 									<form:option value="false">Inactive</form:option>
@@ -50,7 +51,9 @@
 
 						<div class="row form-group">
 							<div class="col-md-12 text-right">
-								<button type="reset" class="btn btn-danger">RESET</button>
+								<c:if test="${ edit==false }">
+									<button class="btn btn-danger" type="reset">RESET</button>
+								</c:if>
 								<button type="submit" class="btn btn-success">SAVE</button>
 							</div>
 						</div>
@@ -88,19 +91,12 @@
 									<td>${fy.year }</td>
 									<td><c:if test="${fy.active =='true'}">Active</c:if> <c:if
 											test="${fy.active =='false'}">Inactive</c:if></td>
-
-									<td class="valigntop"><div class="btn-group">
-											<button
-												class="btn btn-xs btn-success dropdown-toggle no-margin"
-												type="button" data-toggle="dropdown" aria-expanded="false">
-												Actions <i class="fa fa-angle-down"></i>
-											</button>
-											<ul class="dropdown-menu pull-left" role="menu">
-												<li><a title="Edit"
-													href="<c:url value='/admin/financial/year/edit/${fy.financialYearId }' />"><i
-														class="fa fa-edit"></i>Edit</a></li>
-											</ul>
-										</div></td>
+									<td class="valigntop"><a data-toggle="tooltip"
+										title="Edit"
+										href="<c:url value='/admin/financial/year/edit/${fy.financialYearId }' />"><i
+											style="width: 27px; height: 27px;"
+											class="text-center p-2 rounded-circle bg-success fa fa-edit"></i></a>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>

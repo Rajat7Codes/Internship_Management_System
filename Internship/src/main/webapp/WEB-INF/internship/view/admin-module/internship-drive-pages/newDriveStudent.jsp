@@ -46,9 +46,11 @@ label {
 							</div>
 
 							<div class="col-md-6 col-sm-6 col-lg-6 col-12">
-								<form:label path="college">College Name</form:label>
-								<form:input path="college" name="college" id="college"
-									class="form-control" placeholder="College Name" />
+								<form:label path="college">College</form:label>
+								<form:select class="form-control" name="college" path="college"
+									id="college" itemLabel="collegeName" items="${collegeList }"
+									itemValue="collegeId">
+								</form:select>
 								<form:errors path="college" class="errors" />
 							</div>
 
@@ -73,7 +75,9 @@ label {
 			<div class="col-12">
 				<div class="row form-group">
 					<div class="col-md-12 col-sm-12 col-lg-12 col-12 text-right pl-3 ">
-						<button class="btn btn-danger btn-lg" type="reset">RESET</button>
+						<c:if test="${edit==false}">
+							<button class="btn btn-danger btn-lg" type="reset">RESET</button>
+						</c:if>
 						<button class="btn btn-success btn-lg" id="grad" type="submit">SAVE</button>
 					</div>
 				</div>
