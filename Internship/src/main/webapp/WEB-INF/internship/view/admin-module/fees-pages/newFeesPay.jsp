@@ -11,7 +11,7 @@
 label {
 	padding-top: 10px;
 	font-weight: bolder;
-	font-size: 13px;
+	font-size: 12px;
 }
 
 #text-black {
@@ -100,7 +100,7 @@ label {
 						</div>
 
 						<div class="col-md-12">
-							<div class="row" style="padding: 10px 24px">
+							<div class="row" style="padding: 10px 22px">
 								<div class="col-md-6 col-xl-3 col-12">
 									<label class="clear-top-margin"> <i class="fa fa-rupee">
 									</i> TOTAL FEES
