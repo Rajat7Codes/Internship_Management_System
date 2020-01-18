@@ -137,7 +137,8 @@
 				<div class="card-body no-padding height-9">
 					<div class="row">
 						<div class="card-body ">
-							<input placeholder="Search" id="searchInput" class="mb-4 float-right">
+							<input placeholder="Search" id="searchInput"
+								class="mb-4 float-right">
 							<div class="table-wrap">
 								<div class="table-responsive">
 									<div class="tblHeightSet small-slimscroll-style">
@@ -185,8 +186,9 @@
 	</div>
 </body>
 
-<script src="${pageContext.request.contextPath }/static/plugins/jquery/jquery.min.js"></script>
-	
+<script
+	src="${pageContext.request.contextPath }/static/plugins/jquery/jquery.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(
 			function() {
