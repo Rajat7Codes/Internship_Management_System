@@ -119,6 +119,8 @@ public class StudentEntryController {
 
 			if (studentEntry.getDiscount() == null) {
 				discount = 0.0;
+			} else {
+				discount = studentEntry.getDiscount();
 			}
 
 			String status = "UnPaid";

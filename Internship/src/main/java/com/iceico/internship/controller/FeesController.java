@@ -215,11 +215,13 @@ public class FeesController {
 
 					if (fees.getStudentEntry().getBalanceFees() == 0)
 						status = "Paid";
+					else {
+						status = "Unpaid";
+					}
 
 					if (fees.getFeesAmount() == 0)
 						status = "Unpaid";
 
-					status = "Unpaid";
 
 					fees.getStudentEntry().setPayStatus(status);
 					this.feesService.saveFees(fees);
