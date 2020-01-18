@@ -49,7 +49,7 @@
 								<tr>
 									<td>${ind.index+1 }</td>
 									<td>${stud.studentName }</td>
-									<td>${stud.college }</td>
+									<td>${collegeList.getCollegeById(stud.college).collegeName}</td>
 									<td>${stud.emailId}</td>
 									<td>${stud.contactNumber }</td>
 									<td class="valigntop"><a data-toggle="tooltip"
