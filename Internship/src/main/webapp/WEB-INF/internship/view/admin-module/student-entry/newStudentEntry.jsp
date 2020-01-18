@@ -222,8 +222,9 @@ label {
 
 		var typeName = document.getElementById('internshipType').value;
 		var typeArray = document.getElementById('typeArray').innerHTML;
-		var parseJson = JSON.parse(typeArray);
 
+		var parseJson = JSON.parse(typeArray);
+		
 		var stringifyJson = JSON.stringify(parseJson);
 		for (i = 0; i <= parseJson.length; i++) {
 
@@ -233,11 +234,11 @@ label {
 			if (typeName == internTypeId) {
 				var newId = internTypeId;
 				var typeName = obj.type;
-
 				if (typeName == "free" || typeName == "Free") {
 					document.getElementById('amt').style.display = 'none';
 					document.getElementById('disc').style.display = 'none';
-				} else {
+				} 
+				if (typeName == "paid" || typeName == "Paid") {
 					document.getElementById('amt').style.display = 'block';
 					document.getElementById('disc').style.display = 'block';
 				}
@@ -263,12 +264,30 @@ label {
 </script>
 <script type="text/javascript">
 	function loadFunction() {
-		//alert("inside");
 		var typeName = document.getElementById('internshipType').value;
-		//alert("typename ====>>" + typeName);
-		if (typeName == 2) {
-			document.getElementById('amt').style.display = 'none';
-			document.getElementById('disc').style.display = 'none';
+		var typeArray = document.getElementById('typeArray').innerHTML;
+
+		var parseJson = JSON.parse(typeArray);
+		
+		var stringifyJson = JSON.stringify(parseJson);
+		for (i = 0; i <= parseJson.length; i++) {
+
+			var obj = parseJson[i];
+			var internTypeId = obj.internTypeId;
+
+			if (typeName == internTypeId) {
+				var newId = internTypeId;
+				var typeName = obj.type;
+				if (typeName == "free" || typeName == "Free") {
+					document.getElementById('amt').style.display = 'none';
+					document.getElementById('disc').style.display = 'none';
+				} 
+				if (typeName == "paid" || typeName == "Paid") {
+					document.getElementById('amt').style.display = 'block';
+					document.getElementById('disc').style.display = 'block';
+				}
+			}
+
 		}
 	}
 </script>
