@@ -23,7 +23,7 @@ label {
 			id="studentEntryForm" method="post">
 
 			<form:hidden path="studentEntryId" />
-
+			<div style="display: none;" id="typeArray">${typeJson }</div>
 			<div class="col-md-12">
 				<div class="card card-topline-darkgreen">
 					<div class="card-header card-head pl-4" id="grad">
@@ -219,23 +219,36 @@ label {
 
 <script type="text/javascript">
 	function myFunction() {
-		var typeName = document.getElementById('internshipType').value;
-		//alert("typename ====>>" + typeName);
-		if (typeName == 2) {
-			document.getElementById('amt').style.display = 'none';
-			document.getElementById('disc').style.display = 'none';
-			//document.getElementById('updateFreeDropDown').style.display = 'block';
 
-		} else {
-			document.getElementById('amt').style.display = 'block';
-			document.getElementById('disc').style.display = 'block';
+		var typeName = document.getElementById('internshipType').value;
+		var typeArray = document.getElementById('typeArray').innerHTML;
+		var parseJson = JSON.parse(typeArray);
+
+		var stringifyJson = JSON.stringify(parseJson);
+		for (i = 0; i <= parseJson.length; i++) {
+
+			var obj = parseJson[i];
+			var internTypeId = obj.internTypeId;
+
+			if (typeName == internTypeId) {
+				var newId = internTypeId;
+				var typeName = obj.type;
+
+				if (typeName == "free" || typeName == "Free") {
+					document.getElementById('amt').style.display = 'none';
+					document.getElementById('disc').style.display = 'none';
+				} else {
+					document.getElementById('amt').style.display = 'block';
+					document.getElementById('disc').style.display = 'block';
+				}
+			}
+
 		}
 	}
 </script>
 
 <script type="text/javascript">
 	function myFunction2() {
-		//alert("inside");
 		var feesAmount = document.getElementById('feesAmount').value;
 		var discount = document.getElementById('discount').value;
 
@@ -259,8 +272,4 @@ label {
 		}
 	}
 </script>
-
-
-
-
 </html>

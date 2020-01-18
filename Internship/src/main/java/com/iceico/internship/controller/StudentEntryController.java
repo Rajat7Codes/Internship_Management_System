@@ -12,6 +12,8 @@ import java.util.Locale;
 
 import javax.validation.Valid;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,6 +27,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.iceico.internship.exceptions.ResourceNotFoundException;
 import com.iceico.internship.model.Holiday;
+import com.iceico.internship.model.InternshipType;
 import com.iceico.internship.model.StudentEntry;
 import com.iceico.internship.service.CollegeService;
 import com.iceico.internship.service.DepartmentService;
@@ -79,8 +82,10 @@ public class StudentEntryController {
 	@Autowired
 	private ListHelper listHelper;
 
+	@SuppressWarnings("unchecked")
 	@GetMapping("/admin/student/entry/new")
 	public String newStudentEntry(ModelMap modelMap, Locale locale) {
+		System.out.println("INside new=========<<<<<<S");
 		StudentEntry studentEntry = new StudentEntry();
 		studentEntry.setFinancialYear(this.financialYearService.getActiveFinancialYear());
 
@@ -93,6 +98,19 @@ public class StudentEntryController {
 		modelMap.addAttribute("departmentList", this.departmentService.getDepartmentList());
 		modelMap.addAttribute("statusList", this.listHelper.getStatusList());
 		modelMap.addAttribute("edit", false);
+
+		List<InternshipType> internshipTypeList = this.internshipTypeService.getInternshipTypeList();
+		JSONArray typeArray = new JSONArray();
+
+		for (InternshipType internshipType : internshipTypeList) {
+			JSONObject typeObject = new JSONObject();
+			typeObject.put("internTypeId", internshipType.getInternTypeId());
+			typeObject.put("type", internshipType.getType());
+			typeArray.add(typeObject);
+
+		}
+		System.out.println("type arrray ========>" + typeArray);
+		modelMap.addAttribute("typeJson", typeArray);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "newStudentEntry";
 	}
