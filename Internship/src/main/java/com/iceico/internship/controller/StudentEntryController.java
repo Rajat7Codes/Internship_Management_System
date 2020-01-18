@@ -281,7 +281,7 @@ public class StudentEntryController {
 		Integer offerStatus = studentEntry.getOfferCount();
 
 		if (offerStatus == null) {
-			studentEntry.setJoinCount(1);
+			studentEntry.setOfferCount(1);
 			this.studentEntryService.saveStudentEntry(studentEntry);
 			modelMap.addAttribute("offer", true);
 
