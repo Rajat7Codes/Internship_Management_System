@@ -43,13 +43,9 @@ public class ListHelper {
 		List<String> statuslist = new ArrayList<String>();
 
 		statuslist.add("New");
-		statuslist.add("Joined");
-		statuslist.add("Persuing");
 		statuslist.add("Discontinued");
 		statuslist.add("Released");
 
 		return statuslist;
-
 	}
-
 }

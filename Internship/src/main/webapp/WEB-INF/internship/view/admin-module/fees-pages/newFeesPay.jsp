@@ -11,7 +11,7 @@
 label {
 	padding-top: 10px;
 	font-weight: bolder;
-	font-size:13px;
+	font-size: 13px;
 }
 
 #text-black {
@@ -140,89 +140,89 @@ label {
 								</div>
 							</div>
 
-
 							<hr>
 
 							<div class="card-body">
-								<div class="row form-group">
-									<div class="col-md-6 col-sm-6 col-lg-6 col-12">
-										<form:label path="feesAmount">Paid amount</form:label>
-										<form:input path="feesAmount" name="feesAmount"
-											id="feesAmount" class="form-control"
-											placeholder="Fees Amount" />
-										<form:errors path="feesAmount"></form:errors>
+								<c:if test="${ studentEntry.balanceFees != 0 }">
+									<div class="row form-group">
+										<div class="col-md-6 col-sm-6 col-lg-6 col-12">
+											<form:label path="feesAmount">Paid amount</form:label>
+											<form:input path="feesAmount" name="feesAmount"
+												id="feesAmount" class="form-control"
+												placeholder="Fees Amount" />
+											<form:errors path="feesAmount"></form:errors>
+										</div>
+
+										<div class="col-md-6 col-sm-6 col-lg-6 col-12">
+											<form:label path="date">Date</form:label>
+											<form:input type="date" path="date" name="date" id="date"
+												class="form-control" placeholder="date" />
+											<form:errors path="date"></form:errors>
+										</div>
+
+										<div class="col-md-6 col-sm-6 col-lg-6 col-12">
+											<form:label path="payMode">Payment Mode</form:label>
+											<form:select path="payMode" class="form-control"
+												name="payMode" id="payMode"
+												onchange="bankSelectCheck(this);">
+												<form:options items="${payModeList }"></form:options>
+											</form:select>
+											<form:errors path="payMode"></form:errors>
+										</div>
+
+										<div class="col-md-6 col-sm-6 col-lg-6 col-12" id="num"
+											style="display: none;">
+											<form:label path="payModeDate">
+												<span id="chequeDate" style="display: none;">Cheque
+													Date</span>
+												<span id="ddDate" style="display: none;">DD Date</span>
+											</form:label>
+											<form:input path="payModeDate" type="date" name="payModeDate"
+												id="payModeDate" class="form-control" />
+											<form:errors path="payModeDate"></form:errors>
+										</div>
+
+										<div class="col-md-6 col-sm-6 col-lg-6 col-12" id="date1"
+											style="display: none;">
+											<form:label path="num">
+												<span id="chequeNumber" style="display: none;">Cheque
+													#</span>
+												<span id="ddNumber" style="display: none;">DD #</span>
+											</form:label>
+											<form:input path="num" name="num" id="num"
+												placeholder="Enter Number" class="form-control" />
+											<form:errors path="num"></form:errors>
+										</div>
+
+										<div class="col-md-6 col-sm-6 col-lg-6 col-12" id="bank"
+											style="display: none;">
+											<form:label path="bank">
+												<span id="chequeBank" style="display: none;">Cheque
+													Bank</span>
+												<span id="ddBank" style="display: none;">DD Bank</span>
+											</form:label>
+											<form:input path="bank" name="bank" id="bank"
+												placeholder="Enter Bank" class="form-control" />
+											<form:errors path="bank"></form:errors>
+										</div>
 									</div>
-
-									<div class="col-md-6 col-sm-6 col-lg-6 col-12">
-										<form:label path="date">Date</form:label>
-										<form:input type="date" path="date" name="date" id="date"
-											class="form-control" placeholder="date" />
-										<form:errors path="date"></form:errors>
-									</div>
-
-									<div class="col-md-6 col-sm-6 col-lg-6 col-12">
-										<form:label path="payMode">Payment Mode</form:label>
-										<form:select path="payMode" class="form-control"
-											name="payMode" id="payMode" onchange="bankSelectCheck(this);">
-											<form:options items="${payModeList }"></form:options>
-										</form:select>
-										<form:errors path="payMode"></form:errors>
-									</div>
-
-									<div class="col-md-6 col-sm-6 col-lg-6 col-12" id="num"
-										style="display: none;">
-										<form:label path="payModeDate">
-											<span id="chequeDate" style="display: none;">Cheque
-												Date</span>
-											<span id="ddDate" style="display: none;">DD Date</span>
-										</form:label>
-										<form:input path="payModeDate" type="date" name="payModeDate"
-											id="payModeDate" class="form-control" />
-										<form:errors path="payModeDate"></form:errors>
-									</div>
-
-									<div class="col-md-6 col-sm-6 col-lg-6 col-12" id="date1"
-										style="display: none;">
-										<form:label path="num">
-											<span id="chequeNumber" style="display: none;">Cheque
-												#</span>
-											<span id="ddNumber" style="display: none;">DD #</span>
-										</form:label>
-										<form:input path="num" name="num" id="num"
-											placeholder="Enter Number" class="form-control" />
-										<form:errors path="num"></form:errors>
-									</div>
-
-
-									<div class="col-md-6 col-sm-6 col-lg-6 col-12" id="bank"
-										style="display: none;">
-										<form:label path="bank">
-											<span id="chequeBank" style="display: none;">Cheque
-												Bank</span>
-											<span id="ddBank" style="display: none;">DD Bank</span>
-										</form:label>
-										<form:input path="bank" name="bank" id="bank"
-											placeholder="Enter Bank" class="form-control" />
-										<form:errors path="bank"></form:errors>
-									</div>
-
-
-
-								</div>
+								</c:if>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="col-12">
-				<div class="row form-group">
-					<div class="col-md-12 col-sm-12 col-lg-12 col-12 text-right pl-3 ">
-						<button class="btn btn-danger btn-lg" type="reset">RESET</button>
-						<button class="btn btn-success btn-lg" id="grad" type="submit">SAVE</button>
+			<c:if test="${ studentEntry.balanceFees != 0 }">
+				<div class="col-12">
+					<div class="row form-group">
+						<div class="col-md-12 col-sm-12 col-lg-12 col-12 text-right pl-3 ">
+							<button class="btn btn-danger btn-lg" type="reset">RESET</button>
+							<button class="btn btn-success btn-lg" id="grad" type="submit">SAVE</button>
+						</div>
 					</div>
 				</div>
-			</div>
+			</c:if>
 		</form:form>
 	</div>
 </body>
@@ -241,7 +241,6 @@ label {
 			document.getElementById("bank").style.display = "none";
 			document.getElementById("chequeBank").style.display = "none";
 			document.getElementById("ddBank").style.display = "none";
-
 		} else if (payMode == "DD") {
 			document.getElementById("num").style.display = "block";
 			document.getElementById("date1").style.display = "block";
@@ -252,7 +251,6 @@ label {
 			document.getElementById("bank").style.display = "block";
 			document.getElementById("chequeBank").style.display = "none";
 			document.getElementById("ddBank").style.display = "block";
-
 		} else if (payMode == "Cheque") {
 			document.getElementById("num").style.display = "block";
 			document.getElementById("date1").style.display = "block";
