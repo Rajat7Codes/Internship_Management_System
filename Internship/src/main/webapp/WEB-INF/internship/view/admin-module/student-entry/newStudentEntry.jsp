@@ -121,7 +121,23 @@ label {
 							</div>
 
 
-							<c:if test="${edit==false }">
+							<%-- <c:if test="${edit==false }"> --%>
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12" id="amt">
+								<form:label path="feesAmount">Fees</form:label>
+								<form:input path="feesAmount" name="feesAmount" id="feesAmount"
+									class="form-control" placeholder="Fees Amount" />
+								<form:errors path="feesAmount"></form:errors>
+							</div>
+
+							<div class="col-md-4 col-sm-4 col-lg-4 col-12" id="disc">
+								<form:label path="discount">Discount</form:label>
+								<form:input path="discount" name="discount" id="discount"
+									class="form-control" placeholder="Discount" />
+								<form:errors path="discount"></form:errors>
+							</div>
+							<%-- </c:if> --%>
+
+							<%-- <c:if test="${edit==true }">
 								<div class="col-md-4 col-sm-4 col-lg-4 col-12" id="amt">
 									<form:label path="feesAmount">Fees</form:label>
 									<form:input path="feesAmount" name="feesAmount" id="feesAmount"
@@ -135,9 +151,9 @@ label {
 										class="form-control" placeholder="Discount" />
 									<form:errors path="discount"></form:errors>
 								</div>
-							</c:if>
+							</c:if> --%>
 
-							<c:if test="${fn:containsIgnoreCase(paidType, 'paid') }">
+							<%-- <c:if test="${ fn:containsIgnoreCase(freeType, 'free') }">
 								<div class="col-md-4 col-sm-4 col-lg-4 col-12" id="amt">
 									<form:label path="feesAmount">Fees</form:label>
 									<form:input path="feesAmount" name="feesAmount" id="feesAmount"
@@ -151,26 +167,7 @@ label {
 										class="form-control" placeholder="Discount" />
 									<form:errors path="discount"></form:errors>
 								</div>
-
-							</c:if>
-
-							<c:if test="${ fn:containsIgnoreCase(freeType, 'free') }">
-								<!-- <div id="updateFreeDropDown" style="display: none;"> -->
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12" id="amt">
-									<form:label path="feesAmount">Fees</form:label>
-									<form:input path="feesAmount" name="feesAmount" id="feesAmount"
-										class="form-control" placeholder="Fees Amount" />
-									<form:errors path="feesAmount"></form:errors>
-								</div>
-
-								<div class="col-md-4 col-sm-4 col-lg-4 col-12" id="disc">
-									<form:label path="discount">Discount</form:label>
-									<form:input path="discount" name="discount" id="discount"
-										class="form-control" placeholder="Discount" />
-									<form:errors path="discount"></form:errors>
-								</div>
-								<!-- </div> -->
-							</c:if>
+							</c:if> --%>
 
 
 							<div class="col-md-4 col-sm-4 col-lg-4 col-12">
@@ -219,7 +216,6 @@ label {
 
 <script type="text/javascript">
 	function myFunction() {
-
 		var typeName = document.getElementById('internshipType').value;
 		var typeArray = document.getElementById('typeArray').innerHTML;
 		var parseJson = JSON.parse(typeArray);
@@ -238,6 +234,8 @@ label {
 					document.getElementById('amt').style.display = 'none';
 					document.getElementById('disc').style.display = 'none';
 				} else {
+					document.getElementById('feesAmount').value = null;
+					document.getElementById('discount').value = null;
 					document.getElementById('amt').style.display = 'block';
 					document.getElementById('disc').style.display = 'block';
 				}
@@ -246,7 +244,6 @@ label {
 		}
 	}
 </script>
-
 <script type="text/javascript">
 	function myFunction2() {
 		var feesAmount = document.getElementById('feesAmount').value;
@@ -263,12 +260,28 @@ label {
 </script>
 <script type="text/javascript">
 	function loadFunction() {
-		//alert("inside");
 		var typeName = document.getElementById('internshipType').value;
-		//alert("typename ====>>" + typeName);
-		if (typeName == 2) {
-			document.getElementById('amt').style.display = 'none';
-			document.getElementById('disc').style.display = 'none';
+		var typeArray = document.getElementById('typeArray').innerHTML;
+		//alert("typeArray =====>>>" + typeArray);
+		var parseJson = JSON.parse(typeArray);
+		//alert("parseJson =====>>>" + JSON.parse(typeArray));
+		var stringifyJson = JSON.stringify(parseJson);
+		for (i = 0; i <= parseJson.length; i++) {
+			var obj = parseJson[i];
+			var internTypeId = obj.internTypeId;
+
+			if (typeName == internTypeId) {
+				var newId = internTypeId;
+				var typeName = obj.type;
+
+				if (typeName == "free" || typeName == "Free") {
+					document.getElementById('amt').style.display = 'none';
+					document.getElementById('disc').style.display = 'none';
+				} else {
+					document.getElementById('amt').style.display = 'block';
+					document.getElementById('disc').style.display = 'block';
+				}
+			}
 		}
 	}
 </script>
