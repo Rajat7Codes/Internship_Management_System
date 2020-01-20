@@ -140,8 +140,11 @@
 										<a data-toggle="tooltip" title="View"
 										href="<c:url value='/admin/student/entry/view/${stud.studentEntryId }'  />"><i
 											style="width: 27px; height: 27px;"
-											class="text-center p-2 rounded-circle bg-success fa fa-eye"></i></a>
-
+											class="text-center p-2 rounded-circle bg-success fa fa-eye"></i></a>	
+										<a data-toggle="tooltip" title="Delete"
+										href="<c:url value='/admin/student/entry/delete/${stud.studentEntryId }'  />"><i
+											style="width: 27px; height: 27px;"
+											class="text-center p-2 rounded-circle bg-success fa fa-trash"></i></a>
 									</td>
 								</tr>
 							</c:forEach>
@@ -155,7 +158,7 @@
 
 	<script>
 		function checkJoining(joinCount, studentId) {
-			if (joinCount == 1) {
+			if (!(joinCount == 1)) {
 				window.alert('Joining Letter Already Given');
 			} else {
 				window.location = "/admin/student/entry/joining/letter/"

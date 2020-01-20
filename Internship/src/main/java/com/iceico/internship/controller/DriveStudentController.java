@@ -58,7 +58,7 @@ public class DriveStudentController {
 	@GetMapping(value = "/admin/internship/drive/student")
 	public String getInternshipDriveStudent(ModelMap modelMap, Locale locale) {
 		modelMap.addAttribute("driveStudentList", this.driveStudentService.getDriveStudentList());
-		modelMap.addAttribute("collegeList", this.collegeService);
+		modelMap.addAttribute("collegeList", this.collegeService.getCollegeList());
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "driveStudent";
 	}

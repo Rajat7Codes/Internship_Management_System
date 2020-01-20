@@ -44,12 +44,15 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="stud" items="${driveStudentList }"
-								varStatus="ind">
+							<c:forEach var="stud" items="${driveStudentList }" varStatus="ind">
 								<tr>
 									<td>${ind.index+1 }</td>
 									<td>${stud.studentName }</td>
-									<td>${collegeList.getCollegeById(stud.college).collegeName}</td>
+									<c:forEach var="col" items="${collegeList }" varStatus="ind2">
+										<c:if test="${col.collegeId==stud.college}">
+											<td> ${col.collegeName} </td>
+										</c:if> 
+									</c:forEach>
 									<td>${stud.emailId}</td>
 									<td>${stud.contactNumber }</td>
 									<td class="valigntop"><a data-toggle="tooltip"
@@ -60,7 +63,6 @@
 									</td>
 								</tr>
 							</c:forEach>
-
 						</tbody>
 					</table>
 				</div>

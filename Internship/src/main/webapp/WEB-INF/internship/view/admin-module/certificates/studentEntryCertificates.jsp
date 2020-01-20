@@ -96,7 +96,7 @@
 
 	<script>
 		function checkJoining(joinCount, studentId) {
-			if (joinCount == 1) {
+			if (!(joinCount == 1)) {
 				window.alert('Joining Letter Already Given');
 			} else {
 				window.location = "/admin/student/entry/joining/letter/print/"

@@ -215,23 +215,28 @@ public class StudentEntryController {
 	public String getJoiningLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap,
 			Locale locale) throws ResourceNotFoundException, Exception {
 
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat("EEEE");
+		
 		StudentEntry studentEntry = this.studentEntryService.getStudentEntryById(studentEntryId);
 		Date date = studentEntry.getDate();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		
 		modelMap.addAttribute("joiningDate", simpleDateFormat.format(date));
 
-		String stDate = simpleDateFormat.format(date);
 		Calendar calendar = Calendar.getInstance();
+		String stDate = simpleDateFormat.format(date);
 		calendar.setTime(simpleDateFormat.parse(stDate));
+		
 		calendar.add(Calendar.DATE, 15);
+		
 		stDate = simpleDateFormat.format(calendar.getTime());
 		Date newDate = simpleDateFormat.parse(stDate);
-		SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat("EEEE");
+		
 		String day = newSimpleDateFormat.format(newDate); // for check which day comes on 15 days later
 		List<Holiday> holidayList = this.holidayService.getHolidayList();
 		Integer joinStatus = studentEntry.getJoinCount();
 
-		if (joinStatus == null) {
+		if (! (joinStatus == null)) {
 			studentEntry.setJoinCount(1);
 			this.studentEntryService.saveStudentEntry(studentEntry);
 			modelMap.addAttribute("offer", true);
@@ -247,6 +252,8 @@ public class StudentEntryController {
 				String stDate1 = simpleDateFormat.format(holidayList.get(i).getDate());
 				Calendar calendar1 = Calendar.getInstance();
 				calendar1.setTime(simpleDateFormat.parse(stDate1));
+				System.out.println("1=====>"+simpleDateFormat.format(calendar.getTime()).toString());
+				System.out.println("2=====>"+simpleDateFormat.format(calendar1.getTime()).toString());
 				if (simpleDateFormat.format(calendar.getTime()).toString().equals(
 						simpleDateFormat.format(calendar1.getTime()).toString()) || day.equalsIgnoreCase("sunday")) {
 					if (simpleDateFormat.format(calendar.getTime()).toString()
