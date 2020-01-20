@@ -85,7 +85,6 @@ public class StudentEntryController {
 	@SuppressWarnings("unchecked")
 	@GetMapping("/admin/student/entry/new")
 	public String newStudentEntry(ModelMap modelMap, Locale locale) {
-		System.out.println("INside new=========<<<<<<S");
 		StudentEntry studentEntry = new StudentEntry();
 		studentEntry.setFinancialYear(this.financialYearService.getActiveFinancialYear());
 
@@ -109,7 +108,6 @@ public class StudentEntryController {
 			typeArray.add(typeObject);
 
 		}
-		System.out.println("type arrray ========>" + typeArray);
 		modelMap.addAttribute("typeJson", typeArray);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "newStudentEntry";
@@ -157,14 +155,11 @@ public class StudentEntryController {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@GetMapping("/admin/student/entry/edit/{studentEntryId}")
 	public String editStudentEntry(@PathVariable("studentEntryId") @Valid Long studentEntryId, ModelMap modelMap,
 			Locale locale) throws ResourceNotFoundException {
 
-		StudentEntry studentEntry = this.studentEntryService.getStudentEntryById(studentEntryId);
-		String type = studentEntry.getInternshipType().getType();
-		System.out.println("type ====>>" + studentEntry.getInternshipType().getType());
-		System.out.println("type====>" + type);
 		modelMap.addAttribute("studentEntry", this.studentEntryService.getStudentEntryById(studentEntryId));
 		modelMap.addAttribute("collegeList", this.collegeService.getCollegeList());
 		modelMap.addAttribute("internTypeList", this.internshipTypeService.getInternshipTypeList());
@@ -175,13 +170,17 @@ public class StudentEntryController {
 		modelMap.addAttribute("statusList", this.listHelper.getStatusList());
 		modelMap.addAttribute("edit", true);
 
-		if (type.equalsIgnoreCase("paid")) {
-			System.out.println("inside paid type if type   =============<<<<<< ");
-			modelMap.addAttribute("paidType", type);
-		} else {
-			System.out.println("inside Free type   ================<<<<<<");
-			modelMap.addAttribute("freeType", type);
+		List<InternshipType> internshipTypeList = this.internshipTypeService.getInternshipTypeList();
+		JSONArray typeArray = new JSONArray();
+
+		for (InternshipType internshipType : internshipTypeList) {
+			JSONObject typeObject = new JSONObject();
+			typeObject.put("internTypeId", internshipType.getInternTypeId());
+			typeObject.put("type", internshipType.getType());
+			typeArray.add(typeObject);
+
 		}
+		modelMap.addAttribute("typeJson", typeArray);
 		modelMap.addAttribute("user", this.getPrincipal());
 		return "newStudentEntry";
 	}
@@ -192,7 +191,6 @@ public class StudentEntryController {
 		modelMap.addAttribute("studentEntry", this.studentEntryService.getStudentEntryById(studentEntryId));
 		modelMap.addAttribute("statusList", this.listHelper.getStatusList());
 		modelMap.addAttribute("user", this.getPrincipal());
-
 		return "viewStudentEntry";
 	}
 
@@ -215,60 +213,68 @@ public class StudentEntryController {
 	public String getJoiningLetter(@PathVariable("studentEntryId") Long studentEntryId, ModelMap modelMap,
 			Locale locale) throws ResourceNotFoundException, Exception {
 
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-		SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat("EEEE");
-		
+		System.out.println("==========>>>>>    inside print joining letter controller    <<<<<=============");
 		StudentEntry studentEntry = this.studentEntryService.getStudentEntryById(studentEntryId);
 		Date date = studentEntry.getDate();
-		
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		modelMap.addAttribute("joiningDate", simpleDateFormat.format(date));
 
-		Calendar calendar = Calendar.getInstance();
 		String stDate = simpleDateFormat.format(date);
+		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(simpleDateFormat.parse(stDate));
-		
 		calendar.add(Calendar.DATE, 15);
-		
 		stDate = simpleDateFormat.format(calendar.getTime());
+		// System.out.println("15days later date ====>>" + stDate);
 		Date newDate = simpleDateFormat.parse(stDate);
-		
+		SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat("EEEE");
 		String day = newSimpleDateFormat.format(newDate); // for check which day comes on 15 days later
+		System.out.println("I want that day ====>> " + day);
 		List<Holiday> holidayList = this.holidayService.getHolidayList();
 		Integer joinStatus = studentEntry.getJoinCount();
 
-		if (! (joinStatus == null)) {
+		if (holidayList.isEmpty()) {
+			if (day.equalsIgnoreCase("sunday")) {
+				System.out.println("inside sunday logic <<<===");
+				calendar.add(Calendar.DATE, 1);
+				stDate = simpleDateFormat.format(calendar.getTime());
+				System.out.println("Sunday after increment Date ====> " + stDate);
+				modelMap.addAttribute("date", stDate);
+			}
+		}
+		if (joinStatus == null) {
+			System.out.println("Inside Join status if      <<<========");
 			studentEntry.setJoinCount(1);
 			this.studentEntryService.saveStudentEntry(studentEntry);
 			modelMap.addAttribute("offer", true);
-
-			if (holidayList.isEmpty()) {
-				if (day.equalsIgnoreCase("sunday")) {
-					calendar.add(Calendar.DATE, 1);
-					stDate = simpleDateFormat.format(calendar.getTime());
-					modelMap.addAttribute("date", stDate);
-				}
-			}
 			for (int i = 0; i < holidayList.size(); i++) {
 				String stDate1 = simpleDateFormat.format(holidayList.get(i).getDate());
 				Calendar calendar1 = Calendar.getInstance();
 				calendar1.setTime(simpleDateFormat.parse(stDate1));
-				System.out.println("1=====>"+simpleDateFormat.format(calendar.getTime()).toString());
-				System.out.println("2=====>"+simpleDateFormat.format(calendar1.getTime()).toString());
+
+				System.out.println("Inside for loop    <<<=====");
+				System.out.println("holiday date ===>" + stDate1);
+
 				if (simpleDateFormat.format(calendar.getTime()).toString().equals(
 						simpleDateFormat.format(calendar1.getTime()).toString()) || day.equalsIgnoreCase("sunday")) {
+					System.out.println("Inside Main if    <<<=====");
 					if (simpleDateFormat.format(calendar.getTime()).toString()
 							.equals(simpleDateFormat.format(calendar1.getTime()).toString())) {
+						System.out.println("inside holiday logic <<<===");
 						calendar.add(Calendar.DATE, 1);
 						stDate = simpleDateFormat.format(calendar.getTime());
+						System.out.println("holiday after increment Date ====> " + stDate);
 						modelMap.addAttribute("date", stDate);
 						i = 0;
 					}
 					Date newDate1 = simpleDateFormat.parse(stDate);
 					SimpleDateFormat newSimpleDateFormat1 = new SimpleDateFormat("EEEE");
 					String day1 = newSimpleDateFormat1.format(newDate1);
+					System.out.println("Day if Sunday ====" + day1);
 					if (day1.equalsIgnoreCase("sunday")) {
+						System.out.println("inside sunday logic <<<===");
 						calendar.add(Calendar.DATE, 1);
 						stDate = simpleDateFormat.format(calendar.getTime());
+						System.out.println("Sunday after increment Date ====> " + stDate);
 						modelMap.addAttribute("date", stDate);
 					}
 				}
@@ -289,21 +295,19 @@ public class StudentEntryController {
 			throws ResourceNotFoundException, ParseException {
 		StudentEntry studentEntry = this.studentEntryService.getStudentEntryById(studentEntryId);
 		Date date = studentEntry.getDate();
-
+		// Date currentDate = new Date();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		modelMap.addAttribute("joiningDate", simpleDateFormat.format(date));
-
+		// modelMap.addAttribute("currentDate", simpleDateFormat.format(currentDate));
 		String stDate = simpleDateFormat.format(date);
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(simpleDateFormat.parse(stDate));
 		calendar.add(Calendar.DATE, -1);
 		stDate = simpleDateFormat.format(calendar.getTime());
-
-		System.out.println("15days later date ====>>" + stDate);
-
+		// System.out.println("1day before date ====>>" + stDate);
 		Date newDate = simpleDateFormat.parse(stDate);
 		SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat("EEEE");
-		String day = newSimpleDateFormat.format(newDate); // for check which day comes on 15 days later
+		String day = newSimpleDateFormat.format(newDate); // for check which day comes on 1 day later
 		List<Holiday> holidayList = this.holidayService.getHolidayList();
 		Integer offerStatus = studentEntry.getOfferCount();
 
@@ -311,54 +315,33 @@ public class StudentEntryController {
 			studentEntry.setOfferCount(1);
 			this.studentEntryService.saveStudentEntry(studentEntry);
 			modelMap.addAttribute("offer", true);
-
-			if (holidayList.isEmpty()) {
-				if (day.equalsIgnoreCase("sunday")) {
-					calendar.add(Calendar.DATE, -1);
-					stDate = simpleDateFormat.format(calendar.getTime());
-					modelMap.addAttribute("date", stDate);
-				}
-			}
 			for (int i = 0; i < holidayList.size(); i++) {
-				System.out.println("inside for");
 				String stDate1 = simpleDateFormat.format(holidayList.get(i).getDate());
-				System.out.println("holidays dates ====>" + stDate1);
 				Calendar calendar1 = Calendar.getInstance();
 				calendar1.setTime(simpleDateFormat.parse(stDate1));
 
 				if (simpleDateFormat.format(calendar.getTime()).toString().equals(
 						simpleDateFormat.format(calendar1.getTime()).toString()) || day.equalsIgnoreCase("sunday")) {
-
 					if (simpleDateFormat.format(calendar.getTime()).toString()
 							.equals(simpleDateFormat.format(calendar1.getTime()).toString())) {
-
-						System.out.println("inside holiday block ======>>>>");
+						// System.out.println("inside holiday date");
 						calendar.add(Calendar.DATE, -1);
 						stDate = simpleDateFormat.format(calendar.getTime());
-						modelMap.addAttribute("date", stDate);
-
-						calendar.add(Calendar.DATE, -1);
-						stDate = simpleDateFormat.format(calendar.getTime());
-
-						modelMap.addAttribute("currentDate", stDate);
-
+						// System.out.println("Holiday Date =====>" + stDate);
+						modelMap.addAttribute("oneDayBeforeDate", stDate);
 						i = 0;
 					}
-
 					Date newDate1 = simpleDateFormat.parse(stDate);
-
+					// System.out.println("newDate1 =====>>>" + newDate1);
 					SimpleDateFormat newSimpleDateFormat1 = new SimpleDateFormat("EEEE");
 					String day1 = newSimpleDateFormat1.format(newDate1);
-					System.out.println("before date ====>>" + stDate);
-
+					// System.out.println("day1 =====>>>" + day1);
 					if (day1.equalsIgnoreCase("sunday")) {
+						// System.out.println("inside sunday date");
 						calendar.add(Calendar.DATE, -1);
 						stDate = simpleDateFormat.format(calendar.getTime());
-
-						System.out.println("sunday before date ====>>" + stDate);
-						modelMap.addAttribute("date", stDate);
-
-						modelMap.addAttribute("currentDate", stDate);
+						// System.out.println("Sunday Date =====>" + stDate);
+						modelMap.addAttribute("oneDayBeforeDate", stDate);
 					}
 				}
 			}
@@ -366,9 +349,10 @@ public class StudentEntryController {
 			modelMap.addAttribute("offer", false);
 			modelMap.addAttribute("errorMessage", "Offer Letter Already Given ");
 		}
-		modelMap.addAttribute("date", stDate);
-		modelMap.addAttribute("user", this.getPrincipal());
+		modelMap.addAttribute("duration", studentEntry.getInternshipDuration().getDuration());
+		modelMap.addAttribute("oneDayBeforeDate", stDate);
 		modelMap.addAttribute("stud", studentEntry);
+		modelMap.addAttribute("user", this.getPrincipal());
 		return "printOfferLetter";
 	}
 
@@ -380,9 +364,7 @@ public class StudentEntryController {
 		Integer internshipStatus = studentEntry.getInternshipCount();
 		if (internshipStatus == null) {
 			studentEntry.setInternshipCount(1);
-
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-
 			Calendar calendar = Calendar.getInstance();
 
 			// Generates Current Date
@@ -440,9 +422,10 @@ public class StudentEntryController {
 				String stDate1 = simpleDateFormat.format(holidayList.get(i).getDate());
 				Calendar calendar1 = Calendar.getInstance();
 				calendar1.setTime(simpleDateFormat.parse(stDate1));
-
+				System.out.println(stDate1);
 				if (simpleDateFormat.format(calendar.getTime()).toString().equals(
 						simpleDateFormat.format(calendar1.getTime()).toString()) || day.equalsIgnoreCase("sunday")) {
+
 					if (simpleDateFormat.format(calendar.getTime()).toString()
 							.equals(simpleDateFormat.format(calendar1.getTime()).toString())) {
 						calendar.add(Calendar.DATE, 1);
@@ -500,12 +483,13 @@ public class StudentEntryController {
 				calendar1.setTime(simpleDateFormat.parse(stDate1));
 				if (simpleDateFormat.format(calendar.getTime()).toString().equals(
 						simpleDateFormat.format(calendar1.getTime()).toString()) || day.equalsIgnoreCase("sunday")) {
+
 					if (simpleDateFormat.format(calendar.getTime()).toString()
 							.equals(simpleDateFormat.format(calendar1.getTime()).toString())) {
 						calendar.add(Calendar.DATE, -1);
 						stDate = simpleDateFormat.format(calendar.getTime());
 						modelMap.addAttribute("currentDate", stDate);
-						i = 0;
+						System.out.println("Holidays wali updated date ===>>>" + stDate);
 					}
 					Date newDate1 = simpleDateFormat.parse(stDate);
 					SimpleDateFormat newSimpleDateFormat1 = new SimpleDateFormat("EEEE");
@@ -514,6 +498,7 @@ public class StudentEntryController {
 						calendar.add(Calendar.DATE, -1);
 						stDate = simpleDateFormat.format(calendar.getTime());
 						modelMap.addAttribute("currentDate", stDate);
+						i = 0;
 					}
 				}
 			}
