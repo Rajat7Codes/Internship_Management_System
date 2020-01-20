@@ -78,6 +78,7 @@
 
 <script type="text/javascript">
 	function myFunction2() {
+		window.print();
 		var joiningDAte = document.getElementById('joinDate').innerHTML;
 		//alert("joiningDAte =====>>>" + joiningDAte);
 		var holidayJson = document.getElementById('holidayJson').innerHTML;
