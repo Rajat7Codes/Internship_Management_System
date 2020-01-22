@@ -224,7 +224,7 @@ public class StudentEntryController {
 		calendar.setTime(simpleDateFormat.parse(stDate));
 		calendar.add(Calendar.DATE, 15);
 		stDate = simpleDateFormat.format(calendar.getTime());
-		// System.out.println("15days later date ====>>" + stDate);
+		
 		Date newDate = simpleDateFormat.parse(stDate);
 		SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat("EEEE");
 		String day = newSimpleDateFormat.format(newDate); // for check which day comes on 15 days later
@@ -234,15 +234,12 @@ public class StudentEntryController {
 
 		if (holidayList.isEmpty()) {
 			if (day.equalsIgnoreCase("sunday")) {
-				System.out.println("inside sunday logic <<<===");
 				calendar.add(Calendar.DATE, 1);
 				stDate = simpleDateFormat.format(calendar.getTime());
-				System.out.println("Sunday after increment Date ====> " + stDate);
 				modelMap.addAttribute("date", stDate);
 			}
 		}
 		if (joinStatus == null) {
-			System.out.println("Inside Join status if      <<<========");
 			studentEntry.setJoinCount(1);
 			this.studentEntryService.saveStudentEntry(studentEntry);
 			modelMap.addAttribute("offer", true);
@@ -251,30 +248,21 @@ public class StudentEntryController {
 				Calendar calendar1 = Calendar.getInstance();
 				calendar1.setTime(simpleDateFormat.parse(stDate1));
 
-				System.out.println("Inside for loop    <<<=====");
-				System.out.println("holiday date ===>" + stDate1);
-
 				if (simpleDateFormat.format(calendar.getTime()).toString().equals(
 						simpleDateFormat.format(calendar1.getTime()).toString()) || day.equalsIgnoreCase("sunday")) {
-					System.out.println("Inside Main if    <<<=====");
 					if (simpleDateFormat.format(calendar.getTime()).toString()
 							.equals(simpleDateFormat.format(calendar1.getTime()).toString())) {
-						System.out.println("inside holiday logic <<<===");
 						calendar.add(Calendar.DATE, 1);
 						stDate = simpleDateFormat.format(calendar.getTime());
-						System.out.println("holiday after increment Date ====> " + stDate);
 						modelMap.addAttribute("date", stDate);
 						i = 0;
 					}
 					Date newDate1 = simpleDateFormat.parse(stDate);
 					SimpleDateFormat newSimpleDateFormat1 = new SimpleDateFormat("EEEE");
 					String day1 = newSimpleDateFormat1.format(newDate1);
-					System.out.println("Day if Sunday ====" + day1);
 					if (day1.equalsIgnoreCase("sunday")) {
-						System.out.println("inside sunday logic <<<===");
 						calendar.add(Calendar.DATE, 1);
 						stDate = simpleDateFormat.format(calendar.getTime());
-						System.out.println("Sunday after increment Date ====> " + stDate);
 						modelMap.addAttribute("date", stDate);
 					}
 				}
@@ -324,23 +312,17 @@ public class StudentEntryController {
 						simpleDateFormat.format(calendar1.getTime()).toString()) || day.equalsIgnoreCase("sunday")) {
 					if (simpleDateFormat.format(calendar.getTime()).toString()
 							.equals(simpleDateFormat.format(calendar1.getTime()).toString())) {
-						// System.out.println("inside holiday date");
 						calendar.add(Calendar.DATE, -1);
 						stDate = simpleDateFormat.format(calendar.getTime());
-						// System.out.println("Holiday Date =====>" + stDate);
 						modelMap.addAttribute("oneDayBeforeDate", stDate);
 						i = 0;
 					}
 					Date newDate1 = simpleDateFormat.parse(stDate);
-					// System.out.println("newDate1 =====>>>" + newDate1);
 					SimpleDateFormat newSimpleDateFormat1 = new SimpleDateFormat("EEEE");
 					String day1 = newSimpleDateFormat1.format(newDate1);
-					// System.out.println("day1 =====>>>" + day1);
 					if (day1.equalsIgnoreCase("sunday")) {
-						// System.out.println("inside sunday date");
 						calendar.add(Calendar.DATE, -1);
 						stDate = simpleDateFormat.format(calendar.getTime());
-						// System.out.println("Sunday Date =====>" + stDate);
 						modelMap.addAttribute("oneDayBeforeDate", stDate);
 					}
 				}
@@ -490,6 +472,7 @@ public class StudentEntryController {
 						stDate = simpleDateFormat.format(calendar.getTime());
 						modelMap.addAttribute("currentDate", stDate);
 						System.out.println("Holidays wali updated date ===>>>" + stDate);
+						i = 0;
 					}
 					Date newDate1 = simpleDateFormat.parse(stDate);
 					SimpleDateFormat newSimpleDateFormat1 = new SimpleDateFormat("EEEE");
