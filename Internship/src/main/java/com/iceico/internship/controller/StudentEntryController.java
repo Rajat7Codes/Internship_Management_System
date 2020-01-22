@@ -489,7 +489,6 @@ public class StudentEntryController {
 						calendar.add(Calendar.DATE, -1);
 						stDate = simpleDateFormat.format(calendar.getTime());
 						modelMap.addAttribute("currentDate", stDate);
-						System.out.println("Holidays wali updated date ===>>>" + stDate);
 					}
 					Date newDate1 = simpleDateFormat.parse(stDate);
 					SimpleDateFormat newSimpleDateFormat1 = new SimpleDateFormat("EEEE");
