@@ -264,6 +264,7 @@ public class StudentEntryController {
 						calendar.add(Calendar.DATE, 1);
 						stDate = simpleDateFormat.format(calendar.getTime());
 						modelMap.addAttribute("date", stDate);
+						i = 0;
 					}
 				}
 			}
@@ -324,6 +325,7 @@ public class StudentEntryController {
 						calendar.add(Calendar.DATE, -1);
 						stDate = simpleDateFormat.format(calendar.getTime());
 						modelMap.addAttribute("oneDayBeforeDate", stDate);
+						i = -1;
 					}
 				}
 			}
@@ -422,6 +424,7 @@ public class StudentEntryController {
 						calendar.add(Calendar.DATE, 1);
 						stDate = simpleDateFormat.format(calendar.getTime());
 						modelMap.addAttribute("date", stDate);
+						i = 0; 
 					}
 				}
 			}
@@ -452,6 +455,7 @@ public class StudentEntryController {
 		String day = newSimpleDateFormat.format(newDate); // for check which day comes on 1 day later
 		List<Holiday> holidayList = this.holidayService.getHolidayList();
 
+		
 		if (holidayList.isEmpty()) {
 			if (day.equalsIgnoreCase("sunday")) {
 				calendar.add(Calendar.DATE, -1);
@@ -459,12 +463,13 @@ public class StudentEntryController {
 				modelMap.addAttribute("date", stDate);
 			}
 		} else {
-			for (int i = 0; i < holidayList.size(); i++) {
+			for (int i = 0; i < holidayList.size(); ++i) {
 				String stDate1 = simpleDateFormat.format(holidayList.get(i).getDate());
 				Calendar calendar1 = Calendar.getInstance();
 				calendar1.setTime(simpleDateFormat.parse(stDate1));
 				if (simpleDateFormat.format(calendar.getTime()).toString().equals(
 						simpleDateFormat.format(calendar1.getTime()).toString()) || day.equalsIgnoreCase("sunday")) {
+					System.out.println("=====>");
 
 					if (simpleDateFormat.format(calendar.getTime()).toString()
 							.equals(simpleDateFormat.format(calendar1.getTime()).toString())) {
@@ -480,8 +485,9 @@ public class StudentEntryController {
 					if (day1.equalsIgnoreCase("sunday")) {
 						calendar.add(Calendar.DATE, -1);
 						stDate = simpleDateFormat.format(calendar.getTime());
+						System.out.println("=====>");
 						modelMap.addAttribute("currentDate", stDate);
-						i = 0;
+						i = -1;
 					}
 				}
 			}
