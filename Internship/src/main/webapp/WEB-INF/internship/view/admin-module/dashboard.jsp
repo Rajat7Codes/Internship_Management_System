@@ -14,6 +14,10 @@
 .notificationicon {
 	margin-top: 10px;
 }
+
+.tbl {
+	overflow-x: scroll;
+}
 </style>
 </head>
 <body>
@@ -122,68 +126,56 @@
 	<!-- end widget -->
 	<!-- chart start -->
 	<div class="row">
-		<div class="col-sm-12">
-			<div class="card card-box">
-				<div class="card-head">
-					<header>Chart Survey</header>
-					<div class="tools">
-						<a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
-						<a class="t-collapse btn-color fa fa-chevron-down"
-							href="javascript:;"></a> <a class="t-close btn-color fa fa-times"
-							href="javascript:;"></a>
-					</div>
-				</div>
+		<div class="col-md-12">
 
-				<div class="card-body no-padding height-9">
-					<div class="row">
-						<div class="card-body ">
-							<input placeholder="Search" id="searchInput"
-								class="mb-4 float-right">
-							<div class="table-wrap">
-								<div class="table-responsive">
-									<div class="tblHeightSet small-slimscroll-style">
-										<table class="table display product-overview mb-30" id="">
-											<thead>
-												<tr>
-													<th>Sr.No.</th>
-													<th>Name</th>
-													<th>College</th>
-													<th>Session</th>
-													<th>Duration</th>
-													<th>Type</th>
-													<th>Fees</th>
-													<th>Discount</th>
-													<th>Extension</th>
-													<th>Joining Date</th>
-												</tr>
-											</thead>
-											<tbody id="tableBody">
-												<c:forEach var="stud" items="${studentEntryList }"
-													varStatus="ind">
-													<tr>
-														<td>${ind.index+1 }</td>
-														<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
-														<td>${stud.getCollege().collegeName }</td>
-														<td>${stud.getInternshipSession().sessionName }</td>
-														<td>${stud.getInternshipDuration().duration }</td>
-														<td>${stud.getInternshipType().type }</td>
-														<td>${stud.feesAmount }</td>
-														<td>${stud.discount }</td>
-														<td>${stud.extension }</td>
-														<td>${stud.date }</td>
-													</tr>
-												</c:forEach>
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+			<div class="card card-topline-darkgreen">
+				<div class="card-header  card-head pl-4" id="grad">
+					<strong class="card-title text-white">Chart Survey</strong>
+				</div>
+				&nbsp;
+				<div class="card-body">
+					<input placeholder="Search" id="searchInput"
+						class="mb-4 float-right">
+					<table id="searchInput"
+						class="table table-striped table-responsive">
+						<thead>
+							<tr>
+								<th>Sr.No.</th>
+								<th>Name</th>
+								<th>College</th>
+								<th>Session</th>
+								<th>Duration</th>
+								<th>Type</th>
+								<th>Fees</th>
+								<th>Discount</th>
+								<th>Extension</th>
+								<th>Joining Date</th>
+							</tr>
+						</thead>
+						<tbody id="tableBody">
+							<c:forEach var="stud" items="${studentEntryList }"
+								varStatus="ind">
+								<tr>
+									<td>${ind.index+1 }</td>
+									<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
+									<td>${stud.getCollege().collegeName }</td>
+									<td>${stud.getInternshipSession().sessionName }</td>
+									<td>${stud.getInternshipDuration().duration }</td>
+									<td>${stud.getInternshipType().type }</td>
+									<td>${stud.feesAmount }</td>
+									<td>${stud.discount }</td>
+									<td>${stud.extension }</td>
+									<td>${stud.date }</td>
+								</tr>
+							</c:forEach>
+
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
 	</div>
+
 </body>
 
 <script
