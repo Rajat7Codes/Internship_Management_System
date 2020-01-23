@@ -94,7 +94,7 @@
 									<td>${ind.index+1 }</td>
 									<td>${type.type }</td>
 									<td>${type.description }</td>
-									<td class="valigntop"><a data-toggle="tooltip"
+									<td class="valigntop" style="white-space: nowrap;"><a data-toggle="tooltip"
 										title="Edit"
 										href="<c:url value='/admin/internshipType/edit/${type.internTypeId }' />"><i
 											style="width: 27px; height: 27px;"

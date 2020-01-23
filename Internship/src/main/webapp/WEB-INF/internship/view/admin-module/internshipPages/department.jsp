@@ -88,7 +88,7 @@
 									<td>${ind.index+1 }</td>
 									<td>${ departmentList.departmentName }</td>
 									<td>${ departmentList.description }</td>
-									<td class="valigntop"><a data-toggle="tooltip"
+									<td class="valigntop" style="white-space: nowrap;"><a data-toggle="tooltip"
 										title="Edit"
 										href="<c:url value='/admin/internship/department/edit/${ departmentList.departmentId }' />"><i
 											style="width: 27px; height: 27px;"

@@ -57,7 +57,7 @@
 										<c:if test="${college.mouStatus =='false'}">Unsigned</c:if></td>
 									<td>${college.tnpHead }</td>
 									<td>${college.contactPerson }</td>
-									<td class="valigntop">
+									<td style="white-space: nowrap;" class="valigntop">
 									<a data-toggle="tooltip" title="Edit"
 										href="<c:url value='/admin/college/edit/${college.collegeId }' />"><i
 											style="width: 27px; height: 27px;" class="text-center p-2 rounded-circle bg-success fa fa-edit"></i></a>

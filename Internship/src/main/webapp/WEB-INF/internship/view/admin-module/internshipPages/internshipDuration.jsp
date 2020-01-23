@@ -87,7 +87,7 @@
 									<td>${ind.index+1 }</td>
 									<td>${internDurList.duration }</td>
 									<td>${internDurList.description }</td>
-									<td class="valigntop"><a data-toggle="tooltip"
+									<td class="valigntop" style="white-space: nowrap;"><a data-toggle="tooltip"
 										title="Edit"
 										href="<c:url value='/admin/internship/duration/edit/${internDurList.internDurId }' />"><i
 											style="width: 27px; height: 27px;"

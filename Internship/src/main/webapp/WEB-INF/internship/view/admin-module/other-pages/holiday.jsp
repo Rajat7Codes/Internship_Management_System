@@ -87,7 +87,7 @@
 									<td>${ind.index+1 }</td>
 									<td>${fy.date }</td>
 									<td>${fy.description }</td>
-									<td class="valigntop"><a data-toggle="tooltip"
+									<td class="valigntop" style="white-space: nowrap;"><a data-toggle="tooltip"
 										title="Edit"
 										href="<c:url value='/admin/holiday/edit/${fy.holidayId }' />"><i
 											style="width: 27px; height: 27px;"

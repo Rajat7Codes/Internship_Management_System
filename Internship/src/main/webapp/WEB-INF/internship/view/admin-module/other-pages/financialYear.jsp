@@ -91,7 +91,7 @@
 									<td>${fy.year }</td>
 									<td><c:if test="${fy.active =='true'}">Active</c:if> <c:if
 											test="${fy.active =='false'}">Inactive</c:if></td>
-									<td class="valigntop"><a data-toggle="tooltip"
+									<td class="valigntop" style="white-space: nowrap;"><a data-toggle="tooltip"
 										title="Edit"
 										href="<c:url value='/admin/financial/year/edit/${fy.financialYearId }' />"><i
 											style="width: 27px; height: 27px;"

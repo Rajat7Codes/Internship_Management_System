@@ -50,7 +50,7 @@
 									<td>${fees.date }</td>
 									<td>${fees.payMode }</td>
 
-									<td class="valigntop"><a data-toggle="tooltip"
+									<td class="valigntop" style="white-space: nowrap;"><a data-toggle="tooltip"
 										title="Print"
 										href="<c:url value='/admin/fees/receipt/print/${fees.feesId }' />">
 											<i

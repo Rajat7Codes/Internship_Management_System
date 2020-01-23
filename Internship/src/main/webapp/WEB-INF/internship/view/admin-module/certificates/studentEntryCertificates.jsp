@@ -31,14 +31,14 @@
 						style="width: 100%;">
 						<thead>
 							<tr>
-								<th style="width: 8%%">Sr.No.</th>
-								<th style="width: 8%">Name</th>
-								<th style="width: 8%">College</th>
-								<th style="width: 8%">Session</th>
-								<th style="width: 8%">Joining Date</th>
-								<th style="width: 20%">Offer Letter</th>
-								<th style="width: 20%">Joining Letter</th>
-								<th style="width: 20%">Internship Completion</th>
+								<th style="white-space: nowrap;">Sr.No.</th>
+								<th style="white-space: nowrap;">Name</th>
+								<th style="white-space: nowrap;">College</th>
+								<th style="white-space: nowrap;">Session</th>
+								<th style="white-space: nowrap;">Joining Date</th>
+								<th style="white-space: nowrap;">Offer Letter</th>
+								<th style="white-space: nowrap;">Joining Letter</th>
+								<th style="white-space: nowrap;">Internship Completion</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -63,8 +63,7 @@
 												</c:if>  --%></a></td>
 
 
-									<td class="valigntop"><a data-toggle="tooltip"
-										title="View"
+									<td><a data-toggle="tooltip" title="View"
 										href="<c:url value='/admin/student/entry/joining/letter/view/${stud.studentEntryId }'  />">
 											<i
 											class="text-center p-2 rounded-circle bg-success fa fa-eye"></i>
@@ -74,7 +73,7 @@
 											class="text-center p-2 rounded-circle bg-success fa fa-print"
 											aria-hidden="true"></i>
 									</a></td>
-									<td class="valigntop"><a title="View"
+									<td><a title="View"
 										href="<c:url value='/admin/student/entry/internship/certificate/view/${stud.studentEntryId }'  />"><i
 											class="text-center p-2 rounded-circle bg-success fa fa-eye"></i></a>
 

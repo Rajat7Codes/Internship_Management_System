@@ -111,7 +111,7 @@
 											<td>${sessions.description}</td>
 											<td>${sessions.startDate}</td>
 											<td>${sessions.endDate}</td>
-											<td class="valigntop">
+											<td class="valigntop" style="white-space: nowrap;">
 												<div class="btn-group">
 													<button
 														class="btn btn-xs btn-success dropdown-toggle no-margin"

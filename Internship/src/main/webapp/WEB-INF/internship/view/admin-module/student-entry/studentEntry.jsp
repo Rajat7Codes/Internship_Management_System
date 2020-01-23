@@ -34,13 +34,13 @@
 					<table id="" class="table table-striped table-responsive">
 						<thead>
 							<tr>
-								<th>Sr.No.</th>
-								<th>Name</th>
-								<th>College</th>
-								<th>Session</th>
-								<th>Joining Date</th>
-								<th>Student Status</th>
-								<th>Action</th>
+								<th style="white-space: nowrap;">Sr.No.</th>
+								<th style="white-space: nowrap;">Name</th>
+								<th style="white-space: nowrap;">College</th>
+								<th style="white-space: nowrap;">Session</th>
+								<th style="white-space: nowrap;">Joining Date</th>
+								<th style="white-space: nowrap;">Student Status</th>
+								<th style="white-space: nowrap;">Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -53,7 +53,7 @@
 									<td>${stud.getInternshipSession().sessionName }</td>
 									<td>${stud.date }</td>
 									<td>${stud.studentStatus}</td>
-									<td class="valigntop"><a data-toggle="tooltip"
+									<td style="white-space: nowrap;" class="valigntop"><a data-toggle="tooltip"
 										title="Edit"
 										href="<c:url value='/admin/student/entry/edit/${stud.studentEntryId }' />"><i
 											style="width: 27px; height: 27px;"

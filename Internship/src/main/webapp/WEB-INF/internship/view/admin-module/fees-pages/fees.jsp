@@ -56,7 +56,7 @@
 									<td>${stud.balanceFees }</td>
 									<td>${stud.studentStatus}</td>
 									<td>${stud.payStatus }</td>
-									<td>
+									<td style="white-space: nowrap;">
 										<a data-toggle="tooltip" title="Receipts" href="<c:url value='/admin/fees/receipt/view/${stud.studentEntryId }' />">
 											<i style="width: 27px; height: 27px;" class="text-center p-2 rounded-circle bg-success fa fa-eye">  </i> </a>
 											
