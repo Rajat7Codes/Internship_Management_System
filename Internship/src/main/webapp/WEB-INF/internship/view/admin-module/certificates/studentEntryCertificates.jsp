@@ -27,18 +27,18 @@
 				</div>
 				&nbsp;
 				<div class="card-body">
-					<table id="" style="overflow: hidden;"
-						class="table table-striped table-responsive">
+					<table id="" class="table table-striped table-responsive"
+						style="width: 100%;">
 						<thead>
 							<tr>
-								<th>Sr.No.</th>
-								<th>Name</th>
-								<th>College</th>
-								<th>Session</th>
-								<th>Joining Date</th>
-								<th>Offer Letter</th>
-								<th>Joining Letter</th>
-								<th>Internship Completion</th>
+								<th style="width: 8%%">Sr.No.</th>
+								<th style="width: 8%">Name</th>
+								<th style="width: 8%">College</th>
+								<th style="width: 8%">Session</th>
+								<th style="width: 8%">Joining Date</th>
+								<th style="width: 20%">Offer Letter</th>
+								<th style="width: 20%">Joining Letter</th>
+								<th style="width: 20%">Internship Completion</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -57,8 +57,7 @@
 										<a data-toggle="tooltip" title="Print"
 										onclick="checkOffer(<c:if test="${stud.offerCount!=1}">null</c:if>${stud.offerCount}, ${stud.studentEntryId })"><i
 											class="text-center p-2 rounded-circle bg-success fa fa-print"
-											aria-hidden="true"></i>
-										<%-- 
+											aria-hidden="true"></i> <%-- 
 												<c:if test="${stud.offerCount==1}">
 													<i class="text-center p-2 rounded-circle bg-success fa fa-check" aria-hidden="true"></i>
 												</c:if>  --%></a></td>

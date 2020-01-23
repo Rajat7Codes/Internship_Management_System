@@ -11,7 +11,8 @@
 #backimage {
 	position: absolute;
 	z-index: -1;
-	height: 112% !important
+	height: 116% !important;
+	width: 96%;
 }
 </style>
 <body

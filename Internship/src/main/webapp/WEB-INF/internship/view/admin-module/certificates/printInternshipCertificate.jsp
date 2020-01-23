@@ -11,7 +11,8 @@
 #backimage {
 	position: absolute;
 	z-index: -1;
-	height: 127% !important
+	height: 132% !important;
+	width: 96.5%;
 }
 </style>
 
@@ -56,7 +57,7 @@
 				</h3>
 			</div>
 			<br>
-			<div>
+			<div style="padding-right: 8px;">
 
 				This is certify that Mr./Ms. <strong>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName },</strong>
 				a student of &nbsp;<strong>${ collegeName }</strong>&nbsp; has
