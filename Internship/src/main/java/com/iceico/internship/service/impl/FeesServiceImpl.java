@@ -69,7 +69,7 @@ public class FeesServiceImpl implements FeesService {
 
 	@Override
 	public Double getdailyFeesCollection(Date date) {
-		System.out.println("date =========>>>" + date);
+
 		return (Double) this.getSession().createQuery("select sum(feesAmount) from Fees where date=:date ")
 				.setParameter("date", date).uniqueResult();
 	}
