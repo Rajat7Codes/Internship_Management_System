@@ -128,9 +128,9 @@
 							href="javascript:;"></a>
 					</div>
 				</div>
-				<div class="card-body ">
+				<div class="card-body">
 					<div class="table-wrap">
-						<div class="table-responsive tblHeightSet small-slimscroll-style">
+						<div class="table-responsive tblHeightSet">
 							<input placeholder=" Search" id="searchInput"
 								class="mb-4 float-right">
 							<table class="table display product-overview mb-30"
@@ -174,7 +174,6 @@
 		</div>
 	</div>
 </body>
-
 <script
 	src="${pageContext.request.contextPath }/static/plugins/jquery/jquery.min.js"></script>
 
