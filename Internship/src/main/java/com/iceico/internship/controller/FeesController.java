@@ -90,8 +90,6 @@ public class FeesController {
 	public @ResponseBody JSONArray filterStudentListByDate(@RequestParam("startDate") String startDate,
 			@RequestParam("endDate") String endDate) throws JsonProcessingException, ParseException {
 
-		// System.out.println("sdate========" + startDate);
-		// System.out.println("edate========" + endDate);
 
 		List<Fees> list = this.feesService.filterFeesByDate(startDate, endDate);
 

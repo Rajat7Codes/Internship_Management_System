@@ -33,7 +33,7 @@ public class HolidayController {
 
 	@Autowired
 	private HolidayService holidayService;
-	
+
 	/**
 	 * 
 	 */
@@ -45,16 +45,15 @@ public class HolidayController {
 	public String getHoldiay(ModelMap modelMap, Locale locale) {
 
 		modelMap.addAttribute("holiday", new Holiday());
-		modelMap.addAttribute("holidayList",  this.holidayService.getHolidayList());
+		modelMap.addAttribute("holidayList", this.holidayService.getHolidayList());
 		modelMap.addAttribute("edit", false);
 		return "holiday";
 	}
-	
+
 	@PostMapping("/admin/holiday/save")
-	public String saveHoldiay(@ModelAttribute("holiday") @Valid Holiday holiday,
-			BindingResult bindingResult, ModelMap modelMap, Locale locale) throws ParseException {
+	public String saveHoldiay(@ModelAttribute("holiday") @Valid Holiday holiday, BindingResult bindingResult,
+			ModelMap modelMap, Locale locale) throws ParseException {
 		if (bindingResult.hasErrors()) {
-			System.out.print(bindingResult.getAllErrors());
 			return "holiday";
 		} else {
 			if (holiday.getHolidayId() == null) {
@@ -66,7 +65,7 @@ public class HolidayController {
 			return "redirect:/admin/holiday";
 		}
 	}
-	
+
 	@GetMapping("/admin/holiday/edit/{holidayId}")
 	public String editInternshipSession(@PathVariable("holidayId") @Valid Long holidayId, ModelMap modelMap,
 			Locale locale) throws ParseException, ResourceNotFoundException {
@@ -75,7 +74,7 @@ public class HolidayController {
 		modelMap.addAttribute("edit", true);
 		return "holiday";
 	}
-	
+
 	/**
 	 * This method returns the principal[user-name] of logged-in user.
 	 */

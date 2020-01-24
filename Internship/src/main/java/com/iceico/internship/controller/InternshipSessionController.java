@@ -55,7 +55,6 @@ public class InternshipSessionController {
 	public String saveInternshipSession(@ModelAttribute("session") @Valid InternshipSession session,
 			BindingResult bindingResult, ModelMap modelMap, Locale locale) throws ParseException {
 		if (bindingResult.hasErrors()) {
-			System.out.print(bindingResult.getAllErrors());
 			return "internshipSession";
 		} else {
 			if (session.getSessionId() == null) {
