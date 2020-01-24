@@ -220,7 +220,6 @@ public class FeesController {
 					if (fees.getFeesAmount() == 0)
 						status = "Unpaid";
 
-
 					fees.getStudentEntry().setPayStatus(status);
 					this.feesService.saveFees(fees);
 				}
