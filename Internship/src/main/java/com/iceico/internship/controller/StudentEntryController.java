@@ -296,6 +296,13 @@ public class StudentEntryController {
 		List<Holiday> holidayList = this.holidayService.getHolidayList();
 		Integer offerStatus = studentEntry.getOfferCount();
 
+		if (holidayList.isEmpty()) {
+			if (day.equalsIgnoreCase("sunday")) {
+				calendar.add(Calendar.DATE, -1);
+				stDate = simpleDateFormat.format(calendar.getTime());
+				modelMap.addAttribute("date", stDate);
+			}
+		}
 		if (offerStatus == null) {
 			studentEntry.setOfferCount(1);
 			this.studentEntryService.saveStudentEntry(studentEntry);
