@@ -63,8 +63,6 @@ public class FeesReturnController {
 		String studentStatus;
 		String status;
 
-		System.out.println("The fees to be returned:" + paidAmount);
-
 		if (paidAmount != 0) {
 
 			paidAmount = 0.00;

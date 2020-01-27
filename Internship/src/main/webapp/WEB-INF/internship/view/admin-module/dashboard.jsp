@@ -48,8 +48,6 @@
 						<div class="progress">
 							<div class="progress-bar" style="width: 45%"></div>
 						</div>
-						<!-- <span class="progress-description"> 45% Increase in 28 Days
-						</span> -->
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -68,8 +66,6 @@
 						<div class="progress">
 							<div class="progress-bar" style="width: 40%"></div>
 						</div>
-						<!-- <span class="progress-description"> 40% Increase in 28 Days
-						</span> -->
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -88,8 +84,6 @@
 						<div class="progress">
 							<div class="progress-bar" style="width: 85%"></div>
 						</div>
-						<!-- <span class="progress-description"> 85% Increase in 28 Days
-						</span> -->
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -113,71 +107,73 @@
 						<div class="progress">
 							<div class="progress-bar" style="width: 50%"></div>
 						</div>
-						<!-- <span class="progress-description"> 50% Increase in 28 Days
-						</span> -->
+						<!-- /.info-box-content -->
 					</div>
-					<!-- /.info-box-content -->
+					<!-- /.info-box -->
 				</div>
-				<!-- /.info-box -->
+				<!-- /.col -->
 			</div>
-			<!-- /.col -->
 		</div>
 	</div>
-	<!-- end widget -->
-	<!-- chart start -->
+
 	<div class="row">
-		<div class="col-md-12">
-
-			<div class="card card-topline-darkgreen">
-				<div class="card-header  card-head pl-4" id="grad">
-					<strong class="card-title text-white">Chart Survey</strong>
+		<div class="col-md-12 col-sm-12 col-12">
+			<div class="card card-box">
+				<div class="card-head">
+					<header style="color: black">Students</header>
+					<div class="tools">
+						<a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+						<a class="t-collapse btn-color fa fa-chevron-down"
+							href="javascript:;"></a> <a class="t-close btn-color fa fa-times"
+							href="javascript:;"></a>
+					</div>
 				</div>
-				&nbsp;
 				<div class="card-body">
-					<input placeholder="Search" id="searchInput"
-						class="mb-4 float-right">
-					<table id="searchInput"
-						class="table table-striped table-responsive">
-						<thead>
-							<tr>
-								<th>Sr.No.</th>
-								<th>Name</th>
-								<th>College</th>
-								<th>Session</th>
-								<th>Duration</th>
-								<th>Type</th>
-								<th>Fees</th>
-								<th>Discount</th>
-								<th>Extension</th>
-								<th>Joining Date</th>
-							</tr>
-						</thead>
-						<tbody id="tableBody">
-							<c:forEach var="stud" items="${studentEntryList }"
-								varStatus="ind">
-								<tr>
-									<td>${ind.index+1 }</td>
-									<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
-									<td>${stud.getCollege().collegeName }</td>
-									<td>${stud.getInternshipSession().sessionName }</td>
-									<td>${stud.getInternshipDuration().duration }</td>
-									<td>${stud.getInternshipType().type }</td>
-									<td>${stud.feesAmount }</td>
-									<td>${stud.discount }</td>
-									<td>${stud.extension }</td>
-									<td>${stud.date }</td>
-								</tr>
-							</c:forEach>
-
-						</tbody>
-					</table>
+					<div class="table-wrap">
+						<div class="table-responsive tblHeightSet">
+							<input placeholder=" Search" id="searchInput"
+								class="mb-4 float-right">
+							<table class="table display product-overview mb-30"
+								id="support_table">
+								<thead>
+									<tr>
+										<th>Sr.No.</th>
+										<th>Name</th>
+										<th>College</th>
+										<th>Session</th>
+										<th>Duration</th>
+										<th>Type</th>
+										<th>Fees</th>
+										<th>Discount</th>
+										<th>Extension</th>
+										<th>Joining Date</th>
+									</tr>
+								</thead>
+								<tbody id="tableBody">
+									<c:forEach var="stud" items="${studentEntryList }"
+										varStatus="ind">
+										<tr>
+											<td>${ind.index+1 }</td>
+											<td>${stud.firstName }&nbsp;${stud.middleName }&nbsp;${stud.lastName }</td>
+											<td>${stud.getCollege().collegeName }</td>
+											<td>${stud.getInternshipSession().sessionName }</td>
+											<td>${stud.getInternshipDuration().duration }</td>
+											<td>${stud.getInternshipType().type }</td>
+											<td>${stud.feesAmount }</td>
+											<td>${stud.discount }</td>
+											<td>${stud.extension }</td>
+											<td>${stud.date }</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 </body>
-
 <script
 	src="${pageContext.request.contextPath }/static/plugins/jquery/jquery.min.js"></script>
 

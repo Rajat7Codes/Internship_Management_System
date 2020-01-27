@@ -85,7 +85,6 @@ public class InternshipTypeController {
 	public String deleteInternshipType(@PathVariable("internTypeId") @Valid Long internTypeId, ModelMap modelMap,
 			Locale locale) throws ResourceNotFoundException {
 		
-		System.out.println("=======> " + internTypeId);
 		
 		this.internshipTypeService.deleteInternshipType(internTypeId);
 
